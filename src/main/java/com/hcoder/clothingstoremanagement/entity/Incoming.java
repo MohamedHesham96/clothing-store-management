@@ -39,7 +39,6 @@ public class Incoming {
 	int trade_price;
 
 	public Incoming(int quantity, int piece_price, String item, String store, int total, int trade_price) {
-
 		this.quantity = quantity;
 		this.piece_price = piece_price;
 		this.item = item;
