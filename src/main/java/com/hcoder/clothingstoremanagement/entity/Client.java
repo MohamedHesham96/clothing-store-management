@@ -1,11 +1,17 @@
 package com.hcoder.clothingstoremanagement.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "client")
@@ -24,6 +30,9 @@ public class Client {
 	@Column(name = "phone")
 	String phone;
 		
+	@OneToMany( mappedBy = "client", cascade= CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<ClientRecord> clientRecords;
+
 	public int getId() {
 		return id;
 	}
