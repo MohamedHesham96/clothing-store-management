@@ -3,10 +3,14 @@ package com.hcoder.clothingstoremanagement.entity;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "incoming")
 public class Incoming {
 
 	@Id
@@ -33,6 +37,16 @@ public class Incoming {
 
 	@Column(name = "trade_price")
 	int trade_price;
+
+	public Incoming(int quantity, int piece_price, String item, String store, int total, int trade_price) {
+
+		this.quantity = quantity;
+		this.piece_price = piece_price;
+		this.item = item;
+		this.store = store;
+		this.total = total;
+		this.trade_price = trade_price;
+	}
 
 	public int getId() {
 		return id;
