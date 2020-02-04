@@ -43,8 +43,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>org.eclipse.jdt.core.compiler</groupId>
 			<artifactId>ecj</artifactId>
@@ -81,15 +79,13 @@
 			<artifactId>jquery</artifactId>
 			<version>3.4.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
 
-
-		
 	</dependencies>
 
 	<build>
