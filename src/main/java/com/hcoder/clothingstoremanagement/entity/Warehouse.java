@@ -24,6 +24,9 @@ public class Warehouse {
 	@Column(name = "item")
 	String item;
 
+	@Column(name = "store")
+	String store;
+
 	public int getId() {
 		return id;
 	}
@@ -54,6 +57,14 @@ public class Warehouse {
 
 	public void setItem(String item) {
 		this.item = item;
+	}
+
+	public String getStore() {
+		return store;
+	}
+
+	public void setStore(String store) {
+		this.store = store;
 	}
 
 }

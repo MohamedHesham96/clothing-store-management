@@ -28,8 +28,15 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Bill> getAllBills() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Bill> query = session.createQuery("from Bill");
+
+		List<Bill> bills = query.getResultList();
+
+		return bills;
+		
 	}
 
 	@Override
@@ -100,6 +107,24 @@ public class UserDAOImpl implements UserDAO {
 
 		session.save(theBill);
 
+	}
+
+	@Override
+	public Warehouse getWarehouseById(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Warehouse warehouse = session.get(Warehouse.class, id);
+
+		return warehouse;
+	}
+
+	@Override
+	public void updateWarehouseQuantity(Warehouse warehouse) {
+
+		Session session = entityManager.unwrap(Session.class);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>" + warehouse.getQuantity());
+		session.update(warehouse);
 	}
 
 }

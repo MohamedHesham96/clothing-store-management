@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,6 +61,7 @@ public class Navigator {
 		warehouse.setItem(theIncoming.getItem());
 		warehouse.setQuantity(theIncoming.getQuantity());
 		warehouse.setTradePrice(theIncoming.getTradePrice());
+		warehouse.setStore(theIncoming.getStore());
 
 		userService.addToWarehouse(warehouse);
 
@@ -84,18 +86,44 @@ public class Navigator {
 
 		Bill bill = new Bill();
 
-		bill.setItem(theBill.getItem());
 		bill.setDate(LocalDate.now().toString());
 		bill.setQuantity(theBill.getQuantity());
 		bill.setPiecePrice(theBill.getPiecePrice());
-		bill.setStore("سيبها على الله");
-		bill.setTradePrice(100);
-		bill.setGain(10);
+
+		// Use the Bill ID from the FORM DATA
+
+		Warehouse warehouse = userService.getWarehouseById(theBill.getId());
+		
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>" + warehouse.getId());
+		//Take from Warehouse the items that sell
+		warehouse.setQuantity(warehouse.getQuantity() - bill.getQuantity());
+		
+		userService.updateWarehouseQuantity(warehouse);
+		
+		int gain = (theBill.getPiecePrice() - warehouse.getTradePrice()) * bill.getQuantity();
+		bill.setGain(gain);
+	
+		bill.setItem(warehouse.getItem());
+		bill.setStore(warehouse.getStore());
+		bill.setTradePrice(warehouse.getTradePrice());
+
 		
 		userService.addBill(bill);
-		
+
 		return "redirect:/warehouse";
 
+	}
+
+	
+
+	@RequestMapping("/bill")
+	public String getBill(Model theModel) {
+
+		List<Bill> items = userService.getAllBills();
+
+		theModel.addAttribute("items", items);
+		
+		return "bill";
 	}
 
 }

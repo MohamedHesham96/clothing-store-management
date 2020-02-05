@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Bill> getAllBills() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return userDAO.getAllBills();
 	}
 
 	@Override
@@ -76,6 +76,20 @@ public class UserServiceImpl implements UserService {
 	public void addBill(Bill theBill) {
 
 		userDAO.addBill(theBill);	
+	}
+
+	@Override
+	public Warehouse getWarehouseById(int id) {
+
+		Warehouse warehouse = userDAO.getWarehouseById(id);
+		
+		return warehouse;
+	}
+
+	@Override
+	public void updateWarehouseQuantity(Warehouse warehouse) {
+
+		userDAO.updateWarehouseQuantity(warehouse);
 	}
 
 }

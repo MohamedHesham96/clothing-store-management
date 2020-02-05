@@ -22,6 +22,10 @@ public interface UserService {
 
 	public Incoming getIncomingByDate();
 
+	public Warehouse getWarehouseById(int id);
+
+	public void updateWarehouseQuantity(Warehouse warehouse);
+
 	public void addToWarehouse(Warehouse warehouse);
 
 	public List<Warehouse> getAllWarehouse();

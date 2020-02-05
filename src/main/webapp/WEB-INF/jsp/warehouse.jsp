@@ -11,6 +11,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+
 <head>
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -76,6 +78,7 @@
 								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر تجاري</th>
+								<th>المحل</th>
 
 							</tr>
 						</thead>
@@ -86,6 +89,7 @@
 									<td>${tempItem.item}</td>
 									<td>${tempItem.quantity}</td>
 									<td>${tempItem.tradePrice}</td>
+									<td>${tempItem.store}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -111,10 +115,15 @@
 
 					<form:form metho="POST" action="add-bill" modelAttribute="bill">
 
-						<label for="email2" class="mb-2 mr-sm-2"> الصنف:</label>
-						<form:input type="text" path="item"
-							class="form-control  mb-2 col-xs-3" placeholder="ادخل اسم الصنف"
-							name="email"></form:input>
+						<form:select path="id" class="form-control  mb-2 col-xs-3"
+							name="testselect">
+							<c:forEach var="tempItem" items="${items}">
+
+								<option value="${tempItem.id}">${tempItem.item}</option>
+
+							</c:forEach>
+
+						</form:select>
 
 						<label for="pwd2" class="mb-2 mr-sm-2">الكمية:</label>
 						<form:input type="text" path="quantity"
@@ -132,11 +141,11 @@
 						</button>
 					</form:form>
 
-						<!--
+					<!--
 	<c:url var="showQuestion" value="/user/showq">
 								<c:param name="questionId" value="hello"></c:param>
 							</c:url>  -->
-				
+
 
 				</div>
 			</div>
