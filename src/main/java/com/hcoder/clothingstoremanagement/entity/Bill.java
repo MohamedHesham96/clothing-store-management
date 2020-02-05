@@ -56,7 +56,7 @@ public class Bill {
 	}
 
 	public int getTradePrice() {
-		return piecePrice;
+		return tradePrice;
 	}
 
 	public void setTradePrice(int tradePrice) {

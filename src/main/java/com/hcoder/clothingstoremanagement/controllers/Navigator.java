@@ -114,9 +114,7 @@ public class Navigator {
 
 	}
 
-	
-
-	@RequestMapping("/bill")
+		@RequestMapping("/bill")
 	public String getBill(Model theModel) {
 
 		List<Bill> items = userService.getAllBills();
