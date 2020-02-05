@@ -24,6 +24,8 @@ public interface UserDAO {
 	public Incoming getIncomingByDate();
 
 	public List<Warehouse> getAllWarehouse();
-
+	
+	public void addToWarehouse(Warehouse warehouse);
+	
 	public void AddIncoming(Incoming incoming);
 }

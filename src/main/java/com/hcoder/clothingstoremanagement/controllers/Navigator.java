@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Warehouse;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
 @Controller
@@ -38,6 +39,7 @@ public class Navigator {
 		for (int i = 0; i < listSize; i++) {
 			Incoming item = items.get(i);
 			item.setTotal(item.getTradePrice() * item.getQuantity());
+
 		}
 		theModel.addAttribute("items", items);
 
@@ -52,9 +54,26 @@ public class Navigator {
 		theIncoming.setDate(LocalDate.now().toString());
 
 		userService.AddIncoming(theIncoming);
+		Warehouse warehouse = new Warehouse();
+
+		warehouse.setItem(theIncoming.getItem());
+		warehouse.setQuantity(theIncoming.getQuantity());
+		warehouse.setTrade_price(theIncoming.getTradePrice());
+
+		userService.addToWarehouse(warehouse);
 
 		return "redirect:/incoming";
 
+	}
+
+	@RequestMapping("/warehouse")
+	public String getWarehouse(Model theModel) {
+
+		List<Warehouse> items = userService.getAllWarehouse();
+
+		theModel.addAttribute("items", items);
+
+		return "warehouse";
 	}
 
 }

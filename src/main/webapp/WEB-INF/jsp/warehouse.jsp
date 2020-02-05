@@ -1,4 +1,4 @@
-﻿<%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
+<%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@page import="com.hcoder.clothingstoremanagement.entity.Incoming"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@page import="java.lang.ProcessBuilder.Redirect"%>
@@ -31,7 +31,7 @@
 
 	<!-- Table -->
 	<div style="text-align: right;" class="container">
-<!-- 
+		<!-- 
 <div class="row ">
 
 <div class="card text-white bg-success mb-3  mr-sm-4" style="max-width: 14rem;">
@@ -65,6 +65,7 @@
 
 </div>
  -->
+
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
@@ -96,10 +97,7 @@
 						</tbody>
 					</table>
 				</div>
-				<button type="button" class="btn btn-info btn-lg btn-block">+
-					اضافة صنف</button>
-
-
+				<button type="button" class="btn btn-info btn-lg btn-block">+اضافة صنف</button>
 				<div class="container">
 					<br>
 				</div>
@@ -121,7 +119,7 @@
 					<c:set value="34" var="num" />
 					<c:out value="${num % 2 eq 0 ? 'even': 'odd'}" />
 					-->
-					
+
 					<form:form metho="POST" action="add-incoming"
 						modelAttribute="incoming">
 

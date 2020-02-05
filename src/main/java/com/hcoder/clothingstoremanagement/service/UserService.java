@@ -22,6 +22,8 @@ public interface UserService {
 
 	public Incoming getIncomingByDate();
 
+	public void addToWarehouse(Warehouse warehouse);
+
 	public List<Warehouse> getAllWarehouse();
 
 	public void AddIncoming(Incoming incoming);

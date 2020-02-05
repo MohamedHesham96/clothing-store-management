@@ -68,17 +68,30 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
+
+	@Override
+	public void addToWarehouse(Warehouse warehouse) {
+
+		Session session = entityManager.unwrap(Session.class);
+		session.save(warehouse);
+	}
+
+	
 	@Override
 	public List<Warehouse> getAllWarehouse() {
-		// TODO Auto-generated method stub
-		return null;
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Warehouse> items = session.createQuery("from warehouse").getResultList();
+
+		return items;
 	}
 
 	@Override
 	public void AddIncoming(Incoming incoming) {
 
 		Session session = entityManager.unwrap(Session.class);
-	
+
 		session.save(incoming);
 	}
 

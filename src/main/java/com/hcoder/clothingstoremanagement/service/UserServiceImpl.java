@@ -56,14 +56,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Warehouse> getAllWarehouse() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return userDAO.getAllWarehouse();
 	}
 
 	@Override
 	public void AddIncoming(Incoming incoming) {
 
 		userDAO.AddIncoming(incoming);
+	}
+
+	@Override
+	public void addToWarehouse(Warehouse warehouse) {
+
+		userDAO.addToWarehouse(warehouse);
 	}
 
 }
