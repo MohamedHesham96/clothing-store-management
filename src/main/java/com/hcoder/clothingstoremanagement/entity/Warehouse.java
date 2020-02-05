@@ -19,7 +19,7 @@ public class Warehouse {
 	int quantity;
 
 	@Column(name = "trade_price")
-	int trade_price;
+	int tradePrice;
 
 	@Column(name = "item")
 	String item;
@@ -40,12 +40,12 @@ public class Warehouse {
 		this.quantity = quantity;
 	}
 
-	public int getTrade_price() {
-		return trade_price;
+	public int getTradePrice() {
+		return tradePrice;
 	}
 
-	public void setTrade_price(int trade_price) {
-		this.trade_price = trade_price;
+	public void setTradePrice(int tradePrice) {
+		this.tradePrice = tradePrice;
 	}
 
 	public String getItem() {

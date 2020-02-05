@@ -75,10 +75,6 @@
 								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر تجاري</th>
-								<th>سعر القطعة</th>
-								<th>اجمالي السعر</th>
-								<th>المحل</th>
-								<th>تاريخ التسجيل</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -88,72 +84,10 @@
 									<td>${tempItem.item}</td>
 									<td>${tempItem.quantity}</td>
 									<td>${tempItem.tradePrice}</td>
-									<td>${tempItem.piecePrice}</td>
-									<td>${tempItem.total}</td>
-									<td>${tempItem.store}</td>
-									<td>${tempItem.date}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-				</div>
-				<button type="button" class="btn btn-info btn-lg btn-block">+اضافة صنف</button>
-				<div class="container">
-					<br>
-				</div>
-			</div>
-
-		</div>
-
-
-		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
-			<div class="card">
-
-				<div class="card-body">
-
-					<c:if test="${incoming != null}">
-						<h3>اضافة صنف جديد</h3>
-					</c:if>
-
-					<!-- 
-					<c:set value="34" var="num" />
-					<c:out value="${num % 2 eq 0 ? 'even': 'odd'}" />
-					-->
-
-					<form:form metho="POST" action="add-incoming"
-						modelAttribute="incoming">
-
-
-						<label for="email2" class="mb-2 mr-sm-2"> الصنف:</label>
-						<form:input type="text" path="item"
-							class="form-control  mb-2 col-xs-3" placeholder="ادخل اسم الصنف"
-							name="email"></form:input>
-
-						<label for="pwd2" class="mb-2 mr-sm-2">الكمية:</label>
-						<form:input type="text" path="quantity"
-							class="form-control mb-2 col-xs-3" placeholder="ادخل الكمية"
-							name="pswd"></form:input>
-
-						<label for="pwd2" class="mb-2 mr-sm-2">السعر تجاري:</label>
-						<form:input type="text" path="tradePrice"
-							class="form-control  mb-2 col-xs-3"
-							placeholder="ادخل السعر تجاري" name="pswd"></form:input>
-
-						<label for="pwd2" class="mb-2 mr-sm-2">سعر القطعه:</label>
-						<form:input type="text" path="piecePrice"
-							class="form-control  col-xs-3" placeholder="ادخل سعر القطعه"
-							name="pswd"></form:input>
-
-						<label for="pwd2" class="mb-2 mr-sm-2">المحل:</label>
-						<form:input type="text" path="store"
-							class="form-control  col-xs-3" placeholder="ادخل اسم المحل "
-							name="pswd"></form:input>
-						<br>
-						<button type="submit" class="btn btn-info form-control 	">اضف
-							الصنف</button>
-
-					</form:form>
-
 				</div>
 			</div>
 

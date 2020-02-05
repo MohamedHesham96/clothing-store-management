@@ -82,7 +82,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Warehouse> items = session.createQuery("from warehouse").getResultList();
+		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
 
 		return items;
 	}

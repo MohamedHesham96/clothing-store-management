@@ -58,7 +58,7 @@ public class Navigator {
 
 		warehouse.setItem(theIncoming.getItem());
 		warehouse.setQuantity(theIncoming.getQuantity());
-		warehouse.setTrade_price(theIncoming.getTradePrice());
+		warehouse.setTradePrice(theIncoming.getTradePrice());
 
 		userService.addToWarehouse(warehouse);
 
