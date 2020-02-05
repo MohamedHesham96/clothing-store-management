@@ -22,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	public UserDAOImpl(EntityManager entityManager) {
-	
+
 		this.entityManager = entityManager;
 	}
 
@@ -52,13 +52,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Incoming> GetAllIncoming() {
-		
+
 		Session session = entityManager.unwrap(Session.class);
-		
+
 		Query<Incoming> query = session.createQuery("from Incoming");
-		
+
 		List<Incoming> incomings = query.getResultList();
-		
+
 		return incomings;
 	}
 
@@ -72,6 +72,14 @@ public class UserDAOImpl implements UserDAO {
 	public List<Warehouse> getAllWarehouse() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void AddIncoming(Incoming incoming) {
+
+		Session session = entityManager.unwrap(Session.class);
+	
+		session.save(incoming);
 	}
 
 }

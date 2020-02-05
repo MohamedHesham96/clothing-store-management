@@ -25,4 +25,5 @@ public interface UserDAO {
 
 	public List<Warehouse> getAllWarehouse();
 
+	public void AddIncoming(Incoming incoming);
 }

@@ -1,7 +1,5 @@
 package com.hcoder.clothingstoremanagement.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,10 +19,10 @@ public class Incoming {
 	int quantity;
 
 	@Column(name = "piece_price")
-	int piece_price;
+	int piecePrice;
 
 	@Column(name = "date")
-	Date date;
+	String date;
 
 	@Column(name = "item")
 	String item;
@@ -36,15 +34,19 @@ public class Incoming {
 	int total;
 
 	@Column(name = "trade_price")
-	int trade_price;
+	int tradePrice;
+
+	public Incoming() {
+
+	}
 
 	public Incoming(int quantity, int piece_price, String item, String store, int total, int trade_price) {
 		this.quantity = quantity;
-		this.piece_price = piece_price;
+		this.piecePrice = piece_price;
 		this.item = item;
 		this.store = store;
 		this.total = total;
-		this.trade_price = trade_price;
+		this.tradePrice = trade_price;
 	}
 
 	public int getId() {
@@ -63,19 +65,11 @@ public class Incoming {
 		this.quantity = quantity;
 	}
 
-	public int getPiece_price() {
-		return piece_price;
-	}
-
-	public void setPiece_price(int piece_price) {
-		this.piece_price = piece_price;
-	}
-
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -103,12 +97,20 @@ public class Incoming {
 		this.total = total;
 	}
 
-	public int getTrade_price() {
-		return trade_price;
+	public int getPiecePrice() {
+		return piecePrice;
 	}
 
-	public void setTrade_price(int trade_price) {
-		this.trade_price = trade_price;
+	public void setPiecePrice(int piecePrice) {
+		this.piecePrice = piecePrice;
+	}
+
+	public int getTradePrice() {
+		return tradePrice;
+	}
+
+	public void setTradePrice(int tradePrice) {
+		this.tradePrice = tradePrice;
 	}
 
 }

@@ -1,11 +1,15 @@
 package com.hcoder.clothingstoremanagement.controllers;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hcoder.clothingstoremanagement.entity.Incoming;
@@ -26,22 +30,31 @@ public class Navigator {
 	@RequestMapping("/incoming")
 	public String getIncoming(Model theModel) {
 
+		theModel.addAttribute("incoming", new Incoming());
+
 		List<Incoming> items = userService.GetAllIncoming();
 
+		int listSize = items.size();
+		for (int i = 0; i < listSize; i++) {
+			Incoming item = items.get(i);
+			item.setTotal(item.getTradePrice() * item.getQuantity());
+		}
 		theModel.addAttribute("items", items);
 
 		return "incoming";
+	}
 
-		// Incoming incoming = new Incoming(5, 100, "قميص سادة", "ميدو البرنس", 500,
-		// 90);
-		// Incoming incoming2 = new Incoming(5, 100, "قميص سادة", "ميدو البرنس", 500,
-		// 90);
-		// Incoming incoming3 = new Incoming(5, 100, "قميص سادة", "ميدو البرنس", 500,
-		// 90);
+	@PostMapping("/add-incoming")
+	public String addIncoming(@ModelAttribute("incoming") Incoming theIncoming, Model theModel) {
 
-		// items.add(incoming);
-		// items.add(incoming2);
-		// items.add(incoming3);
+		theModel.addAttribute("incoming", new Incoming());
+
+		theIncoming.setDate(LocalDate.now().toString());
+
+		userService.AddIncoming(theIncoming);
+
+		return "redirect:/incoming";
+
 	}
 
 }

@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<Incoming> GetAllIncoming() {
 		// TODO Auto-generated method stub
-		
+
 		return userDAO.GetAllIncoming();
 	}
 
@@ -58,6 +58,12 @@ public class UserServiceImpl implements UserService {
 	public List<Warehouse> getAllWarehouse() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void AddIncoming(Incoming incoming) {
+
+		userDAO.AddIncoming(incoming);
 	}
 
 }
