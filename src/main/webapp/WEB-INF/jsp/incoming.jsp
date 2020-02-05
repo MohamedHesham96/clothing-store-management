@@ -58,11 +58,11 @@
 						</tbody>
 					</table>
 				</div>
-				<button type="button" class="btn btn-info">اضافة منتج</button>
+				<button type="button" class="btn btn-info btn-lg btn-block">+
+					اضافة صنف</button>
+
 			</div>
+
 		</div>
-
-	</div>
-
 </body>
 </html>
