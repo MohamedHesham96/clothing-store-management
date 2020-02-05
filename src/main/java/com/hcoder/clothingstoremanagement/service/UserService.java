@@ -28,4 +28,6 @@ public interface UserService {
 
 	public void AddIncoming(Incoming incoming);
 
+	void addBill(Bill theBill);
+
 }

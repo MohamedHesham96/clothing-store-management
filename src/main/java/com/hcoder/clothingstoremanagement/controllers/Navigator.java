@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 import com.hcoder.clothingstoremanagement.service.UserService;
@@ -73,7 +74,28 @@ public class Navigator {
 
 		theModel.addAttribute("items", items);
 
+		theModel.addAttribute("bill", new Bill());
+
 		return "warehouse";
+	}
+
+	@PostMapping("/add-bill")
+	public String addBill(@ModelAttribute("bill") Bill theBill) {
+
+		Bill bill = new Bill();
+
+		bill.setItem(theBill.getItem());
+		bill.setDate(LocalDate.now().toString());
+		bill.setQuantity(theBill.getQuantity());
+		bill.setPiecePrice(theBill.getPiecePrice());
+		bill.setStore("سيبها على الله");
+		bill.setTradePrice(100);
+		bill.setGain(10);
+		
+		userService.addBill(bill);
+		
+		return "redirect:/warehouse";
+
 	}
 
 }

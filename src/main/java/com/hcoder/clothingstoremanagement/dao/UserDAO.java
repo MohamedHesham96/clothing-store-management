@@ -28,4 +28,6 @@ public interface UserDAO {
 	public void addToWarehouse(Warehouse warehouse);
 	
 	public void AddIncoming(Incoming incoming);
+
+	public void addBill(Bill theBill);
 }

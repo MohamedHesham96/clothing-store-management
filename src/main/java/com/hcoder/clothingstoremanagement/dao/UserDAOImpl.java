@@ -68,7 +68,6 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
-
 	@Override
 	public void addToWarehouse(Warehouse warehouse) {
 
@@ -76,7 +75,6 @@ public class UserDAOImpl implements UserDAO {
 		session.save(warehouse);
 	}
 
-	
 	@Override
 	public List<Warehouse> getAllWarehouse() {
 
@@ -93,6 +91,15 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		session.save(incoming);
+	}
+
+	@Override
+	public void addBill(Bill theBill) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.save(theBill);
+
 	}
 
 }

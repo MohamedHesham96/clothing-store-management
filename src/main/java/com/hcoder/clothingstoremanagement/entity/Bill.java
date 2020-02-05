@@ -22,16 +22,16 @@ public class Bill {
 	int gain;
 
 	@Column(name = "trade_price")
-	int trade_price;
+	int tradePrice;
 
 	@Column(name = "quantity")
 	int quantity;
 
 	@Column(name = "piece_price")
-	int piece_price;
+	int piecePrice;
 
 	@Column(name = "date")
-	Date date;
+	String date;
 
 	@Column(name = "item")
 	String item;
@@ -55,12 +55,12 @@ public class Bill {
 		this.gain = gain;
 	}
 
-	public int getTrade_price() {
-		return trade_price;
+	public int getTradePrice() {
+		return piecePrice;
 	}
 
-	public void setTrade_price(int trade_price) {
-		this.trade_price = trade_price;
+	public void setTradePrice(int tradePrice) {
+		this.tradePrice = tradePrice;
 	}
 
 	public int getQuantity() {
@@ -71,20 +71,20 @@ public class Bill {
 		this.quantity = quantity;
 	}
 
-	public int getPiece_price() {
-		return piece_price;
+	public int getPiecePrice() {
+		return piecePrice;
 	}
 
-	public void setPiece_price(int piece_price) {
-		this.piece_price = piece_price;
+	public void setPiecePrice(int piecePrice) {
+		this.piecePrice = piecePrice;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(String string) {
+		this.date = string;
 	}
 
 	public String getItem() {

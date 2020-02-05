@@ -24,6 +24,7 @@
 <body>
 
 
+
 	<br>
 	<br>
 	<br>
@@ -75,6 +76,7 @@
 								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر تجاري</th>
+
 							</tr>
 						</thead>
 						<tbody>
@@ -88,6 +90,54 @@
 							</c:forEach>
 						</tbody>
 					</table>
+				</div>
+			</div>
+
+		</div>
+
+		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+			<div class="card">
+
+				<div class="card-body">
+
+					<c:if test="${incoming != null}">
+						<h3>اضافة صنف جديد</h3>
+					</c:if>
+
+					<!-- 
+					<c:set value="34" var="num" />
+					<c:out value="${num % 2 eq 0 ? 'even': 'odd'}" />
+					-->
+
+					<form:form metho="POST" action="add-bill" modelAttribute="bill">
+
+						<label for="email2" class="mb-2 mr-sm-2"> الصنف:</label>
+						<form:input type="text" path="item"
+							class="form-control  mb-2 col-xs-3" placeholder="ادخل اسم الصنف"
+							name="email"></form:input>
+
+						<label for="pwd2" class="mb-2 mr-sm-2">الكمية:</label>
+						<form:input type="text" path="quantity"
+							class="form-control mb-2 col-xs-3" placeholder="ادخل الكمية"
+							name="pswd"></form:input>
+
+						<label for="pwd2" class="mb-2 mr-sm-2">سعر القطعه:</label>
+						<form:input type="text" path="piecePrice"
+							class="form-control  col-xs-3" placeholder="ادخل سعر القطعه"
+							name="pswd"></form:input>
+
+						<br>
+						<button type="submit" class="btn btn-info form-control 	">
+
+						</button>
+					</form:form>
+
+						<!--
+	<c:url var="showQuestion" value="/user/showq">
+								<c:param name="questionId" value="hello"></c:param>
+							</c:url>  -->
+				
+
 				</div>
 			</div>
 

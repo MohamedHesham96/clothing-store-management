@@ -72,4 +72,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.addToWarehouse(warehouse);
 	}
 
+	@Override
+	public void addBill(Bill theBill) {
+
+		userDAO.addBill(theBill);	
+	}
+
 }
