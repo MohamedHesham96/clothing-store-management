@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
@@ -120,6 +121,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	@Transactional
 	public void updateWarehouseQuantity(Warehouse warehouse) {
 
 		Session session = entityManager.unwrap(Session.class);

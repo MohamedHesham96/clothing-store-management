@@ -15,24 +15,23 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>Insert title here</title>
+<title>المشتريات</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 
 </head>
-<body>
+<body background="images/wallpaper.jpg" style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
-	<br>
+	
 
-	<!-- Table -->
 	<div style="text-align: right;" class="container">
 
 		<div class="row  my-4">
-			<div dir='rtl' class="col-lg-12 col-md-8">
+			<div dir='rtl' class=" col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table class="table  table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
 								<th>الصنف</th>
@@ -123,6 +122,7 @@
 				</div>
 			</div>
 
+		</div>
 		</div>
 </body>
 </html>

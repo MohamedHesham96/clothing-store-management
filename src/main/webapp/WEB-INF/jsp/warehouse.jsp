@@ -17,63 +17,22 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>Insert title here</title>
+<title>المخزن</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 
 </head>
-<body>
+<body background="images/wall3.jpg" style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
-
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<!-- Table -->
-	<div style="text-align: right;" class="container">
-		<!-- 
-<div class="row ">
-
-<div class="card text-white bg-success mb-3  mr-sm-4" style="max-width: 14rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Success card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-white bg-danger mb-3 mr-sm-4" style="max-width: 14rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Danger card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-white bg-warning mb-3 mr-sm-4" style="max-width: 14rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Warning card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-white bg-info mb-3 mr-sm-4" style="max-width: 14rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-
-</div>
- -->
-
+	<div style="text-align: right;" class="container ">
+	
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table class="table  table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
 								<th>الصنف</th>
@@ -106,7 +65,7 @@
 				<div class="card-body">
 
 					<c:if test="${incoming != null}">
-						<h3>اضافة صنف جديد</h3>
+						<h3>بيع صنف</h3>
 					</c:if>
 
 					<!-- 
@@ -115,6 +74,7 @@
 					-->
 
 					<form:form metho="POST" action="add-bill" modelAttribute="bill">
+						<label for="pwd2" class="mb-2 mr-sm-2">الصنف:</label>
 
 						<form:select path="id" class="form-control  mb-2 col-xs-3"
 							name="testselect">
@@ -138,7 +98,7 @@
 
 						<br>
 						<button type="submit" class="btn btn-info form-control 	">
-
+						تمت العملية
 						</button>
 					</form:form>
 
@@ -151,6 +111,7 @@
 				</div>
 			</div>
 
+		</div>
 		</div>
 </body>
 </html>
