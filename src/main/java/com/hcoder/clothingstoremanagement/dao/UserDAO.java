@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder.In;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserDAO {
@@ -35,9 +36,13 @@ public interface UserDAO {
 
 	public void addBill(Bill theBill);
 	
+	public List<Spending> getAllSpending();
+	
 	public int getSpendingTotal();
 
 	public int getIcomingTotal();
 	
 	public int getWarehouseTotal();
+	
+	
 }

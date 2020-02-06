@@ -9,6 +9,7 @@ import com.hcoder.clothingstoremanagement.dao.UserDAO;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 @Service
@@ -110,6 +111,12 @@ public class UserServiceImpl implements UserService {
 	public int getWarehouseTotal() {
 		
 		return userDAO.getWarehouseTotal();
+	}
+
+	@Override
+	public List<Spending> getAllSpending() {
+		
+		return userDAO.getAllSpending();
 	}
 
 }

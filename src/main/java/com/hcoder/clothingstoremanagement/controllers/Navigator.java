@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
@@ -40,9 +41,9 @@ public class Navigator {
 
 		int incomingTotal = userService.getIcomingTotal();
 		int warehouseTotal = userService.getWarehouseTotal();
-		
+
 		int soldTotal = incomingTotal - warehouseTotal;
-		
+
 		theModel.addAttribute("items", items);
 		theModel.addAttribute("soldTotal", soldTotal);
 		theModel.addAttribute("incomingTotal", incomingTotal);
@@ -80,15 +81,15 @@ public class Navigator {
 
 		int incomingTotal = userService.getIcomingTotal();
 		int warehouseTotal = userService.getWarehouseTotal();
-		
+
 		int soldTotal = incomingTotal - warehouseTotal;
-		
+
 		theModel.addAttribute("items", items);
 		theModel.addAttribute("bill", new Bill());
 		theModel.addAttribute("soldTotal", soldTotal);
 		theModel.addAttribute("incomingTotal", incomingTotal);
-		theModel.addAttribute("warehouseTotal", warehouseTotal);		
-		
+		theModel.addAttribute("warehouseTotal", warehouseTotal);
+
 		return "warehouse";
 	}
 
@@ -149,4 +150,16 @@ public class Navigator {
 		return "bill";
 	}
 
+	@RequestMapping("/spending")
+	public String getSpending(Model theModel) {
+
+		List<Spending> spendings = userService.getAllSpending();
+
+		int spendingTotal = userService.getSpendingTotal();
+
+		theModel.addAttribute("spendings", spendings);
+		theModel.addAttribute("spendingTotal", spendingTotal);
+
+		return "spending";
+	}
 }

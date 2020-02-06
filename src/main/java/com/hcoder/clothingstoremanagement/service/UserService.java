@@ -5,6 +5,7 @@ import java.util.List;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserService {
@@ -32,6 +33,8 @@ public interface UserService {
 	public void AddIncoming(Incoming incoming);
 
 	void addBill(Bill theBill);
+
+	public List<Spending> getAllSpending();
 
 	public int getSpendingTotal();
 

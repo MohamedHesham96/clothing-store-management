@@ -176,6 +176,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
+
 		int listSize = items.size();
 
 		int warehouseTotal = 0;
@@ -188,6 +189,16 @@ public class UserDAOImpl implements UserDAO {
 		}
 
 		return warehouseTotal;
+	}
+
+	@Override
+	public List<Spending> getAllSpending() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Spending> items = session.createQuery("from Spending").getResultList();
+
+		return items;
 	}
 
 }
