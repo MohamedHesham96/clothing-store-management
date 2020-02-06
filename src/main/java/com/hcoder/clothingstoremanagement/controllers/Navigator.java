@@ -3,6 +3,7 @@ package com.hcoder.clothingstoremanagement.controllers;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.omg.PortableInterceptor.USER_EXCEPTION;
@@ -118,7 +119,16 @@ public class Navigator {
 	public String getBill(Model theModel) {
 
 		List<Bill> items = userService.getAllBills();
-
+		int listSize = items.size();
+		int gainTotal = 0;
+				
+		for (int i = 0; i < listSize; i++) {
+			Bill item = items.get(i);
+			
+			gainTotal =+ item.getGain();
+		}
+		
+		theModel.addAttribute("gainTotal", gainTotal);
 		theModel.addAttribute("items", items);
 		
 		return "bill";
