@@ -27,9 +27,9 @@
 
 	<%@ include file="header.jsp"%>
 
-	<div style="text-align: right;" class="container ">
+	<div  style="text-align: right;" class="container ">
 	
-		<div class="row  my-4">
+		<div  class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
 					<table class="table  table-striped table-dark">
