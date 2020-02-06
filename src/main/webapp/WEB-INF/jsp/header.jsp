@@ -5,6 +5,7 @@
 <c:url var="warehouse" value="/warehouse"></c:url>
 <c:url var="incoming" value="/incoming"></c:url>
 <c:url var="bill" value="/bill"></c:url>
+<c:url var="spending" value="/spending"></c:url>
 
 
 
@@ -24,6 +25,11 @@
 			<li style="margin: 5px;" class="btn bg-info active mb-2"><a class="nav-link" href="${incoming}">المشتريات</a></li>
 
 			<li style="margin: 5px;" class="btn bg-info active mb-2"><a class="nav-link" href="${bill}">الفواتير</a></li>
+
+		<li style="margin: 5px;"  class="btn bg-info active mb-2 "><a class="nav-link"
+				href="${spending}">المصاريف 
+			</a></li>
+
 
 		</ul>
 		
