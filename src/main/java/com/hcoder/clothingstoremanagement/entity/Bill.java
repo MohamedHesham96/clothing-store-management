@@ -1,12 +1,15 @@
 package com.hcoder.clothingstoremanagement.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "bill")
@@ -15,7 +18,7 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-
+	
 	@Column(name = "gain")
 	int gain;
 
@@ -36,6 +39,19 @@ public class Bill {
 
 	@Column(name = "store")
 	String store;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "client_id")
+	private Client client;
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	public int getId() {
 		return id;
@@ -102,4 +118,7 @@ public class Bill {
 		this.store = store;
 	}
 
+	
+
+	
 }

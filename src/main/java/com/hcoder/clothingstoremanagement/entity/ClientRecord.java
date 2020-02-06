@@ -18,7 +18,7 @@ public class ClientRecord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
+
 	@Column(name = "item")
 	String item;
 
@@ -27,9 +27,12 @@ public class ClientRecord {
 
 	@Column(name = "pay")
 	int pay;
-	
-	@ManyToOne(fetch = FetchType.LAZY, 
-			cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+
+	@Column(name = "quantity")
+	int quantity;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
 	@JoinColumn(name = "client_id")
 	private Client client;
 
@@ -72,6 +75,13 @@ public class ClientRecord {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
-	
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 }

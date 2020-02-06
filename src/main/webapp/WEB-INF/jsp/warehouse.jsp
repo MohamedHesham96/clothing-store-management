@@ -33,9 +33,8 @@
 
 
 		<div class="card bg-secondary text-white"
-			style=" width: 18rem; margin-left: 820px;">
-			<div 
-			class="card-header text-white font-weight-bold text-center"
+			style="width: 18rem; margin-left: 820px;">
+			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
 			<ul class="list-group list-group-flush">
 				<li class="bg-dark list-group-item">
@@ -55,7 +54,7 @@
 							class="w-50 badge badge-light">${soldTotal}</span>
 					</button>
 				</li>
-				
+
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
@@ -66,11 +65,6 @@
 				</li>
 			</ul>
 		</div>
-
-
-
-
-
 
 
 		<div class="row  my-4">
@@ -141,9 +135,28 @@
 							class="form-control  col-xs-3" placeholder="ادخل سعر القطعه"
 							name="pswd"></form:input>
 
-						<br>
-						<button type="submit" class="btn btn-info form-control 	">
-							تمت العملية</button>
+
+						<label for="pwd2" class="mb-2 mr-sm-2">اسم العميل:</label>
+						<select path="clientId" class="form-control  mb-2 col-xs-3"
+							name="clientId">
+							<c:forEach var="tempItem" items="${clientsList}">
+
+								<option value="${tempItem.id}">${tempItem.name}</option>
+
+							</c:forEach>
+
+							<select>
+
+								<label for="pwd2" class="mb-2 mr-sm-2">المبلغ المدفوع:</label>
+
+								<input type="text" class="form-control  col-xs-3"
+								placeholder="ادخل المبلغ المدفوع" name="payed">
+
+
+								<br>
+
+								<button type="submit" class="btn btn-info form-control 	">
+									تمت العملية</button>
 					</form:form>
 
 					<!--

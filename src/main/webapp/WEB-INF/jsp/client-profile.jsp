@@ -73,6 +73,7 @@
 						<thead class="thead-inverse">
 							<tr>
 								<th>الصنف</th>
+								<th>الكمية</th>
 								<th>السعر</th>
 								<th>دفع</th>
 								<th>باقي</th>
@@ -84,6 +85,7 @@
 
 								<tr>
 									<td>${tempItem.item}</td>
+									<td>${tempItem.quantity}</td>
 									<td>${tempItem.price}</td>
 									<td>${tempItem.pay}</td>
 									<td>${tempItem.price - tempItem.pay}</td>

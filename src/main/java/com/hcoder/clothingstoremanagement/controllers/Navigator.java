@@ -8,14 +8,17 @@ import java.util.List;
 
 import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
+import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -80,47 +83,54 @@ public class Navigator {
 
 		List<Warehouse> items = userService.getAllWarehouse();
 
-		int incomingTotal = userService.getIcomingTotal();
-		int warehouseTotal = userService.getWarehouseTotal();
-
-		int soldTotal = incomingTotal - warehouseTotal;
+		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
 
 		theModel.addAttribute("items", items);
 		theModel.addAttribute("bill", new Bill());
 		theModel.addAttribute("soldTotal", soldTotal);
-		theModel.addAttribute("incomingTotal", incomingTotal);
-		theModel.addAttribute("warehouseTotal", warehouseTotal);
+		theModel.addAttribute("incomingTotal", userService.getIcomingTotal());
+		theModel.addAttribute("warehouseTotal", userService.getWarehouseTotal());
+		theModel.addAttribute("clientsList", userService.getAllClients());
 
 		return "warehouse";
 	}
 
 	@PostMapping("/add-bill")
-	public String addBill(@ModelAttribute("bill") Bill theBill) {
+	public String addBill(@RequestParam(name = "clientId") int clientId, @RequestParam(name = "payed") int payed,
+			@ModelAttribute("bill") Bill theBill) {
 
 		Bill bill = new Bill();
+		ClientRecord clientRecord = new ClientRecord();
+		Client client = userService.getClientById(clientId);
 
 		bill.setDate(LocalDate.now().toString());
 		bill.setQuantity(theBill.getQuantity());
 		bill.setPiecePrice(theBill.getPiecePrice());
+		bill.setClient(client);
 
 		// Use the Bill ID from the FORM DATA
-
 		Warehouse warehouse = userService.getWarehouseById(theBill.getId());
 
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>" + warehouse.getId());
 		// Take from Warehouse the items that sell
 		warehouse.setQuantity(warehouse.getQuantity() - bill.getQuantity());
 
 		userService.updateWarehouseQuantity(warehouse);
 
 		int gain = (theBill.getPiecePrice() - warehouse.getTradePrice()) * bill.getQuantity();
-		bill.setGain(gain);
 
+		bill.setGain(gain);
 		bill.setItem(warehouse.getItem());
 		bill.setStore(warehouse.getStore());
 		bill.setTradePrice(warehouse.getTradePrice());
 
+		clientRecord.setClient(client);
+		clientRecord.setItem(warehouse.getItem());
+		clientRecord.setPay(payed);
+		clientRecord.setQuantity(bill.getQuantity());
+		clientRecord.setPrice(bill.getPiecePrice() * bill.getQuantity());
+
 		userService.addBill(bill);
+		userService.saveClientRecord(clientRecord);
 
 		return "redirect:/warehouse";
 
@@ -172,11 +182,11 @@ public class Navigator {
 
 		return "clients";
 	}
-	
-	@RequestMapping("/clientProfile")
-	public String goToClientAccount(@ModelAttribute("clientId") int id,  Model theModel) {
 
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + id );
+	@RequestMapping("/clientProfile")
+	public String goToClientAccount(@ModelAttribute("clientId") int id, Model theModel) {
+
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + id);
 		Client client = userService.getClientById(id);
 
 		theModel.addAttribute("clientData", client);

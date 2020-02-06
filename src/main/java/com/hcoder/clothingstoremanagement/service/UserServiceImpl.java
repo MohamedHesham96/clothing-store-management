@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.hcoder.clothingstoremanagement.dao.UserDAO;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
+import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -129,6 +130,12 @@ public class UserServiceImpl implements UserService {
 	public Client getClientById(int id) {
 
 		return userDAO.getClientById(id);
+	}
+
+	@Override
+	public void saveClientRecord(ClientRecord clientRecord) {
+
+		userDAO.saveClientRecord(clientRecord);
 	}
 
 }

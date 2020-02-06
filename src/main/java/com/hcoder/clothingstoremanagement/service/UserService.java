@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
+import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -16,6 +17,8 @@ public interface UserService {
 
 	public Client getClientById(int id);
 	
+	public void saveClientRecord(ClientRecord clientRecord);
+
 	public List<Client> getAllClients();
 
 	public List<Client> getClientRecords();

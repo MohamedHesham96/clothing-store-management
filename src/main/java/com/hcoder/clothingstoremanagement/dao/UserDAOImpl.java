@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Bill> query = session.createQuery("from Bill");
+		Query<Bill> query = session.createQuery("from Bill order by date desc");
 
 		List<Bill> bills = query.getResultList();
 
@@ -70,7 +70,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Incoming> query = session.createQuery("from Incoming");
+		Query<Incoming> query = session.createQuery("from Incoming order by date desc");
 
 		List<Incoming> incomings = query.getResultList();
 
@@ -161,7 +161,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Incoming> items = session.createQuery("from Incoming").getResultList();
+		List<Incoming> items = session.createQuery("from Incoming ").getResultList();
 		int listSize = items.size();
 
 		int incomingTotal = 0;
@@ -180,7 +180,7 @@ public class UserDAOImpl implements UserDAO {
 	public int getWarehouseTotal() {
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
+		List<Warehouse> items = session.createQuery("from Warehouse ").getResultList();
 
 		int listSize = items.size();
 
@@ -201,7 +201,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Spending> items = session.createQuery("from Spending").getResultList();
+		List<Spending> items = session.createQuery("from Spending order by date desc").getResultList();
 
 		return items;
 	}
@@ -234,6 +234,13 @@ public class UserDAOImpl implements UserDAO {
 		return client;
 	}
 
-	
+	@Override
+	public void saveClientRecord(ClientRecord clientRecord) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.save(clientRecord);
+
+	}
 
 }

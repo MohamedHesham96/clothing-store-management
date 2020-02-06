@@ -20,7 +20,9 @@ public interface UserDAO {
 	public Client getClientById(int id);
 
 	public List<Client> getAllClients();
-
+	
+	public void saveClientRecord(ClientRecord clientRecord);
+	
 	public List<ClientRecord> getClientRecords();
 
 	public List<Incoming> GetAllIncoming();
