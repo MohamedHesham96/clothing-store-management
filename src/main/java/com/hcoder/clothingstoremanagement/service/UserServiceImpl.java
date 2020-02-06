@@ -76,14 +76,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void addBill(Bill theBill) {
 
-		userDAO.addBill(theBill);	
+		userDAO.addBill(theBill);
 	}
 
 	@Override
 	public Warehouse getWarehouseById(int id) {
 
 		Warehouse warehouse = userDAO.getWarehouseById(id);
-		
+
 		return warehouse;
 	}
 
@@ -109,13 +109,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int getWarehouseTotal() {
-		
+
 		return userDAO.getWarehouseTotal();
 	}
 
 	@Override
 	public List<Spending> getAllSpending() {
-		
+
 		return userDAO.getAllSpending();
 	}
 
@@ -123,6 +123,12 @@ public class UserServiceImpl implements UserService {
 	public int getClientsDraweeTotal() {
 
 		return userDAO.getClientsDraweeTotal();
+	}
+
+	@Override
+	public Client getClientById(int id) {
+
+		return userDAO.getClientById(id);
 	}
 
 }

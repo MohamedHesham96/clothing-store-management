@@ -14,6 +14,8 @@ public interface UserService {
 
 	public Bill getBillByDate();
 
+	public Client getClientById(int id);
+	
 	public List<Client> getAllClients();
 
 	public List<Client> getClientRecords();

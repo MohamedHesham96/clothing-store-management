@@ -224,4 +224,16 @@ public class UserDAOImpl implements UserDAO {
 		return draweeTotal;
 	}
 
+	@Override
+	public Client getClientById(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Client client = session.get(Client.class, id);
+
+		return client;
+	}
+
+	
+
 }

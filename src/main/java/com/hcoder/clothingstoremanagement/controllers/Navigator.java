@@ -170,7 +170,17 @@ public class Navigator {
 		theModel.addAttribute("clientsList", clients);
 		theModel.addAttribute("draweeTotal", userService.getClientsDraweeTotal());
 
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>> " + clients.get(0).getClientRecords().get(0).getItem());
 		return "clients";
 	}
+	
+	@RequestMapping("/clientProfile")
+	public String goToClientAccount(@ModelAttribute("clientId") int id,  Model theModel) {
+
+		Client client = userService.getClientById(id);
+
+		theModel.addAttribute("clientData", client);
+
+		return "client-profile";
+	}
+
 }
