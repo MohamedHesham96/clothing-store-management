@@ -64,9 +64,11 @@
 						</thead>
 						<tbody>
 							<c:forEach var="tempItem" items="${clientsList}">
-
+								<c:url var="clientLink" value="/clientProfile">
+									<c:param name="clientId" value="${tempItem.id}"></c:param>
+								</c:url>
 								<tr>
-									<td>${tempItem.name}</td>
+									<td><a href="${clientLink}">${tempItem.name}</a></td>
 									<td>${tempItem.phone}</td>
 									<td>${tempItem.drawee}</td>
 								</tr>

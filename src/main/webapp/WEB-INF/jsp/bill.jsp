@@ -38,7 +38,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-dark font-weight-bold">
+						class="w-100 btn badge-info  font-weight-bold text-center">
 						 اجمالي الربح <span style="margin-right: 20px;"
 							class="w-50 badge badge-light text-center"> ${gainTotal}</span>
 					</button>
@@ -46,7 +46,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-dark font-weight-bold">
+						class="w-100 btn badge-info  font-weight-bold text-center">
 						المصاريف <span style="margin-right: 33px;"
 							class="w-50 badge badge-light text-center">${spendingTotal}</span>
 					</button>
@@ -54,7 +54,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info font-weight-bold">
+						class="w-100 btn badge-info  font-weight-bold text-center">
 						صافي الربح <span style="margin-right: 25px;"
 							class="w-50 badge badge-light text-center">${total}</span>
 					</button>

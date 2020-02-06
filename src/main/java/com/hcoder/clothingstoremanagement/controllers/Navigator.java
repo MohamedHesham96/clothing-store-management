@@ -176,6 +176,7 @@ public class Navigator {
 	@RequestMapping("/clientProfile")
 	public String goToClientAccount(@ModelAttribute("clientId") int id,  Model theModel) {
 
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + id );
 		Client client = userService.getClientById(id);
 
 		theModel.addAttribute("clientData", client);

@@ -34,13 +34,14 @@
 
 		<div class="card bg-secondary text-white"
 			style=" width: 18rem; margin-left: 820px;">
-			<div class="card-header text-white font-weight-bold text-center"
+			<div 
+			class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
 			<ul class="list-group list-group-flush">
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class=" w-100 btn badge-dark font-weight-bold text-center">
+						class="w-100 btn badge-info  font-weight-bold text-center">
 						المشتريات <span style="margin-right: 17px;"
 							class="w-50 badge badge-light"> ${incomingTotal}</span>
 					</button>
@@ -49,7 +50,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-dark font-weight-bold text-center">
+						class="w-100 btn badge-info  font-weight-bold text-center">
 						المباع <span style="margin-right: 50px;"
 							class="w-50 badge badge-light">${soldTotal}</span>
 					</button>
