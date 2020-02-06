@@ -9,7 +9,6 @@ import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserService {
 
-
 	public List<Bill> getAllBills();
 
 	public Bill getBillByDate();
@@ -33,5 +32,11 @@ public interface UserService {
 	public void AddIncoming(Incoming incoming);
 
 	void addBill(Bill theBill);
+
+	public int getSpendingTotal();
+
+	public int getIcomingTotal();
+
+	public int getWarehouseTotal();
 
 }

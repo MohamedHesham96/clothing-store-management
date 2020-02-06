@@ -23,13 +23,56 @@
 	rel="stylesheet">
 
 </head>
-<body background="images/wall3.jpg" style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+<body background="images/wall3.jpg"
+	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
-	<div  style="text-align: right;" class="container ">
-	
-		<div  class="row  my-4">
+	<div style="text-align: right;" class="container ">
+
+
+
+		<div class="card bg-secondary text-white"
+			style=" width: 18rem; margin-left: 820px;">
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">الحسابات</div>
+			<ul class="list-group list-group-flush">
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class=" w-100 btn badge-dark font-weight-bold text-center">
+						المشتريات <span style="margin-right: 17px;"
+							class="w-50 badge badge-light"> ${incomingTotal}</span>
+					</button>
+				</li>
+
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-dark font-weight-bold text-center">
+						المباع <span style="margin-right: 50px;"
+							class="w-50 badge badge-light">${soldTotal}</span>
+					</button>
+				</li>
+				
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-info  font-weight-bold text-center">
+						الموجود <span style="margin-right: 35px;"
+							class="w-50 badge badge-light">${warehouseTotal}</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+
+
+
+
+
+
+
+		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
 					<table class="table  table-striped table-dark">
@@ -60,9 +103,10 @@
 		</div>
 
 		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
-			<div class="card">
+			<div class="card bg-dark">
 
-				<div class="card-body">
+
+				<div class="card-body bg-dark text-white">
 
 					<c:if test="${incoming != null}">
 						<h3>بيع صنف</h3>
@@ -98,8 +142,7 @@
 
 						<br>
 						<button type="submit" class="btn btn-info form-control 	">
-						تمت العملية
-						</button>
+							تمت العملية</button>
 					</form:form>
 
 					<!--
@@ -112,6 +155,6 @@
 			</div>
 
 		</div>
-		</div>
+	</div>
 </body>
 </html>

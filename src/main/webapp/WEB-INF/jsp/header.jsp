@@ -17,13 +17,13 @@
 	<div  class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 
-			<li style="margin: 5px;" class="btn btn-info active mb-2"><a class="nav-link"
-				href="${warehouse}">المخزن <span class="sr-only">(current)</span>
+			<li style="margin: 5px;"  class="btn bg-info active mb-2 "><a class="nav-link"
+				href="${warehouse}">المخزن 
 			</a></li>
 
-			<li style="margin: 5px;" class="btn btn-info active mb-2"><a class="nav-link" href="${incoming}">المشتريات</a></li>
+			<li style="margin: 5px;" class="btn bg-info active mb-2"><a class="nav-link" href="${incoming}">المشتريات</a></li>
 
-			<li style="margin: 5px;" class="btn btn-info active mb-2"><a class="nav-link" href="${bill}">الفواتير</a></li>
+			<li style="margin: 5px;" class="btn bg-info active mb-2"><a class="nav-link" href="${bill}">الفواتير</a></li>
 
 		</ul>
 		

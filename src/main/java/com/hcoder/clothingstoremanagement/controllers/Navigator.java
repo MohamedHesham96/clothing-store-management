@@ -38,13 +38,15 @@ public class Navigator {
 
 		List<Incoming> items = userService.GetAllIncoming();
 
-		int listSize = items.size();
-		for (int i = 0; i < listSize; i++) {
-			Incoming item = items.get(i);
-			item.setTotal(item.getTradePrice() * item.getQuantity());
-
-		}
+		int incomingTotal = userService.getIcomingTotal();
+		int warehouseTotal = userService.getWarehouseTotal();
+		
+		int soldTotal = incomingTotal - warehouseTotal;
+		
 		theModel.addAttribute("items", items);
+		theModel.addAttribute("soldTotal", soldTotal);
+		theModel.addAttribute("incomingTotal", incomingTotal);
+		theModel.addAttribute("warehouseTotal", warehouseTotal);
 
 		return "incoming";
 	}
@@ -55,6 +57,7 @@ public class Navigator {
 		theModel.addAttribute("incoming", new Incoming());
 
 		theIncoming.setDate(LocalDate.now().toString());
+		theIncoming.setTotal(theIncoming.getTradePrice() * theIncoming.getQuantity());
 
 		userService.AddIncoming(theIncoming);
 		Warehouse warehouse = new Warehouse();
@@ -75,10 +78,17 @@ public class Navigator {
 
 		List<Warehouse> items = userService.getAllWarehouse();
 
+		int incomingTotal = userService.getIcomingTotal();
+		int warehouseTotal = userService.getWarehouseTotal();
+		
+		int soldTotal = incomingTotal - warehouseTotal;
+		
 		theModel.addAttribute("items", items);
-
 		theModel.addAttribute("bill", new Bill());
-
+		theModel.addAttribute("soldTotal", soldTotal);
+		theModel.addAttribute("incomingTotal", incomingTotal);
+		theModel.addAttribute("warehouseTotal", warehouseTotal);		
+		
 		return "warehouse";
 	}
 
@@ -94,43 +104,48 @@ public class Navigator {
 		// Use the Bill ID from the FORM DATA
 
 		Warehouse warehouse = userService.getWarehouseById(theBill.getId());
-		
+
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>" + warehouse.getId());
-		//Take from Warehouse the items that sell
+		// Take from Warehouse the items that sell
 		warehouse.setQuantity(warehouse.getQuantity() - bill.getQuantity());
-		
+
 		userService.updateWarehouseQuantity(warehouse);
-		
+
 		int gain = (theBill.getPiecePrice() - warehouse.getTradePrice()) * bill.getQuantity();
 		bill.setGain(gain);
-	
+
 		bill.setItem(warehouse.getItem());
 		bill.setStore(warehouse.getStore());
 		bill.setTradePrice(warehouse.getTradePrice());
 
-		
 		userService.addBill(bill);
 
 		return "redirect:/warehouse";
 
 	}
 
-		@RequestMapping("/bill")
+	@RequestMapping("/bill")
 	public String getBill(Model theModel) {
+
+		int spendingTotal = userService.getSpendingTotal();
 
 		List<Bill> items = userService.getAllBills();
 		int listSize = items.size();
 		int gainTotal = 0;
-				
+
 		for (int i = 0; i < listSize; i++) {
 			Bill item = items.get(i);
-			
-			gainTotal =+ item.getGain();
+
+			gainTotal += item.getGain();
 		}
-		
-		theModel.addAttribute("gainTotal", gainTotal);
+
+		int total = gainTotal - spendingTotal;
+
 		theModel.addAttribute("items", items);
-		
+		theModel.addAttribute("total", total);
+		theModel.addAttribute("spendingTotal", spendingTotal);
+		theModel.addAttribute("gainTotal", gainTotal);
+
 		return "bill";
 	}
 

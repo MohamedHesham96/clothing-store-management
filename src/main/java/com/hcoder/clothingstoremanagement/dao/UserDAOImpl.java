@@ -3,6 +3,7 @@ package com.hcoder.clothingstoremanagement.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 @Repository
@@ -29,7 +31,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Bill> getAllBills() {
-	
+
 		Session session = entityManager.unwrap(Session.class);
 
 		Query<Bill> query = session.createQuery("from Bill");
@@ -37,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
 		List<Bill> bills = query.getResultList();
 
 		return bills;
-		
+
 	}
 
 	@Override
@@ -127,6 +129,65 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>" + warehouse.getQuantity());
 		session.update(warehouse);
+	}
+
+	@Override
+	public int getSpendingTotal() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Spending> query = session.createQuery("from Spending");
+
+		List<Spending> spending = query.getResultList();
+
+		int listSize = spending.size();
+		int spendingTotal = 0;
+
+		for (int i = 0; i < listSize; i++) {
+
+			spendingTotal += spending.get(i).getMoney();
+		}
+
+		return spendingTotal;
+	}
+
+	@Override
+	public int getIcomingTotal() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Incoming> items = session.createQuery("from Incoming").getResultList();
+		int listSize = items.size();
+
+		int incomingTotal = 0;
+
+		for (int i = 0; i < listSize; i++) {
+
+			Incoming item = items.get(i);
+
+			incomingTotal += item.getTotal();
+		}
+
+		return incomingTotal;
+	}
+
+	@Override
+	public int getWarehouseTotal() {
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
+		int listSize = items.size();
+
+		int warehouseTotal = 0;
+
+		for (int i = 0; i < listSize; i++) {
+
+			Warehouse item = items.get(i);
+
+			warehouseTotal += item.getQuantity() * item.getTradePrice();
+		}
+
+		return warehouseTotal;
 	}
 
 }

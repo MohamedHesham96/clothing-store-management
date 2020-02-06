@@ -21,18 +21,52 @@
 	rel="stylesheet">
 
 </head>
-<body background="images/wall2.jpg" style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+<body background="images/wall2.jpg"
+	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
 
-	<div  style="text-align: right;" class="container">
+	<div style="text-align: right;" class="container ">
+
+
+		<div class="card bg-secondary text-white"
+			style="width: 18rem; margin-left: 820px;">
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">الحسابات</div>
+			<ul class="list-group list-group-flush">
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-dark font-weight-bold">
+						 اجمالي الربح <span style="margin-right: 20px;"
+							class="w-50 badge badge-light text-center"> ${gainTotal}</span>
+					</button>
+				</li>
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-dark font-weight-bold">
+						المصاريف <span style="margin-right: 33px;"
+							class="w-50 badge badge-light text-center">${spendingTotal}</span>
+					</button>
+				</li>
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-info font-weight-bold">
+						صافي الربح <span style="margin-right: 25px;"
+							class="w-50 badge badge-light text-center">${total}</span>
+					</button>
+			</ul>
+		</div>
+
 
 
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table  class="table  table-striped table-dark">
+					<table class="table  table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
 								<th>الصنف</th>

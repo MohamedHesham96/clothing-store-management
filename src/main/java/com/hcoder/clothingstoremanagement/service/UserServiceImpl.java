@@ -92,4 +92,24 @@ public class UserServiceImpl implements UserService {
 		userDAO.updateWarehouseQuantity(warehouse);
 	}
 
+	@Override
+	public int getSpendingTotal() {
+
+		int spendingTotal = userDAO.getSpendingTotal();
+
+		return spendingTotal;
+	}
+
+	@Override
+	public int getIcomingTotal() {
+
+		return userDAO.getIcomingTotal();
+	}
+
+	@Override
+	public int getWarehouseTotal() {
+		
+		return userDAO.getWarehouseTotal();
+	}
+
 }

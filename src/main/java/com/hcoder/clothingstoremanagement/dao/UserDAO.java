@@ -34,4 +34,10 @@ public interface UserDAO {
 	public void AddIncoming(Incoming incoming);
 
 	public void addBill(Bill theBill);
+	
+	public int getSpendingTotal();
+
+	public int getIcomingTotal();
+	
+	public int getWarehouseTotal();
 }
