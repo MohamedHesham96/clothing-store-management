@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
+import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -155,11 +156,21 @@ public class Navigator {
 
 		List<Spending> spendings = userService.getAllSpending();
 
-		int spendingTotal = userService.getSpendingTotal();
-
 		theModel.addAttribute("spendings", spendings);
-		theModel.addAttribute("spendingTotal", spendingTotal);
+		theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
 
 		return "spending";
+	}
+
+	@RequestMapping("/clients")
+	public String getClients(Model theModel) {
+
+		List<Client> clients = userService.getAllClients();
+
+		theModel.addAttribute("clientsList", clients);
+		theModel.addAttribute("draweeTotal", userService.getClientsDraweeTotal());
+
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>> " + clients.get(0).getClientRecords().get(0).getItem());
+		return "clients";
 	}
 }

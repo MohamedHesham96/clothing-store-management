@@ -36,6 +36,8 @@ public interface UserService {
 
 	public List<Spending> getAllSpending();
 
+	public int getClientsDraweeTotal();
+
 	public int getSpendingTotal();
 
 	public int getIcomingTotal();

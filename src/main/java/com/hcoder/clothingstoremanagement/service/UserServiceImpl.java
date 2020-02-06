@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Client> getAllClients() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return userDAO.getAllClients();
 	}
 
 	@Override
@@ -117,6 +117,12 @@ public class UserServiceImpl implements UserService {
 	public List<Spending> getAllSpending() {
 		
 		return userDAO.getAllSpending();
+	}
+
+	@Override
+	public int getClientsDraweeTotal() {
+
+		return userDAO.getClientsDraweeTotal();
 	}
 
 }

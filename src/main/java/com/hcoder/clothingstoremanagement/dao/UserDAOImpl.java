@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
+import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -50,12 +51,16 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Client> getAllClients() {
-		// TODO Auto-generated method stub
-		return null;
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Client> clients = session.createQuery("from Client").getResultList();
+
+		return clients;
 	}
 
 	@Override
-	public List<Client> getClientRecords() {
+	public List<ClientRecord> getClientRecords() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -199,6 +204,24 @@ public class UserDAOImpl implements UserDAO {
 		List<Spending> items = session.createQuery("from Spending").getResultList();
 
 		return items;
+	}
+
+	@Override
+	public int getClientsDraweeTotal() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Client> clients = session.createQuery("from Client").getResultList();
+
+		int listSize = clients.size();
+		int draweeTotal = 0;
+
+		for (int i = 0; i < listSize; i++) {
+
+			draweeTotal += clients.get(i).getDrawee();
+		}
+
+		return draweeTotal;
 	}
 
 }

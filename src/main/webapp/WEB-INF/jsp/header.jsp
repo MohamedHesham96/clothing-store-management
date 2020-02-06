@@ -6,7 +6,7 @@
 <c:url var="incoming" value="/incoming"></c:url>
 <c:url var="bill" value="/bill"></c:url>
 <c:url var="spending" value="/spending"></c:url>
-<c:url var="agents" value="/agents"></c:url>
+<c:url var="clients" value="/clients"></c:url>
 
 
 
@@ -32,7 +32,7 @@
 				class="nav-link" href="${spending}">المصاريف</a></li>
 			
 			<li style="margin: 5px;" class="btn bg-info active mb-2 "><a
-				class="nav-link" href="${agents}">العملاء</a></li>
+				class="nav-link" href="${clients}">العملاء</a></li>
 
 		</ul>
 
