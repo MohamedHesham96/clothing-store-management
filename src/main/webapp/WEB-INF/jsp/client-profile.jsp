@@ -38,26 +38,26 @@
 
 				<li class="bg-dark list-group-item">
 
-					<button dir="rtl" style="text-align: right;" type="button"
+					<button dir="rtl" style="text-align: right; " type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						الاسم <span style="margin-right: 30px;"
-							class="w-50 badge badge-light">${clientData.name}</span>
+						الاسم <span style="margin-right: 25px; width: 140px;"
+							class=" badge badge-light">${clientData.name}</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">
 
-					<button dir="rtl" style="text-align: right;" type="button"
+					<button dir="rtl" style="text-align: right; " type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						التيليفون <span style="margin-right: 15px;"
-							class="w-50 badge badge-light">${clientData.phone}</span>
+						التيليفون <span style="margin-right: 5px; width: 140px;"
+							class=" badge badge-light">${clientData.phone}</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">
-					<button dir="rtl" style="margin-right: 35px; text-align: right;"
+					<button dir="rtl" style="text-align: right;" type="button"
 						type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						عليه <span style="margin-right: 45px;"
-							class="w-50 badge badge-light">${clientData.drawee}</span>
+						عليه <span style="margin-right: 35px; width: 140px;"
+							class=" badge badge-light">${clientData.drawee}</span>
 					</button>
 				</li>
 			</ul>

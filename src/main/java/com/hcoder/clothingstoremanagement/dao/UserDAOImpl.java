@@ -3,10 +3,8 @@ package com.hcoder.clothingstoremanagement.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -223,6 +221,7 @@ public class UserDAOImpl implements UserDAO {
 		List<Client> clients = session.createQuery("from Client").getResultList();
 
 		int listSize = clients.size();
+
 		int draweeTotal = 0;
 
 		for (int i = 0; i < listSize; i++) {
@@ -275,6 +274,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		Query<Spending> query = session.createQuery("from Spending where date = :theDate");
+
 		query.setParameter("theDate", date);
 
 		List<Spending> spendings = query.list();

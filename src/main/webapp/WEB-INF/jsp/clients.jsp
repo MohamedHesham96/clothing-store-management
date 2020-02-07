@@ -64,7 +64,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="tempItem" items="${clientsList}">
-								<c:url var="clientLink"  value="/clientProfile">
+								<c:url var="clientLink" value="/clientProfile">
 									<c:param name="clientId" value="${tempItem.id}"></c:param>
 								</c:url>
 								<tr>
@@ -82,8 +82,37 @@
 		</div>
 
 
+		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+			<div class="card bg-dark">
 
 
+				<div class="text-right card-body bg-dark text-white">
+
+					<h3>أضافة عميل جديد</h3>
+					<form:form metho="POST" action="add-new-client"
+						modelAttribute="theClient">
+
+						<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
+							العميل :</label>
+						<form:input type="text" class="form-control  col-xs-3"
+							placeholder="ادخل اسم العميل " path="name"></form:input>
+
+						<label style="margin-top: 10px" class="mb-2 mr-sm-2">التيليفون
+							:</label>
+
+						<form:input type="text" class="form-control  col-xs-3"
+							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
+
+						<br>
+
+						<button type="submit" class="btn btn-info form-control 	">
+							قم بأضافة عميل جديد</button>
+					</form:form>
+
+
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

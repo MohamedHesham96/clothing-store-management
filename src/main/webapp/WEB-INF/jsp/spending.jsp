@@ -107,6 +107,7 @@
 		</div>
 
 	</div>
+	
 	<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
 		<div class="card bg-dark">
 

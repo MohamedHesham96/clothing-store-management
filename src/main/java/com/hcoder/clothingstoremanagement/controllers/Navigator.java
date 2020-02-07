@@ -190,9 +190,20 @@ public class Navigator {
 		List<Client> clients = userService.getAllClients();
 
 		theModel.addAttribute("clientsList", clients);
+
+		theModel.addAttribute("theClient", new Client());
+
 		theModel.addAttribute("draweeTotal", userService.getClientsDraweeTotal());
 
 		return "clients";
+	}
+
+	@RequestMapping("/add-new-client")
+	public String addNewClient(@ModelAttribute("theClient") Client theClient) {
+
+		userService.saveClient(theClient);
+
+		return "redirect:/clients";
 	}
 
 	@RequestMapping("/clientProfile")
