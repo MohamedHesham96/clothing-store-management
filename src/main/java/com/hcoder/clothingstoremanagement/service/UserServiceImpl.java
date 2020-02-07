@@ -156,4 +156,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getBillsByDate(date);
 	}
 
+	@Override
+	public void payOffAmount(Client client) {
+
+		userDAO.payOffAmount(client);
+	}
+
+	@Override
+	public ClientRecord getClientRecordById(int id) {
+
+		return userDAO.getClientRecordById(id);
+	}
+
 }

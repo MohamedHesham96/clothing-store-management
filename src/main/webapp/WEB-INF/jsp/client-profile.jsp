@@ -38,7 +38,7 @@
 
 				<li class="bg-dark list-group-item">
 
-					<button dir="rtl" style="text-align: right; " type="button"
+					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						الاسم <span style="margin-right: 25px; width: 140px;"
 							class=" badge badge-light">${clientData.name}</span>
@@ -46,7 +46,7 @@
 				</li>
 				<li class="bg-dark list-group-item">
 
-					<button dir="rtl" style="text-align: right; " type="button"
+					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						التيليفون <span style="margin-right: 5px; width: 140px;"
 							class=" badge badge-light">${clientData.phone}</span>
@@ -82,7 +82,6 @@
 						</thead>
 						<tbody>
 							<c:forEach var="tempItem" items="${clientData.clientRecords}">
-
 								<tr>
 									<td>${tempItem.item}</td>
 									<td>${tempItem.quantity}</td>
@@ -97,6 +96,51 @@
 				</div>
 			</div>
 
+		</div>
+
+		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+			<div class="card bg-dark">
+
+
+				<div class="text-right card-body bg-dark text-white">
+
+					<h3>سداد مبلغ</h3>
+
+					<form:form metho="GET" action="pay-off-amount"
+						modelAttribute="clientData">
+
+						<label style="margin-top: 10px" class="mb-2 mr-sm-2">الصنف
+							:</label>
+
+						<form:select path="id" class="form-control  mb-2 col-xs-3"
+							name="testselect">
+
+							<c:forEach var="tempClientRecord"
+								items="${clientData.clientRecords}">
+
+								<option value="${tempClientRecord.id}">${tempClientRecord.item}</option>
+
+							</c:forEach>
+
+						</form:select>
+
+						<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
+							:</label>
+
+						<input type="text" class="form-control  col-xs-3"
+							placeholder="ادخل المبلغ المسدد " name="moneyAmount"></input>
+
+						<br>
+						
+						<input name="clientId" value="${clientData.id}" type="hidden" />
+
+						<button type="submit" class="btn btn-info form-control 	">
+							قم بتسديد المبلغ</button>
+					</form:form>
+
+
+				</div>
+			</div>
 		</div>
 
 

@@ -296,4 +296,26 @@ public class UserDAOImpl implements UserDAO {
 		return incomings;
 	}
 
+	@Override
+	@Transactional
+	public void payOffAmount(Client client) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.update(client);
+
+		session.update(client.getClientRecords());
+
+	}
+
+	@Override
+	public ClientRecord getClientRecordById(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		ClientRecord theClientRecord = session.get(ClientRecord.class, id);
+
+		return theClientRecord;
+	}
+
 }

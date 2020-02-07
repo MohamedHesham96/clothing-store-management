@@ -261,4 +261,30 @@ public class Navigator {
 		return "spending";
 	}
 
+	@RequestMapping("/pay-off-amount")
+	public String payOffAmount(@RequestParam(name = "moneyAmount") int theAmount,
+			@RequestParam(name = "clientId") int theClientId, @ModelAttribute("clientData") Client clientData,
+			Model theModel) {
+
+		// clientData to get data from form but it's id is for client record id
+		// theClient is the object that we will use it to update the client table
+		Client theClient = userService.getClientById(theClientId);
+
+		// get ClientRecord Id From client @ModelAttribute
+		int clientRecordId = clientData.getId();
+
+		ClientRecord theClientRecord = userService.getClientRecordById(clientRecordId);
+
+		theClientRecord.setPay(theClientRecord.getPay() + theAmount);
+
+		theClient.setDrawee(theClient.getDrawee() - theAmount);
+
+		userService.saveClient(theClient);
+		userService.saveClientRecord(theClientRecord);
+
+		theModel.addAttribute("clientData", theClient);
+
+		return "client-profile";
+	}
+
 }

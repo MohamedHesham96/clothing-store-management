@@ -55,7 +55,10 @@ public interface UserService {
 	
 	public void saveClient(Client client);
 	
+	public void payOffAmount(Client client);
 	
+	public ClientRecord getClientRecordById(int id);
+
 
 
 }
