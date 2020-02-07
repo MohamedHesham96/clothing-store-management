@@ -1,14 +1,9 @@
 package com.hcoder.clothingstoremanagement.controllers;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -129,8 +124,13 @@ public class Navigator {
 		clientRecord.setQuantity(bill.getQuantity());
 		clientRecord.setPrice(bill.getPiecePrice() * bill.getQuantity());
 
+		int theNewdrawee = client.getDrawee() + clientRecord.getPrice() - clientRecord.getPay();
+
+		client.setDrawee(theNewdrawee);
+
 		userService.addBill(bill);
 		userService.saveClientRecord(clientRecord);
+		userService.saveClient(client);
 
 		return "redirect:/warehouse";
 
@@ -161,17 +161,6 @@ public class Navigator {
 		return "bill";
 	}
 
-	@RequestMapping("/spending")
-	public String getSpending(Model theModel) {
-
-		List<Spending> spendings = userService.getAllSpending();
-
-		theModel.addAttribute("spendings", spendings);
-		theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
-
-		return "spending";
-	}
-
 	@RequestMapping("/clients")
 	public String getClients(Model theModel) {
 
@@ -186,12 +175,56 @@ public class Navigator {
 	@RequestMapping("/clientProfile")
 	public String goToClientAccount(@ModelAttribute("clientId") int id, Model theModel) {
 
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + id);
 		Client client = userService.getClientById(id);
 
 		theModel.addAttribute("clientData", client);
 
 		return "client-profile";
+	}
+
+	@PostMapping("/make-spending")
+	public String goToClientAccount(@ModelAttribute("spending") Spending spending) {
+
+		spending.setDate(LocalDate.now().toString());
+		userService.makeSpendingOpertaion(spending);
+
+		return "redirect:/spending";
+	}
+
+	@RequestMapping("/get-spendings-by-date")
+	public String getSpendingsByDate(@RequestParam("date") String theDate, Model theModel) {
+
+		List<Spending> spendings = userService.getSpendingsByDate(theDate);
+
+		theModel.addAttribute("spending", new Spending());
+		theModel.addAttribute("spendings", spendings);
+		theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
+
+		return "spending";
+	}
+
+	@RequestMapping("/spending")
+	public String getSpendings(@RequestParam("date") String theDate, Model theModel) {
+
+		List<Spending> spendings;
+
+		if (theDate.equals("")) {
+			
+			theDate = LocalDate.now().toString();
+			spendings = userService.getAllSpending();
+
+		} else {
+			
+			spendings = userService.getSpendingsByDate(theDate);
+
+		}
+		
+		theModel.addAttribute("date", theDate);
+		theModel.addAttribute("spending", new Spending());
+		theModel.addAttribute("spendings", spendings);
+		theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
+
+		return "spending";
 	}
 
 }

@@ -128,7 +128,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Client getClientById(int id) {
-
+		
 		return userDAO.getClientById(id);
 	}
 
@@ -136,6 +136,25 @@ public class UserServiceImpl implements UserService {
 	public void saveClientRecord(ClientRecord clientRecord) {
 
 		userDAO.saveClientRecord(clientRecord);
+	}
+
+	@Override
+	public void makeSpendingOpertaion(Spending spending) {
+		
+		userDAO.makeSpendingOpertaion(spending);
+	}
+
+	@Override
+	public void saveClient(Client client) {
+
+		userDAO.saveClient(client);
+	}
+
+	@Override
+	public List<Spending> getSpendingsByDate(String date) {
+
+		
+		return userDAO.getSpendingsByDate(date);
 	}
 
 }

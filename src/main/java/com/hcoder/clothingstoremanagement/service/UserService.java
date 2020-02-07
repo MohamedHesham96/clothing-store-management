@@ -39,6 +39,8 @@ public interface UserService {
 
 	void addBill(Bill theBill);
 
+	public List<Spending> getSpendingsByDate(String date);
+	
 	public List<Spending> getAllSpending();
 
 	public int getClientsDraweeTotal();
@@ -48,5 +50,12 @@ public interface UserService {
 	public int getIcomingTotal();
 
 	public int getWarehouseTotal();
+	
+	public void makeSpendingOpertaion(Spending spending);
+	
+	public void saveClient(Client client);
+	
+	
+
 
 }

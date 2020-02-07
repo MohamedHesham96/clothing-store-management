@@ -3,9 +3,21 @@
 	pageEncoding="UTF-8"%>
 
 <c:url var="warehouse" value="/warehouse"></c:url>
-<c:url var="incoming" value="/incoming"></c:url>
-<c:url var="bill" value="/bill"></c:url>
-<c:url var="spending" value="/spending"></c:url>
+
+
+<c:url var="incoming" value="/incoming">
+	<c:param name="date" value=""></c:param>
+</c:url>
+
+<c:url var="bill" value="/bill">
+	<c:param name="date" value=""></c:param>
+</c:url>
+
+<c:url var="spending" value="/spending">
+	<c:param name="date" value=""></c:param>
+</c:url>
+
+
 <c:url var="clients" value="/clients"></c:url>
 
 
@@ -19,20 +31,25 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 
-			<li style="margin: 5px;" class="btn bg-info active mb-2 "><a
-				class="nav-link" href="${warehouse}">المخزن </a></li>
 
-			<li style="margin: 5px;" class="btn bg-info active mb-2"><a
-				class="nav-link" href="${incoming}">المشتريات</a></li>
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-info text-white" style="padding: 15px;"
+				href="${warehouse}"> المخزن </a></li>
 
-			<li style="margin: 5px;" class="btn bg-info active mb-2"><a
-				class="nav-link" href="${bill}">الفواتير</a></li>
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-info text-white" style="padding: 15px;"
+				href="${incoming}">المشتريات</a></li>
 
-			<li style="margin: 5px;" class="btn bg-info active mb-2 "><a
-				class="nav-link" href="${spending}">المصاريف</a></li>
-			
-			<li style="margin: 5px;" class="btn bg-info active mb-2 "><a
-				class="nav-link" href="${clients}">العملاء</a></li>
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-info text-white" style="padding: 15px;" href="${bill}">الفواتير</a></li>
+
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-info text-white" style="padding: 15px;"
+				href="${spending}">المصاريف</a></li>
+
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-info text-white " style="padding: 15px;"
+				href="${clients}">العملاء</a></li>
 
 		</ul>
 

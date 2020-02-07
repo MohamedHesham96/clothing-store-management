@@ -16,13 +16,13 @@ public interface UserDAO {
 	public List<Bill> getAllBills();
 
 	public Bill getBillByDate();
-	
+
 	public Client getClientById(int id);
 
 	public List<Client> getAllClients();
-	
+
 	public void saveClientRecord(ClientRecord clientRecord);
-	
+
 	public List<ClientRecord> getClientRecords();
 
 	public List<Incoming> GetAllIncoming();
@@ -41,6 +41,8 @@ public interface UserDAO {
 
 	public void addBill(Bill theBill);
 
+	public List<Spending> getSpendingsByDate(String date);
+	
 	public List<Spending> getAllSpending();
 
 	public int getSpendingTotal();
@@ -51,5 +53,7 @@ public interface UserDAO {
 
 	public int getWarehouseTotal();
 
+	public void makeSpendingOpertaion(Spending spending);
 
+	public void saveClient(Client client);
 }

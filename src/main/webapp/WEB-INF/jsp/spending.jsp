@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@page import="com.hcoder.clothingstoremanagement.entity.Incoming"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
@@ -22,6 +23,12 @@
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<script type="text/javascript" src="webjars/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 </head>
 <body background="images/wall3.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
@@ -29,6 +36,8 @@
 	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container ">
+
+
 
 
 
@@ -44,13 +53,28 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						المصروفات <span style="margin-right: 20px;"
+						المصاريف <span style="margin-right: 20px;"
 							class="w-50 badge badge-light">${spendingTotal}</span>
 					</button>
+
+				</li>
+				<li class="bg-dark list-group-item">
+
+					<form method="GET" action="spending">
+
+						<input type="date" name="date" value="${date}" 
+							class="w-100 btn badge-info  font-weight-bold text-center">
+						
+						
+						
+						 </input> <input type="submit" style="margin-top: 10px;"
+							class="w-100 btn badge-light  font-weight-bold text-center"
+							value="اذهب لهذا اليوم" />
+
+					</form>
 				</li>
 			</ul>
 		</div>
-
 
 
 
@@ -90,25 +114,26 @@
 			<div class="text-right card-body bg-dark text-white">
 
 				<h3>سحب مبلغ</h3>
-				<form:form metho="POST" action="add-bill" modelAttribute="bill">
+				<form:form metho="POST" action="make-spending"
+					modelAttribute="spending">
 
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
-						المسحوب:</label>
+						المسحوب :</label>
+					<form:input type="text" class="form-control  col-xs-3"
+						placeholder="ادخل المبلغ " path="money"></form:input>
 
-					<input type="text" class="form-control  col-xs-3"
-						placeholder="ادخل المبلغ المسحوب" name="payed">
+					<label style="margin-top: 10px" class="mb-2 mr-sm-2">ملاحظة
+						:</label>
 
+					<form:input type="text" class="form-control  col-xs-3"
+						placeholder="ادخل ملاحظتك" path="note"></form:input>
 
 					<br>
 
 					<button type="submit" class="btn btn-info form-control 	">
-						تمت السحب</button>
+						تم سحب المبلغ</button>
 				</form:form>
 
-				<!--
-	<c:url var="showQuestion" value="/user/showq">
-								<c:param name="questionId" value="hello"></c:param>
-							</c:url>  -->
 
 
 			</div>

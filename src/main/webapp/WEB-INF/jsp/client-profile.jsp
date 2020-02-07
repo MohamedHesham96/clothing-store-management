@@ -40,7 +40,7 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						الاسم <span style="margin-right: 22px;"
+						الاسم <span style="margin-right: 30px;"
 							class="w-50 badge badge-light">${clientData.name}</span>
 					</button>
 				</li>
@@ -48,7 +48,7 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						التليفون <span style="margin-right: 10px;"
+						التيليفون <span style="margin-right: 15px;"
 							class="w-50 badge badge-light">${clientData.phone}</span>
 					</button>
 				</li>
@@ -56,7 +56,7 @@
 					<button dir="rtl" style="margin-right: 35px; text-align: right;"
 						type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						عليه <span style="margin-right: 35px;"
+						عليه <span style="margin-right: 45px;"
 							class="w-50 badge badge-light">${clientData.drawee}</span>
 					</button>
 				</li>

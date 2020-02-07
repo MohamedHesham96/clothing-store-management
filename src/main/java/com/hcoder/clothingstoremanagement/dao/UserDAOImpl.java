@@ -132,7 +132,8 @@ public class UserDAOImpl implements UserDAO {
 	public void updateWarehouseQuantity(Warehouse warehouse) {
 
 		Session session = entityManager.unwrap(Session.class);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>" + warehouse.getQuantity());
+
+		// Make it saveOrUpdate
 		session.update(warehouse);
 	}
 
@@ -241,6 +242,36 @@ public class UserDAOImpl implements UserDAO {
 
 		session.save(clientRecord);
 
+	}
+
+	@Override
+	public void makeSpendingOpertaion(Spending spending) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.save(spending);
+	}
+
+	@Override
+	@Transactional
+	public void saveClient(Client client) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.saveOrUpdate(client);
+	}
+
+	@Override
+	public List<Spending> getSpendingsByDate(String date) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Spending> query = session.createQuery("from Spending where date = :theDate");
+		query.setParameter("theDate", date);
+		
+		List<Spending> spendings = query.list();
+
+		return spendings;
 	}
 
 }

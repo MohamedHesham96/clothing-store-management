@@ -57,18 +57,18 @@
 						<thead class="thead-inverse">
 							<tr>
 								<th>اسم العميل</th>
-								<th>التليفون</th>
+								<th>التيليفون</th>
 								<th>عليه</th>
 
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="tempItem" items="${clientsList}">
-								<c:url var="clientLink" value="/clientProfile">
+								<c:url var="clientLink"  value="/clientProfile">
 									<c:param name="clientId" value="${tempItem.id}"></c:param>
 								</c:url>
 								<tr>
-									<td><a href="${clientLink}">${tempItem.name}</a></td>
+									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
 									<td>${tempItem.phone}</td>
 									<td>${tempItem.drawee}</td>
 								</tr>
