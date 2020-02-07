@@ -26,12 +26,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Bill getBillByDate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Client> getAllClients() {
 
 		return userDAO.getAllClients();
@@ -48,12 +42,6 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 
 		return userDAO.GetAllIncoming();
-	}
-
-	@Override
-	public Incoming getIncomingByDate() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -128,7 +116,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Client getClientById(int id) {
-		
+
 		return userDAO.getClientById(id);
 	}
 
@@ -140,7 +128,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void makeSpendingOpertaion(Spending spending) {
-		
+
 		userDAO.makeSpendingOpertaion(spending);
 	}
 
@@ -153,8 +141,19 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<Spending> getSpendingsByDate(String date) {
 
-		
 		return userDAO.getSpendingsByDate(date);
+	}
+
+	@Override
+	public List<Incoming> GetIncomingsByDate(String date) {
+
+		return userDAO.GetIncomingsByDate(date);
+	}
+
+	@Override
+	public List<Bill> getBillsByDate(String date) {
+
+		return userDAO.getBillsByDate(date);
 	}
 
 }

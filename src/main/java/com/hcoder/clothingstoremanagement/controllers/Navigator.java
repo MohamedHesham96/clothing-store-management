@@ -32,18 +32,29 @@ public class Navigator {
 	}
 
 	@RequestMapping("/incoming")
-	public String getIncoming(Model theModel) {
+	public String getIncoming(@RequestParam("date") String theDate, Model theModel) {
 
-		theModel.addAttribute("incoming", new Incoming());
+		List<Incoming> incomings;
 
-		List<Incoming> items = userService.GetAllIncoming();
+		if (theDate.equals("")) {
+
+			theDate = LocalDate.now().toString();
+			incomings = userService.GetAllIncoming();
+
+		} else {
+
+			incomings = userService.GetIncomingsByDate(theDate);
+
+		}
 
 		int incomingTotal = userService.getIcomingTotal();
 		int warehouseTotal = userService.getWarehouseTotal();
 
 		int soldTotal = incomingTotal - warehouseTotal;
 
-		theModel.addAttribute("items", items);
+		theModel.addAttribute("date", theDate);
+		theModel.addAttribute("items", incomings);
+		theModel.addAttribute("incoming", new Incoming());
 		theModel.addAttribute("soldTotal", soldTotal);
 		theModel.addAttribute("incomingTotal", incomingTotal);
 		theModel.addAttribute("warehouseTotal", warehouseTotal);
@@ -137,26 +148,38 @@ public class Navigator {
 	}
 
 	@RequestMapping("/bill")
-	public String getBill(Model theModel) {
+	public String getBill(@RequestParam("date") String theDate, Model theModel) {
 
-		int spendingTotal = userService.getSpendingTotal();
+		List<Bill> bills;
 
-		List<Bill> items = userService.getAllBills();
-		int listSize = items.size();
+		if (theDate.equals("")) {
+
+			theDate = LocalDate.now().toString();
+			bills = userService.getAllBills();
+
+		} else {
+
+			bills = userService.getBillsByDate(theDate);
+
+		}
+
+		int listSize = bills.size();
 		int gainTotal = 0;
 
 		for (int i = 0; i < listSize; i++) {
-			Bill item = items.get(i);
+			Bill item = bills.get(i);
 
 			gainTotal += item.getGain();
 		}
 
+		int spendingTotal = userService.getSpendingTotal();
 		int total = gainTotal - spendingTotal;
 
-		theModel.addAttribute("items", items);
+		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("total", total);
-		theModel.addAttribute("spendingTotal", spendingTotal);
+		theModel.addAttribute("items", bills);
 		theModel.addAttribute("gainTotal", gainTotal);
+		theModel.addAttribute("spendingTotal", spendingTotal);
 
 		return "bill";
 	}
@@ -209,16 +232,16 @@ public class Navigator {
 		List<Spending> spendings;
 
 		if (theDate.equals("")) {
-			
+
 			theDate = LocalDate.now().toString();
 			spendings = userService.getAllSpending();
 
 		} else {
-			
+
 			spendings = userService.getSpendingsByDate(theDate);
 
 		}
-		
+
 		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("spending", new Spending());
 		theModel.addAttribute("spendings", spendings);

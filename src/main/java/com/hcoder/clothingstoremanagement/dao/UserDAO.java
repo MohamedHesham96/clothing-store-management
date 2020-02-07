@@ -15,7 +15,7 @@ public interface UserDAO {
 
 	public List<Bill> getAllBills();
 
-	public Bill getBillByDate();
+	public List<Bill> getBillsByDate(String date);
 
 	public Client getClientById(int id);
 
@@ -24,6 +24,8 @@ public interface UserDAO {
 	public void saveClientRecord(ClientRecord clientRecord);
 
 	public List<ClientRecord> getClientRecords();
+
+	public List<Incoming> GetIncomingsByDate(String date);
 
 	public List<Incoming> GetAllIncoming();
 

@@ -44,9 +44,17 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Bill getBillByDate() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Bill> getBillsByDate(String date) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Bill> query = session.createQuery("from Bill where date = :theDate");
+
+		query.setParameter("theDate", date);
+
+		List<Bill> bills = query.list();
+
+		return bills;
 	}
 
 	@Override
@@ -268,10 +276,24 @@ public class UserDAOImpl implements UserDAO {
 
 		Query<Spending> query = session.createQuery("from Spending where date = :theDate");
 		query.setParameter("theDate", date);
-		
+
 		List<Spending> spendings = query.list();
 
 		return spendings;
+	}
+
+	@Override
+	public List<Incoming> GetIncomingsByDate(String date) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Incoming> query = session.createQuery("from Incoming where date = :theDate");
+
+		query.setParameter("theDate", date);
+
+		List<Incoming> incomings = query.list();
+
+		return incomings;
 	}
 
 }

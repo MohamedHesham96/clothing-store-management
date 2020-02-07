@@ -13,8 +13,8 @@ public interface UserService {
 
 	public List<Bill> getAllBills();
 
-	public Bill getBillByDate();
-
+	public List<Bill> getBillsByDate(String date);
+	
 	public Client getClientById(int id);
 	
 	public void saveClientRecord(ClientRecord clientRecord);
@@ -23,9 +23,9 @@ public interface UserService {
 
 	public List<Client> getClientRecords();
 
-	public List<Incoming> GetAllIncoming();
+	public List<Incoming> GetIncomingsByDate(String date);
 
-	public Incoming getIncomingByDate();
+	public List<Incoming> GetAllIncoming();
 
 	public Warehouse getWarehouseById(int id);
 

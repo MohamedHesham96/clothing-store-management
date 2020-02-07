@@ -39,7 +39,7 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						 اجمالي الربح <span style="margin-right: 20px;"
+						اجمالي الربح <span style="margin-right: 20px;"
 							class="w-50 badge badge-light text-center"> ${gainTotal}</span>
 					</button>
 				</li>
@@ -58,6 +58,25 @@
 						صافي الربح <span style="margin-right: 25px;"
 							class="w-50 badge badge-light text-center">${total}</span>
 					</button>
+				</li>
+
+
+				<li class="bg-dark list-group-item">
+
+					<form method="GET" action="bill">
+
+						<input type="date" name="date" value="${date}"
+							class="w-100 btn badge-info  font-weight-bold text-center">
+
+
+
+						</input> <input type="submit" style="margin-top: 10px;"
+							class="w-100 btn badge-light  font-weight-bold text-center"
+							value="اذهب لهذا اليوم" />
+
+					</form>
+				</li>
+
 			</ul>
 		</div>
 
