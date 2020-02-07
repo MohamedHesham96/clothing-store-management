@@ -23,7 +23,7 @@
 	rel="stylesheet">
 
 </head>
-<body background="images/wall3.jpg"
+<body background="images/wall4.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -52,6 +52,17 @@
 							class=" badge badge-light">${clientData.phone}</span>
 					</button>
 				</li>
+
+				<li class="bg-dark list-group-item">
+					<button dir="rtl" style="text-align: right;" type="button"
+						type="button"
+						class="w-100 btn badge-info  font-weight-bold text-center">
+						مشتريات <span style="margin-right: 5px; width: 140px;"
+							class=" badge badge-light">${totalPayment}</span>
+					</button>
+				</li>
+
+
 				<li class="bg-dark list-group-item">
 					<button dir="rtl" style="text-align: right;" type="button"
 						type="button"
@@ -118,7 +129,12 @@
 							<c:forEach var="tempClientRecord"
 								items="${clientData.clientRecords}">
 
-								<option value="${tempClientRecord.id}">${tempClientRecord.item}</option>
+								<c:if test="${tempClientRecord.price != tempClientRecord.pay}">
+
+									<option value="${tempClientRecord.id}">
+										${tempClientRecord.item}</option>
+
+								</c:if>
 
 							</c:forEach>
 
@@ -131,7 +147,7 @@
 							placeholder="ادخل المبلغ المسدد " name="moneyAmount"></input>
 
 						<br>
-						
+
 						<input name="clientId" value="${clientData.id}" type="hidden" />
 
 						<button type="submit" class="btn btn-info form-control 	">

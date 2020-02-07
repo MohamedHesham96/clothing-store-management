@@ -60,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Client> clients = session.createQuery("from Client").getResultList();
+		List<Client> clients = session.createQuery("from Client order by drawee desc").getResultList();
 
 		return clients;
 	}
@@ -81,12 +81,6 @@ public class UserDAOImpl implements UserDAO {
 		List<Incoming> incomings = query.getResultList();
 
 		return incomings;
-	}
-
-	@Override
-	public Incoming getIncomingByDate() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

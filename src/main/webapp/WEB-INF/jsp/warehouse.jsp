@@ -136,7 +136,8 @@
 							name="pswd"></form:input>
 
 
-						<label for="pwd2" class="mb-2 mr-sm-2">اسم العميل:</label>
+						<label style="margin-top: 8px" for="pwd2" class="mb-2 mr-sm-2">اسم العميل:</label>
+						
 						<select path="clientId" class="form-control  mb-2 col-xs-3"
 							name="clientId">
 							<c:forEach var="tempItem" items="${clientsList}">

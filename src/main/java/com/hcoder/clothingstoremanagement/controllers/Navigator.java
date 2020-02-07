@@ -165,14 +165,19 @@ public class Navigator {
 
 		int listSize = bills.size();
 		int gainTotal = 0;
-
+		
+		Bill item ;
+		
 		for (int i = 0; i < listSize; i++) {
-			Bill item = bills.get(i);
+		
+			item = bills.get(i);
 
 			gainTotal += item.getGain();
 		}
 
 		int spendingTotal = userService.getSpendingTotal();
+	
+		// صافي الربح	
 		int total = gainTotal - spendingTotal;
 
 		theModel.addAttribute("date", theDate);
@@ -210,8 +215,18 @@ public class Navigator {
 	public String goToClientAccount(@ModelAttribute("clientId") int id, Model theModel) {
 
 		Client client = userService.getClientById(id);
+		List<ClientRecord> clientRecords = client.getClientRecords();
+
+		int size = clientRecords.size();
+		int totalPayment = 0;
+
+		for (int i = 0; i < size; i++) {
+
+			totalPayment += clientRecords.get(i).getPrice();
+		}
 
 		theModel.addAttribute("clientData", client);
+		theModel.addAttribute("totalPayment", totalPayment);
 
 		return "client-profile";
 	}
@@ -282,7 +297,19 @@ public class Navigator {
 		userService.saveClient(theClient);
 		userService.saveClientRecord(theClientRecord);
 
+		
+		List<ClientRecord> clientRecords = theClient.getClientRecords();
+		
+		int size = clientRecords.size();
+		int totalPayment = 0;
+
+		for (int i = 0; i < size; i++) {
+
+			totalPayment += clientRecords.get(i).getPrice();
+		}
+
 		theModel.addAttribute("clientData", theClient);
+		theModel.addAttribute("totalPayment", totalPayment);
 
 		return "client-profile";
 	}

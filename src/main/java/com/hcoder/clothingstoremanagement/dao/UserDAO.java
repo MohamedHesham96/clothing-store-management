@@ -33,8 +33,6 @@ public interface UserDAO {
 
 	public List<Incoming> GetAllIncoming();
 
-	public Incoming getIncomingByDate();
-
 	public List<Warehouse> getAllWarehouse();
 
 	public Warehouse getWarehouseById(int id);
