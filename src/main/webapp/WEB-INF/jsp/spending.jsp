@@ -34,8 +34,10 @@
 
 		<div class="card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
+
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
+
 			<ul class="list-group list-group-flush">
 
 				<li class="bg-dark list-group-item">
@@ -80,9 +82,39 @@
 
 		</div>
 
+	</div>
+	<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+		<div class="card bg-dark">
 
 
+			<div class="text-right card-body bg-dark text-white">
+
+				<h3>سحب مبلغ</h3>
+				<form:form metho="POST" action="add-bill" modelAttribute="bill">
+
+					<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
+						المسحوب:</label>
+
+					<input type="text" class="form-control  col-xs-3"
+						placeholder="ادخل المبلغ المسحوب" name="payed">
+
+
+					<br>
+
+					<button type="submit" class="btn btn-info form-control 	">
+						تمت السحب</button>
+				</form:form>
+
+				<!--
+	<c:url var="showQuestion" value="/user/showq">
+								<c:param name="questionId" value="hello"></c:param>
+							</c:url>  -->
+
+
+			</div>
+		</div>
 
 	</div>
+
 </body>
 </html>
