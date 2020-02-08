@@ -21,6 +21,11 @@
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
+	
+<script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+
 
 </head>
 <body background="images/wall3.jpg"
@@ -119,7 +124,13 @@
 							name="testselect">
 							<c:forEach var="tempItem" items="${items}">
 
-								<option value="${tempItem.id}">${tempItem.item}</option>
+
+								<c:if test="${tempItem.quantity > 0}">
+
+									<option value="${tempItem.id}">${tempItem.item}</option>
+
+								</c:if>
+
 
 							</c:forEach>
 
@@ -136,13 +147,15 @@
 							name="pswd"></form:input>
 
 
-						<label style="margin-top: 8px" for="pwd2" class="mb-2 mr-sm-2">اسم العميل:</label>
-						
+						<label style="margin-top: 8px" for="pwd2" class="mb-2 mr-sm-2">اسم
+							العميل:</label>
+
 						<select path="clientId" class="form-control  mb-2 col-xs-3"
 							name="clientId">
 							<c:forEach var="tempItem" items="${clientsList}">
 
 								<option value="${tempItem.id}">${tempItem.name}</option>
+
 
 							</c:forEach>
 
