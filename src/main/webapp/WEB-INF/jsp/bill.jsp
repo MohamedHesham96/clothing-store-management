@@ -70,9 +70,9 @@
 
 
 
-						</input> <input type="submit" style="margin-top: 10px;"
+						 <input type="submit" style="margin-top: 10px;"
 							class="w-100 btn badge-light  font-weight-bold text-center"
-							value="اذهب لهذا اليوم" />
+							value="اذهب لهذا اليوم" /> 
 
 					</form>
 				</li>
