@@ -32,12 +32,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<Client> getClientRecords() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Incoming> GetAllIncoming() {
 		// TODO Auto-generated method stub
 

@@ -11,53 +11,63 @@ import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserService {
 
+
+	//Bill Methods
+	public void addBill(Bill theBill);
+
 	public List<Bill> getAllBills();
 
 	public List<Bill> getBillsByDate(String date);
+
+	public void payOffAmount(Client client);
+
 	
+	//Client Methods
+	public int getClientsDraweeTotal();
+
 	public Client getClientById(int id);
-	
-	public void saveClientRecord(ClientRecord clientRecord);
 
 	public List<Client> getAllClients();
 
-	public List<Client> getClientRecords();
+	public void saveClient(Client client);
 
+	
+	//Client Records Method
+	public ClientRecord getClientRecordById(int id);
+	
+	public void saveClientRecord(ClientRecord clientRecord);
+
+	
+	//Incoming Methods
 	public List<Incoming> GetIncomingsByDate(String date);
 
 	public List<Incoming> GetAllIncoming();
 
-	public Warehouse getWarehouseById(int id);
-
-	public void updateWarehouseQuantity(Warehouse warehouse);
-
-	public void addToWarehouse(Warehouse warehouse);
-
-	public List<Warehouse> getAllWarehouse();
-
 	public void AddIncoming(Incoming incoming);
-
-	void addBill(Bill theBill);
-
-	public List<Spending> getSpendingsByDate(String date);
-	
-	public List<Spending> getAllSpending();
-
-	public int getClientsDraweeTotal();
-
-	public int getSpendingTotal();
 
 	public int getIcomingTotal();
 
-	public int getWarehouseTotal();
 	
+	//Warehouse Methods
+	public int getWarehouseTotal();
+
+	public void addToWarehouse(Warehouse warehouse);
+
+	public void updateWarehouseQuantity(Warehouse warehouse);
+
+	public Warehouse getWarehouseById(int id);
+
+	public List<Warehouse> getAllWarehouse();
+	
+	
+	//Spending Methods
+	public int getSpendingTotal();
+
 	public void makeSpendingOpertaion(Spending spending);
 	
-	public void saveClient(Client client);
-	
-	public void payOffAmount(Client client);
-	
-	public ClientRecord getClientRecordById(int id);
+	public List<Spending> getSpendingsByDate(String date);
+
+	public List<Spending> getAllSpending();
 
 
 

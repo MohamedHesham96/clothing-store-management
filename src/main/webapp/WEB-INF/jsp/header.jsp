@@ -6,15 +6,13 @@
 
 
 <c:url var="incoming" value="/incoming">
-	<c:param name="date" value=""></c:param>
 </c:url>
 
 <c:url var="bill" value="/bill">
-	<c:param name="date" value=""></c:param>
 </c:url>
 
 <c:url var="spending" value="/spending">
-	<c:param name="date" value=""></c:param>
+
 </c:url>
 
 

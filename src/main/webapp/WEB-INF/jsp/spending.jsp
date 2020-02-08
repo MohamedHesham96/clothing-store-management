@@ -62,12 +62,10 @@
 
 					<form method="GET" action="spending">
 
-						<input type="date" name="date" value="${date}" 
+						<input type="date" name="date" value="${date}"
 							class="w-100 btn badge-info  font-weight-bold text-center">
-						
-						
-						
-						 </input> <input type="submit" style="margin-top: 10px;"
+
+						</input> <input type="submit" style="margin-top: 10px;"
 							class="w-100 btn badge-light  font-weight-bold text-center"
 							value="اذهب لهذا اليوم" />
 
@@ -107,7 +105,7 @@
 		</div>
 
 	</div>
-	
+
 	<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
 		<div class="card bg-dark">
 
@@ -120,19 +118,24 @@
 
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
 						المسحوب :</label>
+
 					<form:input type="text" class="form-control  col-xs-3"
-						placeholder="ادخل المبلغ " path="money"></form:input>
+						placeholder="ادخل المبلغ " name="money" path="money"></form:input>
 
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">ملاحظة
 						:</label>
 
 					<form:input type="text" class="form-control  col-xs-3"
 						placeholder="ادخل ملاحظتك" path="note"></form:input>
+					<form:errors cssStyle="color: red;" path="note" />
 
 					<br>
-
+					
+					<input name="date" value="2020-01-01" type="hidden"/>
+					
 					<button type="submit" class="btn btn-info form-control 	">
 						تم سحب المبلغ</button>
+						
 				</form:form>
 
 

@@ -13,10 +13,10 @@ public class Spending {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	Integer id;
 
 	@Column(name = "money")
-	int money;
+	Integer money;
 
 	@Column(name = "date")
 	String date;
@@ -24,19 +24,19 @@ public class Spending {
 	@Column(name = "note")
 	String note;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getMoney() {
+	public Integer getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(Integer money) {
 		this.money = money;
 	}
 

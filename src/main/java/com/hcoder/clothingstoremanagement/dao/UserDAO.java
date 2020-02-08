@@ -2,8 +2,6 @@ package com.hcoder.clothingstoremanagement.dao;
 
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
-
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
@@ -12,6 +10,10 @@ import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserDAO {
+	
+	
+	//Bill Methods
+	public void addBill(Bill theBill);
 
 	public List<Bill> getAllBills();
 
@@ -19,45 +21,57 @@ public interface UserDAO {
 
 	public void payOffAmount(Client client);
 
+	
+	//Client Methods
+	public int getClientsDraweeTotal();
+
 	public Client getClientById(int id);
 
 	public List<Client> getAllClients();
 
+	public void saveClient(Client client);
+
+	
+	//Client Records Method
+	public ClientRecord getClientRecordById(int id);
+	
 	public void saveClientRecord(ClientRecord clientRecord);
 
-	public ClientRecord getClientRecordById(int id);
-
-	public List<ClientRecord> getClientRecords();
-
+	
+	//Incoming Methods
 	public List<Incoming> GetIncomingsByDate(String date);
 
 	public List<Incoming> GetAllIncoming();
 
-	public List<Warehouse> getAllWarehouse();
+	public void AddIncoming(Incoming incoming);
 
-	public Warehouse getWarehouseById(int id);
+	public int getIcomingTotal();
 
-	public void updateWarehouseQuantity(Warehouse warehouse);
+	
+	//Warehouse Methods
+	public int getWarehouseTotal();
 
 	public void addToWarehouse(Warehouse warehouse);
 
-	public void AddIncoming(Incoming incoming);
+	public void updateWarehouseQuantity(Warehouse warehouse);
 
-	public void addBill(Bill theBill);
+	public Warehouse getWarehouseById(int id);
 
+	public List<Warehouse> getAllWarehouse();
+
+	
+	//Spending Methods
+	public int getSpendingTotal();
+
+	public void makeSpendingOpertaion(Spending spending);
+	
 	public List<Spending> getSpendingsByDate(String date);
 
 	public List<Spending> getAllSpending();
 
-	public int getSpendingTotal();
 
-	public int getIcomingTotal();
 
-	public int getClientsDraweeTotal();
 
-	public int getWarehouseTotal();
 
-	public void makeSpendingOpertaion(Spending spending);
 
-	public void saveClient(Client client);
 }

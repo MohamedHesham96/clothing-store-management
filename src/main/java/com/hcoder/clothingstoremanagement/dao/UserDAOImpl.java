@@ -66,12 +66,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<ClientRecord> getClientRecords() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Incoming> GetAllIncoming() {
 
 		Session session = entityManager.unwrap(Session.class);

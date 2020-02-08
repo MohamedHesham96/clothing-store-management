@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,15 @@ public class Navigator {
 
 	@Autowired
 	UserService userService;
+	//
+	// @InitBinder
+	// public void initBinder(WebDataBinder dataBinder) {
+	//
+	// StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+	//
+	// dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	//
+	// }
 
 	@RequestMapping("/home")
 	public String goHome() {
@@ -32,11 +42,11 @@ public class Navigator {
 	}
 
 	@RequestMapping("/incoming")
-	public String getIncoming(@RequestParam("date") String theDate, Model theModel) {
+	public String getIncoming(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
 
 		List<Incoming> incomings;
 
-		if (theDate.equals("")) {
+		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
 			incomings = userService.GetAllIncoming();
@@ -148,11 +158,11 @@ public class Navigator {
 	}
 
 	@RequestMapping("/bill")
-	public String getBill(@RequestParam("date") String theDate, Model theModel) {
+	public String getBill(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
 
 		List<Bill> bills;
 
-		if (theDate.equals("")) {
+		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
 			bills = userService.getAllBills();
@@ -165,19 +175,19 @@ public class Navigator {
 
 		int listSize = bills.size();
 		int gainTotal = 0;
-		
-		Bill item ;
-		
+
+		Bill item;
+
 		for (int i = 0; i < listSize; i++) {
-		
+
 			item = bills.get(i);
 
 			gainTotal += item.getGain();
 		}
 
 		int spendingTotal = userService.getSpendingTotal();
-	
-		// صافي الربح	
+
+		// صافي الربح
 		int total = gainTotal - spendingTotal;
 
 		theModel.addAttribute("date", theDate);
@@ -231,14 +241,7 @@ public class Navigator {
 		return "client-profile";
 	}
 
-	@PostMapping("/make-spending")
-	public String goToClientAccount(@ModelAttribute("spending") Spending spending) {
-
-		spending.setDate(LocalDate.now().toString());
-		userService.makeSpendingOpertaion(spending);
-
-		return "redirect:/spending";
-	}
+	
 
 	@RequestMapping("/get-spendings-by-date")
 	public String getSpendingsByDate(@RequestParam("date") String theDate, Model theModel) {
@@ -252,20 +255,36 @@ public class Navigator {
 		return "spending";
 	}
 
+	@PostMapping("/make-spending")
+	public String makeSpending(@ModelAttribute("spending") Spending spending, Model theModel,
+			BindingResult theBindingResult) {
+
+		spending.setDate(LocalDate.now().toString());
+		userService.makeSpendingOpertaion(spending);
+		
+		return "redirect:/spending";
+
+	}
+	
+	String myDate = LocalDate.now().toString();
+	
 	@RequestMapping("/spending")
-	public String getSpendings(@RequestParam("date") String theDate, Model theModel) {
+	public String getSpendings(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
 
 		List<Spending> spendings;
 
-		if (theDate.equals("")) {
+		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
 			spendings = userService.getAllSpending();
-
+			
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> "  + theDate);
+			
 		} else {
 
 			spendings = userService.getSpendingsByDate(theDate);
-
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> "  + theDate);
+			
 		}
 
 		theModel.addAttribute("date", theDate);
@@ -297,9 +316,8 @@ public class Navigator {
 		userService.saveClient(theClient);
 		userService.saveClientRecord(theClientRecord);
 
-		
 		List<ClientRecord> clientRecords = theClient.getClientRecords();
-		
+
 		int size = clientRecords.size();
 		int totalPayment = 0;
 
