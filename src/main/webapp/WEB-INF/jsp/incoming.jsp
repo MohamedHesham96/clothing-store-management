@@ -20,6 +20,9 @@
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 
+
+<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body background="images/wallpaper.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
@@ -31,13 +34,14 @@
 
 		<div class="card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
-			<div class="card-header text-white font-weight-bold text-center" style="color: #c4c4c4">الحسابات</div>
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">الحسابات</div>
 			<ul class="list-group list-group-flush">
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						المشتريات <span  style="margin-right: 17px;"
+						المشتريات <span style="margin-right: 17px;"
 							class="w-50 badge badge-light"> ${incomingTotal}</span>
 					</button>
 				</li>
@@ -55,24 +59,29 @@
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						المباع <span style="margin-right: 50px;"
 							class="w-50 badge badge-light">${soldTotal}</span>
-					</button> </li>
-					
-					<li class="bg-dark list-group-item">
+					</button>
+				</li>
+
+				<li class="bg-dark list-group-item">
 
 					<form method="GET" action="incoming">
 
-						<input type="date" name="date" value="${date}" 
+						<input type="date" name="date" value="${date}"
 							class="w-100 btn badge-info  font-weight-bold text-center">
-						
-						
-						
-						 </input> <input type="submit" style="margin-top: 10px;"
+
+						</input> <input type="submit" style="margin-top: 10px;"
 							class="w-100 btn badge-light  font-weight-bold text-center"
 							value="اذهب لهذا اليوم" />
 
 					</form>
 				</li>
-					
+
+				<li class="bg-dark  list-group-item">
+
+					<button id="showForm" type="button"
+						class="btn btn-light btn-lg btn-block">اضافة صنف +</button>
+				</li>
+
 			</ul>
 		</div>
 
@@ -108,8 +117,6 @@
 						</tbody>
 					</table>
 				</div>
-				<button type="button" class="btn btn-info btn-lg btn-block">+
-					اضافة صنف</button>
 
 
 				<div class="container">
@@ -120,14 +127,15 @@
 		</div>
 
 
-		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+		<div
+			style="margin-top: 75px; display: none; padding: 10px; 
+			box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+			class="form container-fluid fixed-top col-lg-3">
 			<div class="card bg-dark">
 
 				<div class="card-body bg-dark text-white">
 
-					<c:if test="${incoming != null}">
-						<h3>اضافة صنف جديد</h3>
-					</c:if>
+					<h3>اضافة صنف جديد</h3>
 
 					<!-- 
 					<c:set value="34" var="num" />
