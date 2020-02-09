@@ -105,12 +105,21 @@
 
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
 							العميل :</label>
+						<c:if test="${not empty nameError}">
+							<span style="color: red;" />
+							${nameError}
+						</span>
+						</c:if>
 						<form:input type="text" class="form-control  col-xs-3"
 							placeholder="ادخل اسم العميل " path="name"></form:input>
 
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2">التيليفون
 							:</label>
-
+						<c:if test="${not empty phoneError}">
+							<span style="color: red;" />
+							${phoneError}
+						</span>
+						</c:if>
 						<form:input type="text" class="form-control  col-xs-3"
 							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
 
