@@ -127,7 +127,7 @@
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
 						المسحوب :</label>
 
-					<form:input type="text" class="form-control  col-xs-3"
+						<form:input type="text" class="form-control  col-xs-3"
 						placeholder="ادخل المبلغ " name="money" path="money"></form:input>
 
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">ملاحظة
