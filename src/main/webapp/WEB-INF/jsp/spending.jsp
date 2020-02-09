@@ -72,8 +72,9 @@
 				<li class="bg-dark  list-group-item">
 
 					<button id="showForm" type="button"
-						class="btn btn-light btn-lg btn-block  text-center" >سحب مبلغ</button>
-			
+						class="btn btn-light btn-lg btn-block  text-center">سحب
+						مبلغ</button>
+
 				</li>
 			</ul>
 		</div>
@@ -111,9 +112,7 @@
 	</div>
 
 	<div
-		style="margin-top: 80px; display: none;  padding: 10px;
-		 box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-		
+		style="margin-top: 80px; display: none; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
 		class="form container-fluid fixed-top col-lg-4">
 		<div class="card bg-dark">
 
@@ -127,7 +126,7 @@
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
 						المسحوب :</label>
 
-						<form:input type="text" class="form-control  col-xs-3"
+					<form:input type="text" class="form-control  col-xs-3"
 						placeholder="ادخل المبلغ " name="money" path="money"></form:input>
 
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">ملاحظة
