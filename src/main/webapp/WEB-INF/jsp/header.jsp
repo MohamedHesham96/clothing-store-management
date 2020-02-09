@@ -20,6 +20,14 @@
 
 
 
+<script>
+	$(document).ready(function() {
+		$('#showForm').click(function() {
+			$('.form').toggle("slide");
+		});
+	});
+</script>
+
 
 <nav style="box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.9);" dir="rtl"
 	class="navbar navbar-expand-lg navbar-dark  bg-dark fixed-top scrolling-navbar">
@@ -31,22 +39,23 @@
 
 
 			<li style="margin: 5px;" class=""><a
-				class="btn bg-info text-white" style="padding: 15px;"
+				class="btn bg-info text-white" style="padding: 10px;"
 				href="${warehouse}"> المخزن </a></li>
 
 			<li style="margin: 5px;" class=""><a
-				class="btn bg-info text-white" style="padding: 15px;"
+				class="btn bg-info text-white" style="padding: 10px;"
 				href="${incoming}">المشتريات</a></li>
 
 			<li style="margin: 5px;" class=""><a
-				class="btn bg-info text-white" style="padding: 15px;" href="${bill}">الفواتير</a></li>
+				class="btn bg-info text-white" style="padding: 10px;"
+				 href="${bill}">الفواتير</a></li>
 
 			<li style="margin: 5px;" class=""><a
-				class="btn bg-info text-white" style="padding: 15px;"
+				class="btn bg-info text-white" style="padding: 10px;"
 				href="${spending}">المصاريف</a></li>
 
 			<li style="margin: 5px;" class=""><a
-				class="btn bg-info text-white " style="padding: 15px;"
+				class="btn bg-info text-white" style="padding: 10px;"
 				href="${clients}">العملاء</a></li>
 
 		</ul>

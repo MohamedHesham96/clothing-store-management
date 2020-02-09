@@ -17,13 +17,15 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>المصاريف</title>
+<title>العملاء</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
+<script type="text/javascript" src="webjars/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body background="images/wall3.jpg"
+
+<body background="images/wall4.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -43,6 +45,13 @@
 						اجمالي الدين <span style="margin-right: 20px;"
 							class="w-50 badge badge-light">${draweeTotal}</span>
 					</button>
+				</li>
+
+				<li class="bg-dark  list-group-item">
+
+					<button id="showForm" type="button"
+						class="btn btn-light btn-lg btn-block">أضافة عميل جديد</button>
+
 				</li>
 			</ul>
 		</div>
@@ -82,9 +91,11 @@
 		</div>
 
 
-		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+		<div
+			style="display: none; margin-top: 100px; 
+			padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+			class="form fixed-top container-fluid col-lg-4">
 			<div class="card bg-dark">
-
 
 				<div class="text-right card-body bg-dark text-white">
 
@@ -94,21 +105,12 @@
 
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
 							العميل :</label>
-						<c:if test="${not empty nameError}">
-							<span style="color: red;" />
-							${nameError}
-						</span>
-						</c:if>
 						<form:input type="text" class="form-control  col-xs-3"
 							placeholder="ادخل اسم العميل " path="name"></form:input>
 
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2">التيليفون
 							:</label>
-						<c:if test="${not empty phoneError}">
-							<span style="color: red;" />
-							${phoneError}
-						</span>
-						</c:if>
+
 						<form:input type="text" class="form-control  col-xs-3"
 							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
 

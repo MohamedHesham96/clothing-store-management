@@ -38,7 +38,7 @@ public class Navigator {
 	@RequestMapping("/home")
 	public String goHome() {
 
-		return "home";
+		return "index";
 	}
 
 	@RequestMapping("/incoming")
@@ -241,8 +241,6 @@ public class Navigator {
 		return "client-profile";
 	}
 
-	
-
 	@RequestMapping("/get-spendings-by-date")
 	public String getSpendingsByDate(@RequestParam("date") String theDate, Model theModel) {
 
@@ -261,13 +259,13 @@ public class Navigator {
 
 		spending.setDate(LocalDate.now().toString());
 		userService.makeSpendingOpertaion(spending);
-		
+
 		return "redirect:/spending";
 
 	}
-	
+
 	String myDate = LocalDate.now().toString();
-	
+
 	@RequestMapping("/spending")
 	public String getSpendings(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
 
@@ -277,14 +275,14 @@ public class Navigator {
 
 			theDate = LocalDate.now().toString();
 			spendings = userService.getAllSpending();
-			
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> "  + theDate);
-			
+
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + theDate);
+
 		} else {
 
 			spendings = userService.getSpendingsByDate(theDate);
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> "  + theDate);
-			
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + theDate);
+
 		}
 
 		theModel.addAttribute("date", theDate);

@@ -17,7 +17,7 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>المصاريف</title>
+<title>${clientData.name}</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -33,7 +33,7 @@
 		<div class="card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">الحسابات</div>
+				style="color: #c4c4c4">بيانات العميل</div>
 			<ul class="list-group list-group-flush">
 
 				<li class="bg-dark list-group-item">

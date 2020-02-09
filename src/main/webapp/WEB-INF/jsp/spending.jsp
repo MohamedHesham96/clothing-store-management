@@ -25,12 +25,9 @@
 
 <script type="text/javascript" src="webjars/jquery/3.4.1/jquery.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 
 </head>
-<body background="images/wall3.jpg"
+<body background="images/wall4.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -71,6 +68,13 @@
 
 					</form>
 				</li>
+
+				<li class="bg-dark  list-group-item">
+
+					<button id="showForm" type="button"
+						class="btn btn-light btn-lg btn-block  text-center" >سحب مبلغ</button>
+			
+				</li>
 			</ul>
 		</div>
 
@@ -106,7 +110,11 @@
 
 	</div>
 
-	<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+	<div
+		style="margin-top: 80px; display: none;  padding: 10px;
+		 box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+		
+		class="form container-fluid fixed-top col-lg-4">
 		<div class="card bg-dark">
 
 
@@ -130,12 +138,12 @@
 					<form:errors cssStyle="color: red;" path="note" />
 
 					<br>
-					
-					<input name="date" value="2020-01-01" type="hidden"/>
-					
+
+					<input name="date" value="2020-01-01" type="hidden" />
+
 					<button type="submit" class="btn btn-info form-control 	">
 						تم سحب المبلغ</button>
-						
+
 				</form:form>
 
 

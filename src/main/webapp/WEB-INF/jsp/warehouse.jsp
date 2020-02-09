@@ -13,6 +13,7 @@
 <html>
 
 
+
 <head>
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -21,14 +22,24 @@
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
-	
-<script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="scripts/warehouse-form-validation.js"></script>
+
+<script type="text/javascript"
+	src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+	
+</script>
 
 
 </head>
-<body background="images/wall3.jpg"
+
+<body background="images/wall4.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -68,13 +79,20 @@
 							class="w-50 badge badge-light">${warehouseTotal}</span>
 					</button>
 				</li>
+
+				<li class="bg-dark  list-group-item">
+
+					<button id="showForm" type="button"
+						class="btn btn-light btn-lg btn-block">بيع صنف</button>
+				</li>
 			</ul>
 		</div>
 
 
 		<div class="row  my-4">
+
 			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div class="table-responsive">
+				<div style="margin-top:" class="table-responsive">
 					<table class="table  table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
@@ -102,7 +120,11 @@
 
 		</div>
 
-		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+		<div
+			style="display: none; margin-top: 75px; padding: 10px;
+			 box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+			class="form fixed-top container-fluid col-lg-3">
+
 			<div class="card bg-dark">
 
 
@@ -117,7 +139,9 @@
 					<c:out value="${num % 2 eq 0 ? 'even': 'odd'}" />
 					-->
 
-					<form:form metho="POST" action="add-bill" modelAttribute="bill">
+
+					<form:form onsubmit="return validate(this)" metho="POST"
+						action="add-bill" modelAttribute="bill">
 						<label for="pwd2" class="mb-2 mr-sm-2">الصنف:</label>
 
 						<form:select path="id" class="form-control  mb-2 col-xs-3"
@@ -137,12 +161,12 @@
 						</form:select>
 
 						<label for="pwd2" class="mb-2 mr-sm-2">الكمية:</label>
-						<form:input type="text" path="quantity"
+						<form:input id="quantity" type="text" path="quantity"
 							class="form-control mb-2 col-xs-3" placeholder="ادخل الكمية"
 							name="pswd"></form:input>
 
 						<label for="pwd2" class="mb-2 mr-sm-2">سعر القطعه:</label>
-						<form:input type="text" path="piecePrice"
+						<form:input id="piecePrice" type="text" path="piecePrice"
 							class="form-control  col-xs-3" placeholder="ادخل سعر القطعه"
 							name="pswd"></form:input>
 
@@ -159,18 +183,18 @@
 
 							</c:forEach>
 
-							<select>
+						</select>
 
-								<label for="pwd2" class="mb-2 mr-sm-2">المبلغ المدفوع:</label>
+						<label for="pwd2" class="mb-2 mr-sm-2">المبلغ المدفوع:</label>
 
-								<input type="text" class="form-control  col-xs-3"
-								placeholder="ادخل المبلغ المدفوع" name="payed">
+						<input id="payed" type="text" class="form-control  col-xs-3"
+							placeholder="ادخل المبلغ المدفوع" name="payed">
 
 
-								<br>
+						<br>
 
-								<button type="submit" class="btn btn-info form-control 	">
-									تمت العملية</button>
+						<button type="submit" class="btn btn-info form-control">تمت
+							العملية</button>
 					</form:form>
 
 					<!--

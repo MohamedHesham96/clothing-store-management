@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "client")
@@ -23,12 +22,10 @@ public class Client {
 
 	@Column(name = "drawee")
 	int drawee;
-	
-	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
+
 	@Column(name = "name")
 	String name;
-	
-	@Pattern(regexp = "(01)[0125]{1}[0-9]{8}", message = "ادخل التيليفون بشكل صحيح")
+
 	@Column(name = "phone")
 	String phone;
 
