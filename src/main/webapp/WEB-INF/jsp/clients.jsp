@@ -28,6 +28,7 @@
 <body background="images/wall11.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
+	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container ">
 
