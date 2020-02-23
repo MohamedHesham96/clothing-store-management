@@ -22,8 +22,12 @@
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
-<body background="images/wall4.jpg"
+<body background="images/wall12.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -71,6 +75,12 @@
 							class=" badge badge-light">${clientData.drawee}</span>
 					</button>
 				</li>
+
+				<li class="bg-dark  list-group-item">
+
+					<button id="showForm" type="button"
+						class="btn btn-light btn-lg btn-block">سداد مبلغ</button>
+				</li>
 			</ul>
 		</div>
 
@@ -86,9 +96,6 @@
 								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر</th>
-								<th>دفع</th>
-								<th>باقي</th>
-
 							</tr>
 						</thead>
 						<tbody>
@@ -97,8 +104,6 @@
 									<td>${tempItem.item}</td>
 									<td>${tempItem.quantity}</td>
 									<td>${tempItem.price}</td>
-									<td>${tempItem.pay}</td>
-									<td>${tempItem.price - tempItem.pay}</td>
 								</tr>
 
 							</c:forEach>
@@ -109,7 +114,10 @@
 
 		</div>
 
-		<div style="direction: rtl" class=" container-fluid col-lg-4 col-md-6">
+		<div
+			style="display: none; margin-top: 100px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+			class="form container-fluid col-lg-4 col-md-6 fixed-top">
+
 			<div class="card bg-dark">
 
 
@@ -120,25 +128,6 @@
 					<form:form metho="GET" action="pay-off-amount"
 						modelAttribute="clientData">
 
-						<label style="margin-top: 10px" class="mb-2 mr-sm-2">الصنف
-							:</label>
-
-						<form:select path="id" class="form-control  mb-2 col-xs-3"
-							name="testselect">
-
-							<c:forEach var="tempClientRecord"
-								items="${clientData.clientRecords}">
-
-								<c:if test="${tempClientRecord.price != tempClientRecord.pay}">
-
-									<option value="${tempClientRecord.id}">
-										${tempClientRecord.item}</option>
-
-								</c:if>
-
-							</c:forEach>
-
-						</form:select>
 
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
 							:</label>

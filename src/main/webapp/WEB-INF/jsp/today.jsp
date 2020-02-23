@@ -40,7 +40,8 @@
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						اجمالي الربح <span style="margin-right: 20px;"
-							class="w-50 badge badge-light text-center"> ${gainTotal}</span>
+							class="w-50 badge badge-light text-center"> ${gainTotal}
+							جنيه</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">
@@ -48,33 +49,17 @@
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						المصاريف <span style="margin-right: 33px;"
-							class="w-50 badge badge-light text-center">${spendingTotal}</span>
+							class="w-50 badge badge-light text-center">${spendingTotal}
+							جنيه</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
+						class="w-100 btn badge-success  font-weight-bold text-center">
 						صافي الربح <span style="margin-right: 25px;"
-							class="w-50 badge badge-light text-center">${total}</span>
+							class="w-50 badge badge-light text-center"> ${total} جنيه</span>
 					</button>
-				</li>
-
-
-				<li class="bg-dark list-group-item">
-
-					<form method="GET" action="bill">
-
-						<input type="date" name="date" value="${date}"
-							class="w-100 btn badge-info  font-weight-bold text-center">
-
-
-
-						<input type="submit" style="margin-top: 10px;"
-							class="w-100 btn badge-light  font-weight-bold text-center"
-							value="اذهب لهذا اليوم" />
-
-					</form>
 				</li>
 
 			</ul>
@@ -88,8 +73,8 @@
 					<table class="table  table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
-								<th>الشهر</th>
-								<th>الكمية</th>
+								<th>الصنف</th>
+								<th>الكيمة</th>
 								<th>السعر تجاري</th>
 								<th>سعر القطعه</th>
 								<th>صافي الربح</th>

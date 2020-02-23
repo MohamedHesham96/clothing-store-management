@@ -28,15 +28,6 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 
 
-<script type="text/javascript"
-	src="scripts/warehouse-form-validation.js"></script>
-
-<script type="text/javascript"
-	src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-
-
 <script type="text/javascript">
 	
 </script>
@@ -44,7 +35,7 @@
 
 </head>
 
-<body background="images/wall4.jpg"
+<body background="images/wall6.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>

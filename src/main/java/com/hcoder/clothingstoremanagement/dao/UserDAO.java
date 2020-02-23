@@ -10,9 +10,8 @@ import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserDAO {
-	
-	
-	//Bill Methods
+
+	// Bill Methods
 	public void addBill(Bill theBill);
 
 	public List<Bill> getAllBills();
@@ -21,8 +20,7 @@ public interface UserDAO {
 
 	public void payOffAmount(Client client);
 
-	
-	//Client Methods
+	// Client Methods
 	public int getClientsDraweeTotal();
 
 	public Client getClientById(int id);
@@ -31,14 +29,12 @@ public interface UserDAO {
 
 	public void saveClient(Client client);
 
-	
-	//Client Records Method
+	// Client Records Method
 	public ClientRecord getClientRecordById(int id);
-	
+
 	public void saveClientRecord(ClientRecord clientRecord);
 
-	
-	//Incoming Methods
+	// Incoming Methods
 	public List<Incoming> GetIncomingsByDate(String date);
 
 	public List<Incoming> GetAllIncoming();
@@ -47,8 +43,7 @@ public interface UserDAO {
 
 	public int getIcomingTotal();
 
-	
-	//Warehouse Methods
+	// Warehouse Methods
 	public int getWarehouseTotal();
 
 	public void addToWarehouse(Warehouse warehouse);
@@ -59,19 +54,17 @@ public interface UserDAO {
 
 	public List<Warehouse> getAllWarehouse();
 
-	
-	//Spending Methods
+	// Spending Methods
 	public int getSpendingTotal();
+	
+	public int getSpendingTotalToday();
 
 	public void makeSpendingOpertaion(Spending spending);
-	
+
 	public List<Spending> getSpendingsByDate(String date);
 
 	public List<Spending> getAllSpending();
 
-
-
-
-
+	public List<Object> getGainByMonthes();
 
 }

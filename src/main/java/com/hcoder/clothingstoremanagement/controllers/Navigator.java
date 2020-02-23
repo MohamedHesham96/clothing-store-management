@@ -1,8 +1,13 @@
 package com.hcoder.clothingstoremanagement.controllers;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,8 +40,27 @@ public class Navigator {
 	//
 	// }
 
+	private EntityManager entityManager;
+
+	@Autowired
+	public Navigator(EntityManager entityManager) {
+
+		this.entityManager = entityManager;
+	}
+
 	@RequestMapping("/home")
 	public String goHome() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		String SQL_QUERY = "select date, sum(gain) as gain_a_sum\r\n" + "from bill\r\n" + "group by month(2);";
+		Query query = session.createQuery(SQL_QUERY);
+
+		for (Iterator it = query.iterate(); it.hasNext();) {
+			Object[] row = (Object[]) it.next();
+
+			System.out.println(">>>>>>>>>>>>>>>>>>> Row: " + row[0]);
+		}
 
 		return "index";
 	}
@@ -302,17 +326,9 @@ public class Navigator {
 		// theClient is the object that we will use it to update the client table
 		Client theClient = userService.getClientById(theClientId);
 
-		// get ClientRecord Id From client @ModelAttribute
-		int clientRecordId = clientData.getId();
-
-		ClientRecord theClientRecord = userService.getClientRecordById(clientRecordId);
-
-		theClientRecord.setPay(theClientRecord.getPay() + theAmount);
-
 		theClient.setDrawee(theClient.getDrawee() - theAmount);
 
 		userService.saveClient(theClient);
-		userService.saveClientRecord(theClientRecord);
 
 		List<ClientRecord> clientRecords = theClient.getClientRecords();
 
@@ -330,4 +346,36 @@ public class Navigator {
 		return "client-profile";
 	}
 
+	@RequestMapping("/today")
+	public String getToday(Model theModel) {
+
+		List<Bill> bills;
+		String theDate = LocalDate.now().toString();
+
+		bills = userService.getBillsByDate(theDate);
+
+		int listSize = bills.size();
+		int gainTotal = 0;
+
+		Bill item;
+
+		for (int i = 0; i < listSize; i++) {
+
+			item = bills.get(i);
+
+			gainTotal += item.getGain();
+		}
+
+		int spendingTotal = userService.getSpendingTotalToday();
+
+		// صافي الربح
+		int total = gainTotal - spendingTotal;
+
+		theModel.addAttribute("total", total);
+		theModel.addAttribute("items", bills);
+		theModel.addAttribute("gainTotal", gainTotal);
+		theModel.addAttribute("spendingTotal", spendingTotal);
+
+		return "today";
+	}
 }

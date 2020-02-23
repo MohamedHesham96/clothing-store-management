@@ -162,4 +162,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getClientRecordById(id);
 	}
 
+	@Override
+	public int getSpendingTotalToday() {
+
+		return userDAO.getSpendingTotalToday();
+	}
+
 }

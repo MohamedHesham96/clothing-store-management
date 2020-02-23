@@ -24,7 +24,7 @@
 <script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body background="images/wallpaper.jpg"
+<body background="images/wall7.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -95,7 +95,7 @@
 								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر تجاري</th>
-								<th>سعر القطعة</th>
+								<th>سعر القطعه</th>
 								<th>اجمالي السعر</th>
 								<th>المحل</th>
 								<th>تاريخ التسجيل</th>
@@ -128,8 +128,7 @@
 
 
 		<div
-			style="margin-top: 75px; display: none; padding: 10px; 
-			box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+			style="margin-top: 75px; display: none; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
 			class="form container-fluid fixed-top col-lg-3">
 			<div class="card bg-dark">
 

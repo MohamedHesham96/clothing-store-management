@@ -25,7 +25,7 @@
 
 </head>
 
-<body background="images/wall4.jpg"
+<body background="images/wall11.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -92,8 +92,7 @@
 
 
 		<div
-			style="display: none; margin-top: 100px; 
-			padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+			style="display: none; margin-top: 100px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
 			class="form fixed-top container-fluid col-lg-4">
 			<div class="card bg-dark">
 

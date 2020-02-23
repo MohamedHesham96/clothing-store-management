@@ -27,15 +27,12 @@
 
 
 </head>
-<body background="images/wall4.jpg"
+<body background="images/wall10.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container ">
-
-
-
 
 
 		<div class="card bg-secondary text-white"

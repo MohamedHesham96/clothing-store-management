@@ -1,5 +1,7 @@
 package com.hcoder.clothingstoremanagement.dao;
 
+import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -304,6 +306,48 @@ public class UserDAOImpl implements UserDAO {
 		ClientRecord theClientRecord = session.get(ClientRecord.class, id);
 
 		return theClientRecord;
+	}
+
+	@Override
+	public List<Object> getGainByMonthes() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		String SQL_QUERY = "select sum (Bill.gain)," + "from Bill" + "GROUP BY MONTH(02)";
+		Query query = session.createQuery(SQL_QUERY);
+
+		for (Iterator it = query.iterate(); it.hasNext();) {
+			Object[] row = (Object[]) it.next();
+
+			System.out.println("Row: " + row[0]);
+		}
+
+		return null;
+	}
+
+	@Override
+	public int getSpendingTotalToday() {
+
+		String theDate = LocalDate.now().toString();
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Spending> query = session.createQuery("from Spending where date = :theDate");
+
+		query.setParameter("theDate", theDate);
+
+		List<Spending> spendings = query.list();
+
+		int listSize = spendings.size();
+
+		int spendingTotal = 0;
+
+		for (int i = 0; i < listSize; i++) {
+
+			spendingTotal += spendings.get(i).getMoney();
+		}
+
+		return spendingTotal;
 	}
 
 }
