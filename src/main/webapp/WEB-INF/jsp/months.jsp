@@ -90,17 +90,23 @@
 			List<Result> list2020 = new ArrayList<Result>();
 			List<Result> list2019 = new ArrayList<Result>();
 
+			int[] billsTotals = new int[2];
+			int[] spendingsTotals = new int[2];
+
 			for (int i = 0; i < listSize; i++) {
 
 				if (list.get(i).getYear().intValue() == 2020) {
 
 					list2020.add(list.get(i));
-
+					billsTotals[0] = +list.get(i).getAmount().intValue();
+					spendingsTotals[0] = +list.get(i).getSpending().intValue();
 				}
 
 				if (list.get(i).getYear().intValue() == 2019) {
 
 					list2019.add(list.get(i));
+					billsTotals[1] = +list.get(i).getAmount().intValue();
+					spendingsTotals[1] = +list.get(i).getSpending().intValue();
 
 				}
 
@@ -111,7 +117,7 @@
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 
-				<h2>2020</h2>
+				<h2></h2>
 
 				<div style="margin-top:" class="table-responsive">
 					<table class="table table-bordered table-striped table-dark">
@@ -140,8 +146,19 @@
 
 								</tr>
 
+
+
 							</c:forEach>
 
+
+							<tr>
+
+								<td>الاجمالي</td>
+								<td><%=billsTotals[0]%></td>
+								<td></td>
+								<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
+
+							</tr>
 						</tbody>
 					</table>
 				</div>

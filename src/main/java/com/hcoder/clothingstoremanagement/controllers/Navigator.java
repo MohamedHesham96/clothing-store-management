@@ -1,15 +1,10 @@
 package com.hcoder.clothingstoremanagement.controllers;
 
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
-import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hcoder.clothingstoremanagement.dao.UserDAO;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;

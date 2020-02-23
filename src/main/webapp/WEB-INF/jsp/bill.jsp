@@ -24,7 +24,6 @@
 <body background="images/wall10.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
-	<%@ include file="header.jsp"%>
 
 
 	<div style="text-align: right;" class="container ">
@@ -54,7 +53,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn  text-white bg-success  font-weight-bold text-center">
+						class="w-100 btn bg-success  font-weight-bold text-center text-center">
 						صافي الربح <span style="margin-right: 25px;"
 							class="w-50 badge badge-light text-center">${total} جنيه</span>
 					</button>
