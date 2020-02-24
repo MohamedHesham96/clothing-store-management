@@ -16,7 +16,7 @@ public class Trader {
 	int id;
 
 	@Column(name = "name")
-	int name;
+	String name;
 
 	@Column(name = "payed")
 	int payed;
@@ -32,11 +32,11 @@ public class Trader {
 		this.id = id;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

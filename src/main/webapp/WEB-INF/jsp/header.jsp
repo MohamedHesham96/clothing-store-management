@@ -50,8 +50,7 @@
 
 
 			<li style="margin: 5px;" class=""><a
-				class="btn bg-info text-white" style="padding: 10px;"
-				href="${bill}">الفواتير</a></li>
+				class="btn bg-info text-white" style="padding: 10px;" href="${bill}">الفواتير</a></li>
 
 
 			<li style="margin: 5px;" class=""><a
@@ -101,6 +100,5 @@
 <br>
 <br>
 
-</div>
 
 

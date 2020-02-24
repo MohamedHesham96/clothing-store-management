@@ -7,6 +7,7 @@ import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
+import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserService {
@@ -64,5 +65,9 @@ public interface UserService {
 	public List<Spending> getSpendingsByDate(String date);
 
 	public List<Spending> getAllSpending();
+
+	//Traders
+	public List<Trader> getAllTraders();
+	public void saveTrader(Trader trader);
 
 }

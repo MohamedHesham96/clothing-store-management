@@ -11,6 +11,7 @@ import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
+import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 @Service
@@ -166,6 +167,18 @@ public class UserServiceImpl implements UserService {
 	public int getSpendingTotalToday() {
 
 		return userDAO.getSpendingTotalToday();
+	}
+
+	@Override
+	public List<Trader> getAllTraders() {
+		
+		return userDAO.getAllTraders();
+	}
+
+	@Override
+	public void saveTrader(Trader trader) {
+
+		userDAO.saveTrader(trader);
 	}
 
 }

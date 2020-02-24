@@ -7,6 +7,7 @@ import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
+import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 public interface UserDAO {
@@ -67,4 +68,10 @@ public interface UserDAO {
 
 	public List<Object> getGainByMonthes();
 
+	
+	// Traders
+	public List<Trader> getAllTraders();
+	public void saveTrader(Trader trader);
+
+	
 }

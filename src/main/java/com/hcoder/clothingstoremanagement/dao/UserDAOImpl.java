@@ -17,6 +17,7 @@ import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
+import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 @Repository
@@ -348,6 +349,24 @@ public class UserDAOImpl implements UserDAO {
 		}
 
 		return spendingTotal;
+	}
+
+	@Override
+	public List<Trader> getAllTraders() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Trader> traders = session.createQuery("from Trader").getResultList();
+
+		return traders;
+	}
+
+	@Override
+	public void saveTrader(Trader trader) {
+
+		Session session = entityManager.unwrap(Session.class);
+		session.save(trader);
+
 	}
 
 }

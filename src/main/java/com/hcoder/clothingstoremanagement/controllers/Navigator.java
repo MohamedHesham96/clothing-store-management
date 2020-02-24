@@ -22,6 +22,7 @@ import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Spending;
+import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
@@ -451,14 +452,23 @@ public class Navigator {
 	@RequestMapping("/traders")
 	public String getTraders(Model theModel) {
 
-		List<Client> clients = userService.getAllClients();
+		List<Trader> traders = userService.getAllTraders();
 
-		theModel.addAttribute("clientsList", clients);
+		theModel.addAttribute("tradersList", traders);
 
-		theModel.addAttribute("theClient", new Client());
+		theModel.addAttribute("theTrader", new Trader());
 
-		theModel.addAttribute("draweeTotal", userService.getClientsDraweeTotal());
-		
+		theModel.addAttribute("draweeTotal", "");
+
 		return "traders";
 	}
+
+	@RequestMapping("/add-new-trader")
+	public String addNewTrader(@ModelAttribute("theTrader") Trader theTrader) {
+
+		userService.saveTrader(theTrader);
+
+		return "redirect:/traders";
+	}
+
 }

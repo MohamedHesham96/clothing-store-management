@@ -50,7 +50,7 @@
 				<li class="bg-dark  list-group-item">
 
 					<button id="showForm" type="button"
-						class="btn btn-light btn-lg btn-block">أضافة عميل جديد</button>
+						class="btn btn-light btn-lg btn-block">أضافة تاجر جديد</button>
 
 				</li>
 			</ul>
@@ -72,14 +72,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="tempItem" items="${clientsList}">
+							<c:forEach var="tempItem" items="${tradersList}">
 								<c:url var="clientLink" value="/clientProfile">
 									<c:param name="clientId" value="${tempItem.id}"></c:param>
 								</c:url>
 								<tr>
 									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
-									<td>${tempItem.phone}</td>
-									<td>${tempItem.drawee}</td>
+									<td>${tempItem.payed}</td>
+									<td>${tempItem.remaining}</td>
 								</tr>
 
 							</c:forEach>
@@ -98,9 +98,9 @@
 
 				<div class="text-right card-body bg-dark text-white">
 
-					<h3>أضافة عميل جديد</h3>
-					<form:form metho="POST" action="add-new-client"
-						modelAttribute="theClient">
+					<h3>أضافة تاجر جديد</h3>
+					<form:form metho="POST" action="add-new-trader"
+						modelAttribute="theTrader">
 
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
 							التاجر :</label>
@@ -110,12 +110,12 @@
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2">المدفوع
 							:</label>
 						<form:input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل تالمبلغ المدفوع " path="phone"></form:input>
+							placeholder="ادخل المبلغ المدفوع " path="payed"></form:input>
 
 						<label style="margin-top: 10px" class="mb-2 mr-sm-2">الباقي
 							:</label>
 						<form:input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل المبلف المتبقي " path="phone"></form:input>
+							placeholder="ادخل الملف المتبقي " path="remaining"></form:input>
 
 						<br>
 
