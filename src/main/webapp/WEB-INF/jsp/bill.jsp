@@ -21,9 +21,12 @@
 	rel="stylesheet">
 
 </head>
+
 <body background="images/wall10.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
+	
+	<%@ include file="header.jsp"%>
 
 
 	<div style="text-align: right;" class="container ">
@@ -39,7 +42,8 @@
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn bg-info text-white  font-weight-bold text-center">
 						اجمالي الربح <span style="margin-right: 20px;"
-							class="w-50 badge badge-light text-center"> ${gainTotal} جنيه</span>
+							class="w-50 badge badge-light text-center"> ${gainTotal}
+							جنيه</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">
@@ -47,7 +51,8 @@
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn bg-info text-white  font-weight-bold text-center">
 						المصاريف <span style="margin-right: 33px;"
-							class="w-50 badge badge-light text-center">${spendingTotal} جنيه</span>
+							class="w-50 badge badge-light text-center">${spendingTotal}
+							جنيه</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">

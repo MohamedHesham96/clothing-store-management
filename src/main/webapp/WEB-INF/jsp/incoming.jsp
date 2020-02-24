@@ -9,6 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +25,7 @@
 <script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body background="images/wall7.jpg"
+<body background="images/wall6.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -53,14 +54,14 @@
 							class="w-50 badge badge-light">${warehouseTotal} جنيه</span>
 					</button>
 				</li>
-				<li class="bg-dark list-group-item">
-
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn bg-success text-white font-weight-bold text-center">
-						المباع <span style="margin-right: 50px;"
-							class="w-50 badge badge-light">${soldTotal} جنيه</span>
-					</button>
-				</li>
+					<li class="bg-dark list-group-item">
+	
+						<button dir="rtl" style="text-align: right;" type="button"
+							class="w-100 btn bg-success text-white font-weight-bold text-center">
+							المباع <span style="margin-right: 50px;"
+								class="w-50 badge badge-light">${soldTotal} جنيه</span>
+						</button>
+					</li>
 
 				<li class="bg-dark list-group-item">
 

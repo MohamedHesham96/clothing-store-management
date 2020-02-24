@@ -94,8 +94,8 @@
 
 				<li class="bg-dark list-group-item"><form:form metho="GET"
 						action="pay-off-amount-for-trader" modelAttribute="traderData">
-					
-					
+
+
 						<form:hidden path="id" />
 
 
@@ -106,7 +106,7 @@
 
 						<c:if test="${incomingsTotal != traderData.payed}">
 
-							<button type="submit" style="margin-top: 10px" 
+							<button type="submit" style="margin-top: 10px"
 								class="btn btn-info form-control font-weight-bold">قم
 								بتسديد المبلغ</button>
 
@@ -114,7 +114,8 @@
 
 						<c:if test="${incomingsTotal == traderData.payed}">
 
-							<button disabled="disabled" type="submit" style="margin-top: 10px" 
+							<button disabled="disabled" type="submit"
+								style="margin-top: 10px"
 								class="btn btn-info form-control font-weight-bold">قم
 								بتسديد المبلغ</button>
 

@@ -44,7 +44,7 @@
 	<div style="text-align: right;" class="container ">
 
 
-
+		<!-- 
 		<div class="card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
@@ -81,7 +81,7 @@
 
 			</ul>
 		</div>
-
+ -->
 		<%
 			List<Result> list = (List<Result>) request.getAttribute("monthsList");
 			int listSize = list.size();
@@ -98,26 +98,47 @@
 				if (list.get(i).getYear().intValue() == 2020) {
 
 					list2020.add(list.get(i));
-					billsTotals[0] = +list.get(i).getAmount().intValue();
-					spendingsTotals[0] = +list.get(i).getSpending().intValue();
+
+					if (list.get(i).getAmount() != null)
+						billsTotals[0] += list.get(i).getAmount().intValue();
+
+					if (list.get(i).getSpending() != null)
+						spendingsTotals[0] += list.get(i).getSpending().intValue();
 				}
 
 				if (list.get(i).getYear().intValue() == 2019) {
 
 					list2019.add(list.get(i));
-					billsTotals[1] = +list.get(i).getAmount().intValue();
-					spendingsTotals[1] = +list.get(i).getSpending().intValue();
+
+					if (list.get(i).getAmount() != null)
+						billsTotals[1] += list.get(i).getAmount().intValue();
+
+					if (list.get(i).getSpending() != null)
+						spendingsTotals[1] += list.get(i).getSpending().intValue();
 
 				}
 
 			}
+
+			List<String> monthsNames = new ArrayList<String>();
+
+			monthsNames.add("يناير");
+			monthsNames.add("فبراير");
+			monthsNames.add("مارس");
+			monthsNames.add("أبريل");
+			monthsNames.add("مايو");
+			monthsNames.add("يونيو");
+			monthsNames.add("أغسطس");
+			monthsNames.add("سبتمبر");
+			monthsNames.add("نوفمبر");
+			monthsNames.add("ديسمبر");
 		%>
 
 
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 
-				<h2></h2>
+				<h2>2020</h2>
 
 				<div style="margin-top:" class="table-responsive">
 					<table class="table table-bordered table-striped table-dark">
@@ -151,12 +172,12 @@
 							</c:forEach>
 
 
-							<tr>
+							<tr class=" bg-success text-light">
 
-								<td>الاجمالي</td>
-								<td><%=billsTotals[0]%></td>
-								<td></td>
-								<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
+								<td><h5 class="font-weight-bold">اجمالي السنة</h5></td>
+								<td><h5 class="font-weight-bold"><%=billsTotals[0]%></h5></td>
+								<td><h5 class="font-weight-bold"><%=spendingsTotals[0]%></h5></td>
+								<td><h5 class="font-weight-bold"><%=billsTotals[0] - spendingsTotals[0]%></h5></td>
 
 							</tr>
 						</tbody>
@@ -198,6 +219,16 @@
 								</tr>
 
 							</c:forEach>
+
+
+							<tr class=" bg-success text-light">
+
+								<td><h5 class="font-weight-bold">اجمالي السنة</h5></td>
+								<td><h5 class="font-weight-bold"><%=billsTotals[1]%></h5></td>
+								<td><h5 class="font-weight-bold"><%=spendingsTotals[1]%></h5></td>
+								<td><h5 class="font-weight-bold"><%=billsTotals[1] - spendingsTotals[1]%></h5></td>
+
+							</tr>
 
 
 						</tbody>

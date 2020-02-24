@@ -88,7 +88,9 @@
 
 				</li>
 
-				<li class="bg-dark list-group-item"><form:form metho="POST"
+				<li class="bg-dark list-group-item">
+				
+				<form:form metho="POST"
 						action="add-new-trader" modelAttribute="theTrader">
 
 
@@ -97,7 +99,7 @@
 
 						<button style="margin-top: 10px" type="submit"
 							class="btn btn-info form-control font-weight-bold ">
-					أضافة تاجر جديد</button>
+							أضافة تاجر جديد</button>
 					</form:form></li>
 			</ul>
 		</div>

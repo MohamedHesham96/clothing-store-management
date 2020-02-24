@@ -403,7 +403,8 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Trader> traders = session.createQuery("from Trader where remaining > 0 order by remaining desc").getResultList();
+		List<Trader> traders = session.createQuery("from Trader where remaining > 0 order by remaining desc")
+				.getResultList();
 
 		return traders;
 	}
@@ -515,8 +516,7 @@ public class UserDAOImpl implements UserDAO {
 				.createNativeQuery("SELECT sum(gain) as amount,\r\n" + "    extract(month from TIMESTAMP) as month,\r\n"
 						+ "    extract(year from TIMESTAMP) as year \r\n" + "    FROM Bill \r\n"
 						+ "    GROUP BY month, \r\n" + "    year ORDER BY year desc, month desc")
-				.addScalar("amount", new DoubleType())
-				.addScalar("year", new DoubleType())
+				.addScalar("amount", new DoubleType()).addScalar("year", new DoubleType())
 				.addScalar("month", new DoubleType());
 
 		List<Result> monthslistForBill = queryBill.setResultTransformer(Transformers.aliasToBean(Result.class)).list();
@@ -526,8 +526,7 @@ public class UserDAOImpl implements UserDAO {
 						"SELECT sum(money) as spending,\r\n" + "    extract(month from TIMESTAMP) as month,\r\n"
 								+ "    extract(year from TIMESTAMP) as year \r\n" + "    FROM Spending \r\n"
 								+ "    GROUP BY month, \r\n" + "    year ORDER BY year desc, month desc")
-				.addScalar("spending", new DoubleType())
-				.addScalar("year", new DoubleType())
+				.addScalar("spending", new DoubleType()).addScalar("year", new DoubleType())
 				.addScalar("month", new DoubleType());
 
 		List<Result> monthslistForSpending = querySpending.setResultTransformer(Transformers.aliasToBean(Result.class))
@@ -540,12 +539,11 @@ public class UserDAOImpl implements UserDAO {
 
 		for (Result spendingResult : monthslistForSpending) {
 
-			
 			for (Result billResult : monthslistForBill) {
-				
-				
+
 				spendingMonth = spendingResult.getMonth().intValue();
 				spendingYear = spendingResult.getYear().intValue();
+
 				billMonth = billResult.getMonth().intValue();
 				billYear = billResult.getYear().intValue();
 
@@ -557,7 +555,15 @@ public class UserDAOImpl implements UserDAO {
 			}
 		}
 
-		return monthslistForBill;
+		if (monthslistForBill.isEmpty())
+
+			return monthslistForSpending;
+
+		else {
+
+			return monthslistForBill;
+
+		}
 	}
 
 }

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,6 +48,43 @@ public class Navigator {
 		this.entityManager = entityManager;
 	}
 
+	@Autowired
+	private HttpSession httpSession;
+
+	@RequestMapping("/")
+	public String userLogin() {
+
+		return "login";
+	}
+
+	@RequestMapping("/logout")
+	public String userLogout() {
+
+		
+		httpSession.removeAttribute("username");
+		
+		return "login";
+
+	}
+
+	@RequestMapping("/login")
+	public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
+
+		if (username.equals("mazen") && password.equals("mazen")) {
+
+			httpSession.setAttribute("username", username);
+
+			httpSession.setAttribute("passwrord", password);
+
+			return "redirect:/today";
+
+		} else {
+
+			return "login";
+
+		}
+
+	}
 
 	@RequestMapping("/incoming")
 	public String getIncoming(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
