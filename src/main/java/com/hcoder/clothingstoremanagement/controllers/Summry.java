@@ -16,14 +16,14 @@ public class Summry {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("/months")
+	@RequestMapping("/report")
 	public String groupByMonth(Model theModel) {
 
 		List<Result> monthsList = userService.groupByMonths();
 
 		theModel.addAttribute("monthsList", monthsList);
 
-		return "months";
+		return "report";
 	}
 
 }

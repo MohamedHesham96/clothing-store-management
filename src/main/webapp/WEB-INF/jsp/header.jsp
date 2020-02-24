@@ -18,7 +18,7 @@
 
 <c:url var="traders" value="/traders"></c:url>
 
-<c:url var="months" value="/months"></c:url>
+<c:url var="report" value="/report"></c:url>
 
 <c:url var="today" value="/today"></c:url>
 
