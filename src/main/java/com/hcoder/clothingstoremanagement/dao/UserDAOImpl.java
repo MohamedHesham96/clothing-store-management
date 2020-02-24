@@ -369,4 +369,28 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	@Override
+	public int[] getTradersTotals() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Trader> query = session.createQuery("from Trader");
+
+		List<Trader> traders = query.getResultList();
+
+		int listSize = traders.size();
+
+		int[] tradersTotals = new int[2];
+
+		for (int i = 0; i < listSize; i++) {
+
+			tradersTotals[0] += traders.get(i).getPayed();
+			tradersTotals[1] += traders.get(i).getRemaining();
+
+		}
+
+		return tradersTotals;
+
+	}
+
 }

@@ -69,5 +69,7 @@ public interface UserService {
 	//Traders
 	public List<Trader> getAllTraders();
 	public void saveTrader(Trader trader);
+	public int[] getTradersTotals();
+
 
 }

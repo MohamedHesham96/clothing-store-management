@@ -22,7 +22,7 @@
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
-	
+
 <script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
@@ -76,11 +76,15 @@
 					</button>
 				</li>
 
+				<!--  
 				<li class="bg-dark  list-group-item">
 
 					<button id="showForm" type="button"
 						class="btn btn-light btn-lg btn-block">بيع صنف</button>
 				</li>
+				
+				-->
+
 			</ul>
 		</div>
 
@@ -117,8 +121,7 @@
 		</div>
 
 		<div
-			style="display: none; margin-top: 75px; padding: 10px;
-			 box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+			style="display: none; margin-top: 75px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
 			class="form fixed-top container-fluid col-lg-3">
 
 			<div class="card bg-dark">

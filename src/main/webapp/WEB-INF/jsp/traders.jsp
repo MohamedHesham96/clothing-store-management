@@ -42,8 +42,17 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						اجمالي الدين <span style="margin-right: 20px;"
-							class="w-50 badge badge-light">${draweeTotal}</span>
+						 المدفوع <span style="margin-right: 20px;"
+							class="w-50 badge badge-light">${payedTotal} جنيه </span>
+					</button>
+				</li>
+
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-info  font-weight-bold text-center">
+						 الباقي <span style="margin-right: 30px;"
+							class="w-50 badge badge-light">${remainingTotal} جنيه</span>
 					</button>
 				</li>
 

@@ -72,6 +72,7 @@ public interface UserDAO {
 	// Traders
 	public List<Trader> getAllTraders();
 	public void saveTrader(Trader trader);
+	public int[] getTradersTotals();
 
 	
 }

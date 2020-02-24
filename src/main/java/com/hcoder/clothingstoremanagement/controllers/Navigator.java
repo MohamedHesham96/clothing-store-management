@@ -453,12 +453,14 @@ public class Navigator {
 	public String getTraders(Model theModel) {
 
 		List<Trader> traders = userService.getAllTraders();
+		int[] tradersTotals = userService.getTradersTotals();
 
 		theModel.addAttribute("tradersList", traders);
 
 		theModel.addAttribute("theTrader", new Trader());
 
-		theModel.addAttribute("draweeTotal", "");
+		theModel.addAttribute("payedTotal", tradersTotals[0]);
+		theModel.addAttribute("remainingTotal", tradersTotals[1]);
 
 		return "traders";
 	}

@@ -120,7 +120,7 @@
 									<td><select name="clientId" style="width: 200px;"
 										class="text-center form-control  mb-2 col-xs-3"
 										name="clientId">
-											<option value="-1">--- اختر اسم العميل ---</option>
+											<option value="-1">--- اختر العميل ---</option>
 
 											<c:forEach var="tempItem" items="${clientsList}">
 

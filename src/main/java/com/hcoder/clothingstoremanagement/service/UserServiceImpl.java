@@ -181,4 +181,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.saveTrader(trader);
 	}
 
+	@Override
+	public int[] getTradersTotals() {
+
+		return userDAO.getTradersTotals();
+	}
+
 }
