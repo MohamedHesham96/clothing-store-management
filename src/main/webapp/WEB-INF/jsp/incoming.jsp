@@ -89,7 +89,7 @@
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table  table-striped table-dark">
+					<table class="table table-bordered table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
 								<th>الصنف</th>

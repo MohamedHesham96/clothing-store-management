@@ -368,6 +368,8 @@ public class Navigator {
 
 		int spendingTotal = userService.getSpendingTotalToday();
 
+		List<Warehouse> warehouseItems = userService.getAllWarehouse();
+
 		// صافي الربح
 		int total = gainTotal - spendingTotal;
 
@@ -375,7 +377,75 @@ public class Navigator {
 		theModel.addAttribute("items", bills);
 		theModel.addAttribute("gainTotal", gainTotal);
 		theModel.addAttribute("spendingTotal", spendingTotal);
+		theModel.addAttribute("warehouseItems", warehouseItems);
+		theModel.addAttribute("clientsList", userService.getAllClients());
 
 		return "today";
 	}
+
+	@RequestMapping("/add-bills-list")
+	public String addBillsList(@RequestParam("itemId") List<String> itemIdList,
+			@RequestParam("quantity") List<String> quantityList,
+			@RequestParam("piecePrice") List<String> piecePriceList, @RequestParam("payed") List<String> payedList,
+			@RequestParam("clientId") List<String> clientIdList) {
+
+		int listSize = clientIdList.size();
+
+		System.out.println("listSize >> " + listSize);
+
+		for (int i = 0; i < listSize; i++) {
+
+			if (!clientIdList.get(i).equals("-1") && !itemIdList.get(i).equals("-1")) {
+
+				Bill theBill = new Bill();
+				ClientRecord clientRecord = new ClientRecord();
+				Client theClient = new Client();
+
+				System.out.println("clientId >> " + clientIdList.get(i));
+
+				theClient = userService.getClientById(Integer.parseInt(clientIdList.get(i)));
+
+				theBill.setDate(LocalDate.now().toString());
+				theBill.setQuantity(Integer.parseInt(quantityList.get(i)));
+				theBill.setPiecePrice(Integer.parseInt(piecePriceList.get(i)));
+				theBill.setClient(theClient);
+
+				Warehouse warehouse = userService.getWarehouseById(Integer.parseInt(itemIdList.get(i)));
+				warehouse.setQuantity(warehouse.getQuantity() - Integer.parseInt(quantityList.get(i)));
+				userService.updateWarehouseQuantity(warehouse);
+
+				int gain = (Integer.parseInt(piecePriceList.get(i)) - warehouse.getTradePrice())
+						* Integer.parseInt(quantityList.get(i));
+
+				theBill.setGain(gain);
+				theBill.setItem(warehouse.getItem());
+				theBill.setStore(warehouse.getStore());
+				theBill.setTradePrice(warehouse.getTradePrice());
+
+				clientRecord.setClient(theClient);
+				clientRecord.setItem(warehouse.getItem());
+				clientRecord.setPay(Integer.parseInt(payedList.get(i)));
+
+				System.out.println("Integer.parseInt(quantityList.get(i)) >> " + Integer.parseInt(quantityList.get(i)));
+
+				clientRecord.setQuantity(Integer.parseInt(quantityList.get(i)));
+
+				clientRecord.setPrice(Integer.parseInt(piecePriceList.get(i)) * Integer.parseInt(quantityList.get(i)));
+
+				int theNewdrawee = theClient.getDrawee() + clientRecord.getPrice() - clientRecord.getPay();
+
+				theClient.setDrawee(theNewdrawee);
+
+				userService.addBill(theBill);
+				userService.saveClientRecord(clientRecord);
+
+				userService.saveClient(theClient);
+
+				System.out.println(theClient.getName());
+			}
+		}
+
+		return "redirect:/today";
+	}
+
 }

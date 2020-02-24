@@ -21,7 +21,7 @@
 
 <c:url var="today" value="/today"></c:url>
 
-
+<!--  -->
 
 <script>
 	$(document).ready(function() {

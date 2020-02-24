@@ -1,4 +1,4 @@
-<%@page import="java.time.LocalDate"%>
+table-bordered<%@page import="java.time.LocalDate"%>
 <%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@page import="com.hcoder.clothingstoremanagement.entity.Incoming"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
@@ -81,7 +81,7 @@
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table  table-striped table-dark">
+					<table class="table table-bordered table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
 								<th>المبلغ</th>

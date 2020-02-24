@@ -27,10 +27,12 @@
 	<%@ include file="header.jsp"%>
 
 
+
 	<div style="text-align: right;" class="container ">
 
 
-		<div class="card bg-secondary text-white"
+
+		<div class=" col-xs-6 card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
@@ -67,10 +69,102 @@
 
 
 
+
+
+
+		<form action="add-bills-list" method="POST">
+
+
+			<div class="row  my-4">
+				<div dir='rtl' class="col-lg-12 col-md-8">
+					<div class="table-responsive">
+						<table class="table table-striped table-dark">
+							<thead class="thead-inverse">
+								<tr>
+									<th>الصنف</th>
+									<th>الكمية</th>
+									<th>السعر</th>
+									<th>المبلغ المدفوع</th>
+									<th>العميل</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<%
+									for (int i = 0; i < 3; i++) {
+								%>
+								<tr>
+									<td><select name="itemId" style="width: 200px"
+										class="form-control" name="testselect">
+											<option value="-1">--- اختر الصنف ---</option>
+											<c:forEach var="tempItem" items="${warehouseItems}">
+
+
+												<c:if test="${tempItem.quantity > 0}">
+
+													<option value="${tempItem.id}">${tempItem.item}</option>
+
+												</c:if>
+
+
+											</c:forEach>
+
+									</select></td>
+									<td><input name="quantity" class="form-control"
+										style="width: 100%; height: 100%;"></td>
+									<td><input name="piecePrice" class="form-control"
+										style="width: 100%; height: 100%;"></td>
+									<td><input name="payed" class="form-control"
+										style="width: 100%; height: 100%;"></td>
+
+									<td><select name="clientId" style="width: 200px;"
+										class="text-center form-control  mb-2 col-xs-3"
+										name="clientId">
+											<option value="-1">--- اختر اسم العميل ---</option>
+
+											<c:forEach var="tempItem" items="${clientsList}">
+
+												<option value="${tempItem.id}">${tempItem.name}</option>
+
+
+											</c:forEach>
+
+									</select></td>
+								</tr>
+								<%
+									}
+								%>
+								<tr style="text-align: center;">
+									<td colspan="5"><input type="submit"
+										value="أضافة للفواتير"
+										class="w-100 btn badge-info   
+								 font-weight-bold text-center"
+										style="width: 100%; height: 50px;"></td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</form>
+
+
+
+
+
+
+
+
+
+
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table  table-striped table-dark">
+					<table class="table table-bordered table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
 								<th>الصنف</th>
@@ -98,6 +192,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
