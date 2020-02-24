@@ -95,7 +95,7 @@
 								%>
 								<tr>
 									<td><select name="itemId" style="width: 200px"
-										class="form-control" name="testselect">
+										class="text-center form-control" name="testselect">
 											<option value="-1">--- اختر الصنف ---</option>
 											<c:forEach var="tempItem" items="${warehouseItems}">
 

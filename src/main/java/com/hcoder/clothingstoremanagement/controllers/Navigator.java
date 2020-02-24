@@ -448,4 +448,17 @@ public class Navigator {
 		return "redirect:/today";
 	}
 
+	@RequestMapping("/traders")
+	public String getTraders(Model theModel) {
+
+		List<Client> clients = userService.getAllClients();
+
+		theModel.addAttribute("clientsList", clients);
+
+		theModel.addAttribute("theClient", new Client());
+
+		theModel.addAttribute("draweeTotal", userService.getClientsDraweeTotal());
+		
+		return "traders";
+	}
 }

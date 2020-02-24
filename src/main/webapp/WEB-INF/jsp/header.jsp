@@ -1,9 +1,9 @@
 
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <c:url var="warehouse" value="/warehouse"></c:url>
-
 
 <c:url var="incoming" value="/incoming">
 </c:url>
@@ -17,6 +17,12 @@
 
 
 <c:url var="clients" value="/clients"></c:url>
+
+
+<c:url var="traders" value="/traders">
+
+</c:url>
+
 
 
 <c:url var="today" value="/today"></c:url>
@@ -39,11 +45,12 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-		
+
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-light text-dark" style="padding: 10px;"
-				href="${today}"> اليوم </a></li>
-		
+				href="${today}">اليوم | <%=LocalDate.now().toString()%>
+			</a></li>
+
 			<li style="margin-left: 5px; margin-right: 5px">
 				<h1 class="text-white">|</h1>
 			</li>
@@ -67,6 +74,10 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-info text-white" style="padding: 10px;"
 				href="${clients}">العملاء</a></li>
+
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-info text-white" style="padding: 10px;"
+				href="${traders}">التجار</a></li>
 
 			<li style="margin-left: 5px; margin-right: 5px">
 				<h1 class="text-white">|</h1>

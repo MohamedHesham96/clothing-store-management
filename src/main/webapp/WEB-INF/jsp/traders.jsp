@@ -17,17 +17,15 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>${clientData.name}</title>
+<title>العملاء</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
-
-<script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body background="images/wall12.jpg"
+
+<body background="images/wall11.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -37,49 +35,23 @@
 		<div class="card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">بيانات العميل</div>
+				style="color: #c4c4c4">الحسابات</div>
 			<ul class="list-group list-group-flush">
 
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						الاسم <span style="margin-right: 25px; width: 140px;"
-							class=" badge badge-light">${clientData.name}</span>
-					</button>
-				</li>
-				<li class="bg-dark list-group-item">
-
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
-						التيليفون <span style="margin-right: 5px; width: 140px;"
-							class=" badge badge-light">${clientData.phone}</span>
-					</button>
-				</li>
-
-				<li class="bg-dark list-group-item">
-					<button dir="rtl" style="text-align: right;" type="button"
-						type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
-						مشتريات <span style="margin-right: 5px; width: 140px;"
-							class=" badge badge-light">${totalPayment}</span>
-					</button>
-				</li>
-
-
-				<li class="bg-dark list-group-item">
-					<button dir="rtl" style="text-align: right;" type="button"
-						type="button"
-						class="w-100 btn bg-danger  font-weight-bold text-center">
-						عليه <span style="margin-right: 35px; width: 140px;"
-							class=" badge badge-light">${clientData.drawee}</span>
+						اجمالي الدين <span style="margin-right: 20px;"
+							class="w-50 badge badge-light">${draweeTotal}</span>
 					</button>
 				</li>
 
 				<li class="bg-dark  list-group-item">
 
 					<button id="showForm" type="button"
-						class="btn btn-light btn-lg btn-block">سداد مبلغ</button>
+						class="btn btn-light btn-lg btn-block">أضافة عميل جديد</button>
+
 				</li>
 			</ul>
 		</div>
@@ -93,17 +65,21 @@
 					<table class="table table-bordered table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
-								<th>الصنف</th>
-								<th>الكمية</th>
-								<th>السعر</th>
+								<th>اسم التاجر</th>
+								<th>المدفوع</th>
+								<th>الباقي</th>
+
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="tempItem" items="${clientData.clientRecords}">
+							<c:forEach var="tempItem" items="${clientsList}">
+								<c:url var="clientLink" value="/clientProfile">
+									<c:param name="clientId" value="${tempItem.id}"></c:param>
+								</c:url>
 								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
-									<td>${tempItem.price}</td>
+									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
+									<td>${tempItem.phone}</td>
+									<td>${tempItem.drawee}</td>
 								</tr>
 
 							</c:forEach>
@@ -114,43 +90,43 @@
 
 		</div>
 
+
 		<div
 			style="display: none; margin-top: 100px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-			class="form container-fluid col-lg-4 col-md-6 fixed-top">
-
+			class="form fixed-top container-fluid col-lg-4">
 			<div class="card bg-dark">
-
 
 				<div class="text-right card-body bg-dark text-white">
 
-					<h3>سداد مبلغ</h3>
+					<h3>أضافة عميل جديد</h3>
+					<form:form metho="POST" action="add-new-client"
+						modelAttribute="theClient">
 
-					<form:form metho="GET" action="pay-off-amount"
-						modelAttribute="clientData">
+						<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
+							التاجر :</label>
+						<form:input type="text" class="form-control  col-xs-3"
+							placeholder="ادخل اسم التاجر " path="name"></form:input>
 
-
-						<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
+						<label style="margin-top: 10px" class="mb-2 mr-sm-2">المدفوع
 							:</label>
+						<form:input type="text" class="form-control  col-xs-3"
+							placeholder="ادخل تالمبلغ المدفوع " path="phone"></form:input>
 
-						<input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل المبلغ المسدد " name="moneyAmount"></input>
+						<label style="margin-top: 10px" class="mb-2 mr-sm-2">الباقي
+							:</label>
+						<form:input type="text" class="form-control  col-xs-3"
+							placeholder="ادخل المبلف المتبقي " path="phone"></form:input>
 
 						<br>
 
-						<input name="clientId" value="${clientData.id}" type="hidden" />
-
 						<button type="submit" class="btn btn-info form-control 	">
-							قم بتسديد المبلغ</button>
+							قم بأضافة تاجر جديد</button>
 					</form:form>
 
 
 				</div>
 			</div>
 		</div>
-
-
-
-
 	</div>
 </body>
 </html>
