@@ -35,7 +35,7 @@ public class Client {
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<ClientRecord> clientRecords;
 
-	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private List<Bill> bills;
 
 	public List<Bill> getBills() {

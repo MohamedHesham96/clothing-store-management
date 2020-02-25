@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Bill> query = session.createQuery("from Bill where date = :theDate");
+		Query<Bill> query = session.createQuery("from Bill where date = :theDate order by date desc");
 
 		query.setParameter("theDate", date);
 
@@ -63,7 +63,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Client> clients = session.createQuery("from Client order by drawee desc").getResultList();
+		List<Client> clients = session.createQuery("from Client where id > 0 order by drawee desc").getResultList();
 
 		return clients;
 	}
@@ -178,7 +178,7 @@ public class UserDAOImpl implements UserDAO {
 	public int getWarehouseTotal() {
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Warehouse> items = session.createQuery("from Warehouse ").getResultList();
+		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
 
 		int listSize = items.size();
 
@@ -398,7 +398,8 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Trader> traders = session.createQuery("from Trader where remaining > 0 order by remaining desc").getResultList();
+		List<Trader> traders = session.createQuery("from Trader where remaining > 0 order by remaining desc")
+				.getResultList();
 
 		return traders;
 	}

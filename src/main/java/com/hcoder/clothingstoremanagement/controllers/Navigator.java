@@ -142,6 +142,7 @@ public class Navigator {
 
 		Bill bill = new Bill();
 		ClientRecord clientRecord = new ClientRecord();
+
 		Client client = userService.getClientById(clientId);
 
 		bill.setDate(LocalDate.now().toString());
@@ -396,20 +397,15 @@ public class Navigator {
 
 		for (int i = 0; i < listSize; i++) {
 
-			if (!clientIdList.get(i).equals("-1") && !itemIdList.get(i).equals("-1")) {
+			if (!itemIdList.get(i).equals("-1")) {
 
 				Bill theBill = new Bill();
 				ClientRecord clientRecord = new ClientRecord();
 				Client theClient = new Client();
 
-				System.out.println("clientId >> " + clientIdList.get(i));
-
-				theClient = userService.getClientById(Integer.parseInt(clientIdList.get(i)));
-
 				theBill.setDate(LocalDate.now().toString());
 				theBill.setQuantity(Integer.parseInt(quantityList.get(i)));
 				theBill.setPiecePrice(Integer.parseInt(piecePriceList.get(i)));
-				theBill.setClient(theClient);
 
 				Warehouse warehouse = userService.getWarehouseById(Integer.parseInt(itemIdList.get(i)));
 				warehouse.setQuantity(warehouse.getQuantity() - Integer.parseInt(quantityList.get(i)));
@@ -423,7 +419,6 @@ public class Navigator {
 				theBill.setStore(warehouse.getStore());
 				theBill.setTradePrice(warehouse.getTradePrice());
 
-				clientRecord.setClient(theClient);
 				clientRecord.setItem(warehouse.getItem());
 				clientRecord.setPay(Integer.parseInt(payedList.get(i)));
 
@@ -433,21 +428,38 @@ public class Navigator {
 
 				clientRecord.setPrice(Integer.parseInt(piecePriceList.get(i)) * Integer.parseInt(quantityList.get(i)));
 
-				int theNewdrawee = theClient.getDrawee() + clientRecord.getPrice() - clientRecord.getPay();
+				if (!clientIdList.get(i).equals("-1")) {
 
-				theClient.setDrawee(theNewdrawee);
+					theClient = userService.getClientById(Integer.parseInt(clientIdList.get(i)));
+
+					theBill.setClient(theClient);
+					clientRecord.setClient(theClient);
+
+					int theNewdrawee = theClient.getDrawee() + clientRecord.getPrice() - clientRecord.getPay();
+
+					theClient.setDrawee(theNewdrawee);
+
+					userService.saveClient(theClient);
+
+				} else {
+
+					theClient = entityManager.getReference(Client.class, -1);
+
+				}
+
+				// theBill.setClient(theClient);
+				// clientRecord.setClient(theClient);
+
+				theBill.setClient(theClient);
+				clientRecord.setClient(theClient);
 
 				userService.addBill(theBill);
 				userService.saveClientRecord(clientRecord);
 
-				userService.saveClient(theClient);
-
-				System.out.println(theClient.getName());
 			}
 		}
 
 		return "redirect:/today";
 	}
 
-	
 }

@@ -18,7 +18,7 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
+
 	@Column(name = "gain")
 	int gain;
 
@@ -118,7 +118,4 @@ public class Bill {
 		this.store = store;
 	}
 
-	
-
-	
 }
