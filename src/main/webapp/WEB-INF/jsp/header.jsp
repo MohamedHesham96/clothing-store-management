@@ -40,14 +40,15 @@
 %>
 
 
-
 <script>
 	$(document).ready(function() {
-		$('#showForm').click(function() {
-			$('.form').toggle("slide");
+		$(".submitBtn").submit(function() {
+			$(".submitBtn").prop("disabled", true);
+			return true;
 		});
 	});
 </script>
+
 
 
 <nav style="box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.9);" dir="rtl"
@@ -107,7 +108,7 @@
 
 			<li style="margin: 5px;"><a
 				class="btn bg-success text-white font-weight-bold "
-				style="padding: 10px; width: 100px" href="${months}">تقرير</a></li>
+				style="padding: 10px; width: 100px" href="${report}">تقرير</a></li>
 
 
 			<li style="margin-left: 5px; margin-right: 5px">

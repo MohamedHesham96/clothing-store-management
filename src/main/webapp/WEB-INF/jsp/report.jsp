@@ -88,10 +88,11 @@
 			boolean firstTime = true;
 
 			List<Result> list2020 = new ArrayList<Result>();
-			List<Result> list2019 = new ArrayList<Result>();
+			List<Result> list2021 = new ArrayList<Result>();
+			List<Result> list2022 = new ArrayList<Result>();
 
-			int[] billsTotals = new int[2];
-			int[] spendingsTotals = new int[2];
+			int[] billsTotals = new int[3];
+			int[] spendingsTotals = new int[3];
 
 			for (int i = 0; i < listSize; i++) {
 
@@ -101,22 +102,61 @@
 
 					if (list.get(i).getAmount() != null)
 						billsTotals[0] += list.get(i).getAmount().intValue();
+					else
+						list.get(i).setAmount(0.0);
 
 					if (list.get(i).getSpending() != null)
 						spendingsTotals[0] += list.get(i).getSpending().intValue();
+					else
+						list.get(i).setSpending(0.0);
 				}
 
-				if (list.get(i).getYear().intValue() == 2019) {
+				else if (list.get(i).getYear().intValue() == 2021) {
 
-					list2019.add(list.get(i));
+					list2021.add(list.get(i));
 
 					if (list.get(i).getAmount() != null)
 						billsTotals[1] += list.get(i).getAmount().intValue();
+					else
+						list.get(i).setAmount(0.0);
 
 					if (list.get(i).getSpending() != null)
 						spendingsTotals[1] += list.get(i).getSpending().intValue();
+					else
+						list.get(i).setSpending(0.0);
 
 				}
+
+				else if (list.get(i).getYear().intValue() == 2022) {
+
+					list2022.add(list.get(i));
+
+					if (list.get(i).getAmount() != null)
+						billsTotals[2] += list.get(i).getAmount().intValue();
+					else
+						list.get(i).setAmount(0.0);
+
+					if (list.get(i).getSpending() != null)
+						spendingsTotals[2] += list.get(i).getSpending().intValue();
+					else
+						list.get(i).setSpending(0.0);
+
+				}
+
+			}
+
+			boolean[] flags = { false, false, false };
+
+			for (int i = 0; i < flags.length; i++) {
+
+				if (!list2022.isEmpty())
+					flags[0] = true;
+
+				if (!list2021.isEmpty())
+					flags[1] = true;
+
+				if (!list2020.isEmpty())
+					flags[2] = true;
 
 			}
 
@@ -135,10 +175,17 @@
 		%>
 
 
+		<%
+			for (int i = 0; i < flags.length; i++) {
+
+				if (flags[i] == true) {
+		%>
+
+
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 
-				<h2>2020</h2>
+				<h2><%=2022 - i%></h2>
 
 				<div style="margin-top:" class="table-responsive">
 					<table class="table table-bordered table-striped table-dark">
@@ -154,8 +201,11 @@
 						</thead>
 						<tbody>
 
+							<%
+								if (flags[2 - i] == true && i == 0) {
+							%>
 
-							<c:forEach var="temp" items="<%=list2020%>">
+							<c:forEach var="temp" items="<%=list2022%>">
 
 
 								<tr>
@@ -170,6 +220,58 @@
 
 
 							</c:forEach>
+
+							<%
+								}
+							%>
+
+
+							<%
+								if (flags[2 - i] == true && i == 1) {
+							%>
+
+							<c:forEach var="temp" items="<%=list2021%>">
+								<tr>
+
+									<td>${temp.month.intValue()}</td>
+									<td>${temp.amount.intValue()}</td>
+									<td>${temp.spending.intValue()}</td>
+									<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
+
+								</tr>
+
+
+
+							</c:forEach>
+
+							<%
+								}
+							%>
+
+
+
+							<%
+								if (flags[2 - i] == true && i == 2) {
+							%>
+
+							<c:forEach var="temp" items="<%=list2020%>">
+								<tr>
+
+									<td>${temp.month.intValue()}</td>
+									<td>${temp.amount.intValue()}</td>
+									<td>${temp.spending.intValue()}</td>
+									<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
+
+								</tr>
+
+
+
+							</c:forEach>
+
+							<%
+								}
+							%>
+
 
 
 							<tr class=" bg-success text-light">
@@ -187,56 +289,11 @@
 
 		</div>
 
+		<%
+			}
+			}
+		%>
 
-		<div class="row  my-4">
-
-			<div dir='rtl' class="col-lg-12 col-md-8">
-				<h2>2019</h2>
-				<div style="margin-top:" class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
-							<tr>
-								<th>الشهر</th>
-								<th>الربح</th>
-								<th>المصاريف</th>
-								<th>صافي الربح</th>
-
-							</tr>
-						</thead>
-						<tbody>
-
-
-							<c:forEach var="temp" items="<%=list2019%>">
-
-
-								<tr>
-
-									<td>${temp.month.intValue()}</td>
-									<td>${temp.amount.intValue()}</td>
-									<td>${temp.spending.intValue()}</td>
-									<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
-
-								</tr>
-
-							</c:forEach>
-
-
-							<tr class=" bg-success text-light">
-
-								<td><h5 class="font-weight-bold">اجمالي السنة</h5></td>
-								<td><h5 class="font-weight-bold"><%=billsTotals[1]%></h5></td>
-								<td><h5 class="font-weight-bold"><%=spendingsTotals[1]%></h5></td>
-								<td><h5 class="font-weight-bold"><%=billsTotals[1] - spendingsTotals[1]%></h5></td>
-
-							</tr>
-
-
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-		</div>
 
 
 

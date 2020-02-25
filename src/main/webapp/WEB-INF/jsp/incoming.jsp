@@ -54,14 +54,14 @@
 							class="w-50 badge badge-light">${warehouseTotal} جنيه</span>
 					</button>
 				</li>
-					<li class="bg-dark list-group-item">
-	
-						<button dir="rtl" style="text-align: right;" type="button"
-							class="w-100 btn bg-success text-white font-weight-bold text-center">
-							المباع <span style="margin-right: 50px;"
-								class="w-50 badge badge-light">${soldTotal} جنيه</span>
-						</button>
-					</li>
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn bg-success text-white font-weight-bold text-center">
+						المباع <span style="margin-right: 50px;"
+							class="w-50 badge badge-light">${soldTotal} جنيه</span>
+					</button>
+				</li>
 
 				<li class="bg-dark list-group-item">
 
@@ -135,7 +135,9 @@
 									<td colspan="5"><input type="submit" value="اضف الصنف"
 										class="w-100 btn badge-info   
 								 font-weight-bold text-center"
-										style="width: 100%; height: 50px;"></td>
+										style="width: 100%; height: 50px;"
+										onclick="this.disabled=true; this.parentNode.submit();">
+									</td>
 
 								</tr>
 
@@ -146,79 +148,53 @@
 				</div>
 			</div>
 
-			</form>
-
-
-
-
-
-			<!-- TABLE -->
-			<div class="row  my-4">
-				<div dir='rtl' class=" col-lg-12 col-md-8">
-					<div class="table-responsive">
-						<table class="table table-bordered table-striped table-dark">
-							<thead class="thead-inverse">
-								<tr>
-									<th>الصنف</th>
-									<th>الكمية</th>
-									<th>السعر تجاري</th>
-									<th>سعر القطعه</th>
-									<th>اجمالي السعر</th>
-									<th>المحل</th>
-									<th>تاريخ التسجيل</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="tempItem" items="${items}">
-
-									<tr>
-										<td>${tempItem.item}</td>
-										<td>${tempItem.quantity}</td>
-										<td>${tempItem.tradePrice}</td>
-										<td>${tempItem.piecePrice}</td>
-										<td>${tempItem.total}</td>
-										<td>${tempItem.trader}</td>
-										<td>${tempItem.date}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-
-
-					<div class="container">
-						<br>
-					</div>
-				</div>
-
-			</div>
-
-
-			<div
-				style="margin-top: 75px; display: none; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-				class="form container-fluid fixed-top col-lg-3">
-				<div class="card bg-dark">
-
-					<div class="card-body bg-dark text-white">
-
-						<h3>اضافة صنف جديد</h3>
-
-						<!-- 
-					<c:set value="34" var="num" />
-					<c:out value="${num % 2 eq 0 ? 'even': 'odd'}" />
-					-->
-
-
-
-
-
-						<br>
 		</form:form>
 
-	</div>
+
+
+
+
+		<!-- TABLE -->
+		<div class="row  my-4">
+			<div dir='rtl' class=" col-lg-12 col-md-8">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped table-dark">
+						<thead class="thead-inverse">
+							<tr>
+								<th>الصنف</th>
+								<th>الكمية</th>
+								<th>السعر تجاري</th>
+								<th>سعر القطعه</th>
+								<th>اجمالي السعر</th>
+								<th>المحل</th>
+								<th>تاريخ التسجيل</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="tempItem" items="${items}">
+
+								<tr>
+									<td>${tempItem.item}</td>
+									<td>${tempItem.quantity}</td>
+									<td>${tempItem.tradePrice}</td>
+									<td>${tempItem.piecePrice}</td>
+									<td>${tempItem.total}</td>
+									<td>${tempItem.trader}</td>
+									<td>${tempItem.date}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+
+
+				<div class="container">
+					<br>
+				</div>
+			</div>
+
+		</div>
 	</div>
 
-	</div>
-	</div>
 </body>
 </html>

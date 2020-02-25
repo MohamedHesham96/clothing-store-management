@@ -67,10 +67,12 @@
 				</li>
 
 
-				<li class="bg-dark list-group-item"><form:form metho="POST"
-						action="make-spending" modelAttribute="spending">
+				<li class="bg-dark list-group-item">
+				
+				<form:form id="formId"
+						method="POST" action="make-spending" modelAttribute="spending">
 
-						<form:input type="text" class="text-center form-control  col-xs-3"
+						<form:input type="text" class="text-center form-control col-xs-3"
 							placeholder="ادخل المبلغ " name="money" path="money"></form:input>
 
 						<form:input style="margin-top: 10px" type="text"
@@ -79,9 +81,9 @@
 
 						<input name="date" value="2020-01-01" type="hidden" />
 
-						<button style="margin-top: 10px" type="submit"
-							class="btn btn-info form-control font-weight-bold">سحب
-							المبلغ</button>
+						<input style="margin-top: 10px" type="submit" value="سحب المبلغ"
+							onclick="this.disabled=true; this.parentNode.submit();"
+							class="btn badge-info form-control font-weight-bold">
 
 
 					</form:form></li>

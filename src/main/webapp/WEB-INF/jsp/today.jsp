@@ -141,10 +141,10 @@
 									}
 								%>
 								<tr style="text-align: center;">
-									<td colspan="5"><input type="submit"
+									<td colspan="5"><input id="submitBtn" type="submit"
 										value="أضافة للفواتير"
-										class="w-100 btn badge-info   
-								 font-weight-bold text-center"
+										class="w-100 btn badge-info font-weight-bold text-center"
+										onclick="this.disabled=true; this.parentNode.submit();"
 										style="width: 100%; height: 50px;"></td>
 
 								</tr>

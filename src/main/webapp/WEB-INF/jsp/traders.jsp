@@ -86,20 +86,19 @@
 
 
 
-				</li>
 
-				<li class="bg-dark list-group-item">
-				
-				<form:form metho="POST"
+				<li class="bg-dark list-group-item"><form:form metho="POST"
 						action="add-new-trader" modelAttribute="theTrader">
-
 
 						<form:input type="text" class="text-center form-control  col-xs-3"
 							placeholder="ادخل اسم التاجر " path="name"></form:input>
 
-						<button style="margin-top: 10px" type="submit"
-							class="btn btn-info form-control font-weight-bold ">
-							أضافة تاجر جديد</button>
+						<input style="margin-top: 10px" type="submit"
+							value="أضافة تاجر جديد"
+							class="w-100 btn badge-info font-weight-bold text-center
+							onclick="
+							this.disabled=true;this.parentNode.submit();">
+
 					</form:form></li>
 			</ul>
 		</div>

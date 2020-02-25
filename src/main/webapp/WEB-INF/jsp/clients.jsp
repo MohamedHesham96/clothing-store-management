@@ -58,9 +58,10 @@
 							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
 
 
-						<button style="margin-top: 10px" type="submit"
-							class="btn btn-info form-control font-weight-bold">
-							أضافة عميل جديد</button>
+						<input style="margin-top: 10px" type="submit"
+							value="أضافة عميل جديد"
+							class="btn btn-info form-control font-weight-bold"
+							onclick="this.disabled=true; this.parentNode.submit();">
 
 
 					</form:form></li>
@@ -102,45 +103,7 @@
 		</div>
 
 
-		<div
-			style="display: none; margin-top: 100px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-			class="form fixed-top container-fluid col-lg-4">
-			<div class="card bg-dark">
 
-				<div class="text-right card-body bg-dark text-white">
-
-					<h3>أضافة عميل جديد</h3>
-
-					<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
-						العميل :</label>
-					<c:if test="${not empty nameError}">
-						<span style="color: red;" />
-							${nameError}
-						</span>
-					</c:if>
-
-
-
-
-
-
-
-
-					<label style="margin-top: 10px" class="mb-2 mr-sm-2">التيليفون
-						:</label>
-					<c:if test="${not empty phoneError}">
-						<span style="color: red;" />
-							${phoneError}
-						</span>
-					</c:if>
-
-					<br>
-
-
-
-				</div>
-			</div>
-		</div>
 	</div>
 </body>
 </html>

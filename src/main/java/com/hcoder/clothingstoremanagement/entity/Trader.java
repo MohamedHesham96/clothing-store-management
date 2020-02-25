@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "trader")
@@ -15,6 +16,7 @@ public class Trader {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
+	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	@Column(name = "name")
 	String name;
 

@@ -98,27 +98,12 @@
 
 						<input name="clientId" value="${clientData.id}" type="hidden" />
 
+						<button style="margin-top: 10px"
+							${ clientData.drawee == 0 ? 'disabled="disabled"' : ''}
+							type="submit" class="btn btn-info form-control font-weight-bold">
 
+							قم بتسديد المبلغ</button>
 
-						<c:if test="${clientData.drawee != 0}">
-
-
-							<button style="margin-top: 10px" type="submit"
-								class="btn btn-info form-control font-weight-bold">قم
-								بتسديد المبلغ</button>
-
-
-
-						</c:if>
-
-
-						<c:if test="${clientData.drawee == 0}">
-
-							<button disabled="disabled" style="margin-top: 10px"
-								type="submit" class="btn btn-info form-control font-weight-bold">قم
-								بتسديد المبلغ</button>
-
-						</c:if>
 						<br>
 
 

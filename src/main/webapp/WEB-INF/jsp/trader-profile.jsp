@@ -98,30 +98,14 @@
 
 						<form:hidden path="id" />
 
-
 						<input type="text" class="text-center form-control  col-xs-3"
-							placeholder="ادخل المبلغ المسدد " name="moneyAmount"></input>
+							placeholder="ادخل المبلغ المسدد " name="moneyAmount">
 
 
-
-						<c:if test="${incomingsTotal != traderData.payed}">
-
-							<button type="submit" style="margin-top: 10px"
-								class="btn btn-info form-control font-weight-bold">قم
-								بتسديد المبلغ</button>
-
-						</c:if>
-
-						<c:if test="${incomingsTotal == traderData.payed}">
-
-							<button disabled="disabled" type="submit"
-								style="margin-top: 10px"
-								class="btn btn-info form-control font-weight-bold">قم
-								بتسديد المبلغ</button>
-
-
-						</c:if>
-
+						<input value="قم بتسديد المبلغ" type="submit"
+							style="margin-top: 10px"
+							${ incomingsTotal == traderData.payed ? 'disabled= "disabled"' : ''}
+							class="btn badge-info form-control font-weight-bold">
 
 					</form:form></li>
 

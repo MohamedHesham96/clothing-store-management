@@ -92,7 +92,7 @@
 					<table class="table table-bordered table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
-								<th>الشهر</th>
+								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر تجاري</th>
 								<th>سعر القطعه</th>
