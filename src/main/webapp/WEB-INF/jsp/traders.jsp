@@ -42,7 +42,7 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						 المدفوع <span style="margin-right: 20px;"
+						المدفوع <span style="margin-right: 20px;"
 							class="w-50 badge badge-light">${payedTotal} جنيه </span>
 					</button>
 				</li>
@@ -51,10 +51,43 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
-						 الباقي <span style="margin-right: 30px;"
+						الباقي <span style="margin-right: 30px;"
 							class="w-50 badge badge-light">${remainingTotal} جنيه</span>
 					</button>
 				</li>
+
+
+				<c:url var="withoutRemaining" value="/traders">
+
+					<c:param name="remainingBool" value="false"></c:param>
+
+				</c:url>
+
+				<c:url var="withRemaining" value="/traders">
+
+					<c:param name="remainingBool" value="true"></c:param>
+
+				</c:url>
+
+
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-success  font-weight-bold text-center">
+						<a class="text-white" href="${withoutRemaining}"> المنتهي </a>
+					</button>
+				</li>
+
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-danger  font-weight-bold text-center">
+
+						<a class="text-white" href="${withRemaining}"> الغير منتهي </a>
+
+					</button>
+				</li>
+
 
 				<li class="bg-dark  list-group-item">
 
@@ -67,7 +100,7 @@
 
 
 
-
+		<!-- TABLE  -->
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">

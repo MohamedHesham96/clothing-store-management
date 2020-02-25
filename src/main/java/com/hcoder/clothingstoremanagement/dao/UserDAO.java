@@ -57,7 +57,7 @@ public interface UserDAO {
 
 	// Spending Methods
 	public int getSpendingTotal();
-	
+
 	public int getSpendingTotalToday();
 
 	public void makeSpendingOpertaion(Spending spending);
@@ -68,11 +68,15 @@ public interface UserDAO {
 
 	public List<Object> getGainByMonthes();
 
-	
 	// Traders
 	public List<Trader> getAllTraders();
+
+	public List<Trader> getAllTradersWithRemaining();
+
+	public List<Trader> getAllTradersWithoutRemaining();
+
 	public void saveTrader(Trader trader);
+
 	public int[] getTradersTotals();
 
-	
 }

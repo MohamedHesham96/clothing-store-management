@@ -78,11 +78,11 @@
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
-						<table class="table table-striped table-dark">
+						<table class=" table table-striped table-dark">
 							<thead class="thead-inverse">
 								<tr>
-									<th>الصنف</th>
 									<th>الكمية</th>
+									<th>الصنف</th>
 									<th>السعر</th>
 									<th>المبلغ المدفوع</th>
 									<th>العميل</th>
@@ -94,6 +94,10 @@
 									for (int i = 0; i < 3; i++) {
 								%>
 								<tr>
+
+									<td><input name="quantity" class="form-control"
+										style="text-align: center; width: 100%; height: 100%;"></td>
+
 									<td><select name="itemId" style="width: 200px"
 										class="text-center form-control" name="testselect">
 											<option value="-1">--- اختر الصنف ---</option>
@@ -110,11 +114,13 @@
 											</c:forEach>
 
 									</select></td>
-									<td><input name="quantity" class="form-control"
+
+									<td><input name="piecePrice"
+										class="text-center form-control"
 										style="width: 100%; height: 100%;"></td>
-									<td><input name="piecePrice" class="form-control"
-										style="width: 100%; height: 100%;"></td>
-									<td><input name="payed" class="form-control"
+
+
+									<td><input name="payed" class="text-center form-control"
 										style="width: 100%; height: 100%;"></td>
 
 									<td><select name="clientId" style="width: 200px;"

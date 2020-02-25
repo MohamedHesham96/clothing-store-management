@@ -449,28 +449,5 @@ public class Navigator {
 		return "redirect:/today";
 	}
 
-	@RequestMapping("/traders")
-	public String getTraders(Model theModel) {
-
-		List<Trader> traders = userService.getAllTraders();
-		int[] tradersTotals = userService.getTradersTotals();
-
-		theModel.addAttribute("tradersList", traders);
-
-		theModel.addAttribute("theTrader", new Trader());
-
-		theModel.addAttribute("payedTotal", tradersTotals[0]);
-		theModel.addAttribute("remainingTotal", tradersTotals[1]);
-
-		return "traders";
-	}
-
-	@RequestMapping("/add-new-trader")
-	public String addNewTrader(@ModelAttribute("theTrader") Trader theTrader) {
-
-		userService.saveTrader(theTrader);
-
-		return "redirect:/traders";
-	}
-
+	
 }

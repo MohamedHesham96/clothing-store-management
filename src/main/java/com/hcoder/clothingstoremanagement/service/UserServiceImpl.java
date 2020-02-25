@@ -171,7 +171,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Trader> getAllTraders() {
-		
+
 		return userDAO.getAllTraders();
 	}
 
@@ -185,6 +185,18 @@ public class UserServiceImpl implements UserService {
 	public int[] getTradersTotals() {
 
 		return userDAO.getTradersTotals();
+	}
+
+	@Override
+	public List<Trader> getAllTradersWithRemaining() {
+
+		return userDAO.getAllTradersWithRemaining();
+	}
+
+	@Override
+	public List<Trader> getAllTradersWithoutRemaining() {
+
+		return userDAO.getAllTradersWithoutRemaining();
 	}
 
 }

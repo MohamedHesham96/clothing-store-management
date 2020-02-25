@@ -66,10 +66,15 @@ public interface UserService {
 
 	public List<Spending> getAllSpending();
 
-	//Traders
+	// Traders
 	public List<Trader> getAllTraders();
-	public void saveTrader(Trader trader);
-	public int[] getTradersTotals();
 
+	public List<Trader> getAllTradersWithRemaining();
+
+	public List<Trader> getAllTradersWithoutRemaining();
+
+	public void saveTrader(Trader trader);
+
+	public int[] getTradersTotals();
 
 }

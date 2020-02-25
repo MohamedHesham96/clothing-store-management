@@ -356,7 +356,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Trader> traders = session.createQuery("from Trader").getResultList();
+		List<Trader> traders = session.createQuery("from Trader order by remaining desc").getResultList();
 
 		return traders;
 	}
@@ -391,6 +391,26 @@ public class UserDAOImpl implements UserDAO {
 
 		return tradersTotals;
 
+	}
+
+	@Override
+	public List<Trader> getAllTradersWithRemaining() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Trader> traders = session.createQuery("from Trader where remaining > 0 order by remaining desc").getResultList();
+
+		return traders;
+	}
+
+	@Override
+	public List<Trader> getAllTradersWithoutRemaining() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Trader> traders = session.createQuery("from Trader where remaining = 0").getResultList();
+
+		return traders;
 	}
 
 }
