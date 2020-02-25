@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hcoder.clothingstoremanagement.dao.UserDAO;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
@@ -88,7 +89,7 @@ public class Navigator {
 		int soldTotal = incomingTotal - warehouseTotal;
 
 		theModel.addAttribute("tradersList", userService.getAllTraders());
-		
+
 		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("items", incomings);
 		theModel.addAttribute("incoming", new Incoming());
@@ -104,8 +105,10 @@ public class Navigator {
 
 		theModel.addAttribute("incoming", new Incoming());
 
+		int total = theIncoming.getTradePrice() * theIncoming.getQuantity();
+
 		theIncoming.setDate(LocalDate.now().toString());
-		theIncoming.setTotal(theIncoming.getTradePrice() * theIncoming.getQuantity());
+		theIncoming.setTotal(total);
 
 		userService.AddIncoming(theIncoming);
 		Warehouse warehouse = new Warehouse();
@@ -113,8 +116,14 @@ public class Navigator {
 		warehouse.setItem(theIncoming.getItem());
 		warehouse.setQuantity(theIncoming.getQuantity());
 		warehouse.setTradePrice(theIncoming.getTradePrice());
-		warehouse.setStore(theIncoming.getStore());
+		warehouse.settrader(theIncoming.gettrader());
 
+		Trader trader = userService.getTraderByName(theIncoming.gettrader());
+
+		trader.setRemaining(trader.getRemaining() + total);
+		
+		userService.saveTrader(trader);
+		
 		userService.addToWarehouse(warehouse);
 
 		return "redirect:/incoming";
@@ -164,7 +173,7 @@ public class Navigator {
 
 		bill.setGain(gain);
 		bill.setItem(warehouse.getItem());
-		bill.setStore(warehouse.getStore());
+		bill.settrader(warehouse.gettrader());
 		bill.setTradePrice(warehouse.getTradePrice());
 
 		clientRecord.setClient(client);
@@ -416,7 +425,7 @@ public class Navigator {
 
 				theBill.setGain(gain);
 				theBill.setItem(warehouse.getItem());
-				theBill.setStore(warehouse.getStore());
+				theBill.settrader(warehouse.gettrader());
 				theBill.setTradePrice(warehouse.getTradePrice());
 
 				clientRecord.setItem(warehouse.getItem());

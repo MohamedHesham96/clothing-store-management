@@ -116,7 +116,7 @@
 											class="text-center form-control  col-xs-3"
 											placeholder="ادخل سعر القطعه" name="pswd"></form:input></td>
 
-									<td><form:select path="store" style="width: 200px;"
+									<td><form:select path="trader" style="width: 200px;"
 											class="text-center form-control  mb-2 col-xs-3">
 											<option value="-1">--- اختر المحل ---</option>
 
@@ -176,7 +176,7 @@
 										<td>${tempItem.tradePrice}</td>
 										<td>${tempItem.piecePrice}</td>
 										<td>${tempItem.total}</td>
-										<td>${tempItem.store}</td>
+										<td>${tempItem.trader}</td>
 										<td>${tempItem.date}</td>
 									</tr>
 								</c:forEach>

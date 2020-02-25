@@ -36,6 +36,8 @@ public interface UserService {
 	public void saveClientRecord(ClientRecord clientRecord);
 
 	// Incoming Methods
+	public List<Incoming> getIncomingsByTraderName(String traderName);
+
 	public List<Incoming> GetIncomingsByDate(String date);
 
 	public List<Incoming> GetAllIncoming();
@@ -43,6 +45,8 @@ public interface UserService {
 	public void AddIncoming(Incoming incoming);
 
 	public int getIcomingTotal();
+
+	public int getIncomingTotalByTraderName(String traderName);
 
 	// Warehouse Methods
 	public int getWarehouseTotal();
@@ -67,6 +71,8 @@ public interface UserService {
 	public List<Spending> getAllSpending();
 
 	// Traders
+	public Trader getTraderById(int id);
+
 	public List<Trader> getAllTraders();
 
 	public List<Trader> getAllTradersWithRemaining();
@@ -76,5 +82,7 @@ public interface UserService {
 	public void saveTrader(Trader trader);
 
 	public int[] getTradersTotals();
+
+	public Trader getTraderByName(String name);
 
 }

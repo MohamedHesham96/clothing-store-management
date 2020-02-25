@@ -38,11 +38,15 @@ public interface UserDAO {
 	// Incoming Methods
 	public List<Incoming> GetIncomingsByDate(String date);
 
+	public List<Incoming> getIncomingsByTraderName(String traderName);
+
 	public List<Incoming> GetAllIncoming();
 
 	public void AddIncoming(Incoming incoming);
 
 	public int getIcomingTotal();
+
+	public int getIncomingTotalByTraderName(String traderName);
 
 	// Warehouse Methods
 	public int getWarehouseTotal();
@@ -69,6 +73,8 @@ public interface UserDAO {
 	public List<Object> getGainByMonthes();
 
 	// Traders
+	public Trader getTraderById(int id);
+
 	public List<Trader> getAllTraders();
 
 	public List<Trader> getAllTradersWithRemaining();
@@ -78,5 +84,7 @@ public interface UserDAO {
 	public void saveTrader(Trader trader);
 
 	public int[] getTradersTotals();
+	
+	public Trader getTraderByName(String name);
 
 }

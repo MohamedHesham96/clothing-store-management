@@ -27,8 +27,8 @@ public class Incoming {
 	@Column(name = "item")
 	String item;
 
-	@Column(name = "store")
-	String store;
+	@Column(name = "trader")
+	String trader;
 
 	@Column(name = "total")
 	int total;
@@ -40,11 +40,11 @@ public class Incoming {
 
 	}
 
-	public Incoming(int quantity, int piece_price, String item, String store, int total, int trade_price) {
+	public Incoming(int quantity, int piece_price, String item, String trader, int total, int trade_price) {
 		this.quantity = quantity;
 		this.piecePrice = piece_price;
 		this.item = item;
-		this.store = store;
+		this.trader = trader;
 		this.total = total;
 		this.tradePrice = trade_price;
 	}
@@ -81,12 +81,12 @@ public class Incoming {
 		this.item = item;
 	}
 
-	public String getStore() {
-		return store;
+	public String gettrader() {
+		return trader;
 	}
 
-	public void setStore(String store) {
-		this.store = store;
+	public void settrader(String trader) {
+		this.trader = trader;
 	}
 
 	public int getTotal() {

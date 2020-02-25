@@ -70,23 +70,18 @@
 				</c:url>
 
 
-				<li class="bg-dark list-group-item">
 
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-success  font-weight-bold text-center">
-						<a class="text-white" href="${withoutRemaining}"> المنتهي </a>
-					</button>
-				</li>
+				<li class="bg-dark list-group-item"><a
+					class="w-100 btn badge-success font-weight-bold text-center
+							text-white"
+					href="${withoutRemaining}"> منتهي </a></li>
 
-				<li class="bg-dark list-group-item">
 
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-danger  font-weight-bold text-center">
 
-						<a class="text-white" href="${withRemaining}"> الغير منتهي </a>
-
-					</button>
-				</li>
+				<li class="bg-dark list-group-item"><a
+					class="w-100 btn badge-danger font-weight-bold text-center
+							text-white"
+					href="${withRemaining}"> الغير منتهي </a></li>
 
 
 				<li class="bg-dark  list-group-item">
@@ -115,11 +110,11 @@
 						</thead>
 						<tbody>
 							<c:forEach var="tempItem" items="${tradersList}">
-								<c:url var="clientLink" value="/clientProfile">
-									<c:param name="clientId" value="${tempItem.id}"></c:param>
+								<c:url var="traderLink" value="/traderProfile">
+									<c:param name="traderId" value="${tempItem.id}"></c:param>
 								</c:url>
 								<tr>
-									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
+									<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
 									<td>${tempItem.payed}</td>
 									<td>${tempItem.remaining}</td>
 								</tr>
@@ -149,15 +144,6 @@
 						<form:input type="text" class="form-control  col-xs-3"
 							placeholder="ادخل اسم التاجر " path="name"></form:input>
 
-						<label style="margin-top: 10px" class="mb-2 mr-sm-2">المدفوع
-							:</label>
-						<form:input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل المبلغ المدفوع " path="payed"></form:input>
-
-						<label style="margin-top: 10px" class="mb-2 mr-sm-2">الباقي
-							:</label>
-						<form:input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل الملف المتبقي " path="remaining"></form:input>
 
 						<br>
 

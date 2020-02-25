@@ -37,8 +37,8 @@ public class Bill {
 	@Column(name = "item")
 	String item;
 
-	@Column(name = "store")
-	String store;
+	@Column(name = "trader")
+	String trader;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REFRESH })
@@ -109,13 +109,13 @@ public class Bill {
 		this.item = item;
 	}
 
-	public String getStore() {
-		return store;
+	public String gettrader() {
+		return trader;
 
 	}
 
-	public void setStore(String store) {
-		this.store = store;
+	public void settrader(String trader) {
+		this.trader = trader;
 	}
 
 }

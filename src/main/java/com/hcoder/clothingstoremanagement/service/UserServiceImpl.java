@@ -199,4 +199,28 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllTradersWithoutRemaining();
 	}
 
+	@Override
+	public Trader getTraderById(int id) {
+
+		return userDAO.getTraderById(id);
+	}
+
+	@Override
+	public int getIncomingTotalByTraderName(String traderName) {
+
+		return userDAO.getIncomingTotalByTraderName(traderName);
+	}
+
+	@Override
+	public List<Incoming> getIncomingsByTraderName(String traderName) {
+
+		return userDAO.getIncomingsByTraderName(traderName);
+	}
+
+	@Override
+	public Trader getTraderByName(String name) {
+
+		return userDAO.getTraderByName(name);
+	}
+
 }

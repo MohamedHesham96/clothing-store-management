@@ -362,10 +362,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	@Transactional
 	public void saveTrader(Trader trader) {
 
 		Session session = entityManager.unwrap(Session.class);
-		session.save(trader);
+		session.saveOrUpdate(trader);
 
 	}
 
@@ -412,6 +413,71 @@ public class UserDAOImpl implements UserDAO {
 		List<Trader> traders = session.createQuery("from Trader where remaining = 0").getResultList();
 
 		return traders;
+	}
+
+	@Override
+	public Trader getTraderById(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Trader theTrader = session.get(Trader.class, id);
+
+		return theTrader;
+
+	}
+
+	@Override
+	public List<Incoming> getIncomingsByTraderName(String traderName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Incoming> query = session.createQuery("from Incoming where trader = :traderName order by date desc");
+
+		query.setParameter("traderName", traderName);
+
+		List<Incoming> traderIncomings = query.getResultList();
+
+		return traderIncomings;
+	}
+
+	@Override
+	public int getIncomingTotalByTraderName(String traderName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Incoming> query = session.createQuery("from Incoming where trader = :traderName");
+		query.setParameter("traderName", traderName);
+
+		List<Incoming> items = query.getResultList();
+
+		int listSize = items.size();
+
+		int incomingTotal = 0;
+
+		for (int i = 0; i < listSize; i++) {
+
+			Incoming item = items.get(i);
+
+			incomingTotal += item.getTotal();
+		}
+
+		return incomingTotal;
+
+	}
+
+	@Override
+	public Trader getTraderByName(String name) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Trader> query = session.createQuery("from Trader where name = :name");
+
+		query.setParameter("name", name);
+
+		Trader trader = query.getSingleResult();
+
+		return trader;
+
 	}
 
 }

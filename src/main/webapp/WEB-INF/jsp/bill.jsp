@@ -40,7 +40,7 @@
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						اجمالي الربح <span style="margin-right: 20px;"
-							class="w-50 badge badge-light text-center"> ${gainTotal}</span>
+							class="w-50 badge badge-light text-center"> ${gainTotal} جنيه</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">
@@ -48,7 +48,7 @@
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						المصاريف <span style="margin-right: 33px;"
-							class="w-50 badge badge-light text-center">${spendingTotal}</span>
+							class="w-50 badge badge-light text-center">${spendingTotal} جنيه</span>
 					</button>
 				</li>
 				<li class="bg-dark list-group-item">
@@ -56,7 +56,7 @@
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						صافي الربح <span style="margin-right: 25px;"
-							class="w-50 badge badge-light text-center">${total}</span>
+							class="w-50 badge badge-light text-center">${total} جنيه</span>
 					</button>
 				</li>
 

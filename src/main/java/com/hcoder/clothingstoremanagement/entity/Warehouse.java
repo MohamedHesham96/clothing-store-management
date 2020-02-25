@@ -24,8 +24,8 @@ public class Warehouse {
 	@Column(name = "item")
 	String item;
 
-	@Column(name = "store")
-	String store;
+	@Column(name = "trader")
+	String trader;
 
 	public int getId() {
 		return id;
@@ -59,12 +59,12 @@ public class Warehouse {
 		this.item = item;
 	}
 
-	public String getStore() {
-		return store;
+	public String gettrader() {
+		return trader;
 	}
 
-	public void setStore(String store) {
-		this.store = store;
+	public void settrader(String trader) {
+		this.trader = trader;
 	}
 
 }
