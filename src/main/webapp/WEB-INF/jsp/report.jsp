@@ -202,7 +202,7 @@
 						<tbody>
 
 							<%
-								if (flags[2 - i] == true && i == 0) {
+								if (flags[2] == true && i == 0) {
 							%>
 
 							<c:forEach var="temp" items="<%=list2022%>">
@@ -227,7 +227,7 @@
 
 
 							<%
-								if (flags[2 - i] == true && i == 1) {
+								if (flags[2] == true && i == 1) {
 							%>
 
 							<c:forEach var="temp" items="<%=list2021%>">
@@ -251,7 +251,7 @@
 
 
 							<%
-								if (flags[2 - i] == true && i == 2) {
+								if (flags[2] == true && i == 2) {
 							%>
 
 							<c:forEach var="temp" items="<%=list2020%>">
