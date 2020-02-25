@@ -87,6 +87,8 @@ public class Navigator {
 
 		int soldTotal = incomingTotal - warehouseTotal;
 
+		theModel.addAttribute("tradersList", userService.getAllTraders());
+		
 		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("items", incomings);
 		theModel.addAttribute("incoming", new Incoming());
@@ -290,8 +292,6 @@ public class Navigator {
 
 	}
 
-	String myDate = LocalDate.now().toString();
-
 	@RequestMapping("/spending")
 	public String getSpendings(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
 
@@ -431,9 +431,6 @@ public class Navigator {
 				if (!clientIdList.get(i).equals("-1")) {
 
 					theClient = userService.getClientById(Integer.parseInt(clientIdList.get(i)));
-
-					theBill.setClient(theClient);
-					clientRecord.setClient(theClient);
 
 					int theNewdrawee = theClient.getDrawee() + clientRecord.getPrice() - clientRecord.getPay();
 
