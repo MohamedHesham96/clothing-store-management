@@ -17,7 +17,7 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>العملاء</title>
+<title>التجار</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -84,77 +84,85 @@
 					href="${withRemaining}"> الغير منتهي </a></li>
 
 
-				<li class="bg-dark  list-group-item">
 
-					<button id="showForm" type="button"
-						class="btn btn-light btn-lg btn-block">أضافة تاجر جديد</button>
 
 				</li>
+
+				<li class="bg-dark list-group-item"><form:form metho="POST"
+						action="add-new-trader" modelAttribute="theTrader">
+
+
+						<form:input type="text" class="text-center form-control  col-xs-3"
+							placeholder="ادخل اسم التاجر " path="name"></form:input>
+
+						<button style="margin-top: 10px" type="submit"
+							class="btn btn-light form-control font-weight-bold">قم بأضافة تاجر جديد</button>
+					</form:form></li>
 			</ul>
 		</div>
 
+	
 
-
-		<!-- TABLE  -->
-		<div class="row  my-4">
-			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
-							<tr>
-								<th>اسم التاجر</th>
-								<th>المدفوع</th>
-								<th>الباقي</th>
-
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="tempItem" items="${tradersList}">
-								<c:url var="traderLink" value="/traderProfile">
-									<c:param name="traderId" value="${tempItem.id}"></c:param>
-								</c:url>
+			<!-- TABLE  -->
+			<div class="row  my-4">
+				<div dir='rtl' class="col-lg-12 col-md-8">
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-dark">
+							<thead class="thead-inverse">
 								<tr>
-									<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
-									<td>${tempItem.payed}</td>
-									<td>${tempItem.remaining}</td>
+									<th>اسم التاجر</th>
+									<th>المدفوع</th>
+									<th>الباقي</th>
+
 								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="tempItem" items="${tradersList}">
+									<c:url var="traderLink" value="/traderProfile">
+										<c:param name="traderId" value="${tempItem.id}"></c:param>
+									</c:url>
+									<tr>
+										<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
+										<td>${tempItem.payed}</td>
+										<td>${tempItem.remaining}</td>
+									</tr>
 
-							</c:forEach>
-						</tbody>
-					</table>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
+
 			</div>
 
-		</div>
+
+			<div
+				style="display: none; margin-top: 100px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
+				class="form fixed-top container-fluid col-lg-4">
+				<div class="card bg-dark">
+
+					<div class="text-right card-body bg-dark text-white">
+
+						<h3>أضافة تاجر جديد</h3>
+						<form:form metho="POST" action="add-new-trader"
+							modelAttribute="theTrader">
+
+							<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
+								التاجر :</label>
+							<form:input type="text" class="form-control  col-xs-3"
+								placeholder="ادخل اسم التاجر " path="name"></form:input>
 
 
-		<div
-			style="display: none; margin-top: 100px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-			class="form fixed-top container-fluid col-lg-4">
-			<div class="card bg-dark">
+							<br>
 
-				<div class="text-right card-body bg-dark text-white">
-
-					<h3>أضافة تاجر جديد</h3>
-					<form:form metho="POST" action="add-new-trader"
-						modelAttribute="theTrader">
-
-						<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
-							التاجر :</label>
-						<form:input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل اسم التاجر " path="name"></form:input>
+							<button type="submit" class="btn btn-info form-control 	">
+								قم بأضافة تاجر جديد</button>
+						</form:form>
 
 
-						<br>
-
-						<button type="submit" class="btn btn-info form-control 	">
-							قم بأضافة تاجر جديد</button>
-					</form:form>
-
-
+					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>
