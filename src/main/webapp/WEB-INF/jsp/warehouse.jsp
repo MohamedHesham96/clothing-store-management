@@ -52,7 +52,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
+						class="w-100 btn bg-info text-white font-weight-bold text-center">
 						المشتريات <span style="margin-right: 17px;"
 							class="w-50 badge badge-light"> ${incomingTotal} جنيه</span>
 					</button>
@@ -61,7 +61,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
+						class="w-100 btn bg-info text-white font-weight-bold text-center">
 						المباع <span style="margin-right: 50px;"
 							class="w-50 badge badge-light">${soldTotal} جنيه</span>
 					</button>
@@ -70,7 +70,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
+						class="w-100 btn bg-info text-white  font-weight-bold text-center">
 						الموجود <span style="margin-right: 35px;"
 							class="w-50 badge badge-light">${warehouseTotal} جنيه</span>
 					</button>

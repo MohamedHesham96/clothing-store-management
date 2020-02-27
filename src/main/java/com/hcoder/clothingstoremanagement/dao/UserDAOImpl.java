@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.hibernate.transform.Transformers;
+import org.hibernate.type.DoubleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,7 @@ import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -36,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Bill> query = session.createQuery("from Bill order by date desc");
+		Query<Bill> query = session.createQuery("from Bill order by TIMESTAMP desc");
 
 		List<Bill> bills = query.getResultList();
 
@@ -49,7 +52,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Bill> query = session.createQuery("from Bill where date = :theDate order by date desc");
+		Query<Bill> query = session.createQuery("from Bill where date = :theDate order by TIMESTAMP desc");
 
 		query.setParameter("theDate", date);
 
@@ -73,7 +76,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Incoming> query = session.createQuery("from Incoming order by date desc");
+		Query<Incoming> query = session.createQuery("from Incoming order by TIMESTAMP desc");
 
 		List<Incoming> incomings = query.getResultList();
 
@@ -92,7 +95,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
+		List<Warehouse> items = session.createQuery("from Warehouse order by TIMESTAMP desc").getResultList();
 
 		return items;
 	}
@@ -159,7 +162,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Incoming> items = session.createQuery("from Incoming ").getResultList();
+		List<Incoming> items = session.createQuery("from Incoming").getResultList();
 		int listSize = items.size();
 
 		int incomingTotal = 0;
@@ -176,6 +179,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int getWarehouseTotal() {
+
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
@@ -199,7 +203,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Spending> items = session.createQuery("from Spending order by date desc").getResultList();
+		List<Spending> items = session.createQuery("from Spending order by TIMESTAMP desc").getResultList();
 
 		return items;
 	}
@@ -264,7 +268,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Spending> query = session.createQuery("from Spending where date = :theDate");
+		Query<Spending> query = session.createQuery("from Spending where date = :theDate order by TIMESTAMP desc");
 
 		query.setParameter("theDate", date);
 
@@ -431,7 +435,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		Query<Incoming> query = session.createQuery("from Incoming where trader = :traderName order by date desc");
+		Query<Incoming> query = session.createQuery("from Incoming where trader = :traderName order by TIMESTAMP desc");
 
 		query.setParameter("traderName", traderName);
 
@@ -478,6 +482,81 @@ public class UserDAOImpl implements UserDAO {
 
 		return trader;
 
+	}
+
+	@Override
+	public int getSpendingTotalByDate(String date) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Spending> query = session.createQuery("from Spending where date = :theDate");
+
+		query.setParameter("theDate", date);
+
+		List<Spending> spendings = query.list();
+
+		int listSize = spendings.size();
+
+		int spendingTotal = 0;
+
+		for (int i = 0; i < listSize; i++) {
+
+			spendingTotal += spendings.get(i).getMoney();
+		}
+
+		return spendingTotal;
+	}
+
+	@Override
+	public List<Result> groupByMonths() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Result> queryBill = session
+				.createNativeQuery("SELECT sum(gain) as amount,\r\n" + "    extract(month from TIMESTAMP) as month,\r\n"
+						+ "    extract(year from TIMESTAMP) as year \r\n" + "    FROM Bill \r\n"
+						+ "    GROUP BY month, \r\n" + "    year ORDER BY year desc, month desc")
+				.addScalar("amount", new DoubleType()).addScalar("year", new DoubleType())
+				.addScalar("month", new DoubleType());
+
+		List<Result> monthslistForBill = queryBill.setResultTransformer(Transformers.aliasToBean(Result.class)).list();
+
+		Query<Result> querySpending = session
+				.createNativeQuery(
+						"SELECT sum(money) as spending,\r\n" + "    extract(month from TIMESTAMP) as month,\r\n"
+								+ "    extract(year from TIMESTAMP) as year \r\n" + "    FROM Spending \r\n"
+								+ "    GROUP BY month, \r\n" + "    year ORDER BY year desc, month desc")
+				.addScalar("spending", new DoubleType()).addScalar("year", new DoubleType())
+				.addScalar("month", new DoubleType());
+
+		List<Result> monthslistForSpending = querySpending.setResultTransformer(Transformers.aliasToBean(Result.class))
+				.list();
+
+		int spendingMonth = 0;
+		int spendingYear = 0;
+		int billMonth = 0;
+		int billYear = 0;
+
+		for (Result spendingResult : monthslistForSpending) {
+
+			
+			for (Result billResult : monthslistForBill) {
+				
+				
+				spendingMonth = spendingResult.getMonth().intValue();
+				spendingYear = spendingResult.getYear().intValue();
+				billMonth = billResult.getMonth().intValue();
+				billYear = billResult.getYear().intValue();
+
+				if (billYear == spendingYear && billMonth == spendingMonth) {
+
+					billResult.setSpending(spendingResult.getSpending());
+				}
+
+			}
+		}
+
+		return monthslistForBill;
 	}
 
 }

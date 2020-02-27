@@ -10,6 +10,7 @@ import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -34,7 +35,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Incoming> GetAllIncoming() {
-		// TODO Auto-generated method stub
 
 		return userDAO.GetAllIncoming();
 	}
@@ -221,6 +221,18 @@ public class UserServiceImpl implements UserService {
 	public Trader getTraderByName(String name) {
 
 		return userDAO.getTraderByName(name);
+	}
+
+	@Override
+	public int getSpendingTotalByDate(String date) {
+
+		return userDAO.getSpendingTotalByDate(date);
+	}
+
+	@Override
+	public List<Result> groupByMonths() {
+
+		return userDAO.groupByMonths();
 	}
 
 }

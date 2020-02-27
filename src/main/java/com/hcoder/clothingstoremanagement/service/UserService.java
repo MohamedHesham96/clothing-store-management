@@ -6,6 +6,7 @@ import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -70,6 +71,8 @@ public interface UserService {
 
 	public List<Spending> getAllSpending();
 
+	public int getSpendingTotalByDate(String date);
+
 	// Traders
 	public Trader getTraderById(int id);
 
@@ -84,5 +87,10 @@ public interface UserService {
 	public int[] getTradersTotals();
 
 	public Trader getTraderByName(String name);
+	
+	
+	//SUMMRY
+	public List<Result> groupByMonths();
+
 
 }

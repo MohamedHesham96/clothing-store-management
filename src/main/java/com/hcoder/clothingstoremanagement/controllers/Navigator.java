@@ -6,8 +6,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,22 +52,6 @@ public class Navigator {
 		this.entityManager = entityManager;
 	}
 
-	@RequestMapping("/home")
-	public String goHome() {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		String SQL_QUERY = "select date, sum(gain) as gain_a_sum\r\n" + "from bill\r\n" + "group by month(2);";
-		Query query = session.createQuery(SQL_QUERY);
-
-		for (Iterator it = query.iterate(); it.hasNext();) {
-			Object[] row = (Object[]) it.next();
-
-			System.out.println(">>>>>>>>>>>>>>>>>>> Row: " + row[0]);
-		}
-
-		return "index";
-	}
 
 	@RequestMapping("/incoming")
 	public String getIncoming(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
@@ -121,9 +107,9 @@ public class Navigator {
 		Trader trader = userService.getTraderByName(theIncoming.gettrader());
 
 		trader.setRemaining(trader.getRemaining() + total);
-		
+
 		userService.saveTrader(trader);
-		
+
 		userService.addToWarehouse(warehouse);
 
 		return "redirect:/incoming";
@@ -198,16 +184,18 @@ public class Navigator {
 	public String getBill(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
 
 		List<Bill> bills;
+		int spendingTotal = 0;
 
 		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
 			bills = userService.getAllBills();
+			spendingTotal = userService.getSpendingTotal();
 
 		} else {
 
 			bills = userService.getBillsByDate(theDate);
-
+			spendingTotal = userService.getSpendingTotalByDate(theDate);
 		}
 
 		int listSize = bills.size();
@@ -221,8 +209,6 @@ public class Navigator {
 
 			gainTotal += item.getGain();
 		}
-
-		int spendingTotal = userService.getSpendingTotal();
 
 		// صافي الربح
 		int total = gainTotal - spendingTotal;
@@ -310,20 +296,18 @@ public class Navigator {
 
 			theDate = LocalDate.now().toString();
 			spendings = userService.getAllSpending();
-
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + theDate);
+			theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
 
 		} else {
 
 			spendings = userService.getSpendingsByDate(theDate);
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> " + theDate);
+			theModel.addAttribute("spendingTotal", userService.getSpendingTotalByDate(theDate));
 
 		}
 
 		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("spending", new Spending());
 		theModel.addAttribute("spendings", spendings);
-		theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
 
 		return "spending";
 	}

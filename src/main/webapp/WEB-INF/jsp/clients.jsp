@@ -41,18 +41,29 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
+						class="w-100 btn bg-info text-white  font-weight-bold text-center">
 						اجمالي الدين <span style="margin-right: 20px;"
-							class="w-50 badge badge-light">${draweeTotal}</span>
+							class="w-50 badge badge-light">${draweeTotal} جنيه</span>
 					</button>
 				</li>
 
-				<li class="bg-dark  list-group-item">
+				<li class="bg-dark   list-group-item"><form:form metho="POST"
+						action="add-new-client" modelAttribute="theClient">
 
-					<button id="showForm" type="button"
-						class="btn btn-light btn-lg btn-block">أضافة عميل جديد</button>
+						<form:input type="text" class="text-center form-control  col-xs-3"
+							placeholder="ادخل اسم العميل " path="name"></form:input>
 
-				</li>
+						<form:input cssStyle="margin-top: 10px" type="text"
+							class="text-center form-control  col-xs-3"
+							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
+
+
+						<button style="margin-top: 10px" type="submit"
+							class="btn btn-info form-control font-weight-bold">
+							أضافة عميل جديد</button>
+
+
+					</form:form></li>
 			</ul>
 		</div>
 
@@ -99,34 +110,32 @@
 				<div class="text-right card-body bg-dark text-white">
 
 					<h3>أضافة عميل جديد</h3>
-					<form:form metho="POST" action="add-new-client"
-						modelAttribute="theClient">
 
-						<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
-							العميل :</label>
-						<c:if test="${not empty nameError}">
-							<span style="color: red;" />
+					<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
+						العميل :</label>
+					<c:if test="${not empty nameError}">
+						<span style="color: red;" />
 							${nameError}
 						</span>
-						</c:if>
-						<form:input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل اسم العميل " path="name"></form:input>
+					</c:if>
 
-						<label style="margin-top: 10px" class="mb-2 mr-sm-2">التيليفون
-							:</label>
-						<c:if test="${not empty phoneError}">
-							<span style="color: red;" />
+
+
+
+
+
+
+
+					<label style="margin-top: 10px" class="mb-2 mr-sm-2">التيليفون
+						:</label>
+					<c:if test="${not empty phoneError}">
+						<span style="color: red;" />
 							${phoneError}
 						</span>
-						</c:if>
-						<form:input type="text" class="form-control  col-xs-3"
-							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
+					</c:if>
 
-						<br>
+					<br>
 
-						<button type="submit" class="btn btn-info form-control 	">
-							قم بأضافة عميل جديد</button>
-					</form:form>
 
 
 				</div>

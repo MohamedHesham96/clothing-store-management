@@ -1,4 +1,4 @@
-table-bordered<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@page import="com.hcoder.clothingstoremanagement.entity.Incoming"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
@@ -8,8 +8,6 @@ table-bordered<%@page import="java.time.LocalDate"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -48,31 +46,45 @@ table-bordered<%@page import="java.time.LocalDate"%>
 					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn badge-info  font-weight-bold text-center">
 						المصاريف <span style="margin-right: 20px;"
-							class="w-50 badge badge-light">${spendingTotal}</span>
+							class="w-50 badge badge-light">${spendingTotal} جنيه</span>
 					</button>
 
 				</li>
+
+
 				<li class="bg-dark list-group-item">
 
 					<form method="GET" action="spending">
 
 						<input type="date" name="date" value="${date}"
-							class="w-100 btn badge-info  font-weight-bold text-center">
+							class=" btn badge-info  font-weight-bold text-center form-control  col-xs-3 ">
 
-						</input> <input type="submit" style="margin-top: 10px;"
-							class="w-100 btn badge-light  font-weight-bold text-center"
+						<input type="submit" style="margin-top: 10px;"
+							class=" btn badge-light font-weight-bold text-center form-control  col-xs-3"
 							value="اذهب لهذا اليوم" />
 
 					</form>
 				</li>
 
-				<li class="bg-dark  list-group-item">
 
-					<button id="showForm" type="button"
-						class="btn btn-light btn-lg btn-block  text-center">سحب
-						مبلغ</button>
+				<li class="bg-dark list-group-item"><form:form metho="POST"
+						action="make-spending" modelAttribute="spending">
 
-				</li>
+						<form:input type="text" class="text-center form-control  col-xs-3"
+							placeholder="ادخل المبلغ " name="money" path="money"></form:input>
+
+						<form:input style="margin-top: 10px" type="text"
+							class="text-center form-control  col-xs-3"
+							placeholder="ادخل ملاحظتك" path="note"></form:input>
+
+						<input name="date" value="2020-01-01" type="hidden" />
+
+						<button style="margin-top: 10px" type="submit"
+							class="btn btn-info form-control font-weight-bold">سحب
+							المبلغ</button>
+
+
+					</form:form></li>
 			</ul>
 		</div>
 
@@ -119,6 +131,8 @@ table-bordered<%@page import="java.time.LocalDate"%>
 				<h3>سحب مبلغ</h3>
 				<form:form metho="POST" action="make-spending"
 					modelAttribute="spending">
+					<form:input type="text" class="form-control  col-xs-3"
+						placeholder="ادخل المبلغ " name="money" path="money"></form:input>
 
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
 						المسحوب :</label>
@@ -129,8 +143,6 @@ table-bordered<%@page import="java.time.LocalDate"%>
 					<label style="margin-top: 10px" class="mb-2 mr-sm-2">ملاحظة
 						:</label>
 
-					<form:input type="text" class="form-control  col-xs-3"
-						placeholder="ادخل ملاحظتك" path="note"></form:input>
 					<form:errors cssStyle="color: red;" path="note" />
 
 					<br>

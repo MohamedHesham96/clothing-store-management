@@ -41,7 +41,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
+						class="w-100 btn bg-info text-white  font-weight-bold text-center">
 						المدفوع <span style="margin-right: 20px;"
 							class="w-50 badge badge-light">${payedTotal} جنيه </span>
 					</button>
@@ -50,7 +50,7 @@
 				<li class="bg-dark list-group-item">
 
 					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn badge-info  font-weight-bold text-center">
+						class="w-100 btn bg-info text-white  font-weight-bold text-center">
 						الباقي <span style="margin-right: 30px;"
 							class="w-50 badge badge-light">${remainingTotal} جنيه</span>
 					</button>
@@ -96,73 +96,48 @@
 							placeholder="ادخل اسم التاجر " path="name"></form:input>
 
 						<button style="margin-top: 10px" type="submit"
-							class="btn btn-light form-control font-weight-bold">قم بأضافة تاجر جديد</button>
+							class="btn btn-info form-control font-weight-bold ">
+					أضافة تاجر جديد</button>
 					</form:form></li>
 			</ul>
 		</div>
 
-	
 
-			<!-- TABLE  -->
-			<div class="row  my-4">
-				<div dir='rtl' class="col-lg-12 col-md-8">
-					<div class="table-responsive">
-						<table class="table table-bordered table-striped table-dark">
-							<thead class="thead-inverse">
+
+		<!-- TABLE  -->
+		<div class="row  my-4">
+			<div dir='rtl' class="col-lg-12 col-md-8">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped table-dark">
+						<thead class="thead-inverse">
+							<tr>
+								<th>اسم التاجر</th>
+								<th>المدفوع</th>
+								<th>الباقي</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="tempItem" items="${tradersList}">
+								<c:url var="traderLink" value="/traderProfile">
+									<c:param name="traderId" value="${tempItem.id}"></c:param>
+								</c:url>
 								<tr>
-									<th>اسم التاجر</th>
-									<th>المدفوع</th>
-									<th>الباقي</th>
-
+									<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
+									<td>${tempItem.payed}</td>
+									<td>${tempItem.remaining}</td>
 								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="tempItem" items="${tradersList}">
-									<c:url var="traderLink" value="/traderProfile">
-										<c:param name="traderId" value="${tempItem.id}"></c:param>
-									</c:url>
-									<tr>
-										<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
-										<td>${tempItem.payed}</td>
-										<td>${tempItem.remaining}</td>
-									</tr>
 
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-			</div>
-
-
-			<div
-				style="display: none; margin-top: 100px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-				class="form fixed-top container-fluid col-lg-4">
-				<div class="card bg-dark">
-
-					<div class="text-right card-body bg-dark text-white">
-
-						<h3>أضافة تاجر جديد</h3>
-						<form:form metho="POST" action="add-new-trader"
-							modelAttribute="theTrader">
-
-							<label style="margin-top: 10px" class="mb-2 mr-sm-2"> اسم
-								التاجر :</label>
-							<form:input type="text" class="form-control  col-xs-3"
-								placeholder="ادخل اسم التاجر " path="name"></form:input>
-
-
-							<br>
-
-							<button type="submit" class="btn btn-info form-control 	">
-								قم بأضافة تاجر جديد</button>
-						</form:form>
-
-
-					</div>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
 			</div>
+
+		</div>
+
+
+
 	</div>
 </body>
 </html>

@@ -6,6 +6,7 @@ import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
 import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
+import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
@@ -64,6 +65,8 @@ public interface UserDAO {
 
 	public int getSpendingTotalToday();
 
+	public int getSpendingTotalByDate(String date);
+
 	public void makeSpendingOpertaion(Spending spending);
 
 	public List<Spending> getSpendingsByDate(String date);
@@ -84,7 +87,11 @@ public interface UserDAO {
 	public void saveTrader(Trader trader);
 
 	public int[] getTradersTotals();
-	
+
 	public Trader getTraderByName(String name);
+
+	//SUMMRY
+	public List<Result> groupByMonths();
+		
 
 }

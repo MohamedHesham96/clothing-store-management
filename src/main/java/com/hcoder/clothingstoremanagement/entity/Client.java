@@ -28,7 +28,7 @@ public class Client {
 	@Column(name = "name")
 	String name;
 	
-	@Pattern(regexp = "(01)[0125]{1}[0-9]{8}", message = "ادخل التيليفون بشكل صحيح")
+	//@Pattern(regexp = "(01)[0125]{1}[0-9]{8}", message = "ادخل التيليفون بشكل صحيح")
 	@Column(name = "phone")
 	String phone;
 

@@ -10,9 +10,13 @@
 
 <c:url var="spending" value="/spending"></c:url>
 
+<c:url var="spending" value="/spending"></c:url>
+
 <c:url var="clients" value="/clients"></c:url>
 
 <c:url var="traders" value="/traders"></c:url>
+
+<c:url var="months" value="/months"></c:url>
 
 <c:url var="today" value="/today"></c:url>
 
@@ -84,7 +88,7 @@
 
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-warning text-white" style="padding: 10px;"
-				href="${clients}">شهري</a></li>
+				href="${months}">شهري</a></li>
 
 
 			<li style="margin: 5px;" class=""><a
