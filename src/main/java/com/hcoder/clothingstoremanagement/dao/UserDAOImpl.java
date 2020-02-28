@@ -537,9 +537,9 @@ public class UserDAOImpl implements UserDAO {
 		int billMonth = 0;
 		int billYear = 0;
 
-		for (Result spendingResult : monthslistForSpending) {
+		for (Result billResult : monthslistForBill) {
 
-			for (Result billResult : monthslistForBill) {
+			for (Result spendingResult : monthslistForSpending) {
 
 				spendingMonth = spendingResult.getMonth().intValue();
 				spendingYear = spendingResult.getYear().intValue();
@@ -550,18 +550,20 @@ public class UserDAOImpl implements UserDAO {
 				if (billYear == spendingYear && billMonth == spendingMonth) {
 
 					billResult.setSpending(spendingResult.getSpending());
+					spendingResult.setAmount(billResult.getAmount());
+
 				}
 
 			}
 		}
 
-		if (monthslistForBill.isEmpty())
+		if (monthslistForBill.size() > monthslistForSpending.size())
 
-			return monthslistForSpending;
+			return monthslistForBill;
 
 		else {
 
-			return monthslistForBill;
+			return monthslistForSpending;
 
 		}
 	}

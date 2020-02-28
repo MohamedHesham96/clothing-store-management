@@ -55,8 +55,7 @@
 
 
 			<li style="margin-left: 5px; margin-right: 5px">
-				<h1 class="text
-				-white ">|</h1>
+				<h1 class="text-white ">|</h1>
 			</li>
 
 
