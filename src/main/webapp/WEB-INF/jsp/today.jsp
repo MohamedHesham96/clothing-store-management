@@ -21,8 +21,8 @@
 	rel="stylesheet">
 
 </head>
-<body background="images/wall10.jpg"
-	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+<body background="images/wall8.jpg"
+	style="width: 100%; height: 100%; background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
