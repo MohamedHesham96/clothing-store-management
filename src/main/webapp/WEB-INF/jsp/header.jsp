@@ -40,17 +40,6 @@
 %>
 
 
-<script>
-	$(document).ready(function() {
-		$(".submitBtn").submit(function() {
-			$(".submitBtn").prop("disabled", true);
-			return true;
-		});
-	});
-</script>
-
-
-
 <nav style="box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.9);" dir="rtl"
 	class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar">
 	<a class="navbar-brand" href="#">مازن العليمي</a>
@@ -66,7 +55,8 @@
 
 
 			<li style="margin-left: 5px; margin-right: 5px">
-				<h1 class="text-white ">|</h1>
+				<h1 class="text
+				-white ">|</h1>
 			</li>
 
 
@@ -108,7 +98,7 @@
 
 			<li style="margin: 5px;"><a
 				class="btn bg-success text-white font-weight-bold "
-				style="padding: 10px; width: 100px" href="${report}">تقرير</a></li>
+				style="padding: 10px; width: 100px" href="${report}">التقرير</a></li>
 
 
 			<li style="margin-left: 5px; margin-right: 5px">
