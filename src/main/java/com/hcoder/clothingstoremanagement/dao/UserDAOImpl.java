@@ -537,9 +537,9 @@ public class UserDAOImpl implements UserDAO {
 		int billMonth = 0;
 		int billYear = 0;
 
-		for (Result billResult : monthslistForBill) {
+		for (Result spendingResult : monthslistForSpending) {
 
-			for (Result spendingResult : monthslistForSpending) {
+			for (Result billResult : monthslistForBill) {
 
 				spendingMonth = spendingResult.getMonth().intValue();
 				spendingYear = spendingResult.getYear().intValue();
