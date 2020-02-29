@@ -34,7 +34,8 @@
 
 </head>
 
-<body background="images/wall6.jpg"
+<body background="images/wall1.jpg"
+
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>

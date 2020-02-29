@@ -537,34 +537,52 @@ public class UserDAOImpl implements UserDAO {
 		int billMonth = 0;
 		int billYear = 0;
 
-		for (Result spendingResult : monthslistForSpending) {
+		if (monthslistForBill.size() > monthslistForSpending.size()) {
 
 			for (Result billResult : monthslistForBill) {
 
-				spendingMonth = spendingResult.getMonth().intValue();
-				spendingYear = spendingResult.getYear().intValue();
+				for (Result spendingResult : monthslistForSpending) {
 
-				billMonth = billResult.getMonth().intValue();
-				billYear = billResult.getYear().intValue();
+					billMonth = billResult.getMonth().intValue();
+					billYear = billResult.getYear().intValue();
 
-				if (billYear == spendingYear && billMonth == spendingMonth) {
+					spendingMonth = spendingResult.getMonth().intValue();
+					spendingYear = spendingResult.getYear().intValue();
 
-					billResult.setSpending(spendingResult.getSpending());
-					spendingResult.setAmount(billResult.getAmount());
+					if (billYear == spendingYear && billMonth == spendingMonth) {
+
+						billResult.setSpending(spendingResult.getSpending());
+
+					}
 
 				}
-
 			}
-		}
-
-		if (monthslistForBill.size() > monthslistForSpending.size())
 
 			return monthslistForBill;
+		}
 
 		else {
 
-			return monthslistForSpending;
+			for (Result spendingResult : monthslistForSpending) {
 
+				for (Result billResult : monthslistForBill) {
+
+					billMonth = billResult.getMonth().intValue();
+					billYear = billResult.getYear().intValue();
+
+					spendingMonth = spendingResult.getMonth().intValue();
+					spendingYear = spendingResult.getYear().intValue();
+
+					if (billYear == spendingYear && billMonth == spendingMonth) {
+
+						spendingResult.setAmount(billResult.getAmount());
+
+					}
+
+				}
+			}
+
+			return monthslistForSpending;
 		}
 	}
 

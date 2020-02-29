@@ -27,7 +27,7 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body background="images/wall12.jpg"
+<body background="images/wall7.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>

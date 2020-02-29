@@ -25,7 +25,7 @@
 
 
 </head>
-<body background="images/wall10.jpg"
+<body background="images/cal1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>

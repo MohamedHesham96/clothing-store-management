@@ -17,7 +17,7 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>${clientData.name}</title>
+<title>${traderData.name}</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -27,7 +27,7 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body background="images/wall12.jpg"
+<body background="images/wall9.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
