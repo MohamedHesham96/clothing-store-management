@@ -145,14 +145,6 @@
 
 			}
 
-			for (int i = 0; i < list2020.size(); i++) {
-
-				System.out.println("2020 >> Month: " + list2020.get(i).getMonth().intValue());
-				System.out.println("2020 >> " + list2020.get(i).getSpending().intValue());
-				System.out.println("2020 >> " + list2020.get(i).getAmount().intValue());
-
-			}
-
 			boolean[] flags = { false, false, false };
 
 			for (int i = 0; i < flags.length; i++) {

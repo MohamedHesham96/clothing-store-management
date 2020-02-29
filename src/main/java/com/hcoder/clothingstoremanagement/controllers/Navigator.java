@@ -136,8 +136,6 @@ public class Navigator {
 
 		int listSize = clientIdList.size();
 
-		System.out.println("listSize >> " + listSize);
-
 		for (int i = 0; i < listSize; i++) {
 
 			if (!itemIdList.get(i).equals("-1")) {
@@ -164,8 +162,6 @@ public class Navigator {
 
 				clientRecord.setItem(warehouse.getItem());
 				clientRecord.setPay(Integer.parseInt(payedList.get(i)));
-
-				System.out.println("Integer.parseInt(quantityList.get(i)) >> " + Integer.parseInt(quantityList.get(i)));
 
 				clientRecord.setQuantity(Integer.parseInt(quantityList.get(i)));
 
