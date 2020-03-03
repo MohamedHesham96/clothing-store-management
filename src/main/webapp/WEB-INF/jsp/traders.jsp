@@ -96,8 +96,7 @@
 						<input style="margin-top: 10px" type="submit"
 							value="أضافة تاجر جديد"
 							class="w-100 btn badge-info font-weight-bold text-center
-							onclick="
-							this.disabled=true;this.parentNode.submit();">
+							onclick="this.disabled=true;this.parentNode.submit();">
 
 					</form:form></li>
 			</ul>
@@ -115,6 +114,8 @@
 								<th>اسم التاجر</th>
 								<th>المدفوع</th>
 								<th>الباقي</th>
+								<th>عملية</th>
+
 
 							</tr>
 						</thead>
@@ -127,6 +128,8 @@
 									<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
 									<td>${tempItem.payed}</td>
 									<td>${tempItem.remaining}</td>
+									<td><a class="text-danger glyphicon glyphicon-trash"
+										href="deleteTrader?id=${tempItem.id}">حذف</a></td>
 								</tr>
 
 							</c:forEach>

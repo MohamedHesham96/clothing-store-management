@@ -100,7 +100,7 @@
 							<tbody>
 
 								<tr>
-									<td><form:input type="text" path="quantity"
+									<td><form:input type="text" path="quantity" 
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل الكمية" name="pswd"></form:input></td>
 

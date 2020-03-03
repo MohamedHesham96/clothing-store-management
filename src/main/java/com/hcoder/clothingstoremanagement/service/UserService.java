@@ -23,6 +23,8 @@ public interface UserService {
 	public void payOffAmount(Client client);
 
 	// Client Methods
+	public void deleteClient(int id);
+
 	public int getClientsDraweeTotal();
 
 	public Client getClientById(int id);
@@ -74,6 +76,8 @@ public interface UserService {
 	public int getSpendingTotalByDate(String date);
 
 	// Traders
+	public void deleteTrader(int id);
+	
 	public Trader getTraderById(int id);
 
 	public List<Trader> getAllTraders();

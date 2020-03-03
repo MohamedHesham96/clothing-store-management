@@ -23,6 +23,9 @@ public interface UserDAO {
 	public void payOffAmount(Client client);
 
 	// Client Methods
+
+	public void deleteClient(int id);
+
 	public int getClientsDraweeTotal();
 
 	public Client getClientById(int id);
@@ -76,6 +79,8 @@ public interface UserDAO {
 	public List<Object> getGainByMonthes();
 
 	// Traders
+	public void deleteTrader(int id);
+
 	public Trader getTraderById(int id);
 
 	public List<Trader> getAllTraders();
@@ -90,8 +95,7 @@ public interface UserDAO {
 
 	public Trader getTraderByName(String name);
 
-	//SUMMRY
+	// SUMMRY
 	public List<Result> groupByMonths();
-		
 
 }

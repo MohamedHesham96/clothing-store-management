@@ -235,4 +235,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.groupByMonths();
 	}
 
+	@Override
+	public void deleteClient(int id) {
+
+		userDAO.deleteClient(id);
+	}
+
+	@Override
+	public void deleteTrader(int id) {
+
+		userDAO.deleteTrader(id);
+	}
+
 }

@@ -87,7 +87,6 @@ public class Traders {
 
 		int incomingsTotal = userService.getIncomingTotalByTraderName(trader.getName());
 
-		
 		trader.setPayed(trader.getPayed() + theAmount);
 		trader.setRemaining(incomingsTotal - trader.getPayed());
 
@@ -104,5 +103,12 @@ public class Traders {
 		return "trader-profile";
 	}
 
+	@RequestMapping("/deleteTrader")
+	public String deleteTrader(@RequestParam int id) {
+
+		userService.deleteTrader(id);
+
+		return "redirect:/traders";
+	}
 
 }

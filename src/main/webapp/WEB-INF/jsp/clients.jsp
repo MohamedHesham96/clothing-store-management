@@ -80,6 +80,7 @@
 								<th>اسم العميل</th>
 								<th>التيليفون</th>
 								<th>عليه</th>
+								<th>عملية</th>
 
 							</tr>
 						</thead>
@@ -92,6 +93,8 @@
 									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
 									<td>${tempItem.phone}</td>
 									<td>${tempItem.drawee}</td>
+									<td><a class="text-danger glyphicon glyphicon-trash"
+										href="deleteClient?id=${tempItem.id}">حذف</a></td>
 								</tr>
 
 							</c:forEach>

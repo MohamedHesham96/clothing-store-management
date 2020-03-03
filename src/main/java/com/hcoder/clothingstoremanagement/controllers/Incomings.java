@@ -3,6 +3,8 @@ package com.hcoder.clothingstoremanagement.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,7 @@ public class Incomings {
 	UserService userService;
 
 	@RequestMapping("/incoming")
-	public String getIncoming(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
+	public String getIncoming(@RequestParam(value = "date", required = false) String theDate, Model theModel, HttpServletRequest request) {
 
 		List<Incoming> incomings;
 

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.swing.event.CaretListener;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -584,6 +585,24 @@ public class UserDAOImpl implements UserDAO {
 
 			return monthslistForSpending;
 		}
+	}
+
+	@Override
+	@Transactional
+	public void deleteClient(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+		Client client = session.get(Client.class, id);
+		session.delete(client);
+	}
+
+	@Override
+	@Transactional
+	public void deleteTrader(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+		Trader trader = session.get(Trader.class, id);
+		session.delete(trader);
 	}
 
 }
