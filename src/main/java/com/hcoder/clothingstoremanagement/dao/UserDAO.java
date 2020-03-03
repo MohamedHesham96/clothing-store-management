@@ -76,8 +76,6 @@ public interface UserDAO {
 
 	public List<Spending> getAllSpending();
 
-	public List<Object> getGainByMonthes();
-
 	// Traders
 	public void deleteTrader(int id);
 

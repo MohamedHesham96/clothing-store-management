@@ -315,23 +315,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Object> getGainByMonthes() {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		String SQL_QUERY = "select sum (Bill.gain)," + "from Bill" + "GROUP BY MONTH(02)";
-		Query query = session.createQuery(SQL_QUERY);
-
-		for (Iterator it = query.iterate(); it.hasNext();) {
-			Object[] row = (Object[]) it.next();
-
-			System.out.println("Row: " + row[0]);
-		}
-
-		return null;
-	}
-
-	@Override
 	public int getSpendingTotalToday() {
 
 		String theDate = LocalDate.now().toString();
