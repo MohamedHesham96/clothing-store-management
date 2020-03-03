@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
