@@ -3,6 +3,8 @@ package com.hcoder.clothingstoremanagement.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,7 +72,7 @@ public class Spendings {
 
 		return "spending";
 	}
-	
+
 	@RequestMapping("/pay-off-amount")
 	public String payOffAmount(@RequestParam(name = "moneyAmount") int theAmount,
 			@RequestParam(name = "clientId") int theClientId, @ModelAttribute("clientData") Client clientData,
@@ -100,5 +102,13 @@ public class Spendings {
 		return "client-profile";
 	}
 
+	@RequestMapping("/delete-spending")
+	public String deleteSpending(@PathParam("id") int id) {
+
+		userService.deleteSpending(id);
+
+		return "redirect:/spending";
+
+	}
 
 }

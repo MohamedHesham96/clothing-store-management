@@ -24,6 +24,8 @@ import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
+import javassist.expr.NewArray;
+
 @Repository
 public class UserDAOImpl implements UserDAO {
 
@@ -457,7 +459,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	@Transactional
 	public void updateIncomingTraderName(String traderName, String newTraderName) {
-		
+
 		System.out.println(">>>>>>>>>>>>>>>> Update Incoming");
 		Session session = entityManager.unwrap(Session.class);
 
@@ -592,7 +594,9 @@ public class UserDAOImpl implements UserDAO {
 	public void deleteClient(int id) {
 
 		Session session = entityManager.unwrap(Session.class);
+
 		Client client = session.get(Client.class, id);
+
 		session.delete(client);
 	}
 
@@ -601,8 +605,25 @@ public class UserDAOImpl implements UserDAO {
 	public void deleteTrader(int id) {
 
 		Session session = entityManager.unwrap(Session.class);
+		
 		Trader trader = session.get(Trader.class, id);
+		
 		session.delete(trader);
+	}
+
+	@Override
+	@Transactional
+	public void deleteSpending(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Spending spending = session.get(Spending.class, id);
+
+		session.delete(spending);
+
+		// entityManager.remove(entityManager.contains(spending) ? spending :
+		// entityManager.merge(spending));
+
 	}
 
 }

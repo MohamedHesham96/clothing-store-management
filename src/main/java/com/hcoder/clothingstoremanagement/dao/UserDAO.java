@@ -68,6 +68,8 @@ public interface UserDAO {
 
 	public int getSpendingTotalToday();
 
+	public void deleteSpending(int id);
+	
 	public int getSpendingTotalByDate(String date);
 
 	public void makeSpendingOpertaion(Spending spending);
@@ -97,5 +99,7 @@ public interface UserDAO {
 
 	// SUMMRY
 	public List<Result> groupByMonths();
+
+
 
 }

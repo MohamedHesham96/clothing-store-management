@@ -67,9 +67,7 @@
 				</li>
 
 
-				<li class="bg-dark list-group-item">
-				
-				<form:form id="formId"
+				<li class="bg-dark list-group-item"><form:form id="formId"
 						method="POST" action="make-spending" modelAttribute="spending">
 
 						<form:input type="text" class="text-center form-control col-xs-3"
@@ -111,6 +109,13 @@
 									<td>${tempItem.money}</td>
 									<td>${tempItem.date}</td>
 									<td>${tempItem.note}</td>
+
+									<td><a style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا المبلغ؟')"
+										href="delete-spending?id=${tempItem.id}">حذف</a></td>
+
 								</tr>
 							</c:forEach>
 						</tbody>

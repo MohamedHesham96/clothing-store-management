@@ -67,6 +67,8 @@ public interface UserService {
 
 	public int getSpendingTotalToday();
 
+	public void deleteSpending(int id);
+
 	public void makeSpendingOpertaion(Spending spending);
 
 	public List<Spending> getSpendingsByDate(String date);
@@ -97,6 +99,7 @@ public interface UserService {
 	
 	//SUMMRY
 	public List<Result> groupByMonths();
+
 
 
 }
