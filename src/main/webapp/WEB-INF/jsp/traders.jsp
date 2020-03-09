@@ -157,15 +157,16 @@
 									<td>${tempItem.remaining}</td>
 									<td style="width: 160px">
 
-										<button style="height: 30px; font-size: 14px;" 
+										<button style="height: 30px; font-size: 14px;"
 											class="btn btn-success text-wight
 											font-weight-bold"
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', 
 															'${tempItem.payed}', '${tempItem.remaining}');">تعديل</button>
-															
-										<a style="height: 30px; font-size: 14px;" 
+
+										<a style="height: 30px; font-size: 14px;"
 										class="btn btn-danger text-wight
 										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا التاجر؟')"
 										href="deleteTrader?id=${tempItem.id}">حذف</a>
 
 

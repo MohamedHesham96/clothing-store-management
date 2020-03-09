@@ -117,13 +117,14 @@
 									<td>${tempItem.drawee}</td>
 									<td style="width: 160px">
 
-										<button style="height: 30px; font-size: 14px;" 
+										<button style="height: 30px; font-size: 14px;"
 											class="btn btn-success text-wight
 											font-weight-bold"
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', '${tempItem.phone}', '${tempItem.drawee}');">تعديل</button>
-										<a style="height: 30px; font-size: 14px;" 
+										<a style="height: 30px; font-size: 14px;"
 										class="btn btn-danger  text-wight
 											font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا العميل ؟?')"
 										href="deleteClient?id=${tempItem.id}">حذف</a>
 									</td>
 
