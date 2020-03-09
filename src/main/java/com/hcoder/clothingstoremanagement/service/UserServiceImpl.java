@@ -178,7 +178,19 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void saveTrader(Trader trader) {
 
-		userDAO.saveTrader(trader);
+		Trader currentTrader = userDAO.getTraderById(trader.getId());
+
+		if (!(currentTrader == null)) {
+
+			userDAO.updateIncomingTraderName(currentTrader.getName(), trader.getName());
+
+			userDAO.saveTrader(trader);
+
+		} else {
+
+			userDAO.saveTrader(trader);
+
+		}
 	}
 
 	@Override
@@ -245,6 +257,13 @@ public class UserServiceImpl implements UserService {
 	public void deleteTrader(int id) {
 
 		userDAO.deleteTrader(id);
+	}
+
+	@Override
+	public void updateIncomingTraderName(String traderName, String newTraderName) {
+
+		userDAO.updateIncomingTraderName(traderName, newTraderName);
+
 	}
 
 }

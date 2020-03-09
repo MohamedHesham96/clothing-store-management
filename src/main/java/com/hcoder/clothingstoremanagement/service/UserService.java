@@ -81,13 +81,15 @@ public interface UserService {
 	public Trader getTraderById(int id);
 
 	public List<Trader> getAllTraders();
-
+	
 	public List<Trader> getAllTradersWithRemaining();
 
 	public List<Trader> getAllTradersWithoutRemaining();
 
 	public void saveTrader(Trader trader);
 
+	public void updateIncomingTraderName(String traderName, String newTraderName);
+	
 	public int[] getTradersTotals();
 
 	public Trader getTraderByName(String name);

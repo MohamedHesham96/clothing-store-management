@@ -354,10 +354,9 @@ public class UserDAOImpl implements UserDAO {
 	public void saveTrader(Trader trader) {
 
 		Session session = entityManager.unwrap(Session.class);
-		
-		session.saveOrUpdate(trader);
-		
-		
+
+		session.merge(trader);
+
 	}
 
 	@Override
@@ -453,6 +452,22 @@ public class UserDAOImpl implements UserDAO {
 
 		return incomingTotal;
 
+	}
+
+	@Override
+	@Transactional
+	public void updateIncomingTraderName(String traderName, String newTraderName) {
+		
+		System.out.println(">>>>>>>>>>>>>>>> Update Incoming");
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Incoming> query = session
+				.createQuery("update Incoming set trader = :newTraderName where trader = :traderName");
+
+		query.setParameter("newTraderName", newTraderName);
+		query.setParameter("traderName", traderName);
+
+		query.executeUpdate();
 	}
 
 	@Override

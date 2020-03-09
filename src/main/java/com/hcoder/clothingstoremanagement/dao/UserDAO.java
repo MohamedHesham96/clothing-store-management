@@ -81,6 +81,8 @@ public interface UserDAO {
 
 	public Trader getTraderById(int id);
 
+	public void updateIncomingTraderName(String traderName, String newTraderName);
+
 	public List<Trader> getAllTraders();
 
 	public List<Trader> getAllTradersWithRemaining();
