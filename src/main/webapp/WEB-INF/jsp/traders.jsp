@@ -23,6 +23,26 @@
 	rel="stylesheet">
 <script type="text/javascript" src="webjars/jquery/3.4.1/jquery.min.js"></script>
 
+
+<script type="text/javascript">
+	function myFunc(tIDVal, tNameVal, tPayedVal, tRemainingVal) {
+
+		var idVar = document.getElementById("cIDID");
+		var nameVar = document.getElementById("tNameID");
+		var payedVar = document.getElementById("tPayedID");
+		var remainingVar = document.getElementById("tRemainingID");
+		var submitVar = document.getElementById("tSubmitID");
+
+		idVar.value = tIDVal;
+		nameVar.value = tNameVal;
+		payedVar.value = tPayedVal;
+		remainingVar.value = tRemainingVal;
+		submitVar.value = 'تحديث بيانات التاجر';
+
+	}
+</script>
+
+
 </head>
 
 <body background="images/wall0.jpg"
@@ -90,10 +110,17 @@
 				<li class="bg-dark list-group-item"><form:form metho="POST"
 						action="add-new-trader" modelAttribute="theTrader">
 
-						<form:input type="text" class="text-center form-control  col-xs-3"
+						<form:hidden id="cIDID" path="id" />
+
+						<form:hidden id="tPayedID" path="payed" />
+
+						<form:hidden id="tRemainingID" path="remaining" />
+
+						<form:input id="tNameID" type="text"
+							class="text-center form-control  col-xs-3"
 							placeholder="ادخل اسم التاجر " path="name"></form:input>
 
-						<input style="margin-top: 10px" type="submit"
+						<input id="tSubmitID" style="margin-top: 10px" type="submit"
 							value="أضافة تاجر جديد"
 							class="w-100 btn badge-info font-weight-bold text-center
 							onclick="
@@ -128,8 +155,18 @@
 									<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
 									<td>${tempItem.payed}</td>
 									<td>${tempItem.remaining}</td>
-									<td><a class="text-danger glyphicon glyphicon-trash"
-										href="deleteTrader?id=${tempItem.id}">حذف</a></td>
+									<td><a
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										href="deleteTrader?id=${tempItem.id}">حذف</a>
+
+										<button
+											class="btn btn-success text-wight
+											font-weight-bold"
+											onclick="myFunc('${tempItem.id}','${tempItem.name}', 
+															'${tempItem.payed}', '${tempItem.remaining}');">تعديل</button>
+
+									</td>
 								</tr>
 
 							</c:forEach>

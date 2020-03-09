@@ -70,27 +70,19 @@
 				</li>
 
 
-				<li class="bg-dark list-group-item"><c:if
-						test="${incomingsTotal != traderData.payed}">
+				<li class="bg-dark list-group-item">
 
-						<button dir="rtl" style="text-align: right;" type="button"
-							type="button"
-							class="w-100 btn bg-danger font-weight-bold text-center">
-							الباقي <span style="margin-right: 30px; width: 140px;"
-								class=" badge badge-light">${remainingTotal} جنيه</span>
-						</button>
+					<button dir="rtl" style="text-align: right;" type="button"
+						type="button"
+						
+						class=" ${incomingsTotal == traderData.payed ?  'bg-success' :'bg-danger'} 
+						
+						text-center w-100 btn font-weight-bold">
 
-					</c:if> <c:if test="${incomingsTotal == traderData.payed}">
-
-						<button dir="rtl" style="text-align: right;" type="button"
-							type="button"
-							class="w-100 btn bg-success  font-weight-bold text-center">
-							الباقي <span style="margin-right: 30px; width: 140px;"
-								class=" badge badge-light">${remainingTotal} جنيه</span>
-						</button>
-
-
-					</c:if></li>
+						الباقي <span style="margin-right: 30px; width: 140px;"
+							class=" badge badge-light">${remainingTotal} جنيه</span>
+					</button>
+				</li>
 
 				<li class="bg-dark list-group-item"><form:form metho="GET"
 						action="pay-off-amount-for-trader" modelAttribute="traderData">
@@ -102,10 +94,11 @@
 							placeholder="ادخل المبلغ المسدد " name="moneyAmount">
 
 
-						<input value="قم بتسديد المبلغ" type="submit"
-							style="margin-top: 10px"
-							${ incomingsTotal == traderData.payed ? 'disabled= "disabled"' : ''}
-							class="btn badge-info form-control font-weight-bold">
+						<button style="margin-top: 10px"
+							${ incomingsTotal == traderData.payed ? 'disabled = "disabled"' : ''}
+							type="submit" class="btn btn-info form-control font-weight-bold">
+
+							قم بتسديد المبلغ</button>
 
 					</form:form></li>
 
