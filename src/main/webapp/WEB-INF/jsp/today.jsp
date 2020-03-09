@@ -20,8 +20,20 @@
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<script type="text/javascript">
+	
+	function myFunc() {
+		
+		var submitBtn = getElementById("submitBtn");
+		
+		submitBtn.disabled = false;
+	}
+	
+	
+	
+</script>
 </head>
-<body background="images/wall6.jpg"
+<body onunload="myFunc();" background="images/wall6.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>

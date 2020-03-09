@@ -166,8 +166,8 @@
 										<a style="height: 30px; font-size: 14px;"
 										class="btn btn-danger text-wight
 										font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا التاجر؟')"
-										href="deleteTrader?id=${tempItem.id}">حذف</a>
+										onclick="return confirm('هل انت متأكد من حذف هذا التاجر ؟')"
+										href="delete-trader?id=${tempItem.id}">حذف</a>
 
 
 

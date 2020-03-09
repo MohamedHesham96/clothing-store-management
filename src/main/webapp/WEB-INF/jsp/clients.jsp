@@ -124,8 +124,8 @@
 										<a style="height: 30px; font-size: 14px;"
 										class="btn btn-danger  text-wight
 											font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا العميل ؟?')"
-										href="deleteClient?id=${tempItem.id}">حذف</a>
+										onclick="return confirm('هل انت متأكد من حذف هذا العميل ؟')"
+										href="delete-client?id=${tempItem.id}">حذف</a>
 									</td>
 
 

@@ -61,7 +61,7 @@ public class Clients {
 		return "client-profile";
 	}
 	
-	@RequestMapping("/deleteClient")
+	@RequestMapping("/delete-client")
 	public String deleteClient(@RequestParam int id) {
 		
 		userService.deleteClient(id);

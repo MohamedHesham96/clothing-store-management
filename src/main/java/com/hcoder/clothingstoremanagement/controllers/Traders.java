@@ -103,7 +103,7 @@ public class Traders {
 		return "trader-profile";
 	}
 
-	@RequestMapping("/deleteTrader")
+	@RequestMapping("/delete-trader")
 	public String deleteTrader(@RequestParam int id) {
 
 		userService.deleteTrader(id);
