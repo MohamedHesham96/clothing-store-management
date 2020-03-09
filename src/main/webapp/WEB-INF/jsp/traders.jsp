@@ -155,16 +155,20 @@
 									<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
 									<td>${tempItem.payed}</td>
 									<td>${tempItem.remaining}</td>
-									<td><a
-										class="btn btn-danger text-wight
-										font-weight-bold"
-										href="deleteTrader?id=${tempItem.id}">حذف</a>
+									<td style="width: 160px">
 
-										<button
+										<button style="height: 30px; font-size: 14px;" 
 											class="btn btn-success text-wight
 											font-weight-bold"
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', 
 															'${tempItem.payed}', '${tempItem.remaining}');">تعديل</button>
+															
+										<a style="height: 30px; font-size: 14px;" 
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										href="deleteTrader?id=${tempItem.id}">حذف</a>
+
+
 
 									</td>
 								</tr>

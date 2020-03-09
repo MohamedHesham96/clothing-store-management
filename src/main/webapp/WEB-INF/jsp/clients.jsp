@@ -115,14 +115,17 @@
 									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
 									<td>${tempItem.phone}</td>
 									<td>${tempItem.drawee}</td>
-									<td style="width: 200px"><button
+									<td style="width: 160px">
+
+										<button style="height: 30px; font-size: 14px;" 
 											class="btn btn-success text-wight
 											font-weight-bold"
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', '${tempItem.phone}', '${tempItem.drawee}');">تعديل</button>
-										<a
+										<a style="height: 30px; font-size: 14px;" 
 										class="btn btn-danger  text-wight
 											font-weight-bold"
-										href="deleteClient?id=${tempItem.id}">حذف</a></td>
+										href="deleteClient?id=${tempItem.id}">حذف</a>
+									</td>
 
 
 								</tr>
