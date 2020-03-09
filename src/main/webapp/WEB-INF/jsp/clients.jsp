@@ -23,6 +23,25 @@
 	rel="stylesheet">
 <script type="text/javascript" src="webjars/jquery/3.4.1/jquery.min.js"></script>
 
+
+<script type="text/javascript">
+	function myFunc(cIDVal, cNameVal, cPhoneVal, cDraweeVal) {
+
+		var idVar = document.getElementById("cIDID");
+		var nameVar = document.getElementById("cNameID");
+		var draweeVar = document.getElementById("cDraweeID");
+		var phoneVar = document.getElementById("cPhoneID");
+		var submitVar = document.getElementById("cSubmitID");
+
+		idVar.value = cIDVal;
+		nameVar.value = cNameVal;
+		draweeVar.value = cDraweeVal;
+		phoneVar.value = cPhoneVal;
+		submitVar.value = 'تحديث بيانات العميل';
+
+	}
+</script>
+
 </head>
 
 <body background="images/wall8.jpg"
@@ -47,23 +66,26 @@
 					</button>
 				</li>
 
-				<li class="bg-dark   list-group-item"><form:form metho="POST"
+				<li class="bg-dark list-group-item"><form:form metho="POST"
 						action="add-new-client" modelAttribute="theClient">
 
-						<form:input type="text" class="text-center form-control  col-xs-3"
+						<form:hidden id="cIDID" path="id" />
+
+						<form:hidden id="cDraweeID" path="drawee" />
+
+						<form:input id="cNameID" type="text"
+							class="text-center form-control  col-xs-3"
 							placeholder="ادخل اسم العميل " path="name"></form:input>
 
-						<form:input cssStyle="margin-top: 10px" type="text"
+						<form:input id="cPhoneID" cssStyle="margin-top: 10px" type="text"
 							class="text-center form-control  col-xs-3"
 							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
 
 
-						<input style="margin-top: 10px" type="submit"
+						<input id="cSubmitID" style="margin-top: 10px" type="submit"
 							value="أضافة عميل جديد"
 							class="btn btn-info form-control font-weight-bold"
 							onclick="this.disabled=true; this.parentNode.submit();">
-
-
 					</form:form></li>
 			</ul>
 		</div>
@@ -80,7 +102,7 @@
 								<th>اسم العميل</th>
 								<th>التيليفون</th>
 								<th>عليه</th>
-								<th>عملية</th>
+								<th></th>
 
 							</tr>
 						</thead>
@@ -93,8 +115,16 @@
 									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
 									<td>${tempItem.phone}</td>
 									<td>${tempItem.drawee}</td>
-									<td><a class="text-danger glyphicon glyphicon-trash"
+									<td style="width: 200px"><button
+											class="btn btn-success text-wight
+											font-weight-bold"
+											onclick="myFunc('${tempItem.id}','${tempItem.name}', '${tempItem.phone}', '${tempItem.drawee}');">تعديل</button>
+										<a
+										class="btn btn-danger  text-wight
+											font-weight-bold"
 										href="deleteClient?id=${tempItem.id}">حذف</a></td>
+
+
 								</tr>
 
 							</c:forEach>

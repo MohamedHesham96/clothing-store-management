@@ -96,7 +96,8 @@
 						<input style="margin-top: 10px" type="submit"
 							value="أضافة تاجر جديد"
 							class="w-100 btn badge-info font-weight-bold text-center
-							onclick="this.disabled=true;this.parentNode.submit();">
+							onclick="
+							this.disabled=true;this.parentNode.submit();">
 
 					</form:form></li>
 			</ul>
@@ -114,7 +115,6 @@
 								<th>اسم التاجر</th>
 								<th>المدفوع</th>
 								<th>الباقي</th>
-								<th>عملية</th>
 
 
 							</tr>

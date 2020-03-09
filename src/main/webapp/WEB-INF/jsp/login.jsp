@@ -26,10 +26,10 @@
 
 
 
-	<div  class="container ">
+	<div class="container ">
 
 
-		<div  class="card bg-secondary text-white"
+		<div class="card bg-secondary text-white"
 			style="width: 25rem; margin-left: 400px; margin-top: 100px">
 
 			<div class="card-header text-white font-weight-bold text-center"
@@ -44,8 +44,8 @@
 
 						<div class="text-center form-group">
 
-							<label>اسم المستخدم</label> <input
-								type="text" class="text-center form-control" name="username"
+							<label>اسم المستخدم</label> <input type="text"
+								class="text-center form-control" name="username"
 								placeholder="ادخل اسم المستخدم">
 
 						</div>
@@ -54,9 +54,8 @@
 					<li class="bg-dark list-group-item">
 
 						<div class="form-group text-center">
-							<label>كلمة المرور</label> <input name="password"
-								type="password" class="text-center form-control"
-								>
+							<label>كلمة المرور</label> <input name="password" type="password"
+								class="text-center form-control">
 						</div>
 					</li>
 					<li class="bg-dark list-group-item"><input type="submit"
