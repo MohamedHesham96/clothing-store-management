@@ -12,7 +12,7 @@
 	</parent>
 	<groupId>com.hcoder</groupId>
 	<artifactId>clothing-store-management</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>war</packaging>
 	<name>clothing-store-management</name>
 	<description>Clothing store management project</description>
@@ -88,6 +88,9 @@
 			<version>1.2</version>
 		</dependency>
 
+
+
+
 	</dependencies>
 
 	<build>
@@ -97,7 +100,14 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.16</version>
+				<configuration>
+					<appName>mystore777</appName>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
