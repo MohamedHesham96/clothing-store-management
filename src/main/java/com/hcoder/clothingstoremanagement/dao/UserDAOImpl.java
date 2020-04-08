@@ -1,11 +1,9 @@
 package com.hcoder.clothingstoremanagement.dao;
 
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.swing.event.CaretListener;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -23,8 +21,6 @@ import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
-
-import javassist.expr.NewArray;
 
 @Repository
 public class UserDAOImpl implements UserDAO {

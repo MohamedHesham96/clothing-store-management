@@ -60,12 +60,12 @@ public class Clients {
 
 		return "client-profile";
 	}
-	
+
 	@RequestMapping("/delete-client")
 	public String deleteClient(@RequestParam int id) {
-		
+
 		userService.deleteClient(id);
-		
+
 		return "redirect:/clients";
 	}
 
