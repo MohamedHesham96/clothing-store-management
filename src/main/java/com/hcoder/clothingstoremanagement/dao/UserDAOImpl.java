@@ -456,7 +456,6 @@ public class UserDAOImpl implements UserDAO {
 	@Transactional
 	public void updateIncomingTraderName(String traderName, String newTraderName) {
 
-		System.out.println(">>>>>>>>>>>>>>>> Update Incoming");
 		Session session = entityManager.unwrap(Session.class);
 
 		Query<Incoming> query = session
@@ -624,7 +623,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	@Transactional
-	public void deleteBill(int id) {
+	public Bill deleteBill(int id) {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -632,6 +631,7 @@ public class UserDAOImpl implements UserDAO {
 
 		session.delete(bill);
 
+		return bill;
 	}
 
 	@Override
@@ -643,6 +643,53 @@ public class UserDAOImpl implements UserDAO {
 		Incoming incoming = session.get(Incoming.class, id);
 
 		session.delete(incoming);
+	}
+
+	@Override
+	@Transactional
+	public void deleteClientRecordByBillInfo(Bill bill) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<ClientRecord> query = session.createQuery("delete from ClientRecord where "
+				+ "client_id = :theClientId AND  item = :theItem AND price = :thePrice AND  quantity = :theQuantity");
+
+		query.setParameter("theClientId", bill.getClient().getId());
+		query.setParameter("theItem", bill.getItem());
+		query.setParameter("thePrice", bill.getPiecePrice());
+		query.setParameter("theQuantity", bill.getQuantity());
+
+		query.executeUpdate();
+
+	}
+
+	@Override
+	@Transactional
+	public ClientRecord getClientRecordByBillInfo(Bill bill) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<ClientRecord> query = session.createQuery("from ClientRecord where "
+				+ "client_id = :theClientId AND  item = :theItem AND price = :thePrice AND  quantity = :theQuantity");
+
+		query.setParameter("theClientId", bill.getClient().getId());
+		query.setParameter("theItem", bill.getItem());
+		query.setParameter("thePrice", bill.getPiecePrice());
+		query.setParameter("theQuantity", bill.getQuantity());
+
+		return query.getResultList().get(0);
+
+	}
+
+	@Override
+	public Bill getBillById(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Bill theBill = session.get(Bill.class, id);
+
+		return theBill;
+
 	}
 
 }

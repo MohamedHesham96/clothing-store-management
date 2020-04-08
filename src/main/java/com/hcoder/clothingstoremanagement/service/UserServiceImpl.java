@@ -275,12 +275,20 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteBill(int id) {
 
-		userDAO.deleteBill(id);
+		Bill theBill = userDAO.deleteBill(id);
+		Client theClient = userDAO.getClientById(theBill.getClient().getId());
+		ClientRecord theClientRecord = userDAO.getClientRecordByBillInfo(theBill);
+		userDAO.deleteClientRecordByBillInfo(theBill);
+
+		int theDrawee = theClientRecord.getPrice() - theClientRecord.getPay();
+
+		theClient.setDrawee(theClient.getDrawee() - theDrawee);
+
+		userDAO.saveClient(theClient);
 	}
 
 	@Override
 	public void deleteIncoming(int id) {
-
 
 		userDAO.deleteIncoming(id);
 	}

@@ -20,9 +20,11 @@ public interface UserDAO {
 
 	public List<Bill> getBillsByDate(String date);
 
+	public Bill getBillById(int id);
+
 	public void payOffAmount(Client client);
-	
-	public void deleteBill(int id);
+
+	public Bill deleteBill(int id);
 
 	// Client Methods
 
@@ -41,6 +43,11 @@ public interface UserDAO {
 
 	public void saveClientRecord(ClientRecord clientRecord);
 
+	public void deleteClientRecordByBillInfo(Bill bill);
+
+	public ClientRecord getClientRecordByBillInfo(Bill bill);
+
+	
 	// Incoming Methods
 	public List<Incoming> GetIncomingsByDate(String date);
 
@@ -53,9 +60,9 @@ public interface UserDAO {
 	public int getIcomingTotal();
 
 	public int getIncomingTotalByTraderName(String traderName);
-	
+
 	public void deleteIncoming(int id);
-	
+
 	// Warehouse Methods
 	public int getWarehouseTotal();
 
@@ -73,7 +80,7 @@ public interface UserDAO {
 	public int getSpendingTotalToday();
 
 	public void deleteSpending(int id);
-	
+
 	public int getSpendingTotalByDate(String date);
 
 	public void makeSpendingOpertaion(Spending spending);
@@ -103,7 +110,5 @@ public interface UserDAO {
 
 	// SUMMRY
 	public List<Result> groupByMonths();
-
-
 
 }

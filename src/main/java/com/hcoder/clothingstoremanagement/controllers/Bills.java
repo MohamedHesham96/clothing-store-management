@@ -144,7 +144,9 @@ public class Bills {
 	public String deleteBill(@RequestParam int id) {
 
 		userService.deleteBill(id);
-
+		
+		
+		
 		return "redirect:/today";
 	}
 }
