@@ -346,7 +346,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Trader> traders = session.createQuery("from Trader order by remaining desc").getResultList();
+		List<Trader> traders = session.createQuery("from Trader where id > -1 order by remaining desc").getResultList();
 
 		return traders;
 	}

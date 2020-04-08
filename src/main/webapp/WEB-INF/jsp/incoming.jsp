@@ -100,7 +100,7 @@
 							<tbody>
 
 								<tr>
-									<td><form:input type="text" path="quantity" 
+									<td><form:input type="text" path="quantity"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل الكمية" name="pswd"></form:input></td>
 
@@ -119,7 +119,8 @@
 
 									<td><form:select path="trader" style="width: 200px;"
 											class="text-center form-control  mb-2 col-xs-3">
-											<option value="-1">--- اختر المحل ---</option>
+											<option value="غير محدد" >   
+											غير محدد  </option>
 
 											<c:forEach var="tempItem" items="${tradersList}">
 
@@ -187,10 +188,6 @@
 					</table>
 				</div>
 
-
-				<div class="container">
-					<br>
-				</div>
 			</div>
 
 		</div>
