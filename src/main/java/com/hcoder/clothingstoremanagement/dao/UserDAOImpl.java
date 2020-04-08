@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.apache.catalina.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
@@ -641,6 +642,14 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		Incoming incoming = session.get(Incoming.class, id);
+
+		Query query = session.createQuery(
+				"update Trader t " + " set t.remaining = t.remaining - :theRemaining where name = :theTraderName");
+
+		query.setParameter("theRemaining", incoming.getTotal());
+		query.setParameter("theTraderName", incoming.gettrader());
+
+		query.executeUpdate();
 
 		session.delete(incoming);
 	}

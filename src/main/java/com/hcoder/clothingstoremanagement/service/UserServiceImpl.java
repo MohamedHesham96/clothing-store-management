@@ -291,6 +291,9 @@ public class UserServiceImpl implements UserService {
 	public void deleteIncoming(int id) {
 
 		userDAO.deleteIncoming(id);
+		
+	
+		
 	}
 
 }

@@ -92,7 +92,6 @@ public class Incomings {
 	public String deleteIncoming(@RequestParam int id) {
 
 		userService.deleteIncoming(id);
-
 		return "redirect:/incoming";
 	}
 

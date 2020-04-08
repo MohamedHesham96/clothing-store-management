@@ -119,8 +119,7 @@
 
 									<td><form:select path="trader" style="width: 200px;"
 											class="text-center form-control  mb-2 col-xs-3">
-											<option value="غير محدد" >   
-											غير محدد  </option>
+											<option value="غير محدد">غير محدد</option>
 
 											<c:forEach var="tempItem" items="${tradersList}">
 
@@ -182,6 +181,13 @@
 									<td>${tempItem.total}</td>
 									<td>${tempItem.trader}</td>
 									<td>${tempItem.date}</td>
+
+									<td style="width: 160px"><a
+										style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+										href="delete-incoming?id=${tempItem.id}">حذف</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
