@@ -626,4 +626,16 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	@Override
+	public void deleteBill(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteIncoming(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

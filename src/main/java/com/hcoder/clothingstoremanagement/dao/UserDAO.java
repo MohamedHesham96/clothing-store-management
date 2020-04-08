@@ -21,6 +21,8 @@ public interface UserDAO {
 	public List<Bill> getBillsByDate(String date);
 
 	public void payOffAmount(Client client);
+	
+	public void deleteBill(int id);
 
 	// Client Methods
 
@@ -51,7 +53,9 @@ public interface UserDAO {
 	public int getIcomingTotal();
 
 	public int getIncomingTotalByTraderName(String traderName);
-
+	
+	public void deleteIncoming(int id);
+	
 	// Warehouse Methods
 	public int getWarehouseTotal();
 
