@@ -21,8 +21,11 @@ public interface UserService {
 	public List<Bill> getBillsByDate(String date);
 
 	public void payOffAmount(Client client);
+	
+	public void deleteBill(int id);
 
 	// Client Methods
+
 	public void deleteClient(int id);
 
 	public int getClientsDraweeTotal();
@@ -39,9 +42,9 @@ public interface UserService {
 	public void saveClientRecord(ClientRecord clientRecord);
 
 	// Incoming Methods
-	public List<Incoming> getIncomingsByTraderName(String traderName);
-
 	public List<Incoming> GetIncomingsByDate(String date);
+
+	public List<Incoming> getIncomingsByTraderName(String traderName);
 
 	public List<Incoming> GetAllIncoming();
 
@@ -50,7 +53,9 @@ public interface UserService {
 	public int getIcomingTotal();
 
 	public int getIncomingTotalByTraderName(String traderName);
-
+	
+	public void deleteIncoming(int id);
+	
 	// Warehouse Methods
 	public int getWarehouseTotal();
 
@@ -68,6 +73,8 @@ public interface UserService {
 	public int getSpendingTotalToday();
 
 	public void deleteSpending(int id);
+	
+	public int getSpendingTotalByDate(String date);
 
 	public void makeSpendingOpertaion(Spending spending);
 
@@ -75,29 +82,26 @@ public interface UserService {
 
 	public List<Spending> getAllSpending();
 
-	public int getSpendingTotalByDate(String date);
-
 	// Traders
 	public void deleteTrader(int id);
-	
+
 	public Trader getTraderById(int id);
 
+	public void updateIncomingTraderName(String traderName, String newTraderName);
+
 	public List<Trader> getAllTraders();
-	
+
 	public List<Trader> getAllTradersWithRemaining();
 
 	public List<Trader> getAllTradersWithoutRemaining();
 
 	public void saveTrader(Trader trader);
 
-	public void updateIncomingTraderName(String traderName, String newTraderName);
-	
 	public int[] getTradersTotals();
 
 	public Trader getTraderByName(String name);
-	
-	
-	//SUMMRY
+
+	// SUMMRY
 	public List<Result> groupByMonths();
 
 

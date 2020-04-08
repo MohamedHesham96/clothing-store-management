@@ -605,9 +605,9 @@ public class UserDAOImpl implements UserDAO {
 	public void deleteTrader(int id) {
 
 		Session session = entityManager.unwrap(Session.class);
-		
+
 		Trader trader = session.get(Trader.class, id);
-		
+
 		session.delete(trader);
 	}
 
@@ -627,15 +627,26 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	@Transactional
 	public void deleteBill(int id) {
-		// TODO Auto-generated method stub
-		
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Bill bill = session.get(Bill.class, id);
+
+		session.delete(bill);
+
 	}
 
 	@Override
+	@Transactional
 	public void deleteIncoming(int id) {
-		// TODO Auto-generated method stub
-		
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Incoming incoming = session.get(Incoming.class, id);
+
+		session.delete(incoming);
 	}
 
 }

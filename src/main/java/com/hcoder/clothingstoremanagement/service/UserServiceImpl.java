@@ -272,4 +272,17 @@ public class UserServiceImpl implements UserService {
 		userDAO.deleteSpending(id);
 	}
 
+	@Override
+	public void deleteBill(int id) {
+
+		userDAO.deleteBill(id);
+	}
+
+	@Override
+	public void deleteIncoming(int id) {
+
+
+		userDAO.deleteIncoming(id);
+	}
+
 }
