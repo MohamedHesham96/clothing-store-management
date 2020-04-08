@@ -701,4 +701,16 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	@Override
+	@Transactional
+	public void deleteWarehouse(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Warehouse warehouse = session.get(Warehouse.class, id);
+
+		session.delete(warehouse);
+
+	}
+
 }

@@ -35,14 +35,11 @@
 </head>
 
 <body background="images/wall1.jpg"
-
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container ">
-
-
 
 		<div class="card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
@@ -111,6 +108,12 @@
 									<td>${tempItem.quantity}</td>
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.trader}</td>
+									<td style="width: 160px"><a
+										style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+										href="delete-warehouse?id=${tempItem.id}">حذف</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -120,92 +123,6 @@
 
 		</div>
 
-		<div
-			style="display: none; margin-top: 75px; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-			class="form fixed-top container-fluid col-lg-3">
-
-			<div class="card bg-dark">
-
-
-				<div class="card-body bg-dark text-white">
-
-					<c:if test="${incoming != null}">
-						<h3>بيع صنف</h3>
-					</c:if>
-
-					<!-- 
-					<c:set value="34" var="num" />
-					<c:out value="${num % 2 eq 0 ? 'even': 'odd'}" />
-					-->
-
-
-					<form:form onsubmit="return validate(this)" metho="POST"
-						action="add-bill" modelAttribute="bill">
-						<label for="pwd2" class="mb-2 mr-sm-2">الصنف:</label>
-
-						<form:select path="id" class="form-control  mb-2 col-xs-3"
-							name="testselect">
-							<c:forEach var="tempItem" items="${items}">
-
-
-								<c:if test="${tempItem.quantity > 0}">
-
-									<option value="${tempItem.id}">${tempItem.item}</option>
-
-								</c:if>
-
-
-							</c:forEach>
-
-						</form:select>
-
-						<label for="pwd2" class="mb-2 mr-sm-2">الكمية:</label>
-						<form:input id="quantity" type="text" path="quantity"
-							class="form-control mb-2 col-xs-3" placeholder="ادخل الكمية"
-							name="pswd"></form:input>
-
-						<label for="pwd2" class="mb-2 mr-sm-2">سعر القطعه:</label>
-						<form:input id="piecePrice" type="text" path="piecePrice"
-							class="form-control  col-xs-3" placeholder="ادخل سعر القطعه"
-							name="pswd"></form:input>
-
-
-						<label style="margin-top: 8px" for="pwd2" class="mb-2 mr-sm-2">اسم
-							العميل:</label>
-
-						<select path="clientId" class="form-control  mb-2 col-xs-3"
-							name="clientId">
-							<c:forEach var="tempItem" items="${clientsList}">
-
-								<option value="${tempItem.id}">${tempItem.name}</option>
-
-
-							</c:forEach>
-
-						</select>
-
-						<label for="pwd2" class="mb-2 mr-sm-2">المبلغ المدفوع:</label>
-
-						<input id="payed" type="text" class="form-control  col-xs-3"
-							placeholder="ادخل المبلغ المدفوع" name="payed">
-
-
-						<br>
-
-						<button type="submit" class="btn btn-info form-control">تمت
-							العملية</button>
-					</form:form>
-
-					<!--
-	<c:url var="showQuestion" value="/user/showq">
-								<c:param name="questionId" value="hello"></c:param>
-							</c:url>  -->
-
-
-				</div>
-			</div>
-
-		</div>
 	</div>
 </body>
 </html>

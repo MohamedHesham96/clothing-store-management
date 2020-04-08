@@ -69,8 +69,9 @@ public class Incomings {
 		theIncoming.setTotal(total);
 
 		userService.AddIncoming(theIncoming);
+		
 		Warehouse warehouse = new Warehouse();
-
+		
 		warehouse.setItem(theIncoming.getItem());
 		warehouse.setQuantity(theIncoming.getQuantity());
 		warehouse.setTradePrice(theIncoming.getTradePrice());

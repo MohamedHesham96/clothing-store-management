@@ -75,6 +75,14 @@ public class Navigator {
 		return "warehouse";
 	}
 
+	@RequestMapping("/delete-warehouse")
+	public String deleteIncoming(@RequestParam int id) {
+
+		userService.deleteWarehouse(id);
+		
+		return "redirect:/warehouse";
+	}
+	
 	@RequestMapping("/today")
 	public String getToday(Model theModel) {
 

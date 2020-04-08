@@ -67,6 +67,9 @@ public interface UserService {
 
 	public List<Warehouse> getAllWarehouse();
 
+	public void deleteWarehouse(int id);
+
+	
 	// Spending Methods
 	public int getSpendingTotal();
 
@@ -103,6 +106,7 @@ public interface UserService {
 
 	// SUMMRY
 	public List<Result> groupByMonths();
+
 
 
 

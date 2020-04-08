@@ -73,7 +73,10 @@ public interface UserDAO {
 	public Warehouse getWarehouseById(int id);
 
 	public List<Warehouse> getAllWarehouse();
+	
+	public void deleteWarehouse(int id);
 
+	
 	// Spending Methods
 	public int getSpendingTotal();
 
@@ -110,5 +113,6 @@ public interface UserDAO {
 
 	// SUMMRY
 	public List<Result> groupByMonths();
+
 
 }

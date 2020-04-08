@@ -291,9 +291,13 @@ public class UserServiceImpl implements UserService {
 	public void deleteIncoming(int id) {
 
 		userDAO.deleteIncoming(id);
-		
-	
-		
+
+	}
+
+	@Override
+	public void deleteWarehouse(int id) {
+
+		userDAO.deleteWarehouse(id);
 	}
 
 }
