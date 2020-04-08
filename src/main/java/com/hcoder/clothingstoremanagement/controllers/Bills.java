@@ -133,9 +133,6 @@ public class Bills {
 
 				}
 
-				// theBill.setClient(theClient);
-				// clientRecord.setClient(theClient);
-
 				theBill.setClient(theClient);
 				clientRecord.setClient(theClient);
 
@@ -148,4 +145,11 @@ public class Bills {
 		return "redirect:/today";
 	}
 
+	@RequestMapping("/delete-bill")
+	public String deleteBill(@RequestParam int id) {
+
+		userService.deleteBill(id);
+
+		return "redirect:/bill";
+	}
 }

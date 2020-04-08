@@ -25,7 +25,8 @@ public class Incomings {
 	UserService userService;
 
 	@RequestMapping("/incoming")
-	public String getIncoming(@RequestParam(value = "date", required = false) String theDate, Model theModel, HttpServletRequest request) {
+	public String getIncoming(@RequestParam(value = "date", required = false) String theDate, Model theModel,
+			HttpServletRequest request) {
 
 		List<Incoming> incomings;
 
@@ -85,6 +86,14 @@ public class Incomings {
 
 		return "redirect:/incoming";
 
+	}
+
+	@RequestMapping("/delete-incoming")
+	public String deleteIncoming(@RequestParam int id) {
+
+		userService.deleteIncoming(id);
+
+		return "redirect:/incoming";
 	}
 
 }
