@@ -21,16 +21,12 @@
 	rel="stylesheet">
 
 <script type="text/javascript">
-	
 	function myFunc() {
-		
+
 		var submitBtn = getElementById("submitBtn");
-		
+
 		submitBtn.disabled = false;
 	}
-	
-	
-	
 </script>
 </head>
 <body onunload="myFunc();" background="images/wall6.jpg"
@@ -138,7 +134,7 @@
 									<td><select name="clientId" style="width: 200px;"
 										class="text-center form-control  mb-2 col-xs-3"
 										name="clientId">
-											<option value="-1">--- اختر العميل ---</option>
+											<option value="-1">غير محدد</option>
 
 											<c:forEach var="tempItem" items="${clientsList}">
 
@@ -148,6 +144,8 @@
 											</c:forEach>
 
 									</select></td>
+
+
 								</tr>
 								<%
 									}
@@ -201,6 +199,12 @@
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.piecePrice}</td>
 									<td>${tempItem.gain}</td>
+									<td style="width: 160px"><a
+										style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+										href="delete-bill?id=${tempItem.id}">حذف</a></td>
 								</tr>
 							</c:forEach>
 

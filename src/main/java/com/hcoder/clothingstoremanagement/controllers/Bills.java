@@ -112,9 +112,7 @@ public class Bills {
 
 				clientRecord.setItem(warehouse.getItem());
 				clientRecord.setPay(Integer.parseInt(payedList.get(i)));
-
 				clientRecord.setQuantity(Integer.parseInt(quantityList.get(i)));
-
 				clientRecord.setPrice(Integer.parseInt(piecePriceList.get(i)) * Integer.parseInt(quantityList.get(i)));
 
 				if (!clientIdList.get(i).equals("-1")) {
@@ -127,6 +125,10 @@ public class Bills {
 
 					userService.saveClient(theClient);
 
+					clientRecord.setClient(theClient);
+
+					userService.saveClientRecord(clientRecord);
+
 				} else {
 
 					theClient = entityManager.getReference(Client.class, -1);
@@ -134,10 +136,8 @@ public class Bills {
 				}
 
 				theBill.setClient(theClient);
-				clientRecord.setClient(theClient);
 
 				userService.addBill(theBill);
-				userService.saveClientRecord(clientRecord);
 
 			}
 		}
@@ -150,6 +150,6 @@ public class Bills {
 
 		userService.deleteBill(id);
 
-		return "redirect:/bill";
+		return "redirect:/today";
 	}
 }
