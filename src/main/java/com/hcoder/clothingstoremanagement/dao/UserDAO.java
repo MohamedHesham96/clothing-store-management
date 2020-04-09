@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
@@ -39,14 +38,7 @@ public interface UserDAO {
 	public void saveClient(Client client);
 
 	// Client Records Method
-	public ClientRecord getClientRecordById(int id);
-
-	public void saveClientRecord(ClientRecord clientRecord);
-
-	public void deleteClientRecordByBillInfo(Bill bill);
-
-	public ClientRecord getClientRecordByBillInfo(Bill bill);
-
+	public List<Bill> getClientBills(int clientId);
 	
 	// Incoming Methods
 	public List<Incoming> GetIncomingsByDate(String date);

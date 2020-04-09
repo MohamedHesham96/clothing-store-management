@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
 @Controller
@@ -45,14 +45,14 @@ public class Clients {
 	public String goToClientAccount(@ModelAttribute("clientId") int id, Model theModel) {
 
 		Client client = userService.getClientById(id);
-		List<ClientRecord> clientRecords = client.getClientRecords();
+		List<Bill> clientBills = client.getBills();
 
-		int size = clientRecords.size();
+		int size = clientBills.size();
 		int totalPayment = 0;
 
 		for (int i = 0; i < size; i++) {
 
-			totalPayment += clientRecords.get(i).getPrice();
+			totalPayment += clientBills.get(i).getPiecePrice();
 		}
 
 		theModel.addAttribute("clientData", client);

@@ -31,6 +31,9 @@ public class Bill {
 	@Column(name = "piece_price")
 	int piecePrice;
 
+	@Column(name = "payed")
+	int payed;
+
 	@Column(name = "date")
 	String date;
 
@@ -42,6 +45,7 @@ public class Bill {
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REFRESH })
+	
 	@JoinColumn(name = "client_id")
 	private Client client;
 
@@ -118,4 +122,14 @@ public class Bill {
 		this.trader = trader;
 	}
 
+	public int getPayed() {
+		return payed;
+	}
+
+	public void setPayed(int payed) {
+		this.payed = payed;
+	}
+
+	
+	
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.hcoder.clothingstoremanagement.dao.UserDAO;
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
@@ -116,12 +115,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void saveClientRecord(ClientRecord clientRecord) {
-
-		userDAO.saveClientRecord(clientRecord);
-	}
-
-	@Override
 	public void makeSpendingOpertaion(Spending spending) {
 
 		userDAO.makeSpendingOpertaion(spending);
@@ -155,12 +148,6 @@ public class UserServiceImpl implements UserService {
 	public void payOffAmount(Client client) {
 
 		userDAO.payOffAmount(client);
-	}
-
-	@Override
-	public ClientRecord getClientRecordById(int id) {
-
-		return userDAO.getClientRecordById(id);
 	}
 
 	@Override
@@ -276,11 +263,10 @@ public class UserServiceImpl implements UserService {
 	public void deleteBill(int id) {
 
 		Bill theBill = userDAO.deleteBill(id);
+		
 		Client theClient = userDAO.getClientById(theBill.getClient().getId());
-		ClientRecord theClientRecord = userDAO.getClientRecordByBillInfo(theBill);
-		userDAO.deleteClientRecordByBillInfo(theBill);
 
-		int theDrawee = theClientRecord.getPrice() - theClientRecord.getPay();
+		int theDrawee = theBill.getPiecePrice() - theBill.getPayed();
 
 		theClient.setDrawee(theClient.getDrawee() - theDrawee);
 
@@ -298,6 +284,12 @@ public class UserServiceImpl implements UserService {
 	public void deleteWarehouse(int id) {
 
 		userDAO.deleteWarehouse(id);
+	}
+
+	@Override
+	public List<Bill> getClientBills(int clientId) {
+
+		return userDAO.getClientBills(clientId);
 	}
 
 }

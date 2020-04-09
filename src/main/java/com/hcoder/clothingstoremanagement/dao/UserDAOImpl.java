@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.apache.catalina.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
@@ -238,15 +236,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void saveClientRecord(ClientRecord clientRecord) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		session.save(clientRecord);
-
-	}
-
-	@Override
 	public void makeSpendingOpertaion(Spending spending) {
 
 		Session session = entityManager.unwrap(Session.class);
@@ -299,18 +288,8 @@ public class UserDAOImpl implements UserDAO {
 
 		session.update(client);
 
-		session.update(client.getClientRecords());
+		session.update(client.getBills());
 
-	}
-
-	@Override
-	public ClientRecord getClientRecordById(int id) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		ClientRecord theClientRecord = session.get(ClientRecord.class, id);
-
-		return theClientRecord;
 	}
 
 	@Override
@@ -655,42 +634,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	@Transactional
-	public void deleteClientRecordByBillInfo(Bill bill) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		Query<ClientRecord> query = session.createQuery("delete from ClientRecord where "
-				+ "client_id = :theClientId AND  item = :theItem AND price = :thePrice AND  quantity = :theQuantity");
-
-		query.setParameter("theClientId", bill.getClient().getId());
-		query.setParameter("theItem", bill.getItem());
-		query.setParameter("thePrice", bill.getPiecePrice());
-		query.setParameter("theQuantity", bill.getQuantity());
-
-		query.executeUpdate();
-
-	}
-
-	@Override
-	@Transactional
-	public ClientRecord getClientRecordByBillInfo(Bill bill) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		Query<ClientRecord> query = session.createQuery("from ClientRecord where "
-				+ "client_id = :theClientId AND  item = :theItem AND price = :thePrice AND  quantity = :theQuantity");
-
-		query.setParameter("theClientId", bill.getClient().getId());
-		query.setParameter("theItem", bill.getItem());
-		query.setParameter("thePrice", bill.getPiecePrice());
-		query.setParameter("theQuantity", bill.getQuantity());
-
-		return query.getResultList().get(0);
-
-	}
-
-	@Override
 	public Bill getBillById(int id) {
 
 		Session session = entityManager.unwrap(Session.class);
@@ -712,5 +655,18 @@ public class UserDAOImpl implements UserDAO {
 		session.delete(warehouse);
 
 	}
+
+	@Override
+	public List<Bill> getClientBills(int clientId) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Bill> query = session.createQuery("from Bill where client_id = :theClientId");
+
+		query.setParameter("theClientId", clientId);
+
+		return query.getResultList();
+	}
+
 
 }

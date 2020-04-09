@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
@@ -21,8 +20,10 @@ public interface UserService {
 	public List<Bill> getBillsByDate(String date);
 
 	public void payOffAmount(Client client);
-	
+
 	public void deleteBill(int id);
+
+	public List<Bill> getClientBills(int clientId);
 
 	// Client Methods
 
@@ -36,11 +37,6 @@ public interface UserService {
 
 	public void saveClient(Client client);
 
-	// Client Records Method
-	public ClientRecord getClientRecordById(int id);
-
-	public void saveClientRecord(ClientRecord clientRecord);
-
 	// Incoming Methods
 	public List<Incoming> GetIncomingsByDate(String date);
 
@@ -53,9 +49,9 @@ public interface UserService {
 	public int getIcomingTotal();
 
 	public int getIncomingTotalByTraderName(String traderName);
-	
+
 	public void deleteIncoming(int id);
-	
+
 	// Warehouse Methods
 	public int getWarehouseTotal();
 
@@ -69,14 +65,13 @@ public interface UserService {
 
 	public void deleteWarehouse(int id);
 
-	
 	// Spending Methods
 	public int getSpendingTotal();
 
 	public int getSpendingTotalToday();
 
 	public void deleteSpending(int id);
-	
+
 	public int getSpendingTotalByDate(String date);
 
 	public void makeSpendingOpertaion(Spending spending);
@@ -106,8 +101,5 @@ public interface UserService {
 
 	// SUMMRY
 	public List<Result> groupByMonths();
-
-
-
 
 }

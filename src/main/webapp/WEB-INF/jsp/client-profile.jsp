@@ -126,11 +126,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="tempItem" items="${clientData.clientRecords}">
+							<c:forEach var="tempItem" items="${clientData.bills}">
 								<tr>
 									<td>${tempItem.item}</td>
 									<td>${tempItem.quantity}</td>
-									<td>${tempItem.price}</td>
+									<td>${tempItem.piecePrice}</td>
 								</tr>
 
 							</c:forEach>

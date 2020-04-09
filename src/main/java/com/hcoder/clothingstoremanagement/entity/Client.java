@@ -23,18 +23,16 @@ public class Client {
 
 	@Column(name = "drawee")
 	int drawee;
-	
+
 	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	@Column(name = "name")
 	String name;
-	
-	//@Pattern(regexp = "(01)[0125]{1}[0-9]{8}", message = "ادخل التيليفون بشكل صحيح")
+
+	// @Pattern(regexp = "(01)[0125]{1}[0-9]{8}", message = "ادخل التيليفون بشكل
+	// صحيح")
 	@Column(name = "phone")
 	String phone;
-
-	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<ClientRecord> clientRecords;
-
+	
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private List<Bill> bills;
 
@@ -78,12 +76,5 @@ public class Client {
 		this.drawee = drawee;
 	}
 
-	public List<ClientRecord> getClientRecords() {
-		return clientRecords;
-	}
-
-	public void setClientRecords(List<ClientRecord> clientRecords) {
-		this.clientRecords = clientRecords;
-	}
 
 }

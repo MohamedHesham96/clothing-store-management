@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Warehouse;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
@@ -86,7 +85,6 @@ public class Bills {
 			if (!itemIdList.get(i).equals("-1")) {
 
 				Bill theBill = new Bill();
-				ClientRecord clientRecord = new ClientRecord();
 				Client theClient = new Client();
 
 				theBill.setDate(LocalDate.now().toString());
@@ -104,30 +102,21 @@ public class Bills {
 				theBill.setItem(warehouse.getItem());
 				theBill.settrader(warehouse.gettrader());
 				theBill.setTradePrice(warehouse.getTradePrice());
-
-				clientRecord.setItem(warehouse.getItem());
-				clientRecord.setPay(Integer.parseInt(payedList.get(i)));
-				clientRecord.setQuantity(Integer.parseInt(quantityList.get(i)));
-				clientRecord.setPrice(Integer.parseInt(piecePriceList.get(i)) * Integer.parseInt(quantityList.get(i)));
+				theBill.setPayed(Integer.parseInt(payedList.get(i)));
 
 				if (!clientIdList.get(i).equals("-1")) {
 
 					theClient = userService.getClientById(Integer.parseInt(clientIdList.get(i)));
 
-					int theNewdrawee = theClient.getDrawee() + clientRecord.getPrice() - clientRecord.getPay();
+					int theNewdrawee = theClient.getDrawee() + theBill.getPiecePrice() - theBill.getPayed();
 
 					theClient.setDrawee(theNewdrawee);
 
 					userService.saveClient(theClient);
 
-					clientRecord.setClient(theClient);
-
-					userService.saveClientRecord(clientRecord);
-
 				} else {
 
 					theClient = entityManager.getReference(Client.class, -1);
-
 				}
 
 				theBill.setClient(theClient);

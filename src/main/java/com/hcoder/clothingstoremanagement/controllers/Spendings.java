@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.ClientRecord;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
@@ -86,14 +86,14 @@ public class Spendings {
 
 		userService.saveClient(theClient);
 
-		List<ClientRecord> clientRecords = theClient.getClientRecords();
+		List<Bill> clientBills = theClient.getBills();
 
-		int size = clientRecords.size();
+		int size = clientBills.size();
 		int totalPayment = 0;
 
 		for (int i = 0; i < size; i++) {
 
-			totalPayment += clientRecords.get(i).getPrice();
+			totalPayment += clientBills.get(i).getPiecePrice();
 		}
 
 		theModel.addAttribute("clientData", theClient);
