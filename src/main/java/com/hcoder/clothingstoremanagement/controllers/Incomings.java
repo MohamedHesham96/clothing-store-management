@@ -48,7 +48,7 @@ public class Incomings {
 		theModel.addAttribute("tradersList", userService.getAllTraders());
 
 		theModel.addAttribute("date", theDate);
-		theModel.addAttribute("items", incomings);
+		theModel.addAttribute("incomings", incomings);
 		theModel.addAttribute("incoming", new Incoming());
 		theModel.addAttribute("soldTotal", soldTotal);
 		theModel.addAttribute("incomingTotal", incomingTotal);

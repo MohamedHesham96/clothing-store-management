@@ -101,7 +101,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="tempItem" items="${items}">
+							<c:forEach var="tempItem" items="${availableIncomings}">
 
 								<tr>
 									<td>${tempItem.item}</td>

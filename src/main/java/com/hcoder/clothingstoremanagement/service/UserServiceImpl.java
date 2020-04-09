@@ -2,6 +2,7 @@ package com.hcoder.clothingstoremanagement.service;
 
 import java.util.List;
 
+import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -239,7 +240,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Bill deleteBill(int id) {
+	public void deleteBill(int id) {
 
 		Bill theBill = userDAO.deleteBill(id);
 
@@ -249,18 +250,20 @@ public class UserServiceImpl implements UserService {
 
 		theClient.setDrawee(theClient.getDrawee() - theDrawee);
 
-		// To-Do Update Incoming currentQuantity
+		Incoming incoming = userDAO.getIncomingById(theBill.getIncomingId());
+
+		incoming.setCurrentQuantity(incoming.getCurrentQuantity() + theBill.getQuantity());
+
+		userDAO.AddIncoming(incoming);
 
 		userDAO.saveClient(theClient);
 
-		return theBill;
 	}
 
 	@Override
 	public void deleteIncoming(int id) {
 
 		userDAO.deleteIncoming(id);
-
 	}
 
 	@Override

@@ -105,17 +105,16 @@
 											placeholder="ادخل الكمية" name="pswd"></form:input></td>
 
 									<td><form:input type="text" path="item"
-											class="text-center form-control  mb-2 col-xs-3"
-											placeholder="ادخل اسم الصنف" name="email"></form:input></td>
-
+											class="text-center form-control mb-2 col-xs-3"
+											placeholder="ادخل اسم الصنف"></form:input></td>
 
 									<td><form:input type="text" path="tradePrice"
 											class="text-center form-control  mb-2 col-xs-3"
-											placeholder="ادخل السعر تجاري" name="pswd"></form:input></td>
+											placeholder="ادخل السعر تجاري"></form:input></td>
 
 									<td><form:input type="text" path="piecePrice"
 											class="text-center form-control  col-xs-3"
-											placeholder="ادخل سعر القطعه" name="pswd"></form:input></td>
+											placeholder="ادخل سعر القطعه"></form:input></td>
 
 									<td><form:select path="trader" style="width: 200px;"
 											class="text-center form-control  mb-2 col-xs-3">
@@ -171,11 +170,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="tempItem" items="${items}">
+							<c:forEach var="tempItem" items="${incomings}">
 
 								<tr>
 									<td>${tempItem.item}</td>
-									<td>${tempItem.currentQuantity}</td>
+									<td>${tempItem.quantity}</td>
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.piecePrice}</td>
 									<td>${tempItem.total}</td>

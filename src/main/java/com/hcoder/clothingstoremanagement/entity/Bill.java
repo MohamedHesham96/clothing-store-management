@@ -19,6 +19,17 @@ public class Bill {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
+	@Column(name = "incoming_id")
+	int incomingId;
+
+	public int getIncomingId() {
+		return incomingId;
+	}
+
+	public void setIncomingId(int incomingId) {
+		this.incomingId = incomingId;
+	}
+
 	@Column(name = "gain")
 	int gain;
 
@@ -45,7 +56,7 @@ public class Bill {
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REFRESH })
-	
+
 	@JoinColumn(name = "client_id")
 	private Client client;
 
@@ -129,7 +140,7 @@ public class Bill {
 	public void setPayed(int payed) {
 		this.payed = payed;
 	}
+	
+	
 
-	
-	
 }

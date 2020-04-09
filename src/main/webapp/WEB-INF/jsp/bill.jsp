@@ -25,7 +25,7 @@
 <body background="images/cal1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
-	
+
 	<%@ include file="header.jsp"%>
 
 
@@ -108,6 +108,12 @@
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.piecePrice}</td>
 									<td>${tempItem.gain}</td>
+									<td style="width: 160px"><a
+										style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+										href="delete-bill?id=${tempItem.id}">حذف</a></td>
 								</tr>
 							</c:forEach>
 

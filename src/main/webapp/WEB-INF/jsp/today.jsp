@@ -111,7 +111,6 @@
 											<option value="-1">--- اختر الصنف ---</option>
 											<c:forEach var="tempItem" items="${warehouseItems}">
 
-
 												<c:if test="${tempItem.quantity > 0}">
 
 													<option value="${tempItem.id}">${tempItem.item}</option>
@@ -187,7 +186,6 @@
 								<th>الكيمة</th>
 								<th>السعر تجاري</th>
 								<th>سعر القطعه</th>
-								<th>صافي الربح</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -198,7 +196,6 @@
 									<td>${tempItem.quantity}</td>
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.piecePrice}</td>
-									<td>${tempItem.gain}</td>
 									<td style="width: 160px"><a
 										style="height: 30px; font-size: 14px;"
 										class="btn btn-danger text-wight

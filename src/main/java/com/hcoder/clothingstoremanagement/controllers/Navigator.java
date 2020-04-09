@@ -61,11 +61,11 @@ public class Navigator {
 	@RequestMapping("/warehouse")
 	public String getWarehouse(Model theModel) {
 
-		List<Incoming> items = userService.getAllAvailableIncoming();
-
+		List<Incoming> availableIncomings = userService.getAllAvailableIncoming();
+		
 		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
 
-		theModel.addAttribute("items", items);
+		theModel.addAttribute("availableIncomings", availableIncomings);
 		theModel.addAttribute("bill", new Bill());
 		theModel.addAttribute("soldTotal", soldTotal);
 		theModel.addAttribute("incomingTotal", userService.getIcomingTotal());

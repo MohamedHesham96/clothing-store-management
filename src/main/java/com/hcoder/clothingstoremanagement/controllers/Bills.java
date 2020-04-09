@@ -86,6 +86,7 @@ public class Bills {
 
 				Bill theBill = new Bill();
 				Client theClient = new Client();
+				System.out.println("(itemIdList.get(i)) >>>.......... " + itemIdList.get(i));
 
 				theBill.setDate(LocalDate.now().toString());
 				theBill.setQuantity(Integer.parseInt(quantityList.get(i)));
@@ -94,12 +95,13 @@ public class Bills {
 				// اتعامل بالانكاميج بدل الوايرهاوس
 				Incoming incoming = userService.getIncomingById(Integer.parseInt(itemIdList.get(i)));
 				incoming.setCurrentQuantity(incoming.getCurrentQuantity() - Integer.parseInt(quantityList.get(i)));
-				
+
 				userService.updateIncomingCurrentQuantity(incoming);
 
 				int gain = (Integer.parseInt(piecePriceList.get(i)) - incoming.getTradePrice())
 						* Integer.parseInt(quantityList.get(i));
 
+				theBill.setIncomingId(incoming.getId());
 				theBill.setGain(gain);
 				theBill.setItem(incoming.getItem());
 				theBill.settrader(incoming.gettrader());

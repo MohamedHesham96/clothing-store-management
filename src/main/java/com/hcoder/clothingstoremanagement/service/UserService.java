@@ -20,7 +20,7 @@ public interface UserService {
 
 		public void payOffAmount(Client client);
 
-		public Bill deleteBill(int id);
+		public void deleteBill(int id);
 
 		// Client Methods
 

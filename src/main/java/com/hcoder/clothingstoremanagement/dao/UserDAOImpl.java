@@ -635,6 +635,8 @@ public class UserDAOImpl implements UserDAO {
 
 		Incoming incoming = session.get(Incoming.class, id);
 
+		System.out.println("incoming>>>>>>>>>>>>>>>>>>>> " + incoming.getItem());
+		
 		return incoming;
 	}
 }
