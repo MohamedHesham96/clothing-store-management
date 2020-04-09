@@ -12,7 +12,6 @@ import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
-import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,15 +32,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<Incoming> GetAllIncoming() {
+	public List<Incoming> getAllIncoming() {
 
-		return userDAO.GetAllIncoming();
-	}
-
-	@Override
-	public List<Warehouse> getAllWarehouse() {
-
-		return userDAO.getAllWarehouse();
+		return userDAO.getAllIncoming();
 	}
 
 	@Override
@@ -51,29 +44,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addToWarehouse(Warehouse warehouse) {
-
-		userDAO.addToWarehouse(warehouse);
-	}
-
-	@Override
 	public void addBill(Bill theBill) {
 
 		userDAO.addBill(theBill);
 	}
 
 	@Override
-	public Warehouse getWarehouseById(int id) {
+	public void updateIncomingCurrentQuantity(Incoming incoming) {
 
-		Warehouse warehouse = userDAO.getWarehouseById(id);
-
-		return warehouse;
-	}
-
-	@Override
-	public void updateWarehouseQuantity(Warehouse warehouse) {
-
-		userDAO.updateWarehouseQuantity(warehouse);
+		userDAO.updateIncomingCurrentQuantity(incoming);
 	}
 
 	@Override
@@ -260,17 +239,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteBill(int id) {
+	public Bill deleteBill(int id) {
 
 		Bill theBill = userDAO.deleteBill(id);
-		
+
 		Client theClient = userDAO.getClientById(theBill.getClient().getId());
 
 		int theDrawee = theBill.getPiecePrice() - theBill.getPayed();
 
 		theClient.setDrawee(theClient.getDrawee() - theDrawee);
 
+		// To-Do Update Incoming currentQuantity
+
 		userDAO.saveClient(theClient);
+
+		return theBill;
 	}
 
 	@Override
@@ -281,15 +264,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteWarehouse(int id) {
-
-		userDAO.deleteWarehouse(id);
-	}
-
-	@Override
 	public List<Bill> getClientBills(int clientId) {
 
 		return userDAO.getClientBills(clientId);
+	}
+
+	@Override
+	public List<Incoming> getAllAvailableIncoming() {
+
+		return userDAO.getAllAvailableIncoming();
+	}
+
+	@Override
+	public Incoming getIncomingById(int id) {
+
+		return userDAO.getIncomingById(id);
 	}
 
 }

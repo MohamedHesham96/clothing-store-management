@@ -18,6 +18,9 @@ public class Incoming {
 	@Column(name = "quantity")
 	int quantity;
 
+	@Column(name = "current_quantity")
+	int currentQuantity;
+
 	@Column(name = "piece_price")
 	int piecePrice;
 
@@ -111,6 +114,14 @@ public class Incoming {
 
 	public void setTradePrice(int tradePrice) {
 		this.tradePrice = tradePrice;
+	}
+
+	public int getCurrentQuantity() {
+		return currentQuantity;
+	}
+
+	public void setCurrentQuantity(int currentQuantity) {
+		this.currentQuantity = currentQuantity;
 	}
 
 }

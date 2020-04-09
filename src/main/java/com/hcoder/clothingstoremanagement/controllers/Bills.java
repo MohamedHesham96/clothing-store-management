@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
 import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.Warehouse;
+import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
 @Controller
@@ -91,17 +91,19 @@ public class Bills {
 				theBill.setQuantity(Integer.parseInt(quantityList.get(i)));
 				theBill.setPiecePrice(Integer.parseInt(piecePriceList.get(i)));
 
-				Warehouse warehouse = userService.getWarehouseById(Integer.parseInt(itemIdList.get(i)));
-				warehouse.setQuantity(warehouse.getQuantity() - Integer.parseInt(quantityList.get(i)));
-				userService.updateWarehouseQuantity(warehouse);
+				// اتعامل بالانكاميج بدل الوايرهاوس
+				Incoming incoming = userService.getIncomingById(Integer.parseInt(itemIdList.get(i)));
+				incoming.setCurrentQuantity(incoming.getCurrentQuantity() - Integer.parseInt(quantityList.get(i)));
+				
+				userService.updateIncomingCurrentQuantity(incoming);
 
-				int gain = (Integer.parseInt(piecePriceList.get(i)) - warehouse.getTradePrice())
+				int gain = (Integer.parseInt(piecePriceList.get(i)) - incoming.getTradePrice())
 						* Integer.parseInt(quantityList.get(i));
 
 				theBill.setGain(gain);
-				theBill.setItem(warehouse.getItem());
-				theBill.settrader(warehouse.gettrader());
-				theBill.setTradePrice(warehouse.getTradePrice());
+				theBill.setItem(incoming.getItem());
+				theBill.settrader(incoming.gettrader());
+				theBill.setTradePrice(incoming.getTradePrice());
 				theBill.setPayed(Integer.parseInt(payedList.get(i)));
 
 				if (!clientIdList.get(i).equals("-1")) {
@@ -133,9 +135,7 @@ public class Bills {
 	public String deleteBill(@RequestParam int id) {
 
 		userService.deleteBill(id);
-		
-		
-		
+
 		return "redirect:/today";
 	}
 }

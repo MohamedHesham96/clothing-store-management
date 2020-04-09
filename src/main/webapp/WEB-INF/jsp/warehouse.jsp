@@ -105,15 +105,9 @@
 
 								<tr>
 									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
+									<td>${tempItem.currentQuantity}</td>
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.trader}</td>
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
-										font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-										href="delete-warehouse?id=${tempItem.id}">حذف</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

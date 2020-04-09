@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Trader;
-import com.hcoder.clothingstoremanagement.entity.Warehouse;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
 @Controller
@@ -33,7 +32,7 @@ public class Incomings {
 		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
-			incomings = userService.GetAllIncoming();
+			incomings = userService.getAllIncoming();
 
 		} else {
 
@@ -63,27 +62,21 @@ public class Incomings {
 
 		theModel.addAttribute("incoming", new Incoming());
 
+		theIncoming.setCurrentQuantity(theIncoming.getQuantity());
+
 		int total = theIncoming.getTradePrice() * theIncoming.getQuantity();
 
 		theIncoming.setDate(LocalDate.now().toString());
+
 		theIncoming.setTotal(total);
 
 		userService.AddIncoming(theIncoming);
-		
-		Warehouse warehouse = new Warehouse();
-		
-		warehouse.setItem(theIncoming.getItem());
-		warehouse.setQuantity(theIncoming.getQuantity());
-		warehouse.setTradePrice(theIncoming.getTradePrice());
-		warehouse.settrader(theIncoming.gettrader());
 
 		Trader trader = userService.getTraderByName(theIncoming.gettrader());
 
 		trader.setRemaining(trader.getRemaining() + total);
 
 		userService.saveTrader(trader);
-
-		userService.addToWarehouse(warehouse);
 
 		return "redirect:/incoming";
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcoder.clothingstoremanagement.entity.Bill;
-import com.hcoder.clothingstoremanagement.entity.Warehouse;
+import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.service.UserService;
 
 @Controller
@@ -61,7 +61,7 @@ public class Navigator {
 	@RequestMapping("/warehouse")
 	public String getWarehouse(Model theModel) {
 
-		List<Warehouse> items = userService.getAllWarehouse();
+		List<Incoming> items = userService.getAllAvailableIncoming();
 
 		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
 
@@ -75,14 +75,6 @@ public class Navigator {
 		return "warehouse";
 	}
 
-	@RequestMapping("/delete-warehouse")
-	public String deleteIncoming(@RequestParam int id) {
-
-		userService.deleteWarehouse(id);
-		
-		return "redirect:/warehouse";
-	}
-	
 	@RequestMapping("/today")
 	public String getToday(Model theModel) {
 
@@ -105,7 +97,7 @@ public class Navigator {
 
 		int spendingTotal = userService.getSpendingTotalToday();
 
-		List<Warehouse> warehouseItems = userService.getAllWarehouse();
+		List<Incoming> warehouseItems = userService.getAllAvailableIncoming();
 
 		// صافي الربح
 		int total = gainTotal - spendingTotal;

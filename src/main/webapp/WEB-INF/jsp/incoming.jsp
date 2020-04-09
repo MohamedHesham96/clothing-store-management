@@ -175,7 +175,7 @@
 
 								<tr>
 									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
+									<td>${tempItem.currentQuantity}</td>
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.piecePrice}</td>
 									<td>${tempItem.total}</td>

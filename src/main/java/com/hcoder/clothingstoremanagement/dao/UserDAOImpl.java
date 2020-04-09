@@ -19,7 +19,6 @@ import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Result;
 import com.hcoder.clothingstoremanagement.entity.Spending;
 import com.hcoder.clothingstoremanagement.entity.Trader;
-import com.hcoder.clothingstoremanagement.entity.Warehouse;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -70,7 +69,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Incoming> GetAllIncoming() {
+	public List<Incoming> getAllIncoming() {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -82,18 +81,12 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void addToWarehouse(Warehouse warehouse) {
-
-		Session session = entityManager.unwrap(Session.class);
-		session.save(warehouse);
-	}
-
-	@Override
-	public List<Warehouse> getAllWarehouse() {
+	public List<Incoming> getAllAvailableIncoming() {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Warehouse> items = session.createQuery("from Warehouse order by TIMESTAMP desc").getResultList();
+		List<Incoming> items = session.createQuery("from Incoming where current_quantity > 0 order by TIMESTAMP desc")
+				.getResultList();
 
 		return items;
 	}
@@ -116,23 +109,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Warehouse getWarehouseById(int id) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		Warehouse warehouse = session.get(Warehouse.class, id);
-
-		return warehouse;
-	}
-
-	@Override
 	@Transactional
-	public void updateWarehouseQuantity(Warehouse warehouse) {
+	public void updateIncomingCurrentQuantity(Incoming incoming) {
 
 		Session session = entityManager.unwrap(Session.class);
 
 		// Make it saveOrUpdate
-		session.update(warehouse);
+		session.update(incoming);
 	}
 
 	@Override
@@ -180,7 +163,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Warehouse> items = session.createQuery("from Warehouse").getResultList();
+		List<Incoming> items = session.createQuery("from Incoming where current_quantity > 0").getResultList();
 
 		int listSize = items.size();
 
@@ -188,7 +171,7 @@ public class UserDAOImpl implements UserDAO {
 
 		for (int i = 0; i < listSize; i++) {
 
-			Warehouse item = items.get(i);
+			Incoming item = items.get(i);
 
 			warehouseTotal += item.getQuantity() * item.getTradePrice();
 		}
@@ -634,29 +617,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Bill getBillById(int id) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		Bill theBill = session.get(Bill.class, id);
-
-		return theBill;
-
-	}
-
-	@Override
-	@Transactional
-	public void deleteWarehouse(int id) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		Warehouse warehouse = session.get(Warehouse.class, id);
-
-		session.delete(warehouse);
-
-	}
-
-	@Override
 	public List<Bill> getClientBills(int clientId) {
 
 		Session session = entityManager.unwrap(Session.class);
@@ -668,5 +628,13 @@ public class UserDAOImpl implements UserDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public Incoming getIncomingById(int id) {
 
+		Session session = entityManager.unwrap(Session.class);
+
+		Incoming incoming = session.get(Incoming.class, id);
+
+		return incoming;
+	}
 }
