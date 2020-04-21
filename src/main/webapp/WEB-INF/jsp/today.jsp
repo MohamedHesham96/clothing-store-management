@@ -27,6 +27,16 @@
 
 		submitBtn.disabled = false;
 	}
+
+	function showToggle() {
+
+		var x = document.getElementById("gainTotalDiv");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
 </script>
 </head>
 <body onunload="myFunc();" background="images/wall6.jpg"
@@ -40,15 +50,16 @@
 
 
 
-		<div class=" col-xs-6 card bg-secondary text-white"
+		<div onclick="showToggle();" class=" col-xs-6 card bg-secondary text-white"
 			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
-			<ul class="list-group list-group-flush">
+			<ul id="gainTotalDiv" style="display: none;"  class="list-group list-group-flush">
 				<li class="bg-dark list-group-item">
 
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn bg-info text-white   font-weight-bold text-center">
+					<button dir="rtl"
+						style="text-align: right;" type="button"
+						class="w-100 btn bg-info text-white font-weight-bold text-center">
 						اجمالي الربح <span style="margin-right: 20px;"
 							class="w-50 badge badge-light text-center"> ${gainTotal}
 							جنيه</span>
@@ -186,6 +197,8 @@
 								<th>الكيمة</th>
 								<th>السعر تجاري</th>
 								<th>سعر القطعه</th>
+								<th>اسم العميل</th>
+
 							</tr>
 						</thead>
 						<tbody>
@@ -196,6 +209,8 @@
 									<td>${tempItem.quantity}</td>
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.piecePrice}</td>
+									<td>${tempItem.client.name}</td>
+
 									<td style="width: 160px"><a
 										style="height: 30px; font-size: 14px;"
 										class="btn btn-danger text-wight

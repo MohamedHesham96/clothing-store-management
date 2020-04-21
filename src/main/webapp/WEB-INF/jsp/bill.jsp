@@ -64,6 +64,16 @@
 					</button>
 				</li>
 
+				<c:if test="${bank != null}">
+					<li class="bg-dark list-group-item">
+
+						<button dir="rtl" style="text-align: right;" type="button"
+							class="w-100 btn bg-warning  font-weight-bold text-center text-center">
+							داخل الخزنة <span style="margin-right: 25px;"
+								class="w-50 badge badge-light text-center">${bank} جنيه</span>
+						</button>
+					</li>
+				</c:if>
 
 				<li class="bg-dark list-group-item">
 
@@ -97,6 +107,8 @@
 								<th>السعر تجاري</th>
 								<th>سعر القطعه</th>
 								<th>صافي الربح</th>
+								<th>اسم العميل</th>
+
 							</tr>
 						</thead>
 						<tbody>
@@ -108,6 +120,7 @@
 									<td>${tempItem.tradePrice}</td>
 									<td>${tempItem.piecePrice}</td>
 									<td>${tempItem.gain}</td>
+									<td>${tempItem.client.name}</td>
 									<td style="width: 160px"><a
 										style="height: 30px; font-size: 14px;"
 										class="btn btn-danger text-wight

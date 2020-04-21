@@ -74,7 +74,6 @@
 
 					<button dir="rtl" style="text-align: right;" type="button"
 						type="button"
-						
 						class=" ${incomingsTotal == traderData.payed ?  'bg-success' :'bg-danger'} 
 						
 						text-center w-100 btn font-weight-bold">

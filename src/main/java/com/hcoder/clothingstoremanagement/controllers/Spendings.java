@@ -25,14 +25,42 @@ public class Spendings {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("/get-spendings-by-date")
-	public String getSpendingsByDate(@RequestParam("date") String theDate, Model theModel) {
+	@RequestMapping("/spending")
+	public String getSpendings(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
 
-		List<Spending> spendings = userService.getSpendingsByDate(theDate);
+		List<Spending> spendings;
+		int spendingTotal = 0;
+		int soldPriceTotal = 0;
 
+		List<Bill> bills = userService.getAllBills();
+
+		if (theDate == null) {
+
+			theDate = LocalDate.now().toString();
+			spendings = userService.getAllSpending();
+			spendingTotal = userService.getSpendingTotal();
+
+		} else {
+
+			spendings = userService.getSpendingsByDate(theDate);
+			spendingTotal = userService.getSpendingTotalByDate(theDate);
+		}
+
+		int listSize = bills.size();
+
+		for (int i = 0; i < listSize; i++) {
+
+			soldPriceTotal += bills.get(i).getPiecePrice();
+
+		}
+
+		int bank = soldPriceTotal - userService.getClientsDraweeTotal() - spendingTotal;
+
+		theModel.addAttribute("date", theDate);
+		theModel.addAttribute("bank", bank);
+		theModel.addAttribute("spendingTotal", spendingTotal);
 		theModel.addAttribute("spending", new Spending());
 		theModel.addAttribute("spendings", spendings);
-		theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
 
 		return "spending";
 	}
@@ -46,31 +74,6 @@ public class Spendings {
 
 		return "redirect:/spending";
 
-	}
-
-	@RequestMapping("/spending")
-	public String getSpendings(@RequestParam(value = "date", required = false) String theDate, Model theModel) {
-
-		List<Spending> spendings;
-
-		if (theDate == null) {
-
-			theDate = LocalDate.now().toString();
-			spendings = userService.getAllSpending();
-			theModel.addAttribute("spendingTotal", userService.getSpendingTotal());
-
-		} else {
-
-			spendings = userService.getSpendingsByDate(theDate);
-			theModel.addAttribute("spendingTotal", userService.getSpendingTotalByDate(theDate));
-
-		}
-
-		theModel.addAttribute("date", theDate);
-		theModel.addAttribute("spending", new Spending());
-		theModel.addAttribute("spendings", spendings);
-
-		return "spending";
 	}
 
 	@RequestMapping("/pay-off-amount")

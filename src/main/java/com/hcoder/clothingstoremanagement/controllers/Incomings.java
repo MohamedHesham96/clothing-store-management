@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,7 +59,8 @@ public class Incomings {
 	}
 
 	@PostMapping("/add-incoming")
-	public String addIncoming(@ModelAttribute("incoming") Incoming theIncoming, Model theModel) {
+	public String addIncoming(@ModelAttribute("amount") int amount, @ModelAttribute("incoming") Incoming theIncoming,
+			Model theModel) {
 
 		theModel.addAttribute("incoming", new Incoming());
 
@@ -73,8 +75,10 @@ public class Incomings {
 		userService.AddIncoming(theIncoming);
 
 		Trader trader = userService.getTraderByName(theIncoming.gettrader());
-
-		trader.setRemaining(trader.getRemaining() + total);
+		
+		trader.setPayed(amount);
+		
+		trader.setRemaining(trader.getRemaining() + total - amount);
 
 		userService.saveTrader(trader);
 

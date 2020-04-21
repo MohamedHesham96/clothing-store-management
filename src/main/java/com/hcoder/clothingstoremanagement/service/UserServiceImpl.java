@@ -252,9 +252,11 @@ public class UserServiceImpl implements UserService {
 
 		Incoming incoming = userDAO.getIncomingById(theBill.getIncomingId());
 
-		incoming.setCurrentQuantity(incoming.getCurrentQuantity() + theBill.getQuantity());
+		if (incoming != null) {
 
-		userDAO.AddIncoming(incoming);
+			incoming.setCurrentQuantity(incoming.getCurrentQuantity() + theBill.getQuantity());
+			userDAO.AddIncoming(incoming);
+		}
 
 		userDAO.saveClient(theClient);
 

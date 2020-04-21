@@ -50,22 +50,29 @@ public class Bills {
 
 		int listSize = bills.size();
 		int gainTotal = 0;
-
+		int soldPriceTotal = 0;
+		
 		Bill item;
 
 		for (int i = 0; i < listSize; i++) {
 
 			item = bills.get(i);
-
+			soldPriceTotal += bills.get(i).getPiecePrice();
 			gainTotal += item.getGain();
 		}
 
 		// صافي الربح
 		int total = gainTotal - spendingTotal;
 
+		if (theDate.equals(LocalDate.now().toString())) {
+
+			int bank = soldPriceTotal - userService.getClientsDraweeTotal() - spendingTotal;
+			theModel.addAttribute("bank", bank);
+		}
+
 		theModel.addAttribute("date", theDate);
-		theModel.addAttribute("total", total);
 		theModel.addAttribute("items", bills);
+		theModel.addAttribute("total", total);
 		theModel.addAttribute("gainTotal", gainTotal);
 		theModel.addAttribute("spendingTotal", spendingTotal);
 
@@ -86,7 +93,6 @@ public class Bills {
 
 				Bill theBill = new Bill();
 				Client theClient = new Client();
-				System.out.println("(itemIdList.get(i)) >>>.......... " + itemIdList.get(i));
 
 				theBill.setDate(LocalDate.now().toString());
 				theBill.setQuantity(Integer.parseInt(quantityList.get(i)));

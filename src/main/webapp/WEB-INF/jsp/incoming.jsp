@@ -93,6 +93,7 @@
 									<th>الصنف</th>
 									<th>السعر تجاري</th>
 									<th>سعر القطعة</th>
+									<th>المبلغ المدفوع</th>
 									<th>المحل</th>
 								</tr>
 							</thead>
@@ -100,11 +101,12 @@
 							<tbody>
 
 								<tr>
-									<td><form:input type="text" path="quantity"
+									<td><form:input style="width: 120px;" type="text"
+											path="quantity"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل الكمية" name="pswd"></form:input></td>
 
-									<td><form:input type="text" path="item"
+									<td style="width:"><form:input type="text" path="item"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل اسم الصنف"></form:input></td>
 
@@ -115,6 +117,10 @@
 									<td><form:input type="text" path="piecePrice"
 											class="text-center form-control  col-xs-3"
 											placeholder="ادخل سعر القطعه"></form:input></td>
+
+									<td><input type="text" name="amount"
+										class="text-center form-control col-xs-3"
+										placeholder="ادخل المبلغ المدفوع"></input></td>
 
 									<td><form:select path="trader" style="width: 200px;"
 											class="text-center form-control  mb-2 col-xs-3">
@@ -131,8 +137,8 @@
 								</tr>
 
 								<tr style="text-align: center;">
-									<td colspan="5"><input type="submit" value="اضف الصنف"
-										class="w-100 btn badge-info   
+									<td colspan="6"><input type="submit" value="اضف الصنف"
+										class="btn badge-info   
 								 font-weight-bold text-center"
 										style="width: 100%; height: 50px;"
 										onclick="this.disabled=true; this.parentNode.submit();">

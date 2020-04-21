@@ -163,7 +163,9 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Incoming> items = session.createQuery("from Incoming where current_quantity > 0").getResultList();
+		List<Incoming> items = session
+				.createQuery("from Incoming where current_quantity <= quantity AND current_quantity > 0")
+				.getResultList();
 
 		int listSize = items.size();
 
@@ -173,7 +175,7 @@ public class UserDAOImpl implements UserDAO {
 
 			Incoming item = items.get(i);
 
-			warehouseTotal += item.getQuantity() * item.getTradePrice();
+			warehouseTotal += item.getCurrentQuantity() * item.getTradePrice();
 		}
 
 		return warehouseTotal;
@@ -635,8 +637,6 @@ public class UserDAOImpl implements UserDAO {
 
 		Incoming incoming = session.get(Incoming.class, id);
 
-		System.out.println("incoming>>>>>>>>>>>>>>>>>>>> " + incoming.getItem());
-		
 		return incoming;
 	}
 }

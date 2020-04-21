@@ -51,6 +51,17 @@
 
 				</li>
 
+				<li class="bg-dark list-group-item">
+
+					<button dir="rtl" style="text-align: right;" type="button"
+						class="w-100 btn badge-warning font-weight-bold text-center">
+						داخل الخزنة <span style="margin-right: 15px;"
+							class="w-50 badge badge-light">${bank} جنيه</span>
+					</button>
+
+				</li>
+
+
 
 				<li class="bg-dark list-group-item">
 
@@ -126,47 +137,5 @@
 		</div>
 
 	</div>
-
-	<div
-		style="margin-top: 80px; display: none; padding: 10px; box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.60); direction: rtl"
-		class="form container-fluid fixed-top col-lg-4">
-		<div class="card bg-dark">
-
-
-			<div class="text-right card-body bg-dark text-white">
-
-				<h3>سحب مبلغ</h3>
-				<form:form metho="POST" action="make-spending"
-					modelAttribute="spending">
-					<form:input type="text" class="form-control  col-xs-3"
-						placeholder="ادخل المبلغ " name="money" path="money"></form:input>
-
-					<label style="margin-top: 10px" class="mb-2 mr-sm-2">المبلغ
-						المسحوب :</label>
-
-					<form:input type="text" class="form-control  col-xs-3"
-						placeholder="ادخل المبلغ " name="money" path="money"></form:input>
-
-					<label style="margin-top: 10px" class="mb-2 mr-sm-2">ملاحظة
-						:</label>
-
-					<form:errors cssStyle="color: red;" path="note" />
-
-					<br>
-
-					<input name="date" value="2020-01-01" type="hidden" />
-
-					<button type="submit" class="btn btn-info form-control 	">
-						تم سحب المبلغ</button>
-
-				</form:form>
-
-
-
-			</div>
-		</div>
-
-	</div>
-
 </body>
 </html>
