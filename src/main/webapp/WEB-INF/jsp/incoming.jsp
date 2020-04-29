@@ -22,10 +22,25 @@
 	rel="stylesheet">
 
 
-<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js">
+	function myFunc() {
+
+		var submitBtn = getElementById("submitBtn");
+
+		if (submitBtn.disabled === false) {
+
+			submitBtn.disabled = true;
+
+		} else {
+
+			submitBtn.disabled = false;
+
+		}
+	}
+</script>
 
 </head>
-<body background="images/wall5.jpg"
+<body onunload="myFunc();" background="images/wall5.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -101,10 +116,10 @@
 							<tbody>
 
 								<tr>
-									<td><form:input style="width: 120px;" type="text"
+									<td><form:input style="width: 100px;" type="text"
 											path="quantity"
 											class="text-center form-control mb-2 col-xs-3"
-											placeholder="ادخل الكمية" name="pswd"></form:input></td>
+											placeholder="ادخل الكمية"></form:input></td>
 
 									<td style="width:"><form:input type="text" path="item"
 											class="text-center form-control mb-2 col-xs-3"
@@ -115,15 +130,15 @@
 											placeholder="ادخل السعر تجاري"></form:input></td>
 
 									<td><form:input type="text" path="piecePrice"
-											class="text-center form-control  col-xs-3"
+											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل سعر القطعه"></form:input></td>
 
 									<td><input type="text" name="amount"
 										class="text-center form-control col-xs-3"
 										placeholder="ادخل المبلغ المدفوع"></input></td>
 
-									<td><form:select path="trader" style="width: 200px;"
-											class="text-center form-control  mb-2 col-xs-3">
+									<td><form:select path="trader" style="width: 225px;"
+											class="text-center form-control mb-2 col-xs-3">
 											<option value="غير محدد">غير محدد</option>
 
 											<c:forEach var="tempItem" items="${tradersList}">
