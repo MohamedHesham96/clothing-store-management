@@ -2,7 +2,6 @@ package com.hcoder.clothingstoremanagement.service;
 
 import java.util.List;
 
-import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -246,10 +245,6 @@ public class UserServiceImpl implements UserService {
 
 		Client theClient = userDAO.getClientById(theBill.getClient().getId());
 
-		int theDrawee = theBill.getPiecePrice() - theBill.getPayed();
-
-		theClient.setDrawee(theClient.getDrawee() - theDrawee);
-
 		Incoming incoming = userDAO.getIncomingById(theBill.getIncomingId());
 
 		if (incoming != null) {
@@ -284,6 +279,24 @@ public class UserServiceImpl implements UserService {
 	public Incoming getIncomingById(int id) {
 
 		return userDAO.getIncomingById(id);
+	}
+
+	@Override
+	public List<Incoming> getIncomingsByItemName(String itemName) {
+
+		return userDAO.getIncomingsByItemName(itemName);
+	}
+
+	@Override
+	public List<Client> getClientByName(String clientName) {
+
+		return userDAO.getClientByName(clientName);
+	}
+
+	@Override
+	public List<Trader> getTradersByName(String name) {
+
+		return userDAO.getTradersByName(name);
 	}
 
 }

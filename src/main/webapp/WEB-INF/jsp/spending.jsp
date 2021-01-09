@@ -30,11 +30,10 @@
 
 	<%@ include file="header.jsp"%>
 
-	<div style="text-align: right;" class="container ">
+	<div style="text-align: right;" class="col-12">
 
-
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-secondary text-white float-right"
+			style="width: 18rem;">
 
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
@@ -101,15 +100,20 @@
 
 
 
-		<div class="row  my-4">
+		<div class="row">
 			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
+				<div class="shadow"
+					style="position: relative; height: 500px; overflow: auto;">
+					<table
+						class="table table-bordered table-striped table-dark table-sm">
+
+						<thead class="thead-inverse bg-secondary table-bordered shadow"
+							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 							<tr>
 								<th>المبلغ</th>
 								<th>تاريخ السحب</th>
 								<th>ملاحظة</th>
+								<th>العملية</th>
 
 							</tr>
 						</thead>

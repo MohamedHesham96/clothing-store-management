@@ -62,15 +62,28 @@ public class Navigator {
 	public String getWarehouse(Model theModel) {
 
 		List<Incoming> availableIncomings = userService.getAllAvailableIncoming();
-		
+
 		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
 
 		theModel.addAttribute("availableIncomings", availableIncomings);
-		theModel.addAttribute("bill", new Bill());
 		theModel.addAttribute("soldTotal", soldTotal);
 		theModel.addAttribute("incomingTotal", userService.getIcomingTotal());
 		theModel.addAttribute("warehouseTotal", userService.getWarehouseTotal());
-		theModel.addAttribute("clientsList", userService.getAllClients());
+
+		return "warehouse";
+	}
+
+	@RequestMapping("/search-warehouse")
+	public String getIncomingsByItemName(@RequestParam String itemName, Model theModel) {
+
+		List<Incoming> availableIncomings = userService.getAllAvailableIncoming();
+
+		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
+
+		theModel.addAttribute("availableIncomings", userService.getIncomingsByItemName(itemName));
+		theModel.addAttribute("soldTotal", soldTotal);
+		theModel.addAttribute("incomingTotal", userService.getIcomingTotal());
+		theModel.addAttribute("warehouseTotal", userService.getWarehouseTotal());
 
 		return "warehouse";
 	}

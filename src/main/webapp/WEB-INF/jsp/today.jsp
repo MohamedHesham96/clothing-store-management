@@ -46,19 +46,17 @@
 
 
 
-	<div style="text-align: right;" class="container ">
+	<div style="text-align: right;" class="col-12">
 
-
-
-		<div onclick="showToggle();" class=" col-xs-6 card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-secondary text-white float-right"
+			onclick="showToggle();" style="width: 18rem;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
-			<ul id="gainTotalDiv" style="display: none;"  class="list-group list-group-flush">
+			<ul id="gainTotalDiv" style="display: none;"
+				class="list-group list-group-flush">
 				<li class="bg-dark list-group-item">
 
-					<button dir="rtl"
-						style="text-align: right;" type="button"
+					<button dir="rtl" style="text-align: right;" type="button"
 						class="w-100 btn bg-info text-white font-weight-bold text-center">
 						اجمالي الربح <span style="margin-right: 20px;"
 							class="w-50 badge badge-light text-center"> ${gainTotal}
@@ -87,18 +85,13 @@
 		</div>
 
 
-
-
-
-
 		<form action="add-bills-list" method="POST">
 
-
-			<div class="row  my-4">
+			<div class="row mt-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
-						<table class=" table table-striped table-dark">
-							<thead class="thead-inverse">
+						<table class=" table table-striped table-dark ">
+							<thead class="thead-inverse ">
 								<tr>
 									<th>الكمية</th>
 									<th>الصنف</th>
@@ -164,7 +157,7 @@
 									<td colspan="5"><input id="submitBtn" type="submit"
 										value="أضافة للفواتير"
 										class="w-100 btn badge-info font-weight-bold text-center"
-										onclick="this.disabled=true; this.parentNode.submit();"
+										onclick="this.parentNode.submit(); this.disabled=true; "
 										style="width: 100%; height: 50px;"></td>
 
 								</tr>
@@ -178,51 +171,46 @@
 
 		</form>
 
+		<div dir='rtl' class="w-100">
+			<div class="shadow"
+				style="position: relative; height: 400px; overflow: auto;">
+				<table
+					class="table table-bordered table-striped table-dark table-sm">
 
+					<thead class="thead-inverse bg-secondary table-bordered shadow"
+						style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 
+						<tr>
+							<th>الصنف</th>
+							<th>الكيمة</th>
+							<th>السعر تجاري</th>
+							<th>سعر القطعه</th>
+							<th>اسم العميل</th>
+							<th>العملية</th>
 
+						</tr>
+					</thead>
+					<tbody>
 
-
-
-
-
-
-		<div class="row  my-4">
-			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
+						<c:forEach var="tempItem" items="${items}">
 							<tr>
-								<th>الصنف</th>
-								<th>الكيمة</th>
-								<th>السعر تجاري</th>
-								<th>سعر القطعه</th>
-								<th>اسم العميل</th>
+								<td>${tempItem.item}</td>
+								<td>${tempItem.quantity}</td>
+								<td>${tempItem.tradePrice}</td>
+								<td>${tempItem.piecePrice}</td>
+								<td>${tempItem.client.name}</td>
 
-							</tr>
-						</thead>
-						<tbody>
-
-							<c:forEach var="tempItem" items="${items}">
-								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
-									<td>${tempItem.tradePrice}</td>
-									<td>${tempItem.piecePrice}</td>
-									<td>${tempItem.client.name}</td>
-
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
+								<td style="width: 160px"><a
+									style="height: 30px; font-size: 14px;"
+									class="btn btn-danger text-wight
 										font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-										href="delete-bill?id=${tempItem.id}">حذف</a></td>
-								</tr>
-							</c:forEach>
+									onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+									href="delete-bill?id=${tempItem.id}">حذف</a></td>
+							</tr>
+						</c:forEach>
 
-						</tbody>
-					</table>
-				</div>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

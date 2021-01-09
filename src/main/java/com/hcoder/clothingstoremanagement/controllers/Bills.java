@@ -51,7 +51,7 @@ public class Bills {
 		int listSize = bills.size();
 		int gainTotal = 0;
 		int soldPriceTotal = 0;
-		
+
 		Bill item;
 
 		for (int i = 0; i < listSize; i++) {
@@ -86,6 +86,19 @@ public class Bills {
 			@RequestParam("clientId") List<String> clientIdList) {
 
 		int listSize = clientIdList.size();
+
+		for (int i = 0; i < payedList.size(); i++) {
+
+			if (payedList.get(i).equals("")) {
+
+				payedList.set(i, "0");
+			}
+
+			if (piecePriceList.get(i).equals("")) {
+
+				piecePriceList.set(i, "0");
+			}
+		}
 
 		for (int i = 0; i < listSize; i++) {
 

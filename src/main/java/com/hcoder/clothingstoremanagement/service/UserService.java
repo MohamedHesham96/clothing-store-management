@@ -12,95 +12,98 @@ import com.hcoder.clothingstoremanagement.entity.Trader;
 public interface UserService {
 
 	// Bill Methods
-		public void addBill(Bill theBill);
+	public void addBill(Bill theBill);
 
-		public List<Bill> getAllBills();
+	public List<Bill> getAllBills();
 
-		public List<Bill> getBillsByDate(String date);
+	public List<Bill> getBillsByDate(String date);
 
-		public void payOffAmount(Client client);
+	public void payOffAmount(Client client);
 
-		public void deleteBill(int id);
+	public void deleteBill(int id);
 
-		// Client Methods
+	// Client Methods
 
-		public void deleteClient(int id);
+	public void deleteClient(int id);
 
-		public int getClientsDraweeTotal();
+	public int getClientsDraweeTotal();
 
-		public Client getClientById(int id);
+	public Client getClientById(int id);
 
-		public List<Client> getAllClients();
+	public List<Client> getClientByName(String clientName);
 
-		public void saveClient(Client client);
+	public List<Client> getAllClients();
 
-		// Client Records Method
-		public List<Bill> getClientBills(int clientId);
-		
-		// Incoming Methods
-		public List<Incoming> GetIncomingsByDate(String date);
+	public void saveClient(Client client);
 
-		public List<Incoming> getIncomingsByTraderName(String traderName);
+	// Client Records Method
+	public List<Bill> getClientBills(int clientId);
 
-		public List<Incoming> getAllIncoming();
-		
-		public List<Incoming> getAllAvailableIncoming();
+	// Incoming Methods
+	public List<Incoming> GetIncomingsByDate(String date);
 
-		public void AddIncoming(Incoming incoming);
+	public List<Incoming> getIncomingsByTraderName(String traderName);
 
-		public int getIcomingTotal();
-	
-		public void deleteIncoming(int id);
+	public List<Incoming> getAllIncoming();
 
-		public Incoming getIncomingById(int id);
+	public List<Incoming> getIncomingsByItemName(String itemName);
 
-		public int getIncomingTotalByTraderName(String traderName);
+	public List<Incoming> getAllAvailableIncoming();
 
+	public void AddIncoming(Incoming incoming);
 
-		// Warehouse Methods
-		public int getWarehouseTotal();
+	public int getIcomingTotal();
 
-		public void updateIncomingCurrentQuantity(Incoming incoming);
+	public void deleteIncoming(int id);
 
-		//public Warehouse getWarehouseById(int id);
-		
-		
-		// Spending Methods
-		public int getSpendingTotal();
+	public Incoming getIncomingById(int id);
 
-		public int getSpendingTotalToday();
+	public int getIncomingTotalByTraderName(String traderName);
 
-		public void deleteSpending(int id);
+	// Warehouse Methods
+	public int getWarehouseTotal();
 
-		public int getSpendingTotalByDate(String date);
+	public void updateIncomingCurrentQuantity(Incoming incoming);
 
-		public void makeSpendingOpertaion(Spending spending);
+	// public Warehouse getWarehouseById(int id);
 
-		public List<Spending> getSpendingsByDate(String date);
+	// Spending Methods
+	public int getSpendingTotal();
 
-		public List<Spending> getAllSpending();
+	public int getSpendingTotalToday();
 
-		// Traders
-		public void deleteTrader(int id);
+	public void deleteSpending(int id);
 
-		public Trader getTraderById(int id);
+	public int getSpendingTotalByDate(String date);
 
-		public void updateIncomingTraderName(String traderName, String newTraderName);
+	public void makeSpendingOpertaion(Spending spending);
 
-		public List<Trader> getAllTraders();
+	public List<Spending> getSpendingsByDate(String date);
 
-		public List<Trader> getAllTradersWithRemaining();
+	public List<Spending> getAllSpending();
 
-		public List<Trader> getAllTradersWithoutRemaining();
+	// Traders
+	public void deleteTrader(int id);
 
-		public void saveTrader(Trader trader);
+	public Trader getTraderById(int id);
 
-		public int[] getTradersTotals();
+	public void updateIncomingTraderName(String traderName, String newTraderName);
 
-		public Trader getTraderByName(String name);
+	public List<Trader> getAllTraders();
 
-		// SUMMRY
-		public List<Result> groupByMonths();
+	public List<Trader> getAllTradersWithRemaining();
 
+	public List<Trader> getAllTradersWithoutRemaining();
+
+	public void saveTrader(Trader trader);
+
+	public int[] getTradersTotals();
+
+	public Trader getTraderByName(String name);
+
+	public List<Trader> getTradersByName(String name);
+
+	// SUMMRY
+	public List<Result> groupByMonths();
 
 }

@@ -75,8 +75,8 @@ public class Incomings {
 
 		Trader trader = userService.getTraderByName(theIncoming.gettrader());
 		
-		trader.setPayed(amount);
-		
+		trader.setPayed(trader.getPayed() + amount);
+			
 		trader.setRemaining(trader.getRemaining() + total - amount);
 
 		userService.saveTrader(trader);

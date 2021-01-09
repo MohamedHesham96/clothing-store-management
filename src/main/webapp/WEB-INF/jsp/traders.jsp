@@ -50,10 +50,10 @@
 
 	<%@ include file="header.jsp"%>
 
-	<div style="text-align: right;" class="container ">
+	<div style="text-align: right;" class="col-12">
 
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-secondary text-white float-right"
+			style="width: 18rem;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
 			<ul class="list-group list-group-flush">
@@ -127,21 +127,41 @@
 							this.disabled=true;this.parentNode.submit();">
 
 					</form:form></li>
+
+
+				<li class="bg-dark list-group-item">
+
+					<form method="GET" action="traders">
+
+						<input type="text"
+							class="text-center form-control font-weight-bold col-xs-3"
+							placeholder="ادخل اسم التاجر " name="traderName"> <input
+							style="margin-top: 10px" type="submit" value="بحـث"
+							class="btn badge-info form-control font-weight-bold">
+
+
+					</form>
+				</li>
 			</ul>
 		</div>
 
-
-
 		<!-- TABLE  -->
-		<div class="row  my-4">
+		<div class="row">
 			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
+
+				<div class="shadow"
+					style="position: relative; height: 500px; overflow: auto;">
+					<table
+						class="table table-bordered table-striped table-dark table-sm">
+
+						<thead class="thead-inverse bg-secondary table-bordered shadow"
+							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
+
 							<tr>
 								<th>اسم التاجر</th>
 								<th>المدفوع</th>
 								<th>الباقي</th>
+								<th>العملية</th>
 
 
 							</tr>
@@ -169,8 +189,6 @@
 										onclick="return confirm('هل انت متأكد من حذف هذا التاجر ؟')"
 										href="delete-trader?id=${tempItem.id}">حذف</a>
 
-
-
 									</td>
 								</tr>
 
@@ -179,11 +197,10 @@
 					</table>
 				</div>
 			</div>
-
 		</div>
-
-
-
 	</div>
+
+
+
 </body>
 </html>

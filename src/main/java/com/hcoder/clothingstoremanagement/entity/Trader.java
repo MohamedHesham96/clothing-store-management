@@ -15,7 +15,6 @@ public class Trader {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	//@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	@Column(name = "name")
 	String name;
 

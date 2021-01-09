@@ -39,10 +39,10 @@
 
 	<%@ include file="header.jsp"%>
 
-	<div style="text-align: right;" class="container ">
+	<div style="text-align: right;" class="col-12">
 
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-secondary text-white float-right"
+			style="width: 18rem;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
 			<ul class="list-group list-group-flush">
@@ -73,46 +73,55 @@
 					</button>
 				</li>
 
-				<!--  
-				<li class="bg-dark  list-group-item">
 
-					<button id="showForm" type="button"
-						class="btn btn-light btn-lg btn-block">بيع صنف</button>
+				<li class="bg-dark list-group-item">
+
+					<form method="GET" action="search-warehouse">
+
+						<input type="text"
+							class="text-center form-control font-weight-bold col-xs-3"
+							placeholder="ادخل اسم الصنف " name="itemName"> <input
+							style="margin-top: 10px" type="submit" value="بحـث"
+							class="btn badge-info form-control font-weight-bold">
+
+
+					</form>
 				</li>
-				
-				-->
-
 			</ul>
 		</div>
 
 
-		<div class="row  my-4">
+		<div dir="rtl" class="row">
 
-			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div style="margin-top:" class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
+
+			<div class="shadow col-12"
+				style="position: relative; height: 500px; overflow: auto;">
+				<table
+					class="table table-bordered table-striped table-dark table-sm">
+
+					<thead class="thead-inverse bg-secondary table-bordered shadow"
+						style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
+
+						<tr>
+							<th>الصنف</th>
+							<th>الكمية</th>
+							<th>السعر تجاري</th>
+							<th>المحل</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="tempItem" items="${availableIncomings}">
+
 							<tr>
-								<th>الصنف</th>
-								<th>الكمية</th>
-								<th>السعر تجاري</th>
-								<th>المحل</th>
-
+								<td>${tempItem.item}</td>
+								<td>${tempItem.currentQuantity}</td>
+								<td>${tempItem.tradePrice}</td>
+								<td>${tempItem.trader}</td>
 							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="tempItem" items="${availableIncomings}">
-
-								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.currentQuantity}</td>
-									<td>${tempItem.tradePrice}</td>
-									<td>${tempItem.trader}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 
 		</div>

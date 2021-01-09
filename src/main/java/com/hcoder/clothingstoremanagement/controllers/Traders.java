@@ -21,11 +21,16 @@ public class Traders {
 
 	@RequestMapping("/traders")
 	public String getTraders(@RequestParam(name = "remainingBool", required = false) Boolean remainingBool,
-			Model theModel) {
+			@RequestParam(name = "traderName", required = false) String traderName, Model theModel) {
 
 		List<Trader> traders = null;
 
-		if (remainingBool == null) {
+		if (traderName != null) {
+
+			traders = userService.getTradersByName(traderName);
+		}
+
+		else if (remainingBool == null) {
 
 			traders = userService.getAllTraders();
 		}

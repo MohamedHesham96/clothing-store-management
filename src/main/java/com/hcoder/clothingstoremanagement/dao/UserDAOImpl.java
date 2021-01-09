@@ -81,6 +81,22 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public List<Incoming> getIncomingsByItemName(String itemName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Incoming> query = session.createQuery(
+				"from Incoming where item like CONCAT('%',?1,'%') and current_quantity > 0 order by TIMESTAMP desc");
+
+		query.setParameter(1, itemName);
+
+		List<Incoming> incomings = query.getResultList();
+
+		return incomings;
+
+	}
+
+	@Override
 	public List<Incoming> getAllAvailableIncoming() {
 
 		Session session = entityManager.unwrap(Session.class);
@@ -638,5 +654,35 @@ public class UserDAOImpl implements UserDAO {
 		Incoming incoming = session.get(Incoming.class, id);
 
 		return incoming;
+	}
+
+	@Override
+	public List<Client> getClientByName(String clientName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Client> query = session
+				.createQuery("from Client where id > 0 and name like CONCAT('%',?1,'%') order by drawee desc");
+		query.setParameter(1, clientName);
+
+		List<Client> clients = query.getResultList();
+
+		return clients;
+
+	}
+
+	@Override
+	public List<Trader> getTradersByName(String traderName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Trader> query = session
+				.createQuery("from Trader where id > -1 and  name like CONCAT('%',?1,'%') order by remaining desc");
+
+		query.setParameter(1, traderName);
+		
+		List<Trader> traders = query.getResultList();
+
+		return traders;
 	}
 }

@@ -33,6 +33,18 @@ public class Clients {
 		return "clients";
 	}
 
+	@RequestMapping("/search-clients")
+	public String getClients(@RequestParam String clientName, Model theModel) {
+
+		theModel.addAttribute("clientsList", userService.getClientByName(clientName));
+
+		theModel.addAttribute("theClient", new Client());
+
+		theModel.addAttribute("draweeTotal", userService.getClientsDraweeTotal());
+
+		return "clients";
+	}
+
 	@RequestMapping("/add-new-client")
 	public String addNewClient(@ModelAttribute("theClient") Client theClient) {
 

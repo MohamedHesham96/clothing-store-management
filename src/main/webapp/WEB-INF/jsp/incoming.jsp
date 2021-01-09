@@ -46,10 +46,11 @@
 	<%@ include file="header.jsp"%>
 
 
-	<div style="text-align: right;" class="container">
+	<div style="text-align: right;" class="col-12">
 
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-secondary text-white float-right"
+			style="width: 18rem;">
+
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
 			<ul class="list-group list-group-flush">
@@ -98,11 +99,11 @@
 		<form:form metho="POST" action="add-incoming"
 			modelAttribute="incoming">
 
-			<div class="row  my-4">
+			<div class="row ">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
-						<table class=" table table-striped table-dark">
-							<thead class="thead-inverse">
+						<table class=" table table-striped table-dark table-sm">
+							<thead class="thead-inverse bg-secondary">
 								<tr>
 									<th>الكمية</th>
 									<th>الصنف</th>
@@ -118,27 +119,27 @@
 								<tr>
 									<td><form:input style="width: 100px;" type="text"
 											path="quantity"
-											class="text-center form-control mb-2 col-xs-3"
+											class="text-center form-control mb-2 mt-2 col-xs-3"
 											placeholder="ادخل الكمية"></form:input></td>
 
 									<td style="width:"><form:input type="text" path="item"
-											class="text-center form-control mb-2 col-xs-3"
+											class="text-center form-control mb-2 mt-2 col-xs-3"
 											placeholder="ادخل اسم الصنف"></form:input></td>
 
 									<td><form:input type="text" path="tradePrice"
-											class="text-center form-control  mb-2 col-xs-3"
+											class="text-center form-control  mb-2 mt-2 col-xs-3"
 											placeholder="ادخل السعر تجاري"></form:input></td>
 
 									<td><form:input type="text" path="piecePrice"
-											class="text-center form-control mb-2 col-xs-3"
+											class="text-center form-control mb-2 mt-2 col-xs-3"
 											placeholder="ادخل سعر القطعه"></form:input></td>
 
 									<td><input type="text" name="amount"
-										class="text-center form-control col-xs-3"
-										placeholder="ادخل المبلغ المدفوع"></input></td>
+										class="text-center form-control mb-2  mt-2 col-xs-3"
+										placeholder="المبلغ المدفوع"></input></td>
 
-									<td><form:select path="trader" style="width: 225px;"
-											class="text-center form-control mb-2 col-xs-3">
+									<td><form:select path="trader" style="width: 200px;"
+											class="text-center form-control mb-2  mt-2 col-xs-3">
 											<option value="غير محدد">غير محدد</option>
 
 											<c:forEach var="tempItem" items="${tradersList}">
@@ -155,8 +156,8 @@
 									<td colspan="6"><input type="submit" value="اضف الصنف"
 										class="btn badge-info   
 								 font-weight-bold text-center"
-										style="width: 100%; height: 50px;"
-										onclick="this.disabled=true; this.parentNode.submit();">
+										style="width: 100%;"
+										onclick="this.parentNode.submit(); this.disabled=true; ">
 									</td>
 
 								</tr>
@@ -175,11 +176,16 @@
 
 
 		<!-- TABLE -->
-		<div class="row  my-4">
+		<div class="row ">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
+				<div class="shadow"
+					style="position: relative; height: 340px; overflow: auto;">
+					<table
+						class="table table-bordered table-striped table-dark table-sm">
+
+						<thead class="thead-inverse bg-secondary table-bordered shadow"
+							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
+
 							<tr>
 								<th>الصنف</th>
 								<th>الكمية</th>
@@ -188,6 +194,7 @@
 								<th>اجمالي السعر</th>
 								<th>المحل</th>
 								<th>تاريخ التسجيل</th>
+								<th>العملية</th>
 							</tr>
 						</thead>
 						<tbody>

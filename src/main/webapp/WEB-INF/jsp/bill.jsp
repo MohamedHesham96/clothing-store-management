@@ -29,113 +29,116 @@
 	<%@ include file="header.jsp"%>
 
 
-	<div style="text-align: right;" class="container ">
+		<div style="text-align: right;" class="col-12">
 
+			<div class="card bg-secondary text-white float-right"
+				style="width: 18rem;">
 
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
-			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">الحسابات</div>
-			<ul class="list-group list-group-flush">
-				<li class="bg-dark list-group-item">
-
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn bg-info text-white  font-weight-bold text-center">
-						اجمالي الربح <span style="margin-right: 20px;"
-							class="w-50 badge badge-light text-center"> ${gainTotal}
-							جنيه</span>
-					</button>
-				</li>
-				<li class="bg-dark list-group-item">
-
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn bg-info text-white  font-weight-bold text-center">
-						المصاريف <span style="margin-right: 33px;"
-							class="w-50 badge badge-light text-center">${spendingTotal}
-							جنيه</span>
-					</button>
-				</li>
-				<li class="bg-dark list-group-item">
-
-					<button dir="rtl" style="text-align: right;" type="button"
-						class="w-100 btn bg-success  font-weight-bold text-center text-center">
-						صافي الربح <span style="margin-right: 25px;"
-							class="w-50 badge badge-light text-center">${total} جنيه</span>
-					</button>
-				</li>
-
-				<c:if test="${bank != null}">
+				<div class="card-header text-white font-weight-bold text-center"
+					style="color: #c4c4c4">الحسابات</div>
+				<ul class="list-group list-group-flush">
 					<li class="bg-dark list-group-item">
 
 						<button dir="rtl" style="text-align: right;" type="button"
-							class="w-100 btn bg-warning  font-weight-bold text-center text-center">
-							داخل الخزنة <span style="margin-right: 25px;"
-								class="w-50 badge badge-light text-center">${bank} جنيه</span>
+							class="w-100 btn bg-info text-white  font-weight-bold text-center">
+							اجمالي الربح <span style="margin-right: 20px;"
+								class="w-50 badge badge-light text-center"> ${gainTotal}
+								جنيه</span>
 						</button>
 					</li>
-				</c:if>
+					<li class="bg-dark list-group-item">
 
-				<li class="bg-dark list-group-item">
+						<button dir="rtl" style="text-align: right;" type="button"
+							class="w-100 btn bg-info text-white  font-weight-bold text-center">
+							المصاريف <span style="margin-right: 33px;"
+								class="w-50 badge badge-light text-center">${spendingTotal}
+								جنيه</span>
+						</button>
+					</li>
+					<li class="bg-dark list-group-item">
 
-					<form method="GET" action="bill">
+						<button dir="rtl" style="text-align: right;" type="button"
+							class="w-100 btn bg-success  font-weight-bold text-center text-center">
+							صافي الربح <span style="margin-right: 25px;"
+								class="w-50 badge badge-light text-center">${total} جنيه</span>
+						</button>
+					</li>
 
-						<input type="date" name="date" value="${date}"
-							class="w-100 btn badge-info  font-weight-bold text-center">
+					<c:if test="${bank != null}">
+						<li class="bg-dark list-group-item">
+
+							<button dir="rtl" style="text-align: right;" type="button"
+								class="w-100 btn bg-warning  font-weight-bold text-center text-center">
+								داخل الخزنة <span style="margin-right: 25px;"
+									class="w-50 badge badge-light text-center">${bank} جنيه</span>
+							</button>
+						</li>
+					</c:if>
+
+					<li class="bg-dark list-group-item">
+
+						<form method="GET" action="bill">
+
+							<input type="date" name="date" value="${date}"
+								class="w-100 btn badge-info  font-weight-bold text-center">
 
 
 
-						<input type="submit" style="margin-top: 10px;"
-							class="w-100 btn badge-light  font-weight-bold text-center"
-							value="اذهب لهذا اليوم" />
+							<input type="submit" style="margin-top: 10px;"
+								class="w-100 btn badge-light  font-weight-bold text-center"
+								value="اذهب لهذا اليوم" />
 
-					</form>
-				</li>
+						</form>
+					</li>
 
-			</ul>
-		</div>
+				</ul>
+			</div>
 
 
 
-		<div class="row  my-4">
-			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
-							<tr>
-								<th>الصنف</th>
-								<th>الكمية</th>
-								<th>السعر تجاري</th>
-								<th>سعر القطعه</th>
-								<th>صافي الربح</th>
-								<th>اسم العميل</th>
+			<div class="row">
+				<div dir='rtl' class="col-lg-12 col-md-8">
+					<div class="shadow"
+						style="position: relative; height: 400px; overflow: auto;">
+						<table
+							class="table table-bordered table-striped table-dark table-sm">
 
-							</tr>
-						</thead>
-						<tbody>
-
-							<c:forEach var="tempItem" items="${items}">
+							<thead class="thead-inverse bg-secondary table-bordered shadow"
+								style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
-									<td>${tempItem.tradePrice}</td>
-									<td>${tempItem.piecePrice}</td>
-									<td>${tempItem.gain}</td>
-									<td>${tempItem.client.name}</td>
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
-										font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-										href="delete-bill?id=${tempItem.id}">حذف</a></td>
+									<th>الصنف</th>
+									<th>الكمية</th>
+									<th>السعر تجاري</th>
+									<th>سعر القطعه</th>
+									<th>صافي الربح</th>
+									<th>اسم العميل</th>
+									<th>العملية</th>
 								</tr>
-							</c:forEach>
+							</thead>
+							<tbody>
 
-						</tbody>
-					</table>
+								<c:forEach var="tempItem" items="${items}">
+									<tr>
+										<td>${tempItem.item}</td>
+										<td>${tempItem.quantity}</td>
+										<td>${tempItem.tradePrice}</td>
+										<td>${tempItem.piecePrice}</td>
+										<td>${tempItem.gain}</td>
+										<td>${tempItem.client.name}</td>
+										<td style="width: 160px"><a
+											style="height: 30px; font-size: 14px;"
+											class="btn btn-danger text-wight
+										font-weight-bold"
+											onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+											href="delete-bill?id=${tempItem.id}">حذف</a></td>
+									</tr>
+								</c:forEach>
+
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
 </body>
 </html>
