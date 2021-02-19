@@ -158,4 +158,14 @@ public class Bills {
 	
 		return "redirect:/today";
 	}
+	
+
+	@RequestMapping("/delete-bill-from-client-profile")
+	public String deleteBillFromClientProfile(@RequestParam int id, 
+			@RequestParam("clientId") String clientId) {
+
+		userService.deleteBill(id);
+	
+		return "redirect:/clientProfile?clientId=" + clientId;
+	}
 }

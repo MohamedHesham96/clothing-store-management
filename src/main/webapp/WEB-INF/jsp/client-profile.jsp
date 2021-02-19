@@ -106,23 +106,21 @@
 
 						<br>
 
-
 					</form:form></li>
 			</ul>
 		</div>
 
-
-
-
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
+					<table
+						class="table table-bordered table-sm table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
 								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر</th>
+								<th>العملية</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -131,6 +129,12 @@
 									<td>${tempItem.item}</td>
 									<td>${tempItem.quantity}</td>
 									<td>${tempItem.piecePrice}</td>
+									<td style="width: 160px"><a
+										style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+										href="delete-bill-from-client-profile?id=${tempItem.id}&clientId=${clientData.id}">حذف</a></td>
 								</tr>
 
 							</c:forEach>
