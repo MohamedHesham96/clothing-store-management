@@ -50,7 +50,7 @@ public interface UserService {
 
 	public List<Incoming> getAllAvailableIncoming();
 
-	public void AddIncoming(Incoming incoming);
+	public void saveIncoming(Incoming incoming);
 
 	public int getIcomingTotal();
 

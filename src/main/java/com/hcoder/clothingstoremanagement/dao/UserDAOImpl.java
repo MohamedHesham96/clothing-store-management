@@ -108,7 +108,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void AddIncoming(Incoming incoming) {
+	public void saveIncoming(Incoming incoming) {
 
 		Session session = entityManager.unwrap(Session.class);
 

@@ -38,9 +38,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void AddIncoming(Incoming incoming) {
+	public void saveIncoming(Incoming incoming) {
 
-		userDAO.AddIncoming(incoming);
+		userDAO.saveIncoming(incoming);
 	}
 
 	@Override
@@ -250,9 +250,13 @@ public class UserServiceImpl implements UserService {
 		if (incoming != null) {
 
 			incoming.setCurrentQuantity(incoming.getCurrentQuantity() + theBill.getQuantity());
-			userDAO.AddIncoming(incoming);
+			userDAO.saveIncoming(incoming);
 		}
-
+		
+		int theBillDrawee = theBill.getPiecePrice() - theBill.getPayed();
+		
+		theClient.setDrawee(theClient.getDrawee() - theBillDrawee);
+		
 		userDAO.saveClient(theClient);
 
 	}

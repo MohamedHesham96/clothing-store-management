@@ -82,8 +82,6 @@
 							<input type="date" name="date" value="${date}"
 								class="w-100 btn badge-info  font-weight-bold text-center">
 
-
-
 							<input type="submit" style="margin-top: 10px;"
 								class="w-100 btn badge-light  font-weight-bold text-center"
 								value="اذهب لهذا اليوم" />
