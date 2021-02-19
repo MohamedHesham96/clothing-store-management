@@ -108,7 +108,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void AddIncoming(Incoming incoming) {
+	public void saveIncoming(Incoming incoming) {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -680,7 +680,7 @@ public class UserDAOImpl implements UserDAO {
 				.createQuery("from Trader where id > -1 and  name like CONCAT('%',?1,'%') order by remaining desc");
 
 		query.setParameter(1, traderName);
-		
+
 		List<Trader> traders = query.getResultList();
 
 		return traders;

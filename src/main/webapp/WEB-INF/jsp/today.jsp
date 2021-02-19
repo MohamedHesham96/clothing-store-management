@@ -46,10 +46,11 @@
 
 
 
-	<div style="text-align: right;" class="col-12">
+	<div style="text-align: right;" class="container ">
 
-		<div class="card bg-secondary text-white float-right"
-			onclick="showToggle();" style="width: 18rem;">
+		<div onclick="showToggle();"
+			class=" col-xs-6 card bg-secondary text-white"
+			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">الحسابات</div>
 			<ul id="gainTotalDiv" style="display: none;"
@@ -85,8 +86,10 @@
 		</div>
 
 
-		<form action="add-bills-list" method="POST">
 
+
+		<form action="add-bills-list" method="POST">
+		
 			<div class="row mt-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
@@ -171,46 +174,49 @@
 
 		</form>
 
-		<div dir='rtl' class="w-100">
-			<div class="shadow"
-				style="position: relative; height: 400px; overflow: auto;">
-				<table
-					class="table table-bordered table-striped table-dark table-sm">
 
-					<thead class="thead-inverse bg-secondary table-bordered shadow"
-						style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
-
-						<tr>
-							<th>الصنف</th>
-							<th>الكيمة</th>
-							<th>السعر تجاري</th>
-							<th>سعر القطعه</th>
-							<th>اسم العميل</th>
-							<th>العملية</th>
-
-						</tr>
-					</thead>
-					<tbody>
-
-						<c:forEach var="tempItem" items="${items}">
+		<div class="row mt-4">
+			<div dir='rtl' class="col-lg-12 col-md-8">
+				<div class="shadow"
+					style="position: relative; height: 400px; overflow: auto;">
+					<table
+						class="table table-bordered table-striped table-dark table-sm">
+						
+						<thead class="thead-inverse bg-secondary table-bordered shadow"
+							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
+							
 							<tr>
-								<td>${tempItem.item}</td>
-								<td>${tempItem.quantity}</td>
-								<td>${tempItem.tradePrice}</td>
-								<td>${tempItem.piecePrice}</td>
-								<td>${tempItem.client.name}</td>
+								<th>الصنف</th>
+								<th>الكيمة</th>
+								<th>السعر تجاري</th>
+								<th>سعر القطعه</th>
+								<th>اسم العميل</th>
+								<th>العملية</th>
 
-								<td style="width: 160px"><a
-									style="height: 30px; font-size: 14px;"
-									class="btn btn-danger text-wight
-										font-weight-bold"
-									onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-									href="delete-bill?id=${tempItem.id}">حذف</a></td>
 							</tr>
-						</c:forEach>
+						</thead>
+						<tbody>
 
-					</tbody>
-				</table>
+							<c:forEach var="tempItem" items="${items}">
+								<tr>
+									<td>${tempItem.item}</td>
+									<td>${tempItem.quantity}</td>
+									<td>${tempItem.tradePrice}</td>
+									<td>${tempItem.piecePrice}</td>
+									<td>${tempItem.client.name}</td>
+
+									<td style="width: 160px"><a
+										style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight
+										font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+										href="delete-bill?id=${tempItem.id}">حذف</a></td>
+								</tr>
+							</c:forEach>
+
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

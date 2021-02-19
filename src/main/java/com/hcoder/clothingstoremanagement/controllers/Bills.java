@@ -38,7 +38,6 @@ public class Bills {
 
 		if (theDate == null) {
 
-			theDate = LocalDate.now().toString();
 			bills = userService.getAllBills();
 			spendingTotal = userService.getSpendingTotal();
 
@@ -64,8 +63,8 @@ public class Bills {
 		// صافي الربح
 		int total = gainTotal - spendingTotal;
 
-		if (theDate.equals(LocalDate.now().toString())) {
-
+		if (theDate == null) {
+			theDate = LocalDate.now().toString();
 			int bank = soldPriceTotal - userService.getClientsDraweeTotal() - spendingTotal;
 			theModel.addAttribute("bank", bank);
 		}
@@ -156,7 +155,7 @@ public class Bills {
 	public String deleteBill(@RequestParam int id) {
 
 		userService.deleteBill(id);
-
+	
 		return "redirect:/today";
 	}
 }

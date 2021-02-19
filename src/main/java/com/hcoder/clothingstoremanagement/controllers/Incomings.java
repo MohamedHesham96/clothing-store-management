@@ -71,7 +71,7 @@ public class Incomings {
 
 		theIncoming.setTotal(total);
 
-		userService.AddIncoming(theIncoming);
+		userService.saveIncoming(theIncoming);
 
 		Trader trader = userService.getTraderByName(theIncoming.gettrader());
 		

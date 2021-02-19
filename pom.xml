@@ -12,7 +12,7 @@
 	</parent>
 	<groupId>com.hcoder</groupId>
 	<artifactId>clothing-store-management</artifactId>
-	<version>0.0.2</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>clothing-store-management</name>
 	<description>Clothing store management project</description>
