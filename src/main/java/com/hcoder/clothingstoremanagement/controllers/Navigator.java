@@ -76,8 +76,6 @@ public class Navigator {
 	@RequestMapping("/search-warehouse")
 	public String getIncomingsByItemName(@RequestParam String itemName, Model theModel) {
 
-		List<Incoming> availableIncomings = userService.getAllAvailableIncoming();
-
 		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
 
 		theModel.addAttribute("availableIncomings", userService.getIncomingsByItemName(itemName));

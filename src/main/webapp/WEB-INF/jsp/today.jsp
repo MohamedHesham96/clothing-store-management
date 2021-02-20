@@ -85,16 +85,13 @@
 			</ul>
 		</div>
 
-
-
-
 		<form action="add-bills-list" method="POST">
-		
+
 			<div class="row mt-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
 						<table class=" table table-striped table-dark ">
-							<thead class="thead-inverse ">
+							<thead class="thead-inverse table-sm">
 								<tr>
 									<th>الكمية</th>
 									<th>الصنف</th>
@@ -110,17 +107,20 @@
 								%>
 								<tr>
 
-									<td><input name="quantity" class="form-control"
-										style="text-align: center; width: 100%; height: 100%;"></td>
+									<td class="col-1"><input name="quantity"
+										class="form-control text-center  font-weight-bold"
+										style="width: 100%; height: 100%; font-size: 18px;"></td>
 
-									<td><select name="itemId" style="width: 200px"
-										class="text-center form-control" name="testselect">
+									<td class="col-2"><select name="itemId"
+										class=" form-control text-center font-weight-bold"
+										name="testselect">
 											<option value="-1">--- اختر الصنف ---</option>
 											<c:forEach var="tempItem" items="${warehouseItems}">
 
 												<c:if test="${tempItem.quantity > 0}">
 
-													<option value="${tempItem.id}">${tempItem.item}</option>
+													<option value="${tempItem.id}">${tempItem.item}
+														(${tempItem.currentQuantity})</option>
 
 												</c:if>
 
@@ -129,23 +129,23 @@
 
 									</select></td>
 
-									<td><input name="piecePrice"
-										class="text-center form-control"
-										style="width: 100%; height: 100%;"></td>
+									<td class="col-1"><input name="piecePrice"
+										class="text-center form-control font-weight-bold"
+										style="width: 100%; height: 100%; font-size: 18px;"></td>
 
 
-									<td><input name="payed" class="text-center form-control"
-										style="width: 100%; height: 100%;"></td>
+									<td class="col-1"><input name="payed"
+										class="text-center form-control font-weight-bold"
+										style="width: 100%; height: 100%; font-size: 18px;"></td>
 
-									<td><select name="clientId" style="width: 200px;"
-										class="text-center form-control  mb-2 col-xs-3"
+									<td class="col-2"><select name="clientId"
+										class=" form-control text-center font-weight-bold"
 										name="clientId">
 											<option value="-1">غير محدد</option>
 
 											<c:forEach var="tempItem" items="${clientsList}">
 
 												<option value="${tempItem.id}">${tempItem.name}</option>
-
 
 											</c:forEach>
 
@@ -159,9 +159,10 @@
 								<tr style="text-align: center;">
 									<td colspan="5"><input id="submitBtn" type="submit"
 										value="أضافة للفواتير"
-										class="w-100 btn badge-info font-weight-bold text-center"
+										class="btn badge-info   
+								 font-weight-bold text-center"
 										onclick="this.parentNode.submit(); this.disabled=true; "
-										style="width: 100%; height: 50px;"></td>
+										style="width: 100%;"></td>
 
 								</tr>
 
@@ -174,18 +175,18 @@
 
 		</form>
 
-<br><br><br>
-		<div class="row mt-4">
+		<br> <br> <br> <br> <br>
+		<div class="row mt-3">
 			<div dir='rtl' class="col-lg-12 col-md-8">
-				<div class="shadow"
-					style="position: relative; height: 400px; overflow: auto;">
-					
+				<div class="shadow mb-4"
+					style="position: relative; height: 530px; overflow: auto;">
+
 					<table
 						class="table table-bordered table-striped table-dark table-sm">
-						
+
 						<thead class="thead-inverse bg-secondary table-bordered shadow"
 							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
-							
+
 							<tr>
 								<th>الصنف</th>
 								<th>الكيمة</th>
@@ -196,18 +197,18 @@
 
 							</tr>
 						</thead>
-						<tbody>
+
+						<tbody class="font-weight-bold">
 
 							<c:forEach var="tempItem" items="${items}">
 								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
-									<td>${tempItem.tradePrice}</td>
-									<td>${tempItem.piecePrice}</td>
-									<td>${tempItem.client.name}</td>
+									<td class="co-1 pt-2">${tempItem.item}</td>
+									<td class="co-1 pt-2">${tempItem.quantity}</td>
+									<td class="co-1 pt-2">${tempItem.tradePrice}</td>
+									<td class="co-1 pt-2">${tempItem.piecePrice}</td>
+									<td class="co-1 pt-2">${tempItem.client.name}</td>
 
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
+									<td class="co-1"><a style="height: 30px; font-size: 14px;"
 										class="btn btn-danger text-wight
 										font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"

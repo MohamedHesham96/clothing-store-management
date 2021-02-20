@@ -74,12 +74,12 @@
 						<form:hidden id="cDraweeID" path="drawee" />
 
 						<form:input id="cNameID" type="text"
-							class="text-center form-control  col-xs-3"
-							placeholder="ادخل اسم العميل " path="name"></form:input>
+							class="text-center form-control font-weight-bold col-xs-3"
+							placeholder="اسم العميل " path="name"></form:input>
 
 						<form:input id="cPhoneID" cssStyle="margin-top: 10px" type="text"
-							class="text-center form-control  col-xs-3"
-							placeholder="ادخل تيليفون العميل" path="phone"></form:input>
+							class="text-center form-control font-weight-bold col-xs-3"
+							placeholder="تيليفون العميل" path="phone"></form:input>
 
 
 						<input id="cSubmitID" style="margin-top: 10px" type="submit"
@@ -95,7 +95,7 @@
 
 						<input type="text"
 							class="text-center form-control font-weight-bold col-xs-3"
-							placeholder="ادخل اسم العميل " name="clientName"> <input
+							placeholder="البحث عن عميل" name="clientName"> <input
 							style="margin-top: 10px" type="submit" value="بحـث"
 							class="btn badge-info form-control font-weight-bold">
 
@@ -119,11 +119,10 @@
 							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 
 							<tr>
-								<th>اسم العميل</th>
-								<th>التيليفون</th>
-								<th>عليه</th>
-								<th>العملية</th>
-
+								<th class="">اسم العميل</th>
+								<th class="">التيليفون</th>
+								<th class="">عليه</th>
+								<th class="">العملية</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -131,18 +130,19 @@
 								<c:url var="clientLink" value="/clientProfile">
 									<c:param name="clientId" value="${tempItem.id}"></c:param>
 								</c:url>
-								<tr>
-									<td><a class="text-white" href="${clientLink}">${tempItem.name}</a></td>
-									<td>${tempItem.phone}</td>
-									<td>${tempItem.drawee}</td>
-									<td style="width: 160px">
+								<tr class="font-weight-bold ">
+									<td class="pt-2 col-1"><a class="text-white"
+										href="${clientLink}">${tempItem.name}</a></td>
+									<td class="pt-2 col-1">${tempItem.phone}</td>
+									<td class="pt-2 col-1">${tempItem.drawee}</td>
+									<td class="col-1">
 
-										<button style="height: 30px; font-size: 14px;"
-											class="btn btn-success text-wight
+										<button style="font-size: 14px;"
+											class="btn btn-success btn-sm text-wight
 											font-weight-bold"
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', '${tempItem.phone}', '${tempItem.drawee}');">تعديل</button>
-										<a style="height: 30px; font-size: 14px;"
-										class="btn btn-danger  text-wight
+										<a style="font-size: 14px;"
+										class="btn btn-danger btn-sm text-wight
 											font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا العميل ؟')"
 										href="delete-client?id=${tempItem.id}">حذف</a>

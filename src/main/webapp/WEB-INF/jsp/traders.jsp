@@ -117,8 +117,8 @@
 						<form:hidden id="tRemainingID" path="remaining" />
 
 						<form:input id="tNameID" type="text"
-							class="text-center form-control  col-xs-3"
-							placeholder="ادخل اسم التاجر " path="name"></form:input>
+							class="font-weight-bold text-center form-control col-xs-3"
+							placeholder="اضافة تاجر" path="name"></form:input>
 
 						<input id="tSubmitID" style="margin-top: 10px" type="submit"
 							value="أضافة تاجر جديد"
@@ -135,7 +135,7 @@
 
 						<input type="text"
 							class="text-center form-control font-weight-bold col-xs-3"
-							placeholder="ادخل اسم التاجر " name="traderName"> <input
+							placeholder="البحث عن تاجر" name="traderName"> <input
 							style="margin-top: 10px" type="submit" value="بحـث"
 							class="btn badge-info form-control font-weight-bold">
 
@@ -151,10 +151,11 @@
 
 				<div class="shadow"
 					style="position: relative; height: 500px; overflow: auto;">
+
 					<table
 						class="table table-bordered table-striped table-dark table-sm">
 
-						<thead class="thead-inverse bg-secondary table-bordered shadow"
+						<thead class="thead-inverse bg-secondary shadow"
 							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 
 							<tr>
@@ -162,29 +163,29 @@
 								<th>المدفوع</th>
 								<th>الباقي</th>
 								<th>العملية</th>
-
-
 							</tr>
+
 						</thead>
+
 						<tbody>
 							<c:forEach var="tempItem" items="${tradersList}">
 								<c:url var="traderLink" value="/traderProfile">
 									<c:param name="traderId" value="${tempItem.id}"></c:param>
 								</c:url>
-								<tr>
-									<td><a class="text-white" href="${traderLink}">${tempItem.name}</a></td>
-									<td>${tempItem.payed}</td>
-									<td>${tempItem.remaining}</td>
-									<td style="width: 160px">
-
-										<button style="height: 30px; font-size: 14px;"
-											class="btn btn-success text-wight
+								<tr class="font-weight-bold">
+									<td class="pt-2 col-1"><a class="text-white "
+										href="${traderLink}">${tempItem.name}</a></td>
+									<td class="pt-2 col-1">${tempItem.payed}</td>
+									<td class="pt-2 col-1">${tempItem.remaining}</td>
+									<td class="col-1">
+										<button style="font-size: 14px;"
+											class="btn btn-sm btn-success
 											font-weight-bold"
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', 
 															'${tempItem.payed}', '${tempItem.remaining}');">تعديل</button>
 
-										<a style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
+										<a style="font-size: 14px;"
+										class="btn btn-sm btn-danger text-wight
 										font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا التاجر ؟')"
 										href="delete-trader?id=${tempItem.id}">حذف</a>

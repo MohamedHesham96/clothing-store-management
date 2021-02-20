@@ -80,11 +80,11 @@
 				<li class="bg-dark list-group-item"><form:form id="formId"
 						method="POST" action="make-spending" modelAttribute="spending">
 
-						<form:input type="text" class="text-center form-control col-xs-3"
-							placeholder="ادخل المبلغ " name="money" path="money"></form:input>
+						<form:input type="text" class="font-weight-bold text-center form-control col-xs-3"
+							placeholder="ادخل المبلغ" name="money" path="money"></form:input>
 
 						<form:input style="margin-top: 10px" type="text"
-							class="text-center form-control  col-xs-3"
+							class="font-weight-bold text-center form-control  col-xs-3"
 							placeholder="ادخل ملاحظتك" path="note"></form:input>
 
 						<input name="date" value="2020-01-01" type="hidden" />
@@ -117,16 +117,18 @@
 
 							</tr>
 						</thead>
-						<tbody>
+						
+						<tbody class="font-weight-bold">
+						
 							<c:forEach var="tempItem" items="${spendings}">
 
 								<tr>
-									<td>${tempItem.money}</td>
-									<td>${tempItem.date}</td>
-									<td>${tempItem.note}</td>
+									<td class="col-1 pt-2">${tempItem.money}</td>
+									<td class="col-1 pt-2">${tempItem.date}</td>
+									<td class="col-2 pt-2">${tempItem.note}</td>
 
-									<td><a style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
+									<td class="col-1"><a style="font-size: 14px;"
+										class=" btn btn-sm btn-danger text-wight
 										font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا المبلغ؟')"
 										href="delete-spending?id=${tempItem.id}">حذف</a></td>

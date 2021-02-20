@@ -82,43 +82,34 @@ public class Bills {
 	public String addBillsList(@RequestParam("itemId") List<String> itemIdList,
 			@RequestParam("quantity") List<String> quantityList,
 			@RequestParam("piecePrice") List<String> piecePriceList, @RequestParam("payed") List<String> payedList,
-			@RequestParam("clientId") List<String> clientIdList) {
+			@RequestParam("clientId") List<String> clientIdList) throws Exception {
+
+		boolean isSellOpertaionsCorrect = checkSellOpertaions(itemIdList, quantityList, piecePriceList);
+
+		if (!isSellOpertaionsCorrect)
+			throw new Exception("Bad Inputs Exception !!");
 
 		int listSize = clientIdList.size();
 
-		for (int i = 0; i < payedList.size(); i++) {
-
-			if (payedList.get(i).equals("")) {
-
-				payedList.set(i, "0");
-			}
-
-			if (piecePriceList.get(i).equals("")) {
-
-				piecePriceList.set(i, "0");
-			}
-		}
-
 		for (int i = 0; i < listSize; i++) {
+
+			Incoming incoming = userService.getIncomingById(Integer.parseInt(itemIdList.get(i)));
 
 			if (!itemIdList.get(i).equals("-1")) {
 
-				Bill theBill = new Bill();
-				Client theClient = new Client();
-
-				theBill.setDate(LocalDate.now().toString());
-				theBill.setQuantity(Integer.parseInt(quantityList.get(i)));
-				theBill.setPiecePrice(Integer.parseInt(piecePriceList.get(i)));
-
-				// اتعامل بالانكاميج بدل الوايرهاوس
-				Incoming incoming = userService.getIncomingById(Integer.parseInt(itemIdList.get(i)));
+				// اتحديث كميات المخزن
 				incoming.setCurrentQuantity(incoming.getCurrentQuantity() - Integer.parseInt(quantityList.get(i)));
-
 				userService.updateIncomingCurrentQuantity(incoming);
 
 				int gain = (Integer.parseInt(piecePriceList.get(i)) - incoming.getTradePrice())
 						* Integer.parseInt(quantityList.get(i));
 
+				// اضافة فاتورة جديدة
+				Bill theBill = new Bill();
+
+				theBill.setDate(LocalDate.now().toString());
+				theBill.setQuantity(Integer.parseInt(quantityList.get(i)));
+				theBill.setPiecePrice(Integer.parseInt(piecePriceList.get(i)));
 				theBill.setIncomingId(incoming.getId());
 				theBill.setGain(gain);
 				theBill.setItem(incoming.getItem());
@@ -126,8 +117,11 @@ public class Bills {
 				theBill.setTradePrice(incoming.getTradePrice());
 				theBill.setPayed(Integer.parseInt(payedList.get(i)));
 
+				Client theClient = new Client();
+
 				if (!clientIdList.get(i).equals("-1")) {
 
+					// تحديث ديون العملاء
 					theClient = userService.getClientById(Integer.parseInt(clientIdList.get(i)));
 
 					int theNewdrawee = theClient.getDrawee() + theBill.getPiecePrice() - theBill.getPayed();
@@ -151,21 +145,53 @@ public class Bills {
 		return "redirect:/today";
 	}
 
+	private boolean checkSellOpertaions(List<String> itemIdList, List<String> quantityList,
+			List<String> piecePriceList) {
+
+		// set payed and piecePrice to zero if not have been entered
+		for (int i = 0; i < 3; i++) {
+
+			if (!itemIdList.get(i).equals("-1")) {
+
+				Incoming incoming = userService.getIncomingById(Integer.parseInt(itemIdList.get(i)));
+
+				boolean isQuantityCorret = incoming.getCurrentQuantity() >= Integer.parseInt(quantityList.get(i));
+
+				System.out.println(isQuantityCorret);
+
+				if (!isQuantityCorret || !quantityList.get(i).matches("^[1-9]+$")
+						|| !piecePriceList.get(i).matches("^[0-9]+$")) {
+
+					return false;
+				}
+			}
+		}
+
+		return true;
+
+	}
+
 	@RequestMapping("/delete-bill")
 	public String deleteBill(@RequestParam int id) {
 
 		userService.deleteBill(id);
-	
+
 		return "redirect:/today";
 	}
-	
 
 	@RequestMapping("/delete-bill-from-client-profile")
-	public String deleteBillFromClientProfile(@RequestParam int id, 
-			@RequestParam("clientId") String clientId) {
+	public String deleteBillFromClientProfile(@RequestParam int id, @RequestParam("clientId") String clientId) {
 
 		userService.deleteBill(id);
-	
+
 		return "redirect:/clientProfile?clientId=" + clientId;
+	}
+
+	@RequestMapping("/delete-bill-from-bills")
+	public String deleteBillFromBills(@RequestParam int id) {
+
+		userService.deleteBill(id);
+
+		return "redirect:/bill";
 	}
 }

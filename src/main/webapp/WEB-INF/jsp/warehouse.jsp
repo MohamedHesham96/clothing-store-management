@@ -110,14 +110,15 @@
 
 						</tr>
 					</thead>
-					<tbody>
+					
+					<tbody class="font-weight-bold">
 						<c:forEach var="tempItem" items="${availableIncomings}">
 
 							<tr>
-								<td>${tempItem.item}</td>
-								<td>${tempItem.currentQuantity}</td>
-								<td>${tempItem.tradePrice}</td>
-								<td>${tempItem.trader}</td>
+								<td class="col-1">${tempItem.item}</td>
+								<td class="col-1">${tempItem.currentQuantity}</td>
+								<td class="col-1">${tempItem.tradePrice}</td>
+								<td class="col-1">${tempItem.trader}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

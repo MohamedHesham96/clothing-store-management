@@ -32,10 +32,10 @@
 
 	<%@ include file="header.jsp"%>
 
-	<div style="text-align: right;" class="container ">
+	<div style="text-align: right;" class="col-12">
 
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-secondary text-white float-right"
+			style="width: 18rem;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">بيانات العميل</div>
 			<ul class="list-group list-group-flush">
@@ -110,12 +110,13 @@
 			</ul>
 		</div>
 
-		<div class="row  my-4">
+		<div class="row">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
 					<table
 						class="table table-bordered table-sm table-striped table-dark">
-						<thead class="thead-inverse">
+						<thead class="thead-inverse bg-secondary table-bordered shadow"
+							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 							<tr>
 								<th>الصنف</th>
 								<th>الكمية</th>
@@ -123,15 +124,15 @@
 								<th>العملية</th>
 							</tr>
 						</thead>
-						<tbody>
+
+						<tbody class="font-weight-bold">
 							<c:forEach var="tempItem" items="${clientData.bills}">
 								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
-									<td>${tempItem.piecePrice}</td>
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
+									<td class="col-1 pt-2">${tempItem.item}</td>
+									<td class="col-1 pt-2">${tempItem.quantity}</td>
+									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
+									<td class="col-1 pt-2"><a style="font-size: 14px;"
+										class="btn btn-sm btn-danger text-wight
 										font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 										href="delete-bill-from-client-profile?id=${tempItem.id}&clientId=${clientData.id}">حذف</a></td>

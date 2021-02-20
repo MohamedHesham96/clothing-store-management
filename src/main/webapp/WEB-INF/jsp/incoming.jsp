@@ -99,17 +99,20 @@
 		<form:form metho="POST" action="add-incoming"
 			modelAttribute="incoming">
 
-			<div class="row ">
+			<div class="row">
 				<div dir='rtl' class="col-lg-12 col-md-8">
+
 					<div class="table-responsive">
-						<table class=" table table-striped table-dark table-sm">
-							<thead class="thead-inverse bg-secondary">
+
+						<table class="table table-striped table-dark table-sm">
+							<thead class="thead-inverse bg-secondary shadow"
+								style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 								<tr>
 									<th>الكمية</th>
 									<th>الصنف</th>
 									<th>السعر تجاري</th>
 									<th>سعر القطعة</th>
-									<th>المبلغ المدفوع</th>
+									<th>المدفوع</th>
 									<th>المحل</th>
 								</tr>
 							</thead>
@@ -117,35 +120,33 @@
 							<tbody>
 
 								<tr>
-									<td><form:input style="width: 100px;" type="text"
-											path="quantity"
-											class="text-center form-control mb-2 mt-2 col-xs-3"
-											placeholder="ادخل الكمية"></form:input></td>
+									<td class="col-1"><form:input path="quantity"
+											class="font-weight-bold text-center form-control mb-2 mt-2 col-xs-3"
+											placeholder="الكمية"></form:input></td>
 
-									<td style="width:"><form:input type="text" path="item"
-											class="text-center form-control mb-2 mt-2 col-xs-3"
-											placeholder="ادخل اسم الصنف"></form:input></td>
+									<td class="col-3"><form:input path="item"
+											class="font-weight-bold text-center form-control mb-2 mt-2 col-xs-3"
+											placeholder="اسم الصنف"></form:input></td>
 
-									<td><form:input type="text" path="tradePrice"
-											class="text-center form-control  mb-2 mt-2 col-xs-3"
-											placeholder="ادخل السعر تجاري"></form:input></td>
+									<td class="col-1"><form:input path="tradePrice"
+											class="font-weight-bold text-center form-control mb-2 mt-2 col-xs-3"
+											placeholder="السعر تجاري"></form:input></td>
 
-									<td><form:input type="text" path="piecePrice"
-											class="text-center form-control mb-2 mt-2 col-xs-3"
-											placeholder="ادخل سعر القطعه"></form:input></td>
+									<td class="col-1"><form:input path="piecePrice"
+											class="font-weight-bold text-center form-control mb-2 mt-2 col-xs-3"
+											placeholder="سعر القطعه"></form:input></td>
 
-									<td><input type="text" name="amount"
-										class="text-center form-control mb-2  mt-2 col-xs-3"
-										placeholder="المبلغ المدفوع"></input></td>
+									<td class="col-1"><input name="amount"
+										class="font-weight-bold text-center form-control mb-2  mt-2 col-xs-3"
+										placeholder="المدفوع"></input></td>
 
-									<td><form:select path="trader" style="width: 200px;"
-											class="text-center form-control mb-2  mt-2 col-xs-3">
+									<td class="col-2"><form:select path="trader"
+											class="font-weight-bold text-center form-control mb-2  mt-2 col-xs-3">
 											<option value="غير محدد">غير محدد</option>
 
 											<c:forEach var="tempItem" items="${tradersList}">
 
 												<option value="${tempItem.name}">${tempItem.name}</option>
-
 
 											</c:forEach>
 
@@ -181,9 +182,9 @@
 				<div class="shadow"
 					style="position: relative; height: 340px; overflow: auto;">
 					<table
-						class="table table-bordered table-striped table-dark table-sm">
+						class="table  table-bordered table-striped table-dark table-sm">
 
-						<thead class="thead-inverse bg-secondary table-bordered shadow"
+						<thead class="thead-inverse bg-secondary shadow"
 							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 
 							<tr>
@@ -197,22 +198,21 @@
 								<th>العملية</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="font-weight-bold ">
 							<c:forEach var="tempItem" items="${incomings}">
 
 								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
-									<td>${tempItem.tradePrice}</td>
-									<td>${tempItem.piecePrice}</td>
-									<td>${tempItem.total}</td>
-									<td>${tempItem.trader}</td>
-									<td>${tempItem.date}</td>
+									<td class="col-2 pt-2">${tempItem.item}</td>
+									<td class="col-1 pt-2">${tempItem.quantity}</td>
+									<td class="col-1 pt-2">${tempItem.tradePrice}</td>
+									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
+									<td class="col-1 pt-2">${tempItem.total}</td>
+									<td class="col-2 pt-2">${tempItem.trader}</td>
+									<td class="col-1 pt-2">${tempItem.date}</td>
 
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
-										font-weight-bold"
+									<td class="col-1"><a style="font-size: 14px;"
+										class="btn btn-sm btn-danger text-wight
+										font-weight-bold btn-sm"
 										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 										href="delete-incoming?id=${tempItem.id}">حذف</a></td>
 								</tr>

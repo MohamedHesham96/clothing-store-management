@@ -32,10 +32,10 @@
 
 	<%@ include file="header.jsp"%>
 
-	<div style="text-align: right;" class="container ">
+	<div style="text-align: right;" class="col-12">
 
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-secondary text-white float-right"
+			style="width: 18rem;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">بيانات التاجر</div>
 			<ul class="list-group list-group-flush">
@@ -107,27 +107,29 @@
 
 
 
-		<div class="row  my-4">
+		<div class="row">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
+					<table
+						class="table table-bordered table-striped table-dark table-sm">
+						<thead class="thead-inverse bg-secondary table-bordered shadow"
+							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
 							<tr>
-								<th>الصنف</th>
-								<th>الكمية</th>
-								<th>السعر تجاري</th>
-								<th>اجمالي السعر</th>
-								<th>تاريخ التسجيل</th>
+								<th class="col-1">الصنف</th>
+								<th class="col-1">الكمية</th>
+								<th class="col-1">السعر تجاري</th>
+								<th class="col-1">اجمالي السعر</th>
+								<th class="col-1">تاريخ التسجيل</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="font-weight-bold">
 							<c:forEach var="tempItem" items="${traderIncomings}">
 								<tr>
-									<td>${tempItem.item}</td>
-									<td>${tempItem.quantity}</td>
-									<td>${tempItem.tradePrice}</td>
-									<td>${tempItem.total}</td>
-									<td>${tempItem.date}</td>
+									<td class="col-1">${tempItem.item}</td>
+									<td class="col-1">${tempItem.quantity}</td>
+									<td class="col-1">${tempItem.tradePrice}</td>
+									<td class="col-1">${tempItem.total}</td>
+									<td class="col-1">${tempItem.date}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -143,12 +145,9 @@
 
 			<div class="card bg-dark">
 
-
 				<div class="text-right card-body bg-dark text-white">
 
 					<h3>سداد مبلغ</h3>
-
-
 
 				</div>
 			</div>
