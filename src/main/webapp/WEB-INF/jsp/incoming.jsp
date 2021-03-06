@@ -136,9 +136,9 @@
 											class="font-weight-bold text-center form-control mb-2 mt-2 col-xs-3"
 											placeholder="سعر القطعه"></form:input></td>
 
-									<td class="col-1"><input name="amount"
-										class="font-weight-bold text-center form-control mb-2  mt-2 col-xs-3"
-										placeholder="المدفوع"></input></td>
+									<td class="col-1"><form:input path="payed"
+											class="font-weight-bold text-center form-control mb-2  mt-2 col-xs-3"
+											placeholder="المدفوع"></form:input></td>
 
 									<td class="col-2"><form:select path="trader"
 											class="font-weight-bold text-center form-control mb-2  mt-2 col-xs-3">
@@ -190,31 +190,39 @@
 							<tr>
 								<th>الصنف</th>
 								<th>الكمية</th>
-								<th>السعر تجاري</th>
-								<th>سعر القطعه</th>
-								<th>اجمالي السعر</th>
+								<th>س.تجاري</th>
+								<th>س.القطعه</th>
+								<th>الاجمالي</th>
+								<th>المدفوع</th>
 								<th>المحل</th>
-								<th>تاريخ التسجيل</th>
+								<th>التاريخ</th>
 								<th>العملية</th>
 							</tr>
+
 						</thead>
 						<tbody class="font-weight-bold ">
 							<c:forEach var="tempItem" items="${incomings}">
 
 								<tr>
-									<td class="col-2 pt-2">${tempItem.item}</td>
+									<td class="col-3 pt-2">${tempItem.item}</td>
 									<td class="col-1 pt-2">${tempItem.quantity}</td>
 									<td class="col-1 pt-2">${tempItem.tradePrice}</td>
 									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
 									<td class="col-1 pt-2">${tempItem.total}</td>
+									<td class="col-1 pt-2">${tempItem.payed}</td>
 									<td class="col-2 pt-2">${tempItem.trader}</td>
 									<td class="col-1 pt-2">${tempItem.date}</td>
 
-									<td class="col-1"><a style="font-size: 14px;"
-										class="btn btn-sm btn-danger text-wight
+									<td class="col-1"><c:if
+											test="${tempItem.quantity == tempItem.currentQuantity}">
+
+											<a style="font-size: 14px;"
+												class="btn btn-sm btn-danger text-wight
 										font-weight-bold btn-sm"
-										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-										href="delete-incoming?id=${tempItem.id}">حذف</a></td>
+												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+												href="delete-incoming?id=${tempItem.id}">حذف</a>
+
+										</c:if></td>
 								</tr>
 							</c:forEach>
 						</tbody>

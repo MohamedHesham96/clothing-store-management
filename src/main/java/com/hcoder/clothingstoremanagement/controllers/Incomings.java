@@ -58,8 +58,7 @@ public class Incomings {
 	}
 
 	@PostMapping("/add-incoming")
-	public String addIncoming(@ModelAttribute("amount") int amount, @ModelAttribute("incoming") Incoming theIncoming,
-			Model theModel) {
+	public String addIncoming(@ModelAttribute("incoming") Incoming theIncoming, Model theModel) {
 
 		theModel.addAttribute("incoming", new Incoming());
 
@@ -71,13 +70,15 @@ public class Incomings {
 
 		theIncoming.setTotal(total);
 
+		System.out.println("Payed: " + theIncoming.getPayed());
+
 		userService.saveIncoming(theIncoming);
 
 		Trader trader = userService.getTraderByName(theIncoming.gettrader());
-		
-		trader.setPayed(trader.getPayed() + amount);
-			
-		trader.setRemaining(trader.getRemaining() + total - amount);
+
+		trader.setPayed(trader.getPayed() + theIncoming.getPayed());
+
+		trader.setRemaining(trader.getRemaining() + theIncoming.getTotal() - theIncoming.getPayed());
 
 		userService.saveTrader(trader);
 

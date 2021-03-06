@@ -124,7 +124,8 @@ public class Bills {
 					// تحديث ديون العملاء
 					theClient = userService.getClientById(Integer.parseInt(clientIdList.get(i)));
 
-					int theNewdrawee = theClient.getDrawee() + theBill.getPiecePrice() - theBill.getPayed();
+					int billDrawee = theBill.getQuantity() * theBill.getPiecePrice() - theBill.getPayed();
+					int theNewdrawee = theClient.getDrawee() + billDrawee;
 
 					theClient.setDrawee(theNewdrawee);
 

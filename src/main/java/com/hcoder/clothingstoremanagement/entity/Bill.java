@@ -140,7 +140,5 @@ public class Bill {
 	public void setPayed(int payed) {
 		this.payed = payed;
 	}
-	
-	
 
 }

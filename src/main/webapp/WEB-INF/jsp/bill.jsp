@@ -118,12 +118,12 @@
 
 							<c:forEach var="tempItem" items="${items}">
 								<tr>
-									<td class="col-1 pt-2">${tempItem.item}</td>
+									<td class="col-2 pt-2">${tempItem.item}</td>
 									<td class="col-1 pt-2">${tempItem.quantity}</td>
 									<td class="col-1 pt-2">${tempItem.tradePrice}</td>
 									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
 									<td class="col-1 pt-2">${tempItem.gain}</td>
-									<td class="col-1 pt-2">${tempItem.client.name}</td>
+									<td class="col-2 pt-2">${tempItem.client.name}</td>
 									<td class="col-1"><a style="font-size: 14px;"
 										class="btn btn-sm btn-danger text-wight
 										font-weight-bold"

@@ -31,7 +31,7 @@ public class Client {
 	// صحيح")
 	@Column(name = "phone")
 	String phone;
-	
+
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private List<Bill> bills;
 
@@ -74,6 +74,5 @@ public class Client {
 	public void setDrawee(int drawee) {
 		this.drawee = drawee;
 	}
-
 
 }

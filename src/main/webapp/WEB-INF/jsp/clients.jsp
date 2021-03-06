@@ -141,11 +141,18 @@
 											class="btn btn-success btn-sm text-wight
 											font-weight-bold"
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', '${tempItem.phone}', '${tempItem.drawee}');">تعديل</button>
-										<a style="font-size: 14px;"
-										class="btn btn-danger btn-sm text-wight
+
+
+
+										<c:if test="${empty tempItem.bills}">
+
+											<a style="font-size: 14px;"
+												class="btn btn-danger btn-sm text-wight
 											font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا العميل ؟')"
-										href="delete-client?id=${tempItem.id}">حذف</a>
+												onclick="return confirm('هل انت متأكد من حذف هذا العميل ؟')"
+												href="delete-client?id=${tempItem.id}">حذف</a>
+
+										</c:if>
 									</td>
 
 

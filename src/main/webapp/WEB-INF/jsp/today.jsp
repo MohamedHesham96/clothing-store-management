@@ -175,7 +175,9 @@
 
 		</form>
 
-		<br> <br> <br> <br> <br>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br> <br>
+
 		<div class="row mt-3">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="shadow mb-4"
@@ -202,15 +204,14 @@
 
 							<c:forEach var="tempItem" items="${items}">
 								<tr>
-									<td class="co-1 pt-2">${tempItem.item}</td>
-									<td class="co-1 pt-2">${tempItem.quantity}</td>
-									<td class="co-1 pt-2">${tempItem.tradePrice}</td>
-									<td class="co-1 pt-2">${tempItem.piecePrice}</td>
-									<td class="co-1 pt-2">${tempItem.client.name}</td>
+									<td class="col-2 pt-2">${tempItem.item}</td>
+									<td class="col-1 pt-2">${tempItem.quantity}</td>
+									<td class="col-1 pt-2">${tempItem.tradePrice}</td>
+									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
+									<td class="col-2 pt-2">${tempItem.client.name}</td>
 
-									<td class="co-1"><a style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
-										font-weight-bold"
+									<td class="col-1"><a
+										class="btn btn-danger btn-sm font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 										href="delete-bill?id=${tempItem.id}">حذف</a></td>
 								</tr>

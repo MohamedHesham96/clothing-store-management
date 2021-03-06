@@ -36,6 +36,9 @@ public class Incoming {
 	@Column(name = "total")
 	int total;
 
+	@Column(name = "payed")
+	int payed;
+
 	@Column(name = "trade_price")
 	int tradePrice;
 
@@ -124,4 +127,11 @@ public class Incoming {
 		this.currentQuantity = currentQuantity;
 	}
 
+	public int getPayed() {
+		return payed;
+	}
+
+	public void setPayed(int payed) {
+		this.payed = payed;
+	}
 }

@@ -184,11 +184,15 @@
 											onclick="myFunc('${tempItem.id}','${tempItem.name}', 
 															'${tempItem.payed}', '${tempItem.remaining}');">تعديل</button>
 
-										<a style="font-size: 14px;"
-										class="btn btn-sm btn-danger text-wight
-										font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا التاجر ؟')"
-										href="delete-trader?id=${tempItem.id}">حذف</a>
+										<c:if test="${tempItem.payed == 0 && tempItem.remaining == 0}">
+
+
+											<a style="font-size: 14px;"
+												class="btn btn-sm btn-danger font-weight-bold"
+												onclick="return confirm('هل انت متأكد من حذف هذا التاجر ؟')"
+												href="delete-trader?id=${tempItem.id}">حذف</a>
+
+										</c:if>
 
 									</td>
 								</tr>

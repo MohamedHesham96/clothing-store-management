@@ -252,11 +252,11 @@ public class UserServiceImpl implements UserService {
 			incoming.setCurrentQuantity(incoming.getCurrentQuantity() + theBill.getQuantity());
 			userDAO.saveIncoming(incoming);
 		}
-		
-		int theBillDrawee = theBill.getPiecePrice() - theBill.getPayed();
-		
+
+		int theBillDrawee = theBill.getQuantity() * theBill.getPiecePrice() - theBill.getPayed();
+
 		theClient.setDrawee(theClient.getDrawee() - theBillDrawee);
-		
+
 		userDAO.saveClient(theClient);
 
 	}

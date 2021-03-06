@@ -623,10 +623,11 @@ public class UserDAOImpl implements UserDAO {
 
 		Incoming incoming = session.get(Incoming.class, id);
 
-		Query query = session.createQuery(
-				"update Trader t " + " set t.remaining = t.remaining - :theRemaining where name = :theTraderName");
+		Query query = session.createQuery("update Trader t " + "set t.remaining = t.remaining - :theRemaining,"
+				+ "t.payed = t.payed - :thePayed where name = :theTraderName");
 
-		query.setParameter("theRemaining", incoming.getTotal());
+		query.setParameter("theRemaining", incoming.getTotal() - incoming.getPayed());
+		query.setParameter("thePayed", incoming.getPayed());
 		query.setParameter("theTraderName", incoming.gettrader());
 
 		query.executeUpdate();
