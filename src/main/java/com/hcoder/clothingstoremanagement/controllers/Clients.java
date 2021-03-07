@@ -64,7 +64,7 @@ public class Clients {
 
 		for (int i = 0; i < size; i++) {
 
-			totalPayment += clientBills.get(i).getPiecePrice();
+			totalPayment += clientBills.get(i).getPiecePrice() * clientBills.get(i).getQuantity();
 		}
 
 		theModel.addAttribute("clientData", client);

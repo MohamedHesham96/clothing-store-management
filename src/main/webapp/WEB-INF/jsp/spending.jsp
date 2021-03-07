@@ -11,6 +11,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
+<script type="text/javascript">
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy'
+ });
+ 
+ </script>
 
 <head>
 
@@ -66,11 +72,11 @@
 
 					<form method="GET" action="spending">
 
-						<input type="date" name="date" value="${date}"
-							class=" btn badge-info  font-weight-bold text-center form-control  col-xs-3 ">
+						<input type="date" name="date" value="${date}"  min="1997-01-01" max="2030-12-31"
+							class=" btn badge-info font-weight-bold text-center form-control col-xs-3 ">
 
 						<input type="submit" style="margin-top: 10px;"
-							class=" btn badge-light font-weight-bold text-center form-control  col-xs-3"
+							class=" btn badge-light font-weight-bold text-center form-control col-xs-3"
 							value="اذهب لهذا اليوم" />
 
 					</form>
@@ -87,7 +93,7 @@
 							class="font-weight-bold text-center form-control  col-xs-3"
 							placeholder="ادخل ملاحظتك" path="note"></form:input>
 
-						<input name="date" value="2020-01-01" type="hidden" />
+						<input name="date" value="2020-01-01" type="hidden"  />
 
 						<input style="margin-top: 10px" type="submit" value="سحب المبلغ"
 							onclick="this.disabled=true; this.parentNode.submit();"

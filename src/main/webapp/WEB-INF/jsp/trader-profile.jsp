@@ -89,7 +89,8 @@
 
 						<form:hidden path="id" />
 
-						<input type="text" class="text-center form-control  col-xs-3"
+						<input type="text"
+							class="text-center form-control font-weight-bold col-xs-3"
 							placeholder="ادخل المبلغ المسدد " name="moneyAmount">
 
 
@@ -110,11 +111,10 @@
 		<div class="row">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 				<div class="table-responsive">
-					<table
-						class="table table-bordered table-striped table-dark table-sm">
-						<thead class="thead-inverse bg-secondary table-bordered shadow"
+					<table class="table  table-striped table-dark table-sm">
+						<thead class=" bg-secondary  shadow"
 							style="position: -webkit-sticky; position: sticky; top: 0; z-index: 2;">
-							<tr>
+							<tr class="">
 								<th class="col-1">الصنف</th>
 								<th class="col-1">الكمية</th>
 								<th class="col-1">السعر تجاري</th>
@@ -124,7 +124,7 @@
 						</thead>
 						<tbody class="font-weight-bold">
 							<c:forEach var="tempItem" items="${traderIncomings}">
-								<tr>
+								<tr class="">
 									<td class="col-1">${tempItem.item}</td>
 									<td class="col-1">${tempItem.quantity}</td>
 									<td class="col-1">${tempItem.tradePrice}</td>

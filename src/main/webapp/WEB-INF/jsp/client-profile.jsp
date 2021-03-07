@@ -93,7 +93,7 @@
 						action="pay-off-amount" modelAttribute="clientData">
 
 
-						<input type="text" class="text-center form-control  col-xs-3"
+						<input type="text" class="text-center form-control font-weight-bold col-xs-3"
 							placeholder="ادخل المبلغ المسدد " name="moneyAmount"></input>
 
 						<input name="clientId" value="${clientData.id}" type="hidden" />

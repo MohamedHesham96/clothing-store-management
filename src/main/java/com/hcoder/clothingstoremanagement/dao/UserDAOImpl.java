@@ -492,9 +492,9 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		Query<Result> queryBill = session
-				.createNativeQuery("SELECT sum(gain) as amount,\r\n" + "    extract(month from TIMESTAMP) as month,\r\n"
-						+ "    extract(year from TIMESTAMP) as year \r\n" + "    FROM Bill \r\n"
-						+ "    GROUP BY month, \r\n" + "    year ORDER BY year desc, month desc")
+				.createNativeQuery("SELECT sum(gain) as amount,\r\n" + "  extract(month from TIMESTAMP) as month,\r\n"
+						+ "  extract(year from TIMESTAMP) as year \r\n" + " FROM Bill \r\n"
+						+ "  GROUP BY month, \r\n" + " year ORDER BY year desc, month desc")
 				.addScalar("amount", new DoubleType()).addScalar("year", new DoubleType())
 				.addScalar("month", new DoubleType());
 
@@ -502,9 +502,9 @@ public class UserDAOImpl implements UserDAO {
 
 		Query<Result> querySpending = session
 				.createNativeQuery(
-						"SELECT sum(money) as spending,\r\n" + "    extract(month from TIMESTAMP) as month,\r\n"
-								+ "    extract(year from TIMESTAMP) as year \r\n" + "    FROM Spending \r\n"
-								+ "    GROUP BY month, \r\n" + "    year ORDER BY year desc, month desc")
+						"SELECT sum(money) as spending,\r\n" + "  extract(month from TIMESTAMP) as month,\r\n"
+								+ "  extract(year from TIMESTAMP) as year \r\n" + "  FROM Spending \r\n"
+								+ "  GROUP BY month, \r\n" + "  year ORDER BY year desc, month desc")
 				.addScalar("spending", new DoubleType()).addScalar("year", new DoubleType())
 				.addScalar("month", new DoubleType());
 

@@ -108,6 +108,8 @@
 								<th>الكمية</th>
 								<th>السعر تجاري</th>
 								<th>سعر القطعه</th>
+								<th>المدفوع</th>
+<!-- 								<th>المتبقي</th> -->
 								<th>صافي الربح</th>
 								<th>اسم العميل</th>
 								<th>العملية</th>
@@ -122,6 +124,8 @@
 									<td class="col-1 pt-2">${tempItem.quantity}</td>
 									<td class="col-1 pt-2">${tempItem.tradePrice}</td>
 									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
+									<td class="col-1 pt-2">${tempItem.payed}</td>
+<%-- 									<td class="col-1 pt-2">${tempItem.quantity * tempItem.piecePrice - tempItem.payed}</td> --%>
 									<td class="col-1 pt-2">${tempItem.gain}</td>
 									<td class="col-2 pt-2">${tempItem.client.name}</td>
 									<td class="col-1"><a style="font-size: 14px;"

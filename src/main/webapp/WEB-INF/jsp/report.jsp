@@ -84,118 +84,118 @@
  -->
 		<%
 			List<Result> list = (List<Result>) request.getAttribute("monthsList");
-			int listSize = list.size();
-			boolean firstTime = true;
+		int listSize = list.size();
+		boolean firstTime = true;
 
-			List<Result> list2020 = new ArrayList<Result>();
-			List<Result> list2021 = new ArrayList<Result>();
-			List<Result> list2022 = new ArrayList<Result>();
+		List<Result> list2021 = new ArrayList<Result>();
+		List<Result> list2022 = new ArrayList<Result>();
+		List<Result> list2023 = new ArrayList<Result>();
 
-			int[] billsTotals = new int[3];
-			int[] spendingsTotals = new int[3];
+		int[] billsTotals = new int[3];
+		int[] spendingsTotals = new int[3];
 
-			for (int i = 0; i < listSize; i++) {
+		for (int i = 0; i < listSize; i++) {
 
-				if (list.get(i).getYear().intValue() == 2020) {
+			if (list.get(i).getYear().intValue() == 2021) {
 
-					list2020.add(list.get(i));
+				list2021.add(list.get(i));
 
-					if (list.get(i).getAmount() != null)
-						billsTotals[0] += list.get(i).getAmount().intValue();
-					else
-						list.get(i).setAmount(0.0);
+				if (list.get(i).getAmount() != null)
+			billsTotals[0] += list.get(i).getAmount().intValue();
+				else
+			list.get(i).setAmount(0.0);
 
-					if (list.get(i).getSpending() != null)
-						spendingsTotals[0] += list.get(i).getSpending().intValue();
-					else
-						list.get(i).setSpending(0.0);
-				}
+				if (list.get(i).getSpending() != null)
+			spendingsTotals[0] += list.get(i).getSpending().intValue();
+				else
+			list.get(i).setSpending(0.0);
+			}
 
-				else if (list.get(i).getYear().intValue() == 2021) {
+			else if (list.get(i).getYear().intValue() == 2022) {
 
-					list2021.add(list.get(i));
+				list2022.add(list.get(i));
 
-					if (list.get(i).getAmount() != null)
-						billsTotals[1] += list.get(i).getAmount().intValue();
-					else
-						list.get(i).setAmount(0.0);
+				if (list.get(i).getAmount() != null)
+			billsTotals[1] += list.get(i).getAmount().intValue();
+				else
+			list.get(i).setAmount(0.0);
 
-					if (list.get(i).getSpending() != null)
-						spendingsTotals[1] += list.get(i).getSpending().intValue();
-					else
-						list.get(i).setSpending(0.0);
-
-				}
-
-				else if (list.get(i).getYear().intValue() == 2022) {
-
-					list2022.add(list.get(i));
-
-					if (list.get(i).getAmount() != null)
-						billsTotals[2] += list.get(i).getAmount().intValue();
-					else
-						list.get(i).setAmount(0.0);
-
-					if (list.get(i).getSpending() != null)
-						spendingsTotals[2] += list.get(i).getSpending().intValue();
-					else
-						list.get(i).setSpending(0.0);
-
-				}
+				if (list.get(i).getSpending() != null)
+			spendingsTotals[1] += list.get(i).getSpending().intValue();
+				else
+			list.get(i).setSpending(0.0);
 
 			}
 
-			boolean[] flags = { false, false, false };
+			else if (list.get(i).getYear().intValue() == 2023) {
 
-			for (int i = 0; i < flags.length; i++) {
+				list2023.add(list.get(i));
 
-				if (!list2022.isEmpty())
-					flags[0] = true;
+				if (list.get(i).getAmount() != null)
+			billsTotals[2] += list.get(i).getAmount().intValue();
+				else
+			list.get(i).setAmount(0.0);
 
-				if (!list2021.isEmpty())
-					flags[1] = true;
-
-				if (!list2020.isEmpty())
-					flags[2] = true;
+				if (list.get(i).getSpending() != null)
+			spendingsTotals[2] += list.get(i).getSpending().intValue();
+				else
+			list.get(i).setSpending(0.0);
 
 			}
 
-			List<String> monthsNames = new ArrayList<String>();
+		}
 
-			monthsNames.add("يناير");
-			monthsNames.add("فبراير");
-			monthsNames.add("مارس");
-			monthsNames.add("أبريل");
-			monthsNames.add("مايو");
-			monthsNames.add("يونيو");
-			monthsNames.add("أغسطس");
-			monthsNames.add("سبتمبر");
-			monthsNames.add("نوفمبر");
-			monthsNames.add("ديسمبر");
+		boolean[] flags = { false, false, false };
+
+		for (int i = 0; i < flags.length; i++) {
+
+			if (!list2023.isEmpty())
+				flags[0] = true;
+
+			if (!list2022.isEmpty())
+				flags[1] = true;
+
+			if (!list2021.isEmpty())
+				flags[2] = true;
+
+		}
+
+		List<String> monthsNames = new ArrayList<String>();
+
+		monthsNames.add("يناير");
+		monthsNames.add("فبراير");
+		monthsNames.add("مارس");
+		monthsNames.add("أبريل");
+		monthsNames.add("مايو");
+		monthsNames.add("يونيو");
+		monthsNames.add("أغسطس");
+		monthsNames.add("سبتمبر");
+		monthsNames.add("نوفمبر");
+		monthsNames.add("ديسمبر");
 		%>
 
 
 		<%
 			for (int i = 0; i < flags.length; i++) {
 
-				if (flags[i] == true) {
+			if (flags[i] == true) {
 		%>
 
 
 		<div class="row  my-4">
 			<div dir='rtl' class="col-lg-12 col-md-8">
 
-				<h2><%=2022 - i%></h2>
+				<h2><%=2023 - i%></h2>
 
-				<div style="margin-top:" class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
-						<thead class="thead-inverse">
-
+				<div>
+					<table
+						class="table table-bordered table-striped table-dark table-sm">
+						<thead class=" bg-secondary">
 							<tr>
-								<th>الشهر</th>
-								<th>الربح</th>
-								<th>المصاريف</th>
-								<th>صافي الربح</th>
+								<th class="col-1">الشهر</th>
+								<th class="col-1">الربح</th>
+								<th class="col-1">المصاريف</th>
+								<th class="col-1">صافي الربح</th>
 
 							</tr>
 						</thead>
@@ -206,8 +206,6 @@
 							%>
 
 							<c:forEach var="temp" items="<%=list2022%>">
-
-
 								<tr>
 
 									<td>${temp.month.intValue()}</td>
@@ -216,8 +214,6 @@
 									<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
 
 								</tr>
-
-
 
 							</c:forEach>
 
@@ -230,7 +226,7 @@
 								if (flags[2] == true && i == 1) {
 							%>
 
-							<c:forEach var="temp" items="<%=list2021%>">
+							<c:forEach var="temp" items="<%=list2022%>">
 								<tr>
 
 									<td>${temp.month.intValue()}</td>
@@ -239,42 +235,30 @@
 									<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
 
 								</tr>
-
-
-
 							</c:forEach>
 
 							<%
 								}
 							%>
-
-
 
 							<%
 								if (flags[2] == true && i == 2) {
 							%>
 
-							<c:forEach var="temp" items="<%=list2020%>">
+							<c:forEach var="temp" items="<%=list2021%>">
 								<tr>
-
-									<td>${temp.month.intValue()}</td>
-									<td>${temp.amount.intValue()}</td>
-									<td>${temp.spending.intValue()}</td>
-									<td>${temp.amount.intValue()- temp.spending.intValue()}</td>
-
+									<td class="font-weight-bold">${temp.month.intValue()}</td>
+									<td class="font-weight-bold">${temp.amount.intValue()}</td>
+									<td class="font-weight-bold">${temp.spending.intValue()}</td>
+									<td class="font-weight-bold">${temp.amount.intValue()- temp.spending.intValue()}</td>
 								</tr>
-
-
-
 							</c:forEach>
 
 							<%
 								}
 							%>
 
-
-
-							<tr class=" bg-success text-light">
+							<tr class=" bg-success">
 
 								<td><h5 class="font-weight-bold">اجمالي السنة</h5></td>
 								<td><h5 class="font-weight-bold"><%=billsTotals[0]%></h5></td>
@@ -291,7 +275,7 @@
 
 		<%
 			}
-			}
+		}
 		%>
 
 
