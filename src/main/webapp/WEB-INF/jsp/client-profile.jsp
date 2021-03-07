@@ -93,7 +93,8 @@
 						action="pay-off-amount" modelAttribute="clientData">
 
 
-						<input type="text" class="text-center form-control font-weight-bold col-xs-3"
+						<input type="text"
+							class="text-center form-control font-weight-bold col-xs-3"
 							placeholder="ادخل المبلغ المسدد " name="moneyAmount"></input>
 
 						<input name="clientId" value="${clientData.id}" type="hidden" />
@@ -121,6 +122,7 @@
 								<th>الصنف</th>
 								<th>الكمية</th>
 								<th>السعر</th>
+								<th>اجمالي</th>
 								<th>العملية</th>
 							</tr>
 						</thead>
@@ -131,9 +133,9 @@
 									<td class="col-1 pt-2">${tempItem.item}</td>
 									<td class="col-1 pt-2">${tempItem.quantity}</td>
 									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
-									<td class="col-1 pt-2"><a style="font-size: 14px;"
-										class="btn btn-sm btn-danger text-wight
-										font-weight-bold"
+									<td class="col-1 pt-2">${tempItem.quantity * tempItem.piecePrice}</td>
+									<td class="col-1 "><a
+										class="btn btn-sm btn-danger font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 										href="delete-bill-from-client-profile?id=${tempItem.id}&clientId=${clientData.id}">حذف</a></td>
 								</tr>
