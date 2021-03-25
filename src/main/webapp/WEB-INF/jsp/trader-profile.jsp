@@ -49,6 +49,14 @@
 					</button>
 				</li>
 
+				<li class="bg-dark list-group-item">
+					<button dir="rtl" style="text-align: right;" type="button"
+						type="button"
+						class="w-100 btn bg-success text-white font-weight-bold text-center">
+						ارباح <span style="margin-right: 32px; width: 140px;"
+							class=" badge badge-light">${benifitsTotal} جنيه</span>
+					</button>
+				</li>
 
 				<li class="bg-dark list-group-item">
 					<button dir="rtl" style="text-align: right;" type="button"
@@ -120,6 +128,7 @@
 								<th class="col-1">السعر تجاري</th>
 								<th class="col-1">اجمالي السعر</th>
 								<th class="col-1">تاريخ التسجيل</th>
+								<th class="col-1">العملية</th>
 							</tr>
 						</thead>
 						<tbody class="font-weight-bold">
@@ -130,6 +139,16 @@
 									<td class="col-1">${tempItem.tradePrice}</td>
 									<td class="col-1">${tempItem.total}</td>
 									<td class="col-1">${tempItem.date}</td>
+									<td class="col-1"><c:if
+											test="${tempItem.quantity == tempItem.currentQuantity}">
+
+											<a style="font-size: 14px;"
+												class="btn btn-sm btn-danger text-wight
+										font-weight-bold btn-sm"
+												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+												href="delete-incoming-trader-profile?id=${tempItem.id}&traderId=${traderData.id}">حذف</a>
+
+										</c:if></td>
 								</tr>
 							</c:forEach>
 						</tbody>

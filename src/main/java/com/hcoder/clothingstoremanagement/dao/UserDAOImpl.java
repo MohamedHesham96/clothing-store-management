@@ -175,6 +175,27 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public int getEarningsTotalByTraderName(String traderName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Query<Bill> query = session.createQuery("from Bill where trader = :traderName");
+
+		query.setParameter("traderName", traderName);
+
+		List<Bill> bills = query.getResultList();
+
+		int EarningsTotal = 0;
+
+		for (Bill bill : bills) {
+
+			EarningsTotal += bill.getQuantity() * (bill.getPiecePrice() - bill.getTradePrice());
+		}
+
+		return EarningsTotal;
+	}
+
+	@Override
 	public int getWarehouseTotal() {
 
 		Session session = entityManager.unwrap(Session.class);
@@ -493,8 +514,8 @@ public class UserDAOImpl implements UserDAO {
 
 		Query<Result> queryBill = session
 				.createNativeQuery("SELECT sum(gain) as amount,\r\n" + "  extract(month from TIMESTAMP) as month,\r\n"
-						+ "  extract(year from TIMESTAMP) as year \r\n" + " FROM Bill \r\n"
-						+ "  GROUP BY month, \r\n" + " year ORDER BY year desc, month desc")
+						+ "  extract(year from TIMESTAMP) as year \r\n" + " FROM Bill \r\n" + "  GROUP BY month, \r\n"
+						+ " year ORDER BY year desc, month desc")
 				.addScalar("amount", new DoubleType()).addScalar("year", new DoubleType())
 				.addScalar("month", new DoubleType());
 
@@ -623,7 +644,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Incoming incoming = session.get(Incoming.class, id);
 
-		Query query = session.createQuery("update Trader t " + "set t.remaining = t.remaining - :theRemaining,"
+		Query<?> query = session.createQuery("update Trader t " + "set t.remaining = t.remaining - :theRemaining,"
 				+ "t.payed = t.payed - :thePayed where name = :theTraderName");
 
 		query.setParameter("theRemaining", incoming.getTotal() - incoming.getPayed());

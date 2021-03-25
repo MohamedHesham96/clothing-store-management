@@ -121,8 +121,10 @@
 							<tr>
 								<th>الصنف</th>
 								<th>الكمية</th>
-								<th>السعر</th>
+								<th>سعر القطعه</th>
 								<th>اجمالي</th>
+								<th>المدفوع</th>
+								<th>الباقي</th>
 								<th>العملية</th>
 							</tr>
 						</thead>
@@ -134,7 +136,9 @@
 									<td class="col-1 pt-2">${tempItem.quantity}</td>
 									<td class="col-1 pt-2">${tempItem.piecePrice}</td>
 									<td class="col-1 pt-2">${tempItem.quantity * tempItem.piecePrice}</td>
-									<td class="col-1 "><a
+									<td class="col-1 pt-2">${tempItem.payed}</td>
+									<td class="col-1 pt-2">${tempItem.quantity * tempItem.piecePrice - tempItem.payed}</td>
+									<td class="col-1"><a
 										class="btn btn-sm btn-danger font-weight-bold"
 										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 										href="delete-bill-from-client-profile?id=${tempItem.id}&clientId=${clientData.id}">حذف</a></td>
@@ -153,7 +157,6 @@
 			class="form container-fluid col-lg-4 col-md-6 fixed-top">
 
 			<div class="card bg-dark">
-
 
 				<div class="text-right card-body bg-dark text-white">
 
@@ -175,17 +178,11 @@
 							قم بتسديد المبلغ</button>
 						<br>
 
-
 					</form:form>
-
 
 				</div>
 			</div>
 		</div>
-
-
-
-
 	</div>
 </body>
 </html>

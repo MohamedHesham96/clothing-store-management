@@ -60,6 +60,8 @@ public interface UserService {
 
 	public int getIncomingTotalByTraderName(String traderName);
 
+	public int getEarningsTotalByTraderName(String traderName);
+
 	// Warehouse Methods
 	public int getWarehouseTotal();
 

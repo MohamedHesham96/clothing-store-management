@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Trader;
@@ -90,7 +91,17 @@ public class Incomings {
 	public String deleteIncoming(@RequestParam int id) {
 
 		userService.deleteIncoming(id);
+
 		return "redirect:/incoming";
+	}
+
+	@RequestMapping("/delete-incoming-trader-profile")
+	public String deleteIncomingTraderProfile(@RequestParam int id, @RequestParam int traderId,
+			RedirectAttributes redirectAttributes) {
+
+		userService.deleteIncoming(id);
+		redirectAttributes.addAttribute("traderId", traderId);
+		return "redirect:/traderProfile";
 	}
 
 }

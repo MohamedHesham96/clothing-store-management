@@ -258,7 +258,6 @@ public class UserServiceImpl implements UserService {
 		theClient.setDrawee(theClient.getDrawee() - theBillDrawee);
 
 		userDAO.saveClient(theClient);
-
 	}
 
 	@Override
@@ -301,6 +300,12 @@ public class UserServiceImpl implements UserService {
 	public List<Trader> getTradersByName(String name) {
 
 		return userDAO.getTradersByName(name);
+	}
+
+	@Override
+	public int getEarningsTotalByTraderName(String traderName) {
+
+		return userDAO.getEarningsTotalByTraderName(traderName);
 	}
 
 }

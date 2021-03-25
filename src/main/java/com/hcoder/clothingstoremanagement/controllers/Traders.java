@@ -70,7 +70,9 @@ public class Traders {
 		Trader trader = userService.getTraderById(id);
 
 		List<Incoming> traderIncomings = userService.getIncomingsByTraderName(trader.getName());
+
 		int incomingsTotal = userService.getIncomingTotalByTraderName(trader.getName());
+		int benifitsTotal = userService.getEarningsTotalByTraderName(trader.getName());
 
 		theModel.addAttribute("traderData", trader);
 
@@ -79,6 +81,8 @@ public class Traders {
 		theModel.addAttribute("incomingsTotal", incomingsTotal);
 
 		theModel.addAttribute("remainingTotal", trader.getRemaining());
+
+		theModel.addAttribute("benifitsTotal", benifitsTotal);
 
 		return "trader-profile";
 	}
