@@ -1,59 +1,65 @@
 package com.hcoder.clothingstoremanagement.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "trader")
 public class Trader {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
-	@Column(name = "name")
-	String name;
+    @Column(name = "name")
+    String name;
 
-	@Column(name = "payed")
-	int payed;
+    @Column(name = "payed")
+    int payed;
 
-	@Column(name = "remaining")
-	int remaining;
+    @Column(name = "remaining")
+    int remaining;
 
-	public int getId() {
-		return id;
-	}
+    @OneToMany(mappedBy = "trader")
+    List<TraderPay> traderPayList;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getPayed() {
-		return payed;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPayed(int payed) {
-		this.payed = payed;
-	}
+    public int getPayed() {
+        return payed;
+    }
 
-	public int getRemaining() {
-		return remaining;
-	}
+    public void setPayed(int payed) {
+        this.payed = payed;
+    }
 
-	public void setRemaining(int remaining) {
-		this.remaining = remaining;
-	}
+    public int getRemaining() {
+        return remaining;
+    }
 
+    public void setRemaining(int remaining) {
+        this.remaining = remaining;
+    }
+
+    public List<TraderPay> getTraderPayList() {
+        return traderPayList;
+    }
+
+    public void setTraderPayList(List<TraderPay> traderPayList) {
+        this.traderPayList = traderPayList;
+    }
 }

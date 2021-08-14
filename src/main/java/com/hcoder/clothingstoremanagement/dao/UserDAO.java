@@ -2,12 +2,7 @@ package com.hcoder.clothingstoremanagement.dao;
 
 import java.util.List;
 
-import com.hcoder.clothingstoremanagement.entity.Bill;
-import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.Incoming;
-import com.hcoder.clothingstoremanagement.entity.Result;
-import com.hcoder.clothingstoremanagement.entity.Spending;
-import com.hcoder.clothingstoremanagement.entity.Trader;
+import com.hcoder.clothingstoremanagement.entity.*;
 
 public interface UserDAO {
 
@@ -107,4 +102,9 @@ public interface UserDAO {
 	// SUMMRY
 	public List<Result> groupByMonths();
 
+	void saveTraderPay(TraderPay traderPay);
+
+	void deleteTraderPay(int id);
+
+	TraderPay getTraderPayById(int id);
 }
