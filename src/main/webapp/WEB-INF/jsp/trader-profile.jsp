@@ -26,6 +26,7 @@
 
 
 </head>
+
 <body background="images/wall9.jpg"
       style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
@@ -208,5 +209,6 @@
 
 
     </div>
+</div>
 </body>
 </html>

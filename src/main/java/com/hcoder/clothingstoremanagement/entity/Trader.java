@@ -21,6 +21,7 @@ public class Trader {
     int remaining;
 
     @OneToMany(mappedBy = "trader")
+    @OrderBy("date DESC")
     List<TraderPay> traderPayList;
 
     public int getId() {
