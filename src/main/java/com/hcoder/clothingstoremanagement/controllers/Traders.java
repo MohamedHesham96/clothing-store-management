@@ -1,123 +1,145 @@
 package com.hcoder.clothingstoremanagement.controllers;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
+import com.hcoder.clothingstoremanagement.entity.TraderPay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcoder.clothingstoremanagement.entity.Incoming;
 import com.hcoder.clothingstoremanagement.entity.Trader;
 import com.hcoder.clothingstoremanagement.service.UserService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.websocket.server.PathParam;
 
 @Controller
 public class Traders {
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    UserService userService;
 
-	@RequestMapping("/traders")
-	public String getTraders(@RequestParam(name = "remainingBool", required = false) Boolean remainingBool,
-			@RequestParam(name = "traderName", required = false) String traderName, Model theModel) {
+    @RequestMapping("/traders")
+    public String getTraders(@RequestParam(name = "remainingBool", required = false) Boolean remainingBool,
+                             @RequestParam(name = "traderName", required = false) String traderName, Model theModel) {
 
-		List<Trader> traders = null;
+        List<Trader> traders = null;
 
-		if (traderName != null) {
+        if (traderName != null) {
 
-			traders = userService.getTradersByName(traderName);
-		}
+            traders = userService.getTradersByName(traderName);
+        } else if (remainingBool == null) {
 
-		else if (remainingBool == null) {
+            traders = userService.getAllTraders();
+        } else if (remainingBool == true) {
 
-			traders = userService.getAllTraders();
-		}
+            traders = userService.getAllTradersWithRemaining();
 
-		else if (remainingBool == true) {
+        } else {
 
-			traders = userService.getAllTradersWithRemaining();
+            traders = userService.getAllTradersWithoutRemaining();
+        }
 
-		} else {
+        int[] tradersTotals = userService.getTradersTotals();
 
-			traders = userService.getAllTradersWithoutRemaining();
-		}
+        theModel.addAttribute("tradersList", traders);
 
-		int[] tradersTotals = userService.getTradersTotals();
+        theModel.addAttribute("theTrader", new Trader());
 
-		theModel.addAttribute("tradersList", traders);
+        theModel.addAttribute("payedTotal", tradersTotals[0]);
+        theModel.addAttribute("remainingTotal", tradersTotals[1]);
 
-		theModel.addAttribute("theTrader", new Trader());
+        return "traders";
+    }
 
-		theModel.addAttribute("payedTotal", tradersTotals[0]);
-		theModel.addAttribute("remainingTotal", tradersTotals[1]);
+    @RequestMapping("/add-new-trader")
+    public String addNewTrader(@ModelAttribute("theTrader") Trader theTrader) {
 
-		return "traders";
-	}
+        userService.saveTrader(theTrader);
 
-	@RequestMapping("/add-new-trader")
-	public String addNewTrader(@ModelAttribute("theTrader") Trader theTrader) {
+        return "redirect:/traders";
+    }
 
-		userService.saveTrader(theTrader);
+    @RequestMapping("/traderProfile")
+    public String getTrader(@RequestParam int id, Model theModel) {
 
-		return "redirect:/traders";
-	}
+        Trader trader = userService.getTraderById(id);
 
-	@RequestMapping("/traderProfile")
-	public String geTrader(@ModelAttribute("traderId") int id, Model theModel) {
+        List<Incoming> traderIncomings = userService.getIncomingsByTraderName(trader.getName());
 
-		Trader trader = userService.getTraderById(id);
+        int incomingsTotal = userService.getIncomingTotalByTraderName(trader.getName());
+        int benifitsTotal = userService.getEarningsTotalByTraderName(trader.getName());
 
-		List<Incoming> traderIncomings = userService.getIncomingsByTraderName(trader.getName());
+        theModel.addAttribute("traderData", trader);
 
-		int incomingsTotal = userService.getIncomingTotalByTraderName(trader.getName());
-		int benifitsTotal = userService.getEarningsTotalByTraderName(trader.getName());
+        theModel.addAttribute("traderIncomings", traderIncomings);
 
-		theModel.addAttribute("traderData", trader);
+        theModel.addAttribute("incomingsTotal", incomingsTotal);
 
-		theModel.addAttribute("traderIncomings", traderIncomings);
+        theModel.addAttribute("remainingTotal", trader.getRemaining());
 
-		theModel.addAttribute("incomingsTotal", incomingsTotal);
+        theModel.addAttribute("benifitsTotal", benifitsTotal);
 
-		theModel.addAttribute("remainingTotal", trader.getRemaining());
+        return "trader-profile";
+    }
 
-		theModel.addAttribute("benifitsTotal", benifitsTotal);
+    @RequestMapping("/pay-off-amount-for-trader")
+    public String payOffAmountForTrader(@RequestParam(name = "moneyAmount") int theAmount,
+                                        @ModelAttribute("traderData") Trader traderData, Model theModel) {
 
-		return "trader-profile";
-	}
+        Trader trader = userService.getTraderById(traderData.getId());
+        List<Incoming> traderIncomings = userService.getIncomingsByTraderName(trader.getName());
 
-	@RequestMapping("/pay-off-amount-for-trader")
-	public String payOffAmountForTrader(@RequestParam(name = "moneyAmount") int theAmount,
-			@ModelAttribute("traderData") Trader traderData, Model theModel) {
+        int incomingsTotal = userService.getIncomingTotalByTraderName(trader.getName());
 
-		Trader trader = userService.getTraderById(traderData.getId());
-		List<Incoming> traderIncomings = userService.getIncomingsByTraderName(trader.getName());
+        trader.setPayed(trader.getPayed() + theAmount);
+        trader.setRemaining(incomingsTotal - trader.getPayed());
 
-		int incomingsTotal = userService.getIncomingTotalByTraderName(trader.getName());
+        userService.saveTrader(trader);
 
-		trader.setPayed(trader.getPayed() + theAmount);
-		trader.setRemaining(incomingsTotal - trader.getPayed());
+        TraderPay traderPay = new TraderPay();
+        traderPay.setTrader(trader);
+        traderPay.setAmount(theAmount);
+        traderPay.setDate(LocalDate.now());
 
-		userService.saveTrader(trader);
+        userService.saveTraderPay(traderPay);
+        theModel.addAttribute("traderData", trader);
 
-		theModel.addAttribute("traderData", trader);
+        theModel.addAttribute("traderIncomings", traderIncomings);
 
-		theModel.addAttribute("traderIncomings", traderIncomings);
+        theModel.addAttribute("incomingsTotal", incomingsTotal);
 
-		theModel.addAttribute("incomingsTotal", incomingsTotal);
+        theModel.addAttribute("remainingTotal", trader.getRemaining());
 
-		theModel.addAttribute("remainingTotal", trader.getRemaining());
+        return "trader-profile";
+    }
 
-		return "trader-profile";
-	}
+    @RequestMapping("/delete-trader")
+    public String deleteTrader(@RequestParam int id) {
 
-	@RequestMapping("/delete-trader")
-	public String deleteTrader(@RequestParam int id) {
+        userService.deleteTrader(id);
 
-		userService.deleteTrader(id);
+        return "redirect:/traders";
+    }
 
-		return "redirect:/traders";
-	}
+    @RequestMapping("/delete-trader-pay/{traderId}")
+    public String deleteTraderPay(@RequestParam("id") int id, @PathVariable("traderId") int traderId) {
+        Trader trader = userService.getTraderById(traderId);
+        TraderPay traderPay = userService.getTraderPay(id);
+        trader.setPayed(trader.getPayed() - traderPay.getAmount());
+        trader.setRemaining(trader.getRemaining() + traderPay.getAmount());
+        userService.saveTrader(trader);
+        userService.deleteTraderPay(id);
+        return "redirect:/traderProfile?id=" + traderId;
+
+    }
+
 
 }
