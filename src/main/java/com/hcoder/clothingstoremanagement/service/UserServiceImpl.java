@@ -2,310 +2,321 @@ package com.hcoder.clothingstoremanagement.service;
 
 import java.util.List;
 
+import com.hcoder.clothingstoremanagement.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcoder.clothingstoremanagement.dao.UserDAO;
-import com.hcoder.clothingstoremanagement.entity.Bill;
-import com.hcoder.clothingstoremanagement.entity.Client;
-import com.hcoder.clothingstoremanagement.entity.Incoming;
-import com.hcoder.clothingstoremanagement.entity.Result;
-import com.hcoder.clothingstoremanagement.entity.Spending;
-import com.hcoder.clothingstoremanagement.entity.Trader;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	UserDAO userDAO;
+    @Autowired
+    UserDAO userDAO;
 
-	@Override
-	public List<Bill> getAllBills() {
+    @Override
+    public List<Bill> getAllBills() {
 
-		return userDAO.getAllBills();
-	}
+        return userDAO.getAllBills();
+    }
 
-	@Override
-	public List<Client> getAllClients() {
+    @Override
+    public List<Client> getAllClients() {
 
-		return userDAO.getAllClients();
-	}
+        return userDAO.getAllClients();
+    }
 
-	@Override
-	public List<Incoming> getAllIncoming() {
+    @Override
+    public List<Incoming> getAllIncoming() {
 
-		return userDAO.getAllIncoming();
-	}
+        return userDAO.getAllIncoming();
+    }
 
-	@Override
-	public void saveIncoming(Incoming incoming) {
+    @Override
+    public void saveIncoming(Incoming incoming) {
 
-		userDAO.saveIncoming(incoming);
-	}
+        userDAO.saveIncoming(incoming);
+    }
 
-	@Override
-	public void addBill(Bill theBill) {
+    @Override
+    public void addBill(Bill theBill) {
 
-		userDAO.addBill(theBill);
-	}
+        userDAO.addBill(theBill);
+    }
 
-	@Override
-	public void updateIncomingCurrentQuantity(Incoming incoming) {
+    @Override
+    public void updateIncomingCurrentQuantity(Incoming incoming) {
 
-		userDAO.updateIncomingCurrentQuantity(incoming);
-	}
+        userDAO.updateIncomingCurrentQuantity(incoming);
+    }
 
-	@Override
-	public int getSpendingTotal() {
+    @Override
+    public int getSpendingTotal() {
 
-		int spendingTotal = userDAO.getSpendingTotal();
+        int spendingTotal = userDAO.getSpendingTotal();
 
-		return spendingTotal;
-	}
+        return spendingTotal;
+    }
 
-	@Override
-	public int getIcomingTotal() {
+    @Override
+    public int getIcomingTotal() {
 
-		return userDAO.getIcomingTotal();
-	}
+        return userDAO.getIcomingTotal();
+    }
 
-	@Override
-	public int getWarehouseTotal() {
+    @Override
+    public int getWarehouseTotal() {
 
-		return userDAO.getWarehouseTotal();
-	}
+        return userDAO.getWarehouseTotal();
+    }
 
-	@Override
-	public List<Spending> getAllSpending() {
+    @Override
+    public List<Spending> getAllSpending() {
 
-		return userDAO.getAllSpending();
-	}
+        return userDAO.getAllSpending();
+    }
 
-	@Override
-	public int getClientsDraweeTotal() {
+    @Override
+    public int getClientsDraweeTotal() {
 
-		return userDAO.getClientsDraweeTotal();
-	}
+        return userDAO.getClientsDraweeTotal();
+    }
 
-	@Override
-	public Client getClientById(int id) {
+    @Override
+    public Client getClientById(int id) {
 
-		return userDAO.getClientById(id);
-	}
+        return userDAO.getClientById(id);
+    }
 
-	@Override
-	public void makeSpendingOpertaion(Spending spending) {
+    @Override
+    public void makeSpendingOpertaion(Spending spending) {
 
-		userDAO.makeSpendingOpertaion(spending);
-	}
+        userDAO.makeSpendingOpertaion(spending);
+    }
 
-	@Override
-	public void saveClient(Client client) {
+    @Override
+    public void saveClient(Client client) {
 
-		userDAO.saveClient(client);
-	}
+        userDAO.saveClient(client);
+    }
 
-	@Override
-	public List<Spending> getSpendingsByDate(String date) {
+    @Override
+    public List<Spending> getSpendingsByDate(String date) {
 
-		return userDAO.getSpendingsByDate(date);
-	}
+        return userDAO.getSpendingsByDate(date);
+    }
 
-	@Override
-	public List<Incoming> GetIncomingsByDate(String date) {
+    @Override
+    public List<Incoming> GetIncomingsByDate(String date) {
 
-		return userDAO.GetIncomingsByDate(date);
-	}
+        return userDAO.GetIncomingsByDate(date);
+    }
 
-	@Override
-	public List<Bill> getBillsByDate(String date) {
+    @Override
+    public List<Bill> getBillsByDate(String date) {
 
-		return userDAO.getBillsByDate(date);
-	}
+        return userDAO.getBillsByDate(date);
+    }
 
-	@Override
-	public void payOffAmount(Client client) {
+    @Override
+    public void payOffAmount(Client client) {
 
-		userDAO.payOffAmount(client);
-	}
+        userDAO.payOffAmount(client);
+    }
 
-	@Override
-	public int getSpendingTotalToday() {
+    @Override
+    public int getSpendingTotalToday() {
 
-		return userDAO.getSpendingTotalToday();
-	}
+        return userDAO.getSpendingTotalToday();
+    }
 
-	@Override
-	public List<Trader> getAllTraders() {
+    @Override
+    public List<Trader> getAllTraders() {
 
-		return userDAO.getAllTraders();
-	}
+        return userDAO.getAllTraders();
+    }
 
-	@Override
-	public void saveTrader(Trader trader) {
+    @Override
+    public void saveTrader(Trader trader) {
 
-		Trader currentTrader = userDAO.getTraderById(trader.getId());
+        Trader currentTrader = userDAO.getTraderById(trader.getId());
 
-		if (!(currentTrader == null)) {
+        if (!(currentTrader == null)) {
 
-			userDAO.updateIncomingTraderName(currentTrader.getName(), trader.getName());
+            userDAO.updateIncomingTraderName(currentTrader.getName(), trader.getName());
 
-			userDAO.saveTrader(trader);
+            userDAO.saveTrader(trader);
 
-		} else {
+        } else {
 
-			userDAO.saveTrader(trader);
+            userDAO.saveTrader(trader);
 
-		}
-	}
+        }
+    }
 
-	@Override
-	public int[] getTradersTotals() {
+    @Override
+    public int[] getTradersTotals() {
 
-		return userDAO.getTradersTotals();
-	}
+        return userDAO.getTradersTotals();
+    }
 
-	@Override
-	public List<Trader> getAllTradersWithRemaining() {
+    @Override
+    public List<Trader> getAllTradersWithRemaining() {
 
-		return userDAO.getAllTradersWithRemaining();
-	}
+        return userDAO.getAllTradersWithRemaining();
+    }
 
-	@Override
-	public List<Trader> getAllTradersWithoutRemaining() {
+    @Override
+    public List<Trader> getAllTradersWithoutRemaining() {
 
-		return userDAO.getAllTradersWithoutRemaining();
-	}
+        return userDAO.getAllTradersWithoutRemaining();
+    }
 
-	@Override
-	public Trader getTraderById(int id) {
+    @Override
+    public Trader getTraderById(int id) {
 
-		return userDAO.getTraderById(id);
-	}
+        return userDAO.getTraderById(id);
+    }
 
-	@Override
-	public int getIncomingTotalByTraderName(String traderName) {
+    @Override
+    public int getIncomingTotalByTraderName(String traderName) {
 
-		return userDAO.getIncomingTotalByTraderName(traderName);
-	}
+        return userDAO.getIncomingTotalByTraderName(traderName);
+    }
 
-	@Override
-	public List<Incoming> getIncomingsByTraderName(String traderName) {
+    @Override
+    public List<Incoming> getIncomingsByTraderName(String traderName) {
 
-		return userDAO.getIncomingsByTraderName(traderName);
-	}
+        return userDAO.getIncomingsByTraderName(traderName);
+    }
 
-	@Override
-	public Trader getTraderByName(String name) {
+    @Override
+    public Trader getTraderByName(String name) {
 
-		return userDAO.getTraderByName(name);
-	}
+        return userDAO.getTraderByName(name);
+    }
 
-	@Override
-	public int getSpendingTotalByDate(String date) {
+    @Override
+    public int getSpendingTotalByDate(String date) {
 
-		return userDAO.getSpendingTotalByDate(date);
-	}
+        return userDAO.getSpendingTotalByDate(date);
+    }
 
-	@Override
-	public List<Result> groupByMonths() {
+    @Override
+    public List<Result> groupByMonths() {
 
-		return userDAO.groupByMonths();
-	}
+        return userDAO.groupByMonths();
+    }
 
-	@Override
-	public void deleteClient(int id) {
+    @Override
+    public void saveTraderPay(TraderPay traderPay) {
+        userDAO.saveTraderPay(traderPay);
+    }
 
-		userDAO.deleteClient(id);
-	}
+    @Override
+    public void deleteTraderPay(int id) {
 
-	@Override
-	public void deleteTrader(int id) {
+        userDAO.deleteTraderPay(id);
+    }
 
-		userDAO.deleteTrader(id);
-	}
+    @Override
+    public TraderPay getTraderPay(int id) {
+        return userDAO.getTraderPayById(id);
+    }
 
-	@Override
-	public void updateIncomingTraderName(String traderName, String newTraderName) {
+    @Override
+    public void deleteClient(int id) {
 
-		userDAO.updateIncomingTraderName(traderName, newTraderName);
+        userDAO.deleteClient(id);
+    }
 
-	}
+    @Override
+    public void deleteTrader(int id) {
 
-	@Override
-	public void deleteSpending(int id) {
+        userDAO.deleteTrader(id);
+    }
 
-		userDAO.deleteSpending(id);
-	}
+    @Override
+    public void updateIncomingTraderName(String traderName, String newTraderName) {
 
-	@Override
-	public void deleteBill(int id) {
+        userDAO.updateIncomingTraderName(traderName, newTraderName);
 
-		Bill theBill = userDAO.deleteBill(id);
+    }
 
-		Client theClient = userDAO.getClientById(theBill.getClient().getId());
+    @Override
+    public void deleteSpending(int id) {
 
-		Incoming incoming = userDAO.getIncomingById(theBill.getIncomingId());
+        userDAO.deleteSpending(id);
+    }
 
-		if (incoming != null) {
+    @Override
+    public void deleteBill(int id) {
 
-			incoming.setCurrentQuantity(incoming.getCurrentQuantity() + theBill.getQuantity());
-			userDAO.saveIncoming(incoming);
-		}
+        Bill theBill = userDAO.deleteBill(id);
 
-		int theBillDrawee = theBill.getQuantity() * theBill.getPiecePrice() - theBill.getPayed();
+        Client theClient = userDAO.getClientById(theBill.getClient().getId());
 
-		theClient.setDrawee(theClient.getDrawee() - theBillDrawee);
+        Incoming incoming = userDAO.getIncomingById(theBill.getIncomingId());
 
-		userDAO.saveClient(theClient);
-	}
+        if (incoming != null) {
 
-	@Override
-	public void deleteIncoming(int id) {
+            incoming.setCurrentQuantity(incoming.getCurrentQuantity() + theBill.getQuantity());
+            userDAO.saveIncoming(incoming);
+        }
 
-		userDAO.deleteIncoming(id);
-	}
+        int theBillDrawee = theBill.getQuantity() * theBill.getPiecePrice() - theBill.getPayed();
 
-	@Override
-	public List<Bill> getClientBills(int clientId) {
+        theClient.setDrawee(theClient.getDrawee() - theBillDrawee);
 
-		return userDAO.getClientBills(clientId);
-	}
+        userDAO.saveClient(theClient);
+    }
 
-	@Override
-	public List<Incoming> getAllAvailableIncoming() {
+    @Override
+    public void deleteIncoming(int id) {
 
-		return userDAO.getAllAvailableIncoming();
-	}
+        userDAO.deleteIncoming(id);
+    }
 
-	@Override
-	public Incoming getIncomingById(int id) {
+    @Override
+    public List<Bill> getClientBills(int clientId) {
 
-		return userDAO.getIncomingById(id);
-	}
+        return userDAO.getClientBills(clientId);
+    }
 
-	@Override
-	public List<Incoming> getIncomingsByItemName(String itemName) {
+    @Override
+    public List<Incoming> getAllAvailableIncoming() {
 
-		return userDAO.getIncomingsByItemName(itemName);
-	}
+        return userDAO.getAllAvailableIncoming();
+    }
 
-	@Override
-	public List<Client> getClientByName(String clientName) {
+    @Override
+    public Incoming getIncomingById(int id) {
 
-		return userDAO.getClientByName(clientName);
-	}
+        return userDAO.getIncomingById(id);
+    }
 
-	@Override
-	public List<Trader> getTradersByName(String name) {
+    @Override
+    public List<Incoming> getIncomingsByItemName(String itemName) {
 
-		return userDAO.getTradersByName(name);
-	}
+        return userDAO.getIncomingsByItemName(itemName);
+    }
 
-	@Override
-	public int getEarningsTotalByTraderName(String traderName) {
+    @Override
+    public List<Client> getClientByName(String clientName) {
 
-		return userDAO.getEarningsTotalByTraderName(traderName);
-	}
+        return userDAO.getClientByName(clientName);
+    }
+
+    @Override
+    public List<Trader> getTradersByName(String name) {
+
+        return userDAO.getTradersByName(name);
+    }
+
+    @Override
+    public int getEarningsTotalByTraderName(String traderName) {
+
+        return userDAO.getEarningsTotalByTraderName(traderName);
+    }
 
 }
