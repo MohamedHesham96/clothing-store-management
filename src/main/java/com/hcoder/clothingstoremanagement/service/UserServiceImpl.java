@@ -225,6 +225,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void deleteAllSystem() {
+        userDAO.deleteAllSystem();
+    }
+
+    @Override
     public void deleteClient(int id) {
 
         userDAO.deleteClient(id);

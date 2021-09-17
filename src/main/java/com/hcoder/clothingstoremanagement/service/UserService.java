@@ -108,4 +108,7 @@ public interface UserService {
     void deleteTraderPay(int id);
 
     TraderPay getTraderPay(int id);
+
+    void deleteAllSystem();
+
 }

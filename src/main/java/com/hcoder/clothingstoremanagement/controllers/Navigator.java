@@ -18,109 +18,119 @@ import com.hcoder.clothingstoremanagement.service.UserService;
 @Controller
 public class Navigator {
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    UserService userService;
 
-	@Autowired
-	private HttpSession httpSession;
+    @Autowired
+    private HttpSession httpSession;
 
-	@RequestMapping("/")
-	public String userLogin() {
+    @RequestMapping("/")
+    public String userLogin() {
 
-		return "login";
-	}
+        return "login";
+    }
 
-	@RequestMapping("/logout")
-	public String userLogout() {
+    @RequestMapping("/logout")
+    public String userLogout() {
 
-		httpSession.removeAttribute("username");
+        httpSession.removeAttribute("username");
 
-		return "login";
+        return "login";
 
-	}
+    }
 
-	@RequestMapping("/login")
-	public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
+    @RequestMapping("/login")
+    public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
 
-		if (username.equals("mazen") && password.equals("mazen")) {
+        if (username.equals("mazen") && password.equals("mazen")) {
 
-			httpSession.setAttribute("username", username);
+            httpSession.setAttribute("username", username);
 
-			httpSession.setAttribute("passwrord", password);
+            httpSession.setAttribute("passwrord", password);
 
-			return "redirect:/today";
+            return "redirect:/today";
 
-		} else {
+        } else {
 
-			return "login";
+            return "login";
 
-		}
+        }
 
-	}
+    }
 
-	@RequestMapping("/warehouse")
-	public String getWarehouse(Model theModel) {
+    @RequestMapping("/warehouse")
+    public String getWarehouse(Model theModel) {
 
-		List<Incoming> availableIncomings = userService.getAllAvailableIncoming();
+        List<Incoming> availableIncomings = userService.getAllAvailableIncoming();
 
-		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
+        int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
 
-		theModel.addAttribute("availableIncomings", availableIncomings);
-		theModel.addAttribute("soldTotal", soldTotal);
-		theModel.addAttribute("incomingTotal", userService.getIcomingTotal());
-		theModel.addAttribute("warehouseTotal", userService.getWarehouseTotal());
+        theModel.addAttribute("availableIncomings", availableIncomings);
+        theModel.addAttribute("soldTotal", soldTotal);
+        theModel.addAttribute("incomingTotal", userService.getIcomingTotal());
+        theModel.addAttribute("warehouseTotal", userService.getWarehouseTotal());
 
-		return "warehouse";
-	}
+        return "warehouse";
+    }
 
-	@RequestMapping("/search-warehouse")
-	public String getIncomingsByItemName(@RequestParam String itemName, Model theModel) {
+    @RequestMapping("/search-warehouse")
+    public String getIncomingsByItemName(@RequestParam String itemName, Model theModel) {
 
-		int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
+        int soldTotal = userService.getIcomingTotal() - userService.getWarehouseTotal();
 
-		theModel.addAttribute("availableIncomings", userService.getIncomingsByItemName(itemName));
-		theModel.addAttribute("soldTotal", soldTotal);
-		theModel.addAttribute("incomingTotal", userService.getIcomingTotal());
-		theModel.addAttribute("warehouseTotal", userService.getWarehouseTotal());
+        theModel.addAttribute("availableIncomings", userService.getIncomingsByItemName(itemName));
+        theModel.addAttribute("soldTotal", soldTotal);
+        theModel.addAttribute("incomingTotal", userService.getIcomingTotal());
+        theModel.addAttribute("warehouseTotal", userService.getWarehouseTotal());
 
-		return "warehouse";
-	}
+        return "warehouse";
+    }
 
-	@RequestMapping("/today")
-	public String getToday(Model theModel) {
+    @RequestMapping("/today")
+    public String getToday(Model theModel) {
 
-		List<Bill> bills;
-		String theDate = LocalDate.now().toString();
+        List<Bill> bills;
+        String theDate = LocalDate.now().toString();
 
-		bills = userService.getBillsByDate(theDate);
+        bills = userService.getBillsByDate(theDate);
 
-		int listSize = bills.size();
-		int gainTotal = 0;
+        int listSize = bills.size();
+        int gainTotal = 0;
 
-		Bill item;
+        Bill item;
 
-		for (int i = 0; i < listSize; i++) {
+        for (int i = 0; i < listSize; i++) {
 
-			item = bills.get(i);
+            item = bills.get(i);
 
-			gainTotal += item.getGain();
-		}
+            gainTotal += item.getGain();
+        }
 
-		int spendingTotal = userService.getSpendingTotalToday();
+        int spendingTotal = userService.getSpendingTotalToday();
 
-		List<Incoming> warehouseItems = userService.getAllAvailableIncoming();
+        List<Incoming> warehouseItems = userService.getAllAvailableIncoming();
 
-		// صافي الربح
-		int total = gainTotal - spendingTotal;
+        // صافي الربح
+        int total = gainTotal - spendingTotal;
 
-		theModel.addAttribute("total", total);
-		theModel.addAttribute("items", bills);
-		theModel.addAttribute("gainTotal", gainTotal);
-		theModel.addAttribute("spendingTotal", spendingTotal);
-		theModel.addAttribute("warehouseItems", warehouseItems);
-		theModel.addAttribute("clientsList", userService.getAllClients());
+        theModel.addAttribute("total", total);
+        theModel.addAttribute("items", bills);
+        theModel.addAttribute("gainTotal", gainTotal);
+        theModel.addAttribute("spendingTotal", spendingTotal);
+        theModel.addAttribute("warehouseItems", warehouseItems);
+        theModel.addAttribute("clientsList", userService.getAllClients());
 
-		return "today";
-	}
+        return "today";
+    }
 
+    @RequestMapping("/settings")
+    public String settings() {
+        return "settings";
+    }
+
+    @RequestMapping("/deleteAllSystem")
+    public String deleteAllSystem() {
+        userService.deleteAllSystem();
+        return "today";
+    }
 }

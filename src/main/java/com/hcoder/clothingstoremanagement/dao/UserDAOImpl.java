@@ -605,6 +605,19 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
+    public void deleteAllSystem() {
+        Session session = entityManager.unwrap(Session.class);
+        Query deleteBillQuery = session.createQuery("DELETE FROM Bill");
+        Query deleteIncomingQuery = session.createQuery("DELETE FROM Incoming");
+        Query deleteSpendingQuery = session.createQuery("DELETE FROM Spending");
+
+        deleteBillQuery.executeUpdate();
+        deleteIncomingQuery.executeUpdate();
+        deleteSpendingQuery.executeUpdate();
+    }
+
+    @Override
+    @Transactional
     public void deleteClient(int id) {
 
         Session session = entityManager.unwrap(Session.class);
