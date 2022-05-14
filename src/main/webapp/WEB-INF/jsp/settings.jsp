@@ -21,7 +21,11 @@
 <%@ include file="header.jsp" %>
 
 <div>
-    <a class="btn btn-danger btn-lg p-lg-3 mt-4" style="font-size: 50px" href="/deleteAllSystem"
+    <a class="btn btn-success mt-4 font-weight-bold" style="font-size: 50px" href="/backup">حفظ نسخة احتياطية</a>
+</div>
+
+<div>
+    <a class="btn btn-danger mt-4" href="/deleteAllSystem"
        onclick="return confirm('هل انت متأكد من حذف كل بيانات النظام؟')">حذف كل البيانات</a>
 </div>
 </body>

@@ -1,10 +1,14 @@
 package com.hcoder.clothingstoremanagement.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
 
+import com.smattme.MysqlExportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,29 +35,22 @@ public class Navigator {
     }
 
     @RequestMapping("/logout")
-    public String userLogout() {
-
+    public String userLogout() throws SQLException, IOException, ClassNotFoundException {
         httpSession.removeAttribute("username");
-
+        backupDatabase();
         return "login";
 
     }
 
     @RequestMapping("/login")
-    public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
-
+    public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password) throws SQLException, IOException, ClassNotFoundException {
         if (username.equals("mazen") && password.equals("mazen")) {
-
             httpSession.setAttribute("username", username);
-
             httpSession.setAttribute("passwrord", password);
-
+            backupDatabase();
             return "redirect:/today";
-
         } else {
-
             return "login";
-
         }
 
     }
@@ -131,6 +128,22 @@ public class Navigator {
     @RequestMapping("/deleteAllSystem")
     public String deleteAllSystem() {
         userService.deleteAllSystem();
+        return "today";
+    }
+
+    @RequestMapping("/backup")
+    public String backupDatabase() throws ClassNotFoundException, SQLException, IOException {
+
+        Properties properties = new Properties();
+        properties.setProperty(com.smattme.MysqlExportService.DB_NAME, "store");
+        properties.setProperty(com.smattme.MysqlExportService.DB_USERNAME, "hbstudent");
+        properties.setProperty(com.smattme.MysqlExportService.DB_PASSWORD, "hbstudent");
+        properties.setProperty(com.smattme.MysqlExportService.TEMP_DIR, new java.io.File("E:/external/").getPath());
+        properties.setProperty(MysqlExportService.PRESERVE_GENERATED_ZIP, "true");
+
+        com.smattme.MysqlExportService mysqlExportService = new com.smattme.MysqlExportService(properties);
+        mysqlExportService.export();
+
         return "today";
     }
 }
